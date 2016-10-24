@@ -1,0 +1,14 @@
+*.pyc
+*.mo
+.DS_Store
+*.swp
+/venv/
+/static/
+/media/
+/dsshop/media/cache/
+/dsshop/media/images/products/
+.env
+dev.py
+# settings/
+# migrations/
+
