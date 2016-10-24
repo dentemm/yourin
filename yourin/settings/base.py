@@ -50,6 +50,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #Other third party apps
+    'django_countries', # To populate country field of Address Model
 ]
 
 MIDDLEWARE = [
