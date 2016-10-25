@@ -13,9 +13,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/yourin.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/yourin.css' %}"/>
 
 
         {% block extra_css %}
@@ -39,6 +41,8 @@
         </div>
 
         {# Global javascript #}
+        <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/functions.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/yourin.js' %}"></script>
 
         {% block extra_js %}

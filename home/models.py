@@ -43,7 +43,7 @@ class Address(djangomodels.Model):
 	country = CountryField(verbose_name='land', null=True, default='BE')
 
 class HomePage(Page):
-    pass
+    template = 'home/home.html'
 
 class NewsArticle(Page):
 
