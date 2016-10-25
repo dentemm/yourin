@@ -13,7 +13,7 @@ from wagtail.wagtailsnippets.models import register_snippet
 
 from django_countries.fields import CountryField
 
-from .blocks import TitleBlock, SubtitleBlock, IntroTextBlock, ParagraphBlock, ImageWithCaptionBlock, PullQuoteBlock
+from .blocks import BlogTitleBlock, SubtitleBlock, IntroTextBlock, ParagraphBlock, ImageWithCaptionBlock, PullQuoteBlock
 
 
 #
@@ -63,7 +63,7 @@ NewsArticle.content_panels = [
 class Blog(Page):
 
 	blog_content = fields.StreamField([
-		('blog_title', TitleBlock(help_text='Dit is de titel van het artikel, voorzien van een afbeelding')),
+		('blog_title', BlogTitleBlock(help_text='Dit is de titel van het artikel, voorzien van een afbeelding')),
 		('blog_intro', IntroTextBlock(help_text='Hiermee kan je optioneel een korte inleiding voorzien')),
 		('blog_subtitle', SubtitleBlock()),	
 		('blog_paragraph', ParagraphBlock()),

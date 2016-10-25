@@ -13,17 +13,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {# Global stylesheets #}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/yourin.css' %}">
+
 
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
+    <body class="no-transition">
         {% wagtailuserbar %}
 
-        {% block content %}{% endblock %}
+        <div id="wrapper" class="clearfix noshadow">
+            <header id="header">
+                {% block header %}{% endblock header %}
+            </header>
+            <section id="content">
+                {% block content %}{% endblock content %}
+            </section>
+            <footer id="footer">
+                {% block footer %}{% endblock footer %}
+            </footer>
+        </div>
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/yourin.js' %}"></script>
