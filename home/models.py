@@ -7,11 +7,21 @@ from django.db import models as djangomodels
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 from wagtail.wagtailcore.models import Page
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, FieldRowPanel
+from wagtail.wagtailcore import fields
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, FieldRowPanel, StreamFieldPanel
 from wagtail.wagtailsnippets.models import register_snippet
 
-
 from django_countries.fields import CountryField
+
+from .blocks import TitleBlock, SubtitleBlock, IntroTextBlock, ParagraphBlock, ImageWithCaptionBlock, PullQuoteBlock
+
+
+#
+#
+# STREAMFIELD BLOCKS
+#
+#
+
 
 
 @register_snippet
@@ -49,6 +59,18 @@ NewsArticle.content_panels = [
 		],
 		heading='Nieuws artikel')
 ]
+
+class Blog(Page):
+
+	blog_content = fields.StreamField([
+		('blog_title', TitleBlock(help_text='Dit is de titel van het artikel, voorzien van een afbeelding')),
+		('blog_intro', IntroTextBlock(help_text='Hiermee kan je optioneel een korte inleiding voorzien')),
+		('blog_subtitle', SubtitleBlock()),	
+		('blog_paragraph', ParagraphBlock()),
+		('blog_image', ImageWithCaptionBlock()),
+		('blog_quote', PullQuoteBlock()),
+	], verbose_name='Blog inhoud')
+
 
 class CalenderEvent(Page):
 
