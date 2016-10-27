@@ -9,13 +9,10 @@ from django.contrib.auth.models import User
 def get_image_path(instance, filename):
 	return os.path.join('users', str(instance.id), filename)
 
-class FestivalAdvisorUser(models.Model):
+class YourinUser(models.Model):
 
 	user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='userprofile')
 	picture = models.ImageField(verbose_name='Profielafbeelding', upload_to=get_image_path, blank=True, null=True)
-	gender = models.CharField(max_length=27, blank=True, null=True)
-	age_min = models.PositiveIntegerField(blank=True, null=True)
-	age_max = models.PositiveIntegerField(blank=True, null=True)
 
 	def __str__(self):
 
