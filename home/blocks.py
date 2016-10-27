@@ -3,6 +3,10 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailembeds.blocks import EmbedBlock
 
 class BlogTitleBlock(blocks.StructBlock):
+
+	image = ImageChooserBlock(label='afbeelding', required=True)
+	title = blocks.CharBlock(label='titel', required=True)
+
 	class Meta:
 		template = 'home/blocks/title_block.html'
 		label =	'titel' 

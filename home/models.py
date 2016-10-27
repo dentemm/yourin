@@ -6,7 +6,7 @@ from datetime import date
 from django.db import models as djangomodels
 from django.core.validators import MinValueValidator, MaxValueValidator
 
-from wagtail.wagtailcore.models import Page
+from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore import fields
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, FieldRowPanel, StreamFieldPanel
 from wagtail.wagtailsnippets.models import register_snippet
@@ -14,14 +14,6 @@ from wagtail.wagtailsnippets.models import register_snippet
 from django_countries.fields import CountryField
 
 from .blocks import BlogTitleBlock, SubtitleBlock, IntroTextBlock, ParagraphBlock, ImageWithCaptionBlock, PullQuoteBlock
-
-
-#
-#
-# STREAMFIELD BLOCKS
-#
-#
-
 
 
 @register_snippet
@@ -49,6 +41,7 @@ class NewsArticle(Page):
 
 	name = djangomodels.CharField(verbose_name='naam', max_length=164)
 	# Streamfield goes here
+	
 
 NewsArticle.content_panels = [
 	MultiFieldPanel([
@@ -60,7 +53,16 @@ NewsArticle.content_panels = [
 		heading='Nieuws artikel')
 ]
 
-class Blog(Page):
+class Blog(Orderable, Page):
+	'''
+	Dit model beschijft 1 enkele blog post. 
+	TODO: 	mogelijk is het beter om de title block (en eventueel intro block) niet als streamfield onderdelen
+			te definieren, maar als standaard attributen. Zo is het zeker dat elke blog post deze items bevat
+	'''
+
+	template = 'home/blog_page.html'
+
+	date = djangomodels.DateField(verbose_name='blog datum', default=date.today)
 
 	blog_content = fields.StreamField([
 		('blog_title', BlogTitleBlock(help_text='Dit is de titel van het artikel, voorzien van een afbeelding')),
@@ -71,6 +73,21 @@ class Blog(Page):
 		('blog_quote', PullQuoteBlock()),
 	], verbose_name='Blog inhoud')
 
+
+#Blog.parent_page_types = ['home.BlogIndexPage', ]
+Blog.subpage_types = []
+
+Blog.content_panels = [
+#	MultiFieldPanel([
+#		FieldRowPanel([
+#				FieldPanel('title', classname='col12'),
+#				FieldPanel('author', classname='col6'),
+#				FieldPanel('date_posted', classname='col6'),
+#			]),
+#		], heading='Blog informatie',
+#	),
+	StreamFieldPanel('blog_content'),
+]
 
 class CalenderEvent(Page):
 
@@ -106,16 +123,6 @@ CalenderEvent.content_panels = [
 		],
 		heading='Evenement gegevens'
 	),
-	#InlinePanel('rateable_attributes', label='Te beroordelen eigenschappen'),
-	#InlinePanel('images', label='Festival afbeeldingen'),
-	#InlinePanel('related_links', 
-	#						label="URL's voor het festival",
-	#						help_text=mark_safe('Bijkomende links voor een festival. Hier kan je ticket links, social media links en andere ingeven. Gebruik best een <b><u>consistente naam</u></b> voor gelijkaardige links, dus niet Facebook voor het ene, en FB voor het andere festival.')
-	#						),
-	#InlinePanel('locations', label='festival locaties (hoeft niet ingevuld te worden als er maar 1 locatie is)')
-	#InlinePanel('persons', label='Maak nieuwe contactpersoon aan', max_num=1),
-	#InlinePanel('rateable_attributes', label='Te beoordelen eigenschappen'),
-	#CustomInlinePanel('rateable_attributes', label='Te beoordelen eigenschappen'),
 ]
 
 

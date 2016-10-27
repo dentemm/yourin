@@ -25,7 +25,7 @@
         {% endblock %}
     </head>
 
-    <body class="no-transition">
+    <body class="no-transition stretched">
         {% wagtailuserbar %}
 
         <div id="wrapper" class="clearfix noshadow">
@@ -33,9 +33,11 @@
                 {% block header %}{% endblock header %}
             </header>
             <section id="content">
-                {% block content %}{% endblock content %}
+                <div class="content-wrap">
+                    {% block content %}{% endblock content %}
+                </div>
             </section>
-            <footer id="footer">
+            <footer id="footer" class="dark">
                 {% block footer %}{% endblock footer %}
             </footer>
         </div>
