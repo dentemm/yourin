@@ -40,6 +40,8 @@ class HomePage(Page):
 class ContactPage(Page):
 	template = 'home/contact.html'
 
+	#description = djangomodels.TextField(verbose_name='beschrijving', max_length=256)
+
 class NewsArticle(Page):
 
 	name = djangomodels.CharField(verbose_name='naam', max_length=164)
