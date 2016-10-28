@@ -37,6 +37,9 @@ class Address(djangomodels.Model):
 class HomePage(Page):
     template = 'home/home.html'
 
+class ContactPage(Page):
+	template = 'home/contact.html'
+
 class NewsArticle(Page):
 
 	name = djangomodels.CharField(verbose_name='naam', max_length=164)

@@ -1,39 +1,28 @@
+{% load staticfiles %}
+
 <div class="container">
 	<!-- Footer Widgets
 	============================================= -->
 	<div class="footer-widgets-wrap clearfix">
 		<div class="col_two_third">
-			<div class="col_one_third">
+			<div class="col_half">
 				<div class="widget clearfix">
-					<img src="images/footer-widget-logo.png" alt="" class="footer-logo">
+					<img src="{% static 'images/logo2.png' %}" class="footer-logo">
 					<p>We believe in <strong>Simple</strong>, <strong>Creative</strong> &amp; <strong>Flexible</strong> Design Standards.</p>
-					<div style="background: url('images/world-map.png') no-repeat center center; background-size: 100%;">
+<!-- 					<div>
 						<address>
 							<strong>Headquarters:</strong><br>
 							795 Folsom Ave, Suite 600<br>
 							San Francisco, CA 94107<br>
 						</address>
 						<abbr title="Phone Number"><strong>Phone:</strong></abbr> (91) 8547 632521<br>
-						<abbr title="Fax"><strong>Fax:</strong></abbr> (91) 11 4752 1433<br>
 						<abbr title="Email Address"><strong>Email:</strong></abbr> info@canvas.com
-					</div>
+					</div> -->
 				</div>
 			</div>
-			<div class="col_one_third">
-				<div class="widget widget_links clearfix">
-					<h4>Blogroll</h4>
-					<ul>
-						<li><a href="http://codex.wordpress.org/">Documentation</a></li>
-						<li><a href="http://wordpress.org/support/forum/requests-and-feedback">Feedback</a></li>
-						<li><a href="http://wordpress.org/extend/plugins/">Plugins</a></li>
-						<li><a href="http://wordpress.org/support/">Support Forums</a></li>
-						<li><a href="http://wordpress.org/extend/themes/">Themes</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col_one_third col_last">
+			<div class="col_half col_last">
 				<div class="widget clearfix">
-					<h4>Recent Posts</h4>
+					<h4>Recent Nieuws</h4>
 					<div id="post-list-footer">
 						<div class="spost clearfix">
 							<div class="entry-c">
@@ -71,7 +60,7 @@
 		</div>
 		<div class="col_one_third col_last">
 			<div class="widget subscribe-widget clearfix">
-				<h5><strong>Subscribe</strong> to Our Newsletter to get Important News, Amazing Offers &amp; Inside Scoops:</h5>
+				<h5><strong>Schrijf je in</strong> voor onze nieuwsbrief om op de hoogte te blijven van alle nieuwtjes!</h5>
 				<div class="widget-subscribe-form-result"></div>
 				<form id="widget-subscribe-form" action="include/subscribe.php" role="form" method="post" class="nobottommargin" novalidate="novalidate">
 					<div class="input-group divcenter">
@@ -86,11 +75,11 @@
 			<div class="widget clearfix" style="margin-bottom: -20px;">
 				<div class="row">
 					<div class="col-md-6 clearfix bottommargin-sm">
-						<a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
+						<a href="https://www.facebook.com/yourin.be/" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
 							<i class="icon-facebook"></i>
 							<i class="icon-facebook"></i>
 						</a>
-						<a href="#"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
+						<a href="https://www.facebook.com/yourin.be/"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
 					</div>
 				</div>
 			</div>

@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load staticfiles wagtailcore_tags %}
 
 <div id="header-wrap" class="">
 
@@ -26,11 +26,11 @@
 				<li class="" style="background-image: url({% static 'images/icons/menu-divider.png' %});">
 					<a href="#" class="sf-with-ul">
 						<div>Kalender</div>
-						<span>Alle evenementen</span>
+						<span>Evenementen</span>
 					</a>
 				</li>
 				<li class="" style="background-image: url({% static 'images/icons/menu-divider.png' %});">
-					<a href="" class="sf-with-ul">
+					<a href="{% slugurl 'contact' %}" class="sf-with-ul">
 						<div>contact</div>
 						<span>Templates</span>
 					</a>
@@ -45,12 +45,6 @@
 					<a href="#" class="sf-with-ul">
 						<div>Blog</div>
 						<span>Latest News</span>
-					</a>
-				</li>
-				<li class="" style="background-image: url({% static 'images/icons/menu-divider.png' %});">
-					<a href="shop.html" class="sf-with-ul">
-						<div>Zoek</div>
-						<span>Buy Now</span>
 					</a>
 				</li>
 			</ul>
