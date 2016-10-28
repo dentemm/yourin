@@ -15,11 +15,11 @@
         {# Global stylesheets #}
         <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/dark.css' %}"/>
         <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}"/>
         <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/colors.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/yourin.css' %}"/>
-
-
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
@@ -46,8 +46,6 @@
         <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/plugins.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/functions.js' %}"></script>
-<!--         <script type="text/javascript" src="{% static 'js/yourin.js' %}"></script>
- -->
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
         {% endblock %}
