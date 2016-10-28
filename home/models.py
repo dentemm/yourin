@@ -15,7 +15,6 @@ from django_countries.fields import CountryField
 
 from .blocks import BlogTitleBlock, SubtitleBlock, IntroTextBlock, ParagraphBlock, ImageWithCaptionBlock, PullQuoteBlock
 
-
 @register_snippet
 class Location(djangomodels.Model):
 
@@ -24,6 +23,25 @@ class Location(djangomodels.Model):
 	longitude = djangomodels.DecimalField(max_digits=10, decimal_places=7, blank=True, null=True)
 	latitude = djangomodels.DecimalField(max_digits=10, decimal_places=7, blank=True, null=True)
 
+	class Meta:
+		verbose_name = 'locatie'
+		verbose_name_plural = 'locaties'
+		ordering = ['name', ]
+
+	def __str__(self):
+		return self.name
+
+Location.panels = [
+	MultiFieldPanel([
+			FieldRowPanel([
+					FieldPanel('name', classname='col6'),
+					FieldPanel('address', classname='col6')
+				]
+			),
+		],
+		heading='Locatie gegevens'
+	)
+]
 
 @register_snippet
 class Address(djangomodels.Model):
@@ -33,6 +51,35 @@ class Address(djangomodels.Model):
 	street = djangomodels.CharField(verbose_name='straat', max_length=40, null=True)
 	number = djangomodels.CharField(verbose_name='nummer', max_length=8, null=True)
 	country = CountryField(verbose_name='land', null=True, default='BE')
+
+	class Meta:
+		verbose_name = 'adres'
+		verbose_name_plural = 'adressen'
+		ordering = ['city', ]
+
+	def __str__(self):
+		return '%s - %s' % (self.city, self.street)
+
+Address.panels = [
+	MultiFieldPanel([
+			FieldRowPanel([
+					FieldPanel('street', classname='col8'),
+					FieldPanel('number', classname='col4')
+				]
+			),
+			FieldRowPanel([
+					FieldPanel('city', classname='col8'),
+					FieldPanel('postal_code', classname='col4')
+				]
+			),
+			FieldRowPanel([
+					FieldPanel('country', classname='col6'),
+				]
+			),
+		],
+		heading='Adressgegevens'
+	),
+]
 
 class HomePage(Page):
     template = 'home/home.html'
