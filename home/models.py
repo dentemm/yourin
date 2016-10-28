@@ -77,7 +77,7 @@ Address.panels = [
 				]
 			),
 		],
-		heading='Adressgegevens'
+		heading='Adresgegevens'
 	),
 ]
 
@@ -90,6 +90,11 @@ class ContactPage(Page):
 	#description = djangomodels.TextField(verbose_name='beschrijving', max_length=256)
 
 class NewsArticle(Page):
+
+	template = 'home/article_page.html'
+
+	pub_date = djangomodels.DateField(auto_now_add=True, null=True)
+	update_date = djangomodels.DateField(auto_now=True, null=True)
 
 	name = djangomodels.CharField(verbose_name='naam', max_length=164)
 	# Streamfield goes here
@@ -111,10 +116,11 @@ class Blog(Orderable, Page):
 	TODO: 	mogelijk is het beter om de title block (en eventueel intro block) niet als streamfield onderdelen
 			te definieren, maar als standaard attributen. Zo is het zeker dat elke blog post deze items bevat
 	'''
-
 	template = 'home/blog_page.html'
 
+	name = djangomodels.CharField(verbose_name='blog titel', max_length=128, default='')
 	date = djangomodels.DateField(verbose_name='blog datum', default=date.today)
+	intro_text = djangomodels.TextField(verbose_name='intro text', default='')
 
 	blog_content = fields.StreamField([
 		('blog_title', BlogTitleBlock(help_text='Dit is de titel van het artikel, voorzien van een afbeelding')),
@@ -139,6 +145,57 @@ Blog.content_panels = [
 #		], heading='Blog informatie',
 #	),
 	StreamFieldPanel('blog_content'),
+]
+
+class BlogIndex(Page):
+
+	template = 'home/blog_index.html'
+
+	@property
+	def blogs(self):
+		# Get list of live blog pages that are descendants of this page
+		blogs = Blog.objects.live().descendant_of(self)
+
+		# Order by most recent date first
+		blogs = blogs.order_by('-date')
+
+		return blogs
+
+	def get_context(self, request):
+		# Get blogs
+		blogs = self.blogs
+
+		# Filter by tag
+		tag = request.GET.get('tag')
+
+		if tag:
+			blogs = blogs.filter(tags__name=tag)
+
+		# Pagination
+		page = request.GET.get('page')
+		paginator = Paginator(blogs, 10)  # Show 10 blogs per page
+
+		try:
+			blogs = paginator.page(page)
+
+		except PageNotAnInteger:
+			blogs = paginator.page(1)
+
+		except EmptyPage:
+			blogs = paginator.page(paginator.num_pages)
+
+		# Update template context
+		context = super(BlogIndexPage, self).get_context(request)
+		context['blogs'] = blogs
+		return context
+
+
+BlogIndex.parent_page_types = [
+	'home.HomePage',
+]
+
+BlogIndex.subpage_types = [
+	'home.Blog',
 ]
 
 class CalenderEvent(Page):
@@ -176,5 +233,3 @@ CalenderEvent.content_panels = [
 		heading='Evenement gegevens'
 	),
 ]
-
-
