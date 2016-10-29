@@ -5,7 +5,9 @@ from datetime import date
 
 from django.db import models as djangomodels
 from django.core.validators import MinValueValidator, MaxValueValidator
-from django.db.models.signals import pre_delete
+from django.core.exceptions import ValidationError
+from django.db.models.signals import pre_delete, pre_save
+from django.utils.translation import ugettext_lazy as _
 from django.dispatch import receiver
 
 from wagtail.wagtailcore.models import Page, Orderable
@@ -19,6 +21,26 @@ from django_countries.fields import CountryField
 
 from .blocks import BlogTitleBlock, SubtitleBlock, IntroTextBlock, ParagraphBlock, ImageWithCaptionBlock, PullQuoteBlock
 
+#
+#
+# HELPER FUNCTIES
+#
+#
+def get_upload_to(instance, filename):
+    """
+    Obtain a valid upload path for an image file.
+    This needs to be a module-level function so that it can be referenced within migrations,
+    but simply delegates to the `get_upload_to` method of the instance, so that AbstractImage
+    subclasses can override it.
+    """
+    return instance.get_upload_to(filename)
+
+
+def validate_temm(value):
+
+	raise ValidationError('Dees is shit')
+
+
 
 #
 #
@@ -29,13 +51,20 @@ class CustomImage(AbstractImage):
 	'''
 	Custom image model, om een auteur veld toe te voegen aan de wagtail Images
 	'''
-	pass
 
-	#author = djangomodels.CharField('auteur', max_length=56, null=True, blank=True)
 
-	#admin_form_fields = Image.admin_form_fields + (
-	#	'author',
-	#)
+	file = djangomodels.ImageField(
+		verbose_name=_('file'), upload_to=get_upload_to, width_field='width', height_field='height', validators=[validate_temm]
+	)
+
+CustomImage.admin_form_fields = Image.admin_form_fields
+
+"""@receiver(pre_save, sender=CustomImage)
+def check_file_size(sender, instance, **kwargs):
+	print('CHECKING FILE SIZE!!!!')
+	print(instance)
+	print(kwargs)
+	raise ValidationError('Deze afbeelding voldoet niet aan de minimum afmetingen')"""
 
 class CustomRendition(AbstractRendition):
 	'''
