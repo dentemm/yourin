@@ -35,11 +35,9 @@ def get_upload_to(instance, filename):
     """
     return instance.get_upload_to(filename)
 
-
 def validate_image_min(value):
 
 	if value.width < 150 or value.height < 150:
-
 		raise ValidationError('Deze afbeelding voldoet niet aan de minimum afmeting vereisten, zowel breedte als hoogte moeten minimaal 150 pixels zijn!')
 
 
@@ -53,19 +51,12 @@ class CustomImage(AbstractImage):
 	Custom image model, om een auteur veld toe te voegen aan de wagtail Images
 	'''
 
-
 	file = djangomodels.ImageField(
 		verbose_name=_('file'), upload_to=get_upload_to, width_field='width', height_field='height', validators=[validate_image_min]
 	)
 
 CustomImage.admin_form_fields = Image.admin_form_fields
 
-"""@receiver(pre_save, sender=CustomImage)
-def check_file_size(sender, instance, **kwargs):
-	print('CHECKING FILE SIZE!!!!')
-	print(instance)
-	print(kwargs)
-	raise ValidationError('Deze afbeelding voldoet niet aan de minimum afmetingen')"""
 
 class CustomRendition(AbstractRendition):
 	'''
@@ -162,13 +153,17 @@ Address.panels = [
 	),
 ]
 
+#
+#
+# CMS PAGES
+#
+#
+
 class HomePage(Page):
     template = 'home/home.html'
 
 class ContactPage(Page):
 	template = 'home/contact.html'
-
-	#description = djangomodels.TextField(verbose_name='beschrijving', max_length=256)
 
 class NewsArticle(Page):
 
@@ -215,7 +210,7 @@ class Blog(Orderable, Page):
 	], verbose_name='Blog inhoud')
 
 
-#Blog.parent_page_types = ['home.BlogIndexPage', ]
+Blog.parent_page_types = ['home.BlogIndex', ]
 Blog.subpage_types = []
 
 Blog.content_panels = [
@@ -281,19 +276,38 @@ BlogIndex.subpage_types = [
 	'home.Blog',
 ]
 
-class CalenderEvent(Page):
+class CalendarIndex(Page):
+
+	template = 'home/calendar.html'
+
+CalendarIndex.parent_page_types = [
+	'home.HomePage', 
+]
+
+CalendarIndex.subpage_types = [
+	'home.CalendarEvent',
+]
+
+class CalendarEvent(Page):
+
+	template = 'home/calendar_event.html'
 
 	name = djangomodels.CharField(verbose_name='naam', max_length=164)
 	description = djangomodels.TextField(verbose_name='beschrijving')
 	event_date = djangomodels.DateField(verbose_name='datum', default=date.today)
 	event_duration = djangomodels.PositiveIntegerField('Duur (# dagen)', default=1, validators=[MaxValueValidator(21),])
-	website = djangomodels.URLField()
+	website = djangomodels.URLField(verbose_name='event website')
+	image = djangomodels.ForeignKey('wagtailimages.Image', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 
-#FestivalPage.parent_page_types = ['home.FestivalIndexPage', ]
-CalenderEvent.subpage_types = []
+
+CalendarEvent.parent_page_types = [
+	'home.CalendarIndex', 
+]
+
+CalendarEvent.subpage_types = []
 
 # Festival page panels
-CalenderEvent.content_panels = [
+CalendarEvent.content_panels = [
 
 	MultiFieldPanel([
 			FieldRowPanel([
