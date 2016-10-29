@@ -5,15 +5,66 @@ from datetime import date
 
 from django.db import models as djangomodels
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
 
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore import fields
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, FieldRowPanel, StreamFieldPanel
 from wagtail.wagtailsnippets.models import register_snippet
+from wagtail.wagtailimages.models import Image, AbstractImage, AbstractRendition
+from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 
 from django_countries.fields import CountryField
 
 from .blocks import BlogTitleBlock, SubtitleBlock, IntroTextBlock, ParagraphBlock, ImageWithCaptionBlock, PullQuoteBlock
+
+
+#
+#
+# HELPER MODELLEN
+#
+#
+class CustomImage(AbstractImage):
+	'''
+	Custom image model, om een auteur veld toe te voegen aan de wagtail Images
+	'''
+	pass
+
+	#author = djangomodels.CharField('auteur', max_length=56, null=True, blank=True)
+
+	#admin_form_fields = Image.admin_form_fields + (
+	#	'author',
+	#)
+
+class CustomRendition(AbstractRendition):
+	'''
+	Custom rendition model nodig wanneer je een custom image model toevoegt
+	'''
+
+	image = djangomodels.ForeignKey(CustomImage, related_name='renditions', db_constraint=False)
+
+	class Meta:
+		unique_together = (
+			('image', 'filter', 'focal_point_key'),
+		)
+
+# Delete the source image file when an image is deleted
+@receiver(pre_delete, sender=CustomImage)
+def image_delete(sender, instance, **kwargs):
+    instance.file.delete(False)
+
+# Delete the rendition image file when a rendition is deleted
+@receiver(pre_delete, sender=CustomRendition)
+def rendition_delete(sender, instance, **kwargs):
+    instance.file.delete(False)
+	
+
+#
+#
+# SNIPPETS 
+#
+#
 
 @register_snippet
 class Location(djangomodels.Model):
@@ -97,8 +148,10 @@ class NewsArticle(Page):
 	update_date = djangomodels.DateField(auto_now=True, null=True)
 
 	name = djangomodels.CharField(verbose_name='naam', max_length=164)
+	image = djangomodels.ForeignKey('wagtailimages.Image', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 	# Streamfield goes here
-	
+
+
 
 NewsArticle.content_panels = [
 	MultiFieldPanel([
