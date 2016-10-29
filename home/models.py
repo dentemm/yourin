@@ -36,10 +36,11 @@ def get_upload_to(instance, filename):
     return instance.get_upload_to(filename)
 
 
-def validate_temm(value):
+def validate_image_min(value):
 
-	raise ValidationError('Dees is shit')
+	if value.width < 150 or value.height < 150:
 
+		raise ValidationError('Deze afbeelding voldoet niet aan de minimum afmeting vereisten, zowel breedte als hoogte moeten minimaal 150 pixels zijn!')
 
 
 #
@@ -54,7 +55,7 @@ class CustomImage(AbstractImage):
 
 
 	file = djangomodels.ImageField(
-		verbose_name=_('file'), upload_to=get_upload_to, width_field='width', height_field='height', validators=[validate_temm]
+		verbose_name=_('file'), upload_to=get_upload_to, width_field='width', height_field='height', validators=[validate_image_min]
 	)
 
 CustomImage.admin_form_fields = Image.admin_form_fields
