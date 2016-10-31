@@ -165,6 +165,9 @@ class HomePage(Page):
 class ContactPage(Page):
 	template = 'home/contact.html'
 
+class CalendarPage(Page):
+	template = 'home/calendar.html'
+
 class NewsArticle(Page):
 
 	template = 'home/article_page.html'
@@ -305,7 +308,7 @@ CalendarEvent.parent_page_types = [
 ]
 
 CalendarEvent.subpage_types = [
-	
+
 ]
 
 # Festival page panels

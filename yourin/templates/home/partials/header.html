@@ -14,7 +14,7 @@
         <div class="rd-navbar-nav-wrap">
           <div class="rd-navbar-mobile-scroll">
             <!--Navbar Brand Mobile-->
-            <div class="rd-navbar-mobile-brand"><a href="index.html"><img style="margin-top: -5px;margin-left: -15px;" width="138" height="31" src="images/intense/logo-dark.png" alt=""></a></div>
+            <div class="rd-navbar-mobile-brand"><a href="index.html"><img style="margin-top: -5px;margin-left: -15px;" height="80" src="{% static 'images/logo.png' %}" alt=""></a></div>
             <div class="form-search-wrap">
               <!-- RD Search Form-->
               <form action="search-results.html" method="GET" class="form-search rd-search">
@@ -30,7 +30,7 @@
               <li class=""><a href="#"><span>Home</span><span class="rd-navbar-label text-middle label-custom label-danger label-xs-custom label-rounded-custom label">new</span></a>
               <li class="active"><a href="#"><span>Features</span></a>
               <li class=""><a href="#"><span>Pages</span></a>
-              <li class=""><a href="portfolio-grid-3-columns.html"><span>Portfolio</span></a>
+              <li class=""><a href="{% slugurl 'calendar' %}"><span>Calendar</span></a>
               <li class=""><a href="blog-default-left-sidebar.html"><span>Blog</span></a>
               <li class=""><a href="shop-grid-left-sidebar.html"><span>Shop</span></a>
               <li class=""><a href="ui-kit.html"><span>Components</span></a>

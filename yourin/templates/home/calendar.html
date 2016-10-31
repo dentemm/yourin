@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="rd-calendar-fullwidth">
+  <div class="rd-calendar">
+    <div class="rdc-panel">
+        <a class="rdc-next"></a>
+        <a class="rdc-prev"></a>
+        <div class="rdc-today_day"></div>
+        <div class="rdc-today_date"></div>
+        <div class="rdc-today_month"></div>
+        <div class="rdc-today_fullyear"></div>
+        <div class="rdc-month"></div>
+        <div class="rdc-fullyear"></div>
+    </div>
+    <div class="rdc-table"></div>
+    <div class="rdc-events">
+        <a class="rdc-events_close"></a>
+        <ul>
+            <li class="rdc-event" data-date="10/28/2015">
+                Event 1
+            </li>
+            <li class="rdc-event" data-date="10/31/2015">
+                Event 2
+            </li>
+        </ul>
+    </div>
+  </div>
+</div>
+{% endblock content %}
