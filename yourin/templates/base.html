@@ -13,25 +13,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {# Global stylesheets #}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.min.css' %}"/>
         <link rel="stylesheet" type="text/css" href="{% static 'css/yourin.css' %}"/>
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
     </head>
 
-    <body class="no-transition stretched">
+    <body>
         {% wagtailuserbar %}
-
-        <div id="wrapper" class="clearfix noshadow">
-            <header id="header">
+        <div class="page">
+            <header class="page-head">
                 {% block header %}{% endblock header %}
             </header>
-            <section id="content">
-                <div class="content-wrap">
+            <main class="page-content">
                     {% block content %}{% endblock content %}
-                </div>
-            </section>
-            <footer id="footer" class="dark">
+            </main>
+            <footer class="page-footer">
                 {% block footer %}{% endblock footer %}
             </footer>
         </div>
