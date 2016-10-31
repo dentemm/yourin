@@ -23,13 +23,13 @@
     <body>
         {% wagtailuserbar %}
         <div class="page">
-            <header class="page-head">
+            <header class="page-head slider-menu-position">
                 {% block header %}{% endblock header %}
             </header>
             <main class="page-content">
                     {% block content %}{% endblock content %}
             </main>
-            <footer class="page-footer">
+            <footer class="page-footer section-relative section-top-66 section-bottom-34 bg-gray-base context-dark">
                 {% block footer %}{% endblock footer %}
             </footer>
         </div>
@@ -37,6 +37,8 @@
         {# Global javascript #}
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
+            <script type="text/javascript" src="{% static 'js/core.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
         {% endblock %}
     </body>
 </html>

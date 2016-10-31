@@ -1,86 +1,93 @@
 {% load staticfiles %}
 
-<div class="container">
-	<div class="footer-widgets-wrap clearfix">
-		<div class="col_two_third">
-			<div class="col_half">
-				<div class="widget clearfix">
-					<img src="{% static 'images/logo2.png' %}" class="footer-logo">
-					<p>
-						Hier kan je een korte beschrijvende tekst over yourin plaatsen, of een catchphrase ofzo
-					</p>
-				</div>
-			</div>
-			<div class="col_half col_last">
-				<div class="widget clearfix">
-					<h4>Recent Nieuws</h4>
-					<div id="post-list-footer">
-						<div class="spost clearfix">
-							<div class="entry-c">
-								<div class="entry-title">
-									<h4><a href="#">Lorem ipsum dolor sit amet, consectetur</a></h4>
-								</div>
-								<ul class="entry-meta">
-									<li>10th July 2014</li>
-								</ul>
-							</div>
-						</div>
-						<div class="spost clearfix">
-							<div class="entry-c">
-								<div class="entry-title">
-									<h4><a href="#">Elit Assumenda vel amet dolorum quasi</a></h4>
-								</div>
-								<ul class="entry-meta">
-									<li>10th July 2014</li>
-								</ul>
-							</div>
-						</div>
-						<div class="spost clearfix">
-							<div class="entry-c">
-								<div class="entry-title">
-									<h4><a href="#">Debitis nihil placeat, illum est nisi</a></h4>
-								</div>
-								<ul class="entry-meta">
-									<li>10th July 2014</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col_one_third col_last">
-			<div class="widget subscribe-widget clearfix">
-				<h5><strong>Schrijf je in</strong> voor onze nieuwsbrief om op de hoogte te blijven van alle nieuwtjes!</h5>
-				<div class="widget-subscribe-form-result"></div>
-				<form id="widget-subscribe-form" action="include/subscribe.php" role="form" method="post" class="nobottommargin" novalidate="novalidate">
-					<div class="input-group divcenter">
-						<span class="input-group-addon"><i class="icon-email2"></i></span>
-						<input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control required email" placeholder="Jouw email adres" aria-required="true">
-						<span class="input-group-btn">
-							<button class="btn btn-orange" type="submit">Inschrijven</button>
-						</span>
-					</div>
-				</form>
-			</div>
-			<div class="widget clearfix" style="margin-bottom: -20px;">
-				<div class="row">
-					<div class="col-md-6 clearfix bottommargin-sm">
-						<a href="https://www.facebook.com/yourin.be/" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
-							<i class="icon-facebook"></i>
-							<i class="icon-facebook"></i>
-						</a>
-						<a href="https://www.facebook.com/yourin.be/"><small style="display: block; margin-top: 3px;"><strong>Volg ons</strong><br>op Facebook</small></a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div><!-- .footer-widgets-wrap end -->
+<div class="shell">
+  <div class="range range-sm-center text-lg-left">
+    <div class="cell-sm-8 cell-md-12">
+      <div class="range range-xs-center">
+        <div class="cell-xs-7 text-xs-left cell-md-4 cell-lg-3 cell-lg-push-4">
+          <h6 class="text-uppercase text-spacing-60">Latest news</h6>
+                <!-- Post Widget-->
+                <article class="post widget-post text-left text-picton-blue"><a href="blog-classic-single-post.html">
+                    <div class="unit unit-horizontal unit-spacing-xs unit-middle">
+                      <div class="unit-body">
+                        <div class="post-meta"><span class="icon-xxs mdi mdi-arrow-right"></span>
+                          <time datetime="2016-01-01" class="text-dark">05/14/2015</time>
+                        </div>
+                        <div class="post-title">
+                          <h6 class="text-regular">Let’s Change the world</h6>
+                        </div>
+                      </div>
+                    </div></a></article>
+                <!-- Post Widget-->
+                <article class="post widget-post text-left text-picton-blue"><a href="blog-classic-single-post.html">
+                    <div class="unit unit-horizontal unit-spacing-xs unit-middle">
+                      <div class="unit-body">
+                        <div class="post-meta"><span class="icon-xxs mdi mdi-arrow-right"></span>
+                          <time datetime="2016-01-01" class="text-dark">05/14/2015</time>
+                        </div>
+                        <div class="post-title">
+                          <h6 class="text-regular">The meaning of Web Design</h6>
+                        </div>
+                      </div>
+                    </div></a></article>
+                <!-- Post Widget-->
+                <article class="post widget-post text-left text-picton-blue"><a href="blog-classic-single-post.html">
+                    <div class="unit unit-horizontal unit-spacing-xs unit-middle">
+                      <div class="unit-body">
+                        <div class="post-meta"><span class="icon-xxs mdi mdi-arrow-right"></span>
+                          <time datetime="2016-01-01" class="text-dark">05/14/2015</time>
+                        </div>
+                        <div class="post-title">
+                          <h6 class="text-regular">Get Started with TemplateMonster</h6>
+                        </div>
+                      </div>
+                    </div></a></article>
+        </div>
+        <div class="cell-xs-5 offset-top-41 offset-xs-top-0 text-xs-left cell-md-3 cell-lg-2 cell-lg-push-3">
+          <h6 class="text-uppercase text-spacing-60">Useful Links</h6>
+          <div class="reveal-block">
+            <div class="reveal-inline-block">
+              <ul class="list list-marked">
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="contact-us.html">Contact Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="clients.html">Clients</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="cell-xs-12 offset-top-41 cell-md-5 offset-md-top-0 text-md-left cell-lg-4 cell-lg-push-2">
+          <h6 class="text-uppercase text-spacing-60">Newsletter</h6>
+          <p>Keep up with our always upcoming  product features  and technologies. Enter your e-mail and subscribe to  our newsletter.</p>
+          <div class="offset-top-30">
+                  <form data-form-output="form-subscribe-footer" data-form-type="subscribe" method="post" action="bat/rd-mailform.php" class="rd-mailform" novalidate="novalidate">
+                    <div class="form-group">
+                      <div class="input-group input-group-sm"><span class="input-group-addon"><span class="input-group-icon mdi mdi-email"></span></span>
+                        <input placeholder="Type your E-Mail" type="email" name="email" data-constraints="@Required @Email" class="form-control form-control-has-validation" id="regula-generated-547905"><span class="form-validation"></span><span class="input-group-btn">
+                          <button type="submit" class="btn btn-sm btn-primary">Subscribe</button></span>
+                      </div>
+                    </div>
+                    <div id="form-subscribe-footer" class="form-output"></div>
+                  </form>
+          </div>
+        </div>
+        <div class="cell-xs-12 offset-top-66 cell-lg-3 cell-lg-push-1 offset-lg-top-0">
+          <!-- Footer brand-->
+          <div class="footer-brand"><a href="index.html"><img style="margin-top: -5px;margin-left: -15px;" width="138" height="31" src="images/intense/logo-light.png" alt=""></a></div>
+          <p class="text-darker offset-top-4">Feel the power of future</p>
+                <ul class="list-inline">
+                  <li><a href="#" class="icon fa fa-facebook icon-xxs icon-circle icon-darkest-filled"></a></li>
+                  <li><a href="#" class="icon fa fa-twitter icon-xxs icon-circle icon-darkest-filled"></a></li>
+                  <li><a href="#" class="icon fa fa-google-plus icon-xxs icon-circle icon-darkest-filled"></a></li>
+                  <li><a href="#" class="icon fa fa-linkedin icon-xxs icon-circle icon-darkest-filled"></a></li>
+                </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<div id="copyrights">
-	<div class="container clearfix">
-		<div class="col_half">
-			Created by <a href="http://www.thinkmobile.be">Think Mobile</a> 2016
-		</div>
-	</div>
-</div><!-- #copyrights end -->
+<div class="shell offset-top-50">
+  <p class="small text-darker">Intense © <span id="copyright-year">2016</span> . <a href="privacy.html">Privacy Policy</a>
+    <!-- {%FOOTER_LINK}-->
+  </p>
