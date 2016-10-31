@@ -304,7 +304,9 @@ CalendarEvent.parent_page_types = [
 	'home.CalendarIndex', 
 ]
 
-CalendarEvent.subpage_types = []
+CalendarEvent.subpage_types = [
+	
+]
 
 # Festival page panels
 CalendarEvent.content_panels = [

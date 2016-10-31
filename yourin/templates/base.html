@@ -13,14 +13,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {# Global stylesheets #}
-        <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
-        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/dark.css' %}"/>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}"/>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}"/>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/colors.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/font-icons.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/yourin.css' %}"/>
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
@@ -45,9 +37,6 @@
         </div>
 
         {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/plugins.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/functions.js' %}"></script>
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
         {% endblock %}
