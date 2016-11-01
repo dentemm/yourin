@@ -4,6 +4,11 @@
 	{% include 'home/partials/header.html' %}
 {% endblock header %}
 
+{% block content %}
+	{% block page_title %}{% endblock page_title %}
+	{% block main %}{% endblock main%}
+{% endblock content %}
+
 {% block footer %}
 	{% include 'home/partials/footer.html' %}
 {% endblock footer %}
