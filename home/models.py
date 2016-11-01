@@ -40,7 +40,6 @@ def validate_image_min(value):
 	if value.width < 150 or value.height < 150:
 		raise ValidationError('Deze afbeelding voldoet niet aan de minimum afmeting vereisten, zowel breedte als hoogte moeten minimaal 150 pixels zijn!')
 
-
 #
 #
 # HELPER MODELLEN
@@ -222,11 +221,10 @@ class Blog(Orderable, Page):
 	TODO: 	mogelijk is het beter om de title block (en eventueel intro block) niet als streamfield onderdelen
 			te definieren, maar als standaard attributen. Zo is het zeker dat elke blog post deze items bevat
 	'''
-	template = 'home/blog_page.html'
+	template = 'home/partials/blog_post.html'
 
-	name = djangomodels.CharField(verbose_name='blog titel', max_length=128, default='')
 	date = djangomodels.DateField(verbose_name='blog datum', default=date.today)
-	intro_text = djangomodels.TextField(verbose_name='intro text', default='')
+	intro_text = djangomodels.TextField(verbose_name='intro text', default='', blank=True, null=True)
 
 	blog_content = fields.StreamField([
 		('blog_title', BlogTitleBlock(help_text='Dit is de titel van het artikel, voorzien van een afbeelding')),
@@ -235,27 +233,27 @@ class Blog(Orderable, Page):
 		('blog_paragraph', ParagraphBlock()),
 		('blog_image', ImageWithCaptionBlock()),
 		('blog_quote', PullQuoteBlock()),
-	], verbose_name='Blog inhoud')
+	], verbose_name='Blog Inhoud')
 
 
-Blog.parent_page_types = ['home.BlogIndex', ]
+#Blog.parent_page_types = ['home.BlogIndex', ]
 Blog.subpage_types = []
 
 Blog.content_panels = [
-#	MultiFieldPanel([
-#		FieldRowPanel([
-#				FieldPanel('title', classname='col12'),
-#				FieldPanel('author', classname='col6'),
-#				FieldPanel('date_posted', classname='col6'),
-#			]),
-#		], heading='Blog informatie',
-#	),
+	MultiFieldPanel([
+		FieldRowPanel([
+				FieldPanel('title', classname='col12'),
+				#FieldPanel('author', classname='col6'),
+				#FieldPanel('date_posted', classname='col6'),
+			]),
+		], heading='Blog informatie',
+	),
 	StreamFieldPanel('blog_content'),
 ]
 
 class BlogIndex(Page):
 
-	template = 'home/blog_index.html'
+	template = 'home/blog_page.html'
 
 	@property
 	def blogs(self):
@@ -359,7 +357,6 @@ CalendarEvent.content_panels = [
 			#SnippetChooserPanel('contact_person', 'home.Person'),
 			#SnippetChooserPanel('location', 'home.Location'),
 			#FieldPanel('contact_person'),
-
 		],
 		heading='Evenement gegevens'
 	),
