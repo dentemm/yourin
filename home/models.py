@@ -87,6 +87,31 @@ def rendition_delete(sender, instance, **kwargs):
 #
 #
 
+# @register_snippet
+# class Influencer(djangomodels.Model):
+
+@register_snippet
+class EventCategory(djangomodels.Model):
+
+	name = djangomodels.CharField(max_length=64)
+
+	class Meta:
+		verbose_name = 'Evenement Categorie'
+		verbose_name_plural = 'Evenement Categorieën'
+		ordering = ['name', ]
+
+@register_snippet
+class NewsCategory(djangomodels.Model):
+
+	name = djangomodels.CharField(max_length=64)
+
+	class Meta:
+		verbose_name = 'Nieuwscategorie'
+		verbose_name_plural = 'Nieuwscategorieën'
+		ordering = ['name', ]
+
+
+
 @register_snippet
 class Location(djangomodels.Model):
 
@@ -300,16 +325,16 @@ class CalendarEvent(Page):
 	event_date = djangomodels.DateField(verbose_name='datum', default=date.today)
 	event_duration = djangomodels.PositiveIntegerField('Duur (# dagen)', default=1, validators=[MaxValueValidator(21),])
 	website = djangomodels.URLField(verbose_name='event website')
+
 	image = djangomodels.ForeignKey('wagtailimages.Image', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
+	category = djangomodels.ForeignKey('home.EventCategory', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='events')
 
 
 CalendarEvent.parent_page_types = [
 	'home.CalendarIndex', 
 ]
 
-CalendarEvent.subpage_types = [
-
-]
+CalendarEvent.subpage_types = []
 
 # Festival page panels
 CalendarEvent.content_panels = [
@@ -317,16 +342,20 @@ CalendarEvent.content_panels = [
 	MultiFieldPanel([
 			FieldRowPanel([
 					FieldPanel('name', classname='col6'),
-					FieldPanel('website', classname='col6'),
+					FieldPanel('category', classname='col6'),
 				]
 			),
-			
 			FieldRowPanel([
 				FieldPanel('event_date', classname='col6'),
 				FieldPanel('event_duration', classname='col6'),
 				],
 			),
+			FieldRowPanel([
+				FieldPanel('website', classname='col6'),
+				],
+			),
 			FieldPanel('description'),
+			ImageChooserPanel('image'),
 			#SnippetChooserPanel('contact_person', 'home.Person'),
 			#SnippetChooserPanel('location', 'home.Location'),
 			#FieldPanel('contact_person'),
