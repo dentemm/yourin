@@ -1,7 +1,10 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="rd-calendar-fullwidth">
+<div style="height:250px;">
+  
+</div>
+<div class="rd-calendar-fullwidth" style="background-color: grey;">
   <div class="rd-calendar">
     <div class="rdc-panel">
         <a class="rdc-next"></a>
@@ -17,10 +20,19 @@
     <div class="rdc-events">
         <a class="rdc-events_close"></a>
         <ul>
-            <li class="rdc-event" data-date="10/28/2015">
-                Event 1
+            <li class="rdc-event" data-date="10/28/2016">
+              <div class="rdc-event-wrap bg-blue-gray context-dark">
+                <article class="post widget-event">
+                  <div class="post-meta"><span class="icon icon-xxs text-picton-blue mdi mdi-clock"></span>
+                    <time datetime="2016-01-01" class="text-dark">10:00 am</time>
+                  </div>
+                  <div class="post-title">
+                    <h6 class="text-regular"><a href="#">International Conference</a></h6>
+                  </div>
+                </article>
+              </div>
             </li>
-            <li class="rdc-event" data-date="10/31/2015">
+            <li class="rdc-table_event" data-date="10/31/2016">
                 Event 2
             </li>
         </ul>

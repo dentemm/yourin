@@ -1,5 +1,11 @@
-.btn-orange {
-	color: #666;
-	background-color: #f8ba30;
-	border-color: #e9a91a;
+.rdc-table_date {
+	background: white;
+}
+
+.rdc-table_date.rdc-table_next {
+	opacity: 0.2;
+}
+
+td {
+	background: none !important;
 }
