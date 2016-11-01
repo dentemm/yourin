@@ -6,6 +6,7 @@ from datetime import date
 from django.db import models as djangomodels
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.core.exceptions import ValidationError
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models.signals import pre_delete, pre_save
 from django.utils.translation import ugettext_lazy as _
 from django.dispatch import receiver
@@ -16,6 +17,7 @@ from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFie
 from wagtail.wagtailsnippets.models import register_snippet
 from wagtail.wagtailimages.models import Image, AbstractImage, AbstractRendition
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
+from wagtail.wagtailsearch import index
 
 from django_countries.fields import CountryField
 
@@ -37,8 +39,8 @@ def get_upload_to(instance, filename):
 
 def validate_image_min(value):
 
-	if value.width < 150 or value.height < 150:
-		raise ValidationError('Deze afbeelding voldoet niet aan de minimum afmeting vereisten, zowel breedte als hoogte moeten minimaal 150 pixels zijn!')
+	if value.width < 600 or value.height < 330:
+		raise ValidationError('Deze afbeelding voldoet niet aan de minimum afmeting vereisten (600x330px)')
 
 #
 #
@@ -255,6 +257,8 @@ class BlogIndex(Page):
 
 	template = 'home/blog_page.html'
 
+	intro = fields.RichTextField(blank=True)
+
 	@property
 	def blogs(self):
 		# Get list of live blog pages that are descendants of this page
@@ -269,7 +273,7 @@ class BlogIndex(Page):
 		# Get blogs
 		blogs = self.blogs
 
-		# Filter by tag
+		# Filter by tag (als die bestaat)
 		tag = request.GET.get('tag')
 
 		if tag:
@@ -277,7 +281,7 @@ class BlogIndex(Page):
 
 		# Pagination
 		page = request.GET.get('page')
-		paginator = Paginator(blogs, 10)  # Show 10 blogs per page
+		paginator = Paginator(blogs, 5)  # Show 10 blogs per page
 
 		try:
 			blogs = paginator.page(page)
@@ -300,6 +304,10 @@ BlogIndex.parent_page_types = [
 
 BlogIndex.subpage_types = [
 	'home.Blog',
+]
+
+BlogIndex.search_fields = Page.search_fields + [
+	index.SearchField('intro'),
 ]
 
 class CalendarIndex(Page):
