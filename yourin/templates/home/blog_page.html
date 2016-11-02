@@ -1,126 +1,259 @@
 {% extends 'layout.html' %}
 
-{% load static wagtailimages_tags wagtailcore_tags %}
+{% load static wagtailimages_tags wagtailcore_tags yourin_tags %}
 
 {% block content %} 
-<div class="container clearfix">
-					<!-- Post Content ============================================= -->
-	<div class="postcontent nobottommargin clearfix">
-		<div class="single-post nobottommargin">
-			<!-- Single Post ============================================= -->
-			<div class="entry clearfix">
-				<!-- Entry Title ============================================= -->
-				<div class="entry-title">
-					<h2>This is a Standard post with a Preview Image</h2>
-				</div><!-- .entry-title end -->
-				<!-- Entry Meta ============================================= -->
-				<ul class="entry-meta clearfix">
-					<li><i class="icon-calendar3"></i> 10th July 2014</li>
-					<li><a href="#"><i class="icon-user"></i> admin</a></li>
-					<li><i class="icon-folder-open"></i> <a href="#">General</a>, <a href="#">Media</a></li>
-					<li><a href="#"><i class="icon-comments"></i> 43 Comments</a></li>
-					<li><a href="#"><i class="icon-camera-retro"></i></a></li>
-				</ul><!-- .entry-meta end -->
-				<!-- Entry Image ============================================= -->
-				<div class="entry-image">
-					<a href="#"><img src="images/blog/full/1.jpg" alt="Blog Single"></a>
-				</div><!-- .entry-image end -->
-				<!-- Entry Content ============================================= -->
-				<div class="entry-content notopmargin">
-					<p>
-						Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-					</p>
-					<p>
-						Nullam id dolor id nibh ultricies vehicula ut id elit. <a href="#">Curabitur blandit tempus porttitor</a>. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Donec id elit non mi porta gravida at eget metus. Vestibulum id ligula porta felis euismod semper.
-					</p>
-					<blockquote>
-						<p>
-							Vestibulum id ligula porta felis euismod semper. Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.
-						</p>
-					</blockquote>
-					<p>
-						Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus.
-					</p>
-					<p>
-						Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean lacinia bibendum nulla sed consectetur. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href="#">Nullam quis risus eget urna</a> mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
-					</p>
-					<pre>#header-inner {
-					width: 940px;
-					margin: 0 auto;
-					padding-top: 40px;
-					}</pre>
-					<p>
-						Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-					</p>
-					<p>
-						Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Donec id elit non mi porta gravida at eget metus. Vestibulum id ligula porta felis euismod semper.
-					</p>
-					<!-- Post Single - Content End -->
-					<!-- Tag Cloud ============================================= -->
-					<div class="tagcloud clearfix bottommargin">
-						<a href="#">general</a>
-						<a href="#">information</a>
-						<a href="#">media</a>
-						<a href="#">press</a>
-						<a href="#">gallery</a>
-						<a href="#">illustration</a>
-					</div><!-- .tagcloud end -->
-					<div class="clear"></div>
-					<!-- Post Single - Share ============================================= -->
-					<div class="si-share noborder clearfix">
-						<span>Share this Post:</span>
-						<div>
-							<a href="#" class="social-icon si-borderless si-facebook">
-								<i class="icon-facebook"></i>
-								<i class="icon-facebook"></i>
-							</a>
-							<a href="#" class="social-icon si-borderless si-twitter">
-								<i class="icon-twitter"></i>
-								<i class="icon-twitter"></i>
-							</a>
-							<a href="#" class="social-icon si-borderless si-pinterest">
-								<i class="icon-pinterest"></i>
-								<i class="icon-pinterest"></i>
-							</a>
-							<a href="#" class="social-icon si-borderless si-gplus">
-								<i class="icon-gplus"></i>
-								<i class="icon-gplus"></i>
-							</a>
-							<a href="#" class="social-icon si-borderless si-rss">
-								<i class="icon-rss"></i>
-								<i class="icon-rss"></i>
-							</a>
-							<a href="#" class="social-icon si-borderless si-email3">
-								<i class="icon-email3"></i>
-								<i class="icon-email3"></i>
-							</a>
-						</div>
-					</div><!-- Post Single - Share End -->
-				</div>
-			</div><!-- .entry end -->
-			<!-- Post Navigation ============================================= -->
-			<div class="post-navigation clearfix">
-				<div class="col_half nobottommargin">
-					<a href="#">⇐ This is a Standard post with a Slider Gallery</a>
-				</div>
-				<div class="col_half col_last tright nobottommargin">
-					<a href="#">This is an Embedded Audio Post ⇒</a>
-				</div>
-			</div><!-- .post-navigation end -->
-			<div class="line"></div>
-			<!-- Post Author Info ============================================= -->
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Posted by <span><a href="#">John Doe</a></span></h3>
-				</div>
-				<div class="panel-body">
-					<div class="author-image">
-						<img src="images/author/1.jpg" alt="" class="img-circle">
-					</div>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, eveniet, eligendi et nobis neque minus mollitia sit repudiandae ad repellendus recusandae blanditiis praesentium vitae ab sint earum voluptate velit beatae alias fugit accusantium laboriosam nisi reiciendis deleniti tenetur molestiae maxime id quaerat consequatur fugiat aliquam laborum nam aliquid. Consectetur, perferendis?
-				</div>
-			</div><!-- Post Single - Author End -->
+	<div class="shell section-254">
+		<div>
+			HIERONDER
+			{% get_site_root as site_root %}
+			{% top_menu parent=site_root calling_page=self %}
+			{% for menuitem in menuitems %}
+				{{ menuitem }}
+				GGG<b>
+			{% endfor %}
 		</div>
-	</div><!-- .postcontent end -->
-</div>
+          <div class="range range-sm-center range-lg-left">
+            <div class="cell-md-8 cel-lg-9">
+              <div class="inset-md-right-20">
+                <!-- Classic Thumbnail-->
+                <!-- Classic Gallery Carousel-->
+                <!-- Classic Thumbnail-->
+                <!-- Embed Video-->
+                <!-- Classic Soundcloud Player-->
+                <!-- Classic Thumbnail-->
+                <!-- Classic Gallery Carousel-->
+                <!-- Classic Thumbnail-->
+                <!-- Embed Video-->
+                <!-- Classic Soundcloud Player-->
+                
+                <!-- Events list-->
+                <section>
+                  <!-- Post Event-->
+                  <article class="post post-event">
+                    <!-- Post media-->
+                    <header class="post-media">
+                      <div data-photo-swipe="gallery"><a class="thumbnail-classic" href="events-list-single-left-sidebar.html" target="_self">
+                          <figure><img width="570" height="321" src="images/blog/post-02-570x321.jpg" alt="">
+                          </figure></a>
+                      </div>
+                    </header>
+                    <!-- Post content-->
+                    <section class="post-content text-left offset-top-41">
+                      <!-- Post Title-->
+                      <h3 class="offset-top-10"><a href="events-list-single-left-sidebar.html">Design trends of 2017 revealed</a></h3>
+                      <!-- Post Body-->
+                      <div class="post-body">
+                        <div class="inset-md-right-115">
+                          <p>Today John Doe will tell you about the hottest web- and graphic design trends of the next year. John is a professional designer with an impressive portfolio. He is always aware of the latest technologies, so be sure: his advice are worth listening to.</p>
+                        </div>
+                      </div><a href="events-list-single-left-sidebar.html" class="btn btn-sm btn-primary offset-top-30">Read More</a>
+                      <!-- Post meta-->
+                      <div class="post-meta context-dark">
+                        <time datetime="2016-01-01"><span class="post-meta-day">8</span><span class="big text-uppercase post-meta-month">Mar</span></time>
+                      </div>
+                    </section>
+                  </article>
+                  <hr class="hr bg-lighter offset-top-41 offset-sm-top-66">
+                  <div class="offset-top-41 offset-sm-top-66">
+                    <!-- Post Event-->
+                    <article class="post post-event">
+                      <!-- Post media-->
+                      <header class="post-media">
+                        <div data-photo-swipe="gallery"><a class="thumbnail-classic" href="events-list-single-left-sidebar.html" target="_self">
+                                            <figure><img width="570" height="321" src="images/blog/post-03-570x321.jpg" alt="">
+                                            </figure></a>
+                        </div>
+                      </header>
+                      <!-- Post content-->
+                      <section class="post-content text-left offset-top-41">
+                        <!-- Post Title-->
+                        <h3 class="offset-top-10"><a href="events-list-single-left-sidebar.html">Web Design Conference comes to Oakville in 2016</a></h3>
+                        <!-- Post Body-->
+                        <div class="post-body">
+                          <div class="inset-md-right-115">
+                            <p>Intense is pleased to host the next Web Design Conference, which will take place this year here, in Oakville. Learn about the topics that will be covered at the upcoming event, and how to save on the tickets in our spotlight.</p>
+                          </div>
+                        </div><a href="events-list-single-left-sidebar.html" class="btn btn-sm btn-primary offset-top-30">Read More</a>
+                        <!-- Post meta-->
+                        <div class="post-meta context-dark">
+                          <time datetime="2016-01-01"><span class="post-meta-day">8</span><span class="big text-uppercase post-meta-month">Mar</span></time>
+                        </div>
+                      </section>
+                    </article>
+                  </div>
+                  <div class="offset-top-66">
+                    <!-- Classic Pagination-->
+                    <nav>
+                      <ul class="pagination-classic">
+                        <li><a href="#">Prev</a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">Next</a></li>
+                      </ul>
+                    </nav>
+                    <!--// Classic Pagination-->
+                    <!--ul.pagination-classic-->
+                    <!--  li.previous-->
+                    <!--    a.btn.btn-default(href='#' class= size)= nameListPrev-->
+                    <!--  each val, index in amountList-->
+                    <!--    - var isActive = (index == active - 1)? "active": ""-->
+                    <!--    - var isHidden = (index > 2)? "veil reveal-xs-inline-block": ""-->
+                    <!--    li(class="#{isHidden} #{isActive}")-->
+                    <!--      a.btn.btn-default(href='#' class="#{size}" )= val-->
+                    <!--  li.next-->
+                    <!--    a.btn.btn-default(href='#' class= size)= nameListNext-->
+                  </div>
+                </section>
+              </div>
+            </div>
+            <div class="cell-md-4 offset-top-66 offset-md-top-0 cell-lg-3">
+              <!-- Section Blog Events-->
+              <aside class="text-left">
+                <div class="range">
+                  <div class="cell-sm-6 cell-md-12 offset-sm-top-41 offset-md-top-0">
+                    <!-- RD calendar-->
+                                  <div class="rd-calendar">
+                                    <div class="rdc-panel"><a class="rdc-next"></a><a class="rdc-prev"></a>
+                                      <div class="rdc-month">April</div>
+                                      <div class="rdc-fullyear">2016</div>
+                                    </div>
+                                    <div class="rdc-table"><table><tbody><tr><th class="rdc-table_day">S</th><th class="rdc-table_day">M</th><th class="rdc-table_day">T</th><th class="rdc-table_day">W</th><th class="rdc-table_day">T</th><th class="rdc-table_day">F</th><th class="rdc-table_day">S</th></tr><tr><td><div class="rdc-table_date rdc-table_prev">27</div></td><td><div class="rdc-table_date rdc-table_prev">28</div></td><td><div class="rdc-table_date rdc-table_prev">29</div></td><td><div class="rdc-table_date rdc-table_prev">30</div></td><td><div class="rdc-table_date rdc-table_prev">31</div></td><td><div class="rdc-table_date">1</div></td><td><div class="rdc-table_date">2</div></td></tr><tr><td><div class="rdc-table_date">3</div></td><td><div class="rdc-table_date">4</div></td><td><div class="rdc-table_date">5</div></td><td><div class="rdc-table_date">6</div></td><td><div class="rdc-table_date">7</div></td><td><div class="rdc-table_date">8</div></td><td><div class="rdc-table_date">9</div></td></tr><tr><td><div class="rdc-table_date">10</div></td><td><div class="rdc-table_date">11</div></td><td class="rdc-table_has-events"><div class="rdc-table_date">12</div><div class="rdc-table_events-count">1</div><ul class="rdc-table_events"><li class="rdc-table_event">
+                                          <div class="rdc-event-wrap">
+                                            <article class="post widget-event">
+                                              <div class="post-meta"><span class="icon icon-xxs text-picton-blue mdi mdi-clock"></span>
+                                                <time datetime="2016-01-01" class="text-dark">8:00 AM</time>
+                                              </div>
+                                              <div class="post-title">
+                                                <h6 class="text-regular"><a href="#">Pitae augue vitae matt</a></h6>
+                                              </div>
+                                            </article>
+                                          </div>
+                                        </li></ul></td><td class="rdc-table_has-events"><div class="rdc-table_date">13</div><div class="rdc-table_events-count">1</div><ul class="rdc-table_events"><li class="rdc-table_event">
+                                          <div class="rdc-event-wrap">
+                                            <article class="post widget-event">
+                                              <div class="post-meta"><span class="icon icon-xxs text-picton-blue mdi mdi-clock"></span>
+                                                <time datetime="2016-01-01" class="text-dark">9:00 AM</time>
+                                              </div>
+                                              <div class="post-title">
+                                                <h6 class="text-regular"><a href="#">Pitae augue vitae matt</a></h6>
+                                              </div>
+                                            </article>
+                                          </div>
+                                        </li></ul></td><td><div class="rdc-table_date">14</div></td><td><div class="rdc-table_date">15</div></td><td><div class="rdc-table_date">16</div></td></tr><tr><td><div class="rdc-table_date">17</div></td><td><div class="rdc-table_date">18</div></td><td><div class="rdc-table_date">19</div></td><td><div class="rdc-table_date">20</div></td><td><div class="rdc-table_date">21</div></td><td><div class="rdc-table_date">22</div></td><td><div class="rdc-table_date">23</div></td></tr><tr><td><div class="rdc-table_date">24</div></td><td><div class="rdc-table_date">25</div></td><td><div class="rdc-table_date">26</div></td><td><div class="rdc-table_date">27</div></td><td><div class="rdc-table_date">28</div></td><td><div class="rdc-table_date">29</div></td><td><div class="rdc-table_date">30</div></td></tr></tbody></table></div>
+                                    <div class="rdc-events text-left"><a class="rdc-events_close"></a>
+                                      <ul>
+                                        <li data-date="04/12/2016" class="rdc-event">
+                                          <div class="rdc-event-wrap">
+                                            <article class="post widget-event">
+                                              <div class="post-meta"><span class="icon icon-xxs text-picton-blue mdi mdi-clock"></span>
+                                                <time datetime="2016-01-01" class="text-dark">8:00 AM</time>
+                                              </div>
+                                              <div class="post-title">
+                                                <h6 class="text-regular"><a href="#">Pitae augue vitae matt</a></h6>
+                                              </div>
+                                            </article>
+                                          </div>
+                                        </li>
+                                        <li data-date="04/13/2016" class="rdc-event">
+                                          <div class="rdc-event-wrap">
+                                            <article class="post widget-event">
+                                              <div class="post-meta"><span class="icon icon-xxs text-picton-blue mdi mdi-clock"></span>
+                                                <time datetime="2016-01-01" class="text-dark">9:00 AM</time>
+                                              </div>
+                                              <div class="post-title">
+                                                <h6 class="text-regular"><a href="#">Pitae augue vitae matt</a></h6>
+                                              </div>
+                                            </article>
+                                          </div>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                  </div>
+                  <!-- Recent Events-->
+                  <div class="cell-sm-6 cell-md-12 offset-top-41">
+                    <h6 class="text-uppercase text-spacing-60">Recent Events</h6>
+                    <div class="text-subline"></div>
+                    <div class="offset-top-34">
+                                    <!-- Event Widget-->
+                                    <article class="post widget-event text-left"><a href="#">
+                                        <div class="unit unit-horizontal unit-spacing-xs unit-middle">
+                                          <div class="unit-left"><img width="46" height="46" src="images/blog/post-thumb-01-46x46.jpg" alt="" class="img-circle"></div>
+                                          <div class="unit-body">
+                                            <div class="post-meta">
+                                              <ul class="list-inline list-inline-sm">
+                                                <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
+                                                  <time datetime="2016-01-01" class="text-dark">05/14/2015</time>
+                                                </li>
+                                                <li><span class="icon-xxs text-picton-blue mdi mdi-clock"></span>
+                                                  <time datetime="2016-01-01" class="text-dark">9:00 PM</time>
+                                                </li>
+                                              </ul>
+                                            </div>
+                                            <div class="post-title">
+                                              <h6 class="text-regular">Let’s Change the world</h6>
+                                            </div>
+                                          </div>
+                                        </div></a></article>
+                    </div>
+                    <div class="offset-top-30">
+                                    <!-- Event Widget-->
+                                    <article class="post widget-event text-left"><a href="#">
+                                        <div class="unit unit-horizontal unit-spacing-xs unit-middle">
+                                          <div class="unit-left"><img width="46" height="46" src="images/blog/post-thumb-02-46x46.jpg" alt="" class="img-circle"></div>
+                                          <div class="unit-body">
+                                            <div class="post-meta">
+                                              <ul class="list-inline list-inline-sm">
+                                                <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
+                                                  <time datetime="2016-01-01" class="text-dark">05/14/2015</time>
+                                                </li>
+                                                <li><span class="icon-xxs text-picton-blue mdi mdi-clock"></span>
+                                                  <time datetime="2016-01-01" class="text-dark">9:00 PM</time>
+                                                </li>
+                                              </ul>
+                                            </div>
+                                            <div class="post-title">
+                                              <h6 class="text-regular">The meaning of Web De...</h6>
+                                            </div>
+                                          </div>
+                                        </div></a></article>
+                    </div>
+                    <div class="offset-top-30">
+                                    <!-- Event Widget-->
+                                    <article class="post widget-event text-left"><a href="#">
+                                        <div class="unit unit-horizontal unit-spacing-xs unit-middle">
+                                          <div class="unit-left"><img width="46" height="46" src="images/blog/post-thumb-03-46x46.jpg" alt="" class="img-circle"></div>
+                                          <div class="unit-body">
+                                            <div class="post-meta">
+                                              <ul class="list-inline list-inline-sm">
+                                                <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
+                                                  <time datetime="2016-01-01" class="text-dark">05/14/2015</time>
+                                                </li>
+                                                <li><span class="icon-xxs text-picton-blue mdi mdi-clock"></span>
+                                                  <time datetime="2016-01-01" class="text-dark">9:00 PM</time>
+                                                </li>
+                                              </ul>
+                                            </div>
+                                            <div class="post-title">
+                                              <h6 class="text-regular">Get Started with Templa...</h6>
+                                            </div>
+                                          </div>
+                                        </div></a></article>
+                    </div>
+                  </div>
+                </div>
+                <!-- Flickr Feed-->
+                <h6 class="offset-top-41 text-uppercase text-spacing-60">Flickr Feed</h6>
+                <div class="text-subline"></div>
+                <div class="offset-top-34">
+                    <div data-photo-swipe="gallery" data-flickr-id="14098790@N07" class="group-xs flickr widget-flickrfeed"><a data-photo-swipe-item="" href="http://farm3.staticflickr.com/2876/12673993723_af008f4f43_c.jpg" data-image_c="href" data-size="800x533" data-type="flickr-item" class="flickr-item thumbnail-classic"><img width="82" height="82" data-title="alt" src="http://farm3.staticflickr.com/2876/12673993723_af008f4f43_q.jpg" alt="IMG_8308" data-image_q="src"></a><a data-photo-swipe-item="" href="http://farm6.staticflickr.com/5490/12673993763_123d4147a9_c.jpg" data-image_c="href" data-size="800x532" data-type="flickr-item" class="flickr-item thumbnail-classic"><img width="82" height="82" data-title="alt" src="http://farm6.staticflickr.com/5490/12673993763_123d4147a9_q.jpg" alt="IMG_8316" data-image_q="src"></a><a data-photo-swipe-item="" href="http://farm8.staticflickr.com/7337/12673987893_bb615fcfed_c.jpg" data-image_c="href" data-size="533x800" data-type="flickr-item" class="flickr-item thumbnail-classic"><img width="82" height="82" data-title="alt" src="http://farm8.staticflickr.com/7337/12673987893_bb615fcfed_q.jpg" alt="IMG_8271" data-image_q="src"></a><a data-photo-swipe-item="" href="http://farm8.staticflickr.com/7375/12673856785_181e542bc9_c.jpg" data-image_c="href" data-size="800x533" data-type="flickr-item" class="flickr-item thumbnail-classic"><img width="82" height="82" data-title="alt" src="http://farm8.staticflickr.com/7375/12673856785_181e542bc9_q.jpg" alt="IMG_8246" data-image_q="src"></a><a data-photo-swipe-item="" href="http://farm6.staticflickr.com/5471/12673981363_e10f627485_c.jpg" data-image_c="href" data-size="800x532" data-type="flickr-item" class="flickr-item thumbnail-classic"><img width="82" height="82" data-title="alt" src="http://farm6.staticflickr.com/5471/12673981363_e10f627485_q.jpg" alt="IMG_8225" data-image_q="src"></a><a data-photo-swipe-item="" href="http://farm4.staticflickr.com/3717/12674333434_7fb9aba076_c.jpg" data-image_c="href" data-size="800x533" data-type="flickr-item" class="flickr-item thumbnail-classic"><img width="82" height="82" data-title="alt" src="http://farm4.staticflickr.com/3717/12674333434_7fb9aba076_q.jpg" alt="IMG_8179" data-image_q="src"></a><a data-photo-swipe-item="" href="http://farm8.staticflickr.com/7299/12673846995_0c94d107b1_c.jpg" data-image_c="href" data-size="533x800" data-type="flickr-item" class="flickr-item thumbnail-classic"><img width="82" height="82" data-title="alt" src="http://farm8.staticflickr.com/7299/12673846995_0c94d107b1_q.jpg" alt="IMG_8177" data-image_q="src"></a><a data-photo-swipe-item="" href="http://farm4.staticflickr.com/3806/9194473343_c3a1be0da7_c.jpg" data-image_c="href" data-size="533x800" data-type="flickr-item" class="flickr-item thumbnail-classic"><img width="82" height="82" data-title="alt" src="http://farm4.staticflickr.com/3806/9194473343_c3a1be0da7_q.jpg" alt="IMG_6732-Edit" data-image_q="src"></a><a data-photo-swipe-item="" href="http://farm4.staticflickr.com/3738/9194470777_589803ef34_c.jpg" data-image_c="href" data-size="533x800" data-type="flickr-item" class="flickr-item thumbnail-classic"><img width="82" height="82" data-title="alt" src="http://farm4.staticflickr.com/3738/9194470777_589803ef34_q.jpg" alt="IMG_6705-Edit" data-image_q="src"></a>
+                    </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </div>
 {% endblock content %}

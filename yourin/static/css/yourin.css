@@ -1,11 +1,13 @@
-/*.rdc-table_date {
-	background: white;
-}*/
+/* COLOR ADJUSTMENTS */
+.label-danger {background-color: #e54044}
 
+.rd-navbar-default.rd-navbar-static .rd-navbar-nav > li > a:after, .rd-navbar-floated.rd-navbar-static .rd-navbar-nav > li > a:after {
+	background: #e54044;
+}
+
+
+/* RD CALENDAR */
 .rdc-table_date.rdc-table_next {
 	opacity: 0.2;
 }
 
-/*td {
-	background: none !important;
-}*/

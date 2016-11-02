@@ -293,7 +293,7 @@ class BlogIndex(Page):
 			blogs = paginator.page(paginator.num_pages)
 
 		# Update template context
-		context = super(BlogIndexPage, self).get_context(request)
+		context = super(BlogIndex, self).get_context(request)
 		context['blogs'] = blogs
 		return context
 
