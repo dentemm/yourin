@@ -372,7 +372,7 @@ CalendarIndex.subpage_types = [
 ]
 
 class InfluencerIndex(Page):
-	template = 'home/influencer_page.html'
+	template = 'home/influencer/influencer_page.html'
 
 InfluencerIndex.parent_page_types = [
 	'home.HomePage'
