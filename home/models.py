@@ -111,8 +111,6 @@ class NewsCategory(djangomodels.Model):
 		verbose_name_plural = 'Nieuwscategorieën'
 		ordering = ['name', ]
 
-
-
 @register_snippet
 class Location(djangomodels.Model):
 
@@ -195,7 +193,7 @@ class ContactPage(Page):
 	template = 'home/contact.html'
 
 class CalendarPage(Page):
-	template = 'home/calendar.html'
+	template = 'home/calendar/calendar.html'
 
 class NewsArticle(Page):
 
@@ -226,7 +224,7 @@ class Blog(Orderable, Page):
 	TODO: 	mogelijk is het beter om de title block (en eventueel intro block) niet als streamfield onderdelen
 			te definieren, maar als standaard attributen. Zo is het zeker dat elke blog post deze items bevat
 	'''
-	template = 'home/partials/blog_post.html'
+	template = 'home/blog_detail.html'
 
 	date = djangomodels.DateField(verbose_name='blog datum', default=date.today)
 	intro_text = djangomodels.TextField(verbose_name='intro text', default='', blank=True, null=True)
@@ -258,7 +256,7 @@ Blog.content_panels = [
 
 class BlogIndex(Page):
 
-	template = 'home/blog_page.html'
+	template = 'home/blog/blog_page.html'
 
 	intro = fields.RichTextField(blank=True)
 
@@ -313,21 +311,9 @@ BlogIndex.search_fields = Page.search_fields + [
 	index.SearchField('intro'),
 ]
 
-class CalendarIndex(Page):
-
-	template = 'home/calendar.html'
-
-CalendarIndex.parent_page_types = [
-	'home.HomePage', 
-]
-
-CalendarIndex.subpage_types = [
-	'home.CalendarEvent',
-]
-
 class CalendarEvent(Page):
 
-	template = 'home/calendar_event.html'
+	template = 'home/calendar/calendar_event.html'
 
 	name = djangomodels.CharField(verbose_name='naam', max_length=164)
 	description = djangomodels.TextField(verbose_name='beschrijving')
@@ -372,3 +358,40 @@ CalendarEvent.content_panels = [
 		heading='Evenement gegevens'
 	),
 ]
+
+class CalendarIndex(Page):
+
+	template = 'home/calendar/calendar.html'
+
+CalendarIndex.parent_page_types = [
+	'home.HomePage', 
+]
+
+CalendarIndex.subpage_types = [
+	'home.CalendarEvent',
+]
+
+class InfluencerIndex(Page):
+	template = 'home/influencer_page.html'
+
+InfluencerIndex.parent_page_types = [
+	'home.HomePage'
+]
+
+InfluencerIndex.subpage_types = [
+	'home.Influencer',
+]
+
+class Influencer(Page):
+
+	template = 'home/influencer/influencer_detail.html'
+
+Influencer.content_panels = Page.content_panels + [
+
+]
+
+Influencer.parent_page_types = [
+	'home.InfluencerIndex',
+]
+
+Influencer.subpage_types = []
