@@ -224,7 +224,7 @@ class Blog(Orderable, Page):
 	TODO: 	mogelijk is het beter om de title block (en eventueel intro block) niet als streamfield onderdelen
 			te definieren, maar als standaard attributen. Zo is het zeker dat elke blog post deze items bevat
 	'''
-	template = 'home/blog_detail.html'
+	template = 'home/blog/blog_detail.html'
 
 	date = djangomodels.DateField(verbose_name='blog datum', default=date.today)
 	intro_text = djangomodels.TextField(verbose_name='intro text', default='', blank=True, null=True)
