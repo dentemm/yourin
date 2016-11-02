@@ -1,9 +1,22 @@
+/* FONTS */
+footer {
+	font-family: "Lato", Helvetica, Arial, sans-serif;
+	font-weight: 200;
+}
+footer h6 {
+	font-family: "Lato", Helvetica, Arial, sans-serif;
+	font-weight: 400;
+}
+
+
 /* COLOR ADJUSTMENTS */
 .label-danger {background-color: #e54044}
 
 .rd-navbar-default.rd-navbar-static .rd-navbar-nav > li > a:after, .rd-navbar-floated.rd-navbar-static .rd-navbar-nav > li > a:after {
 	background: #e54044;
 }
+
+.bg-gray-base {background: #191919;}
 
 
 /* RD CALENDAR */

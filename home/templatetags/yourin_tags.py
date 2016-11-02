@@ -30,3 +30,25 @@ def top_menu(context, parent, calling_page=None):
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
+
+@register.simple_tag(takes_context=True)
+def menuitems(context, parent, calling_page):
+    '''
+    Deze template tag retourneert de menu items
+    Gebruik {% menuitems parent calling_page %}
+    '''
+
+    menuitems = parent.get_children().filter(
+        live=True,
+        show_in_menus=True
+    )
+
+    for menuitem in menuitems:
+        menuitem.show_dropdown = has_menu_children(menuitem)
+
+    return {
+        'calling_page': calling_page,
+        'menuitems': menuitems,
+        # required by the pageurl tag that we want to use within this template
+        'request': context['request'],
+    }
