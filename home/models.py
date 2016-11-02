@@ -188,6 +188,9 @@ Address.panels = [
 class HomePage(Page):
     template = 'home/home.html'
 
+class AboutPage(Page):
+	template = 'home/about.html'
+
 class ContactPage(Page):
 	template = 'home/contact.html'
 
