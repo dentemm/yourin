@@ -28,12 +28,15 @@
             <!-- RD Navbar Nav-->
             <ul class="rd-navbar-nav">
               <li class=""><a href="{% slugurl 'home' %}"><span>Home</span><span class="rd-navbar-label text-middle label-custom label-danger label-xs-custom label-rounded-custom label">new</span></a>
-              <li class="active"><a href="#"><span>Features</span></a>
+              <!-- <li class="active"><a href="#"><span>Features</span></a>
               <li class=""><a href="#"><span>Pages</span></a>
               <li class=""><a href="{% slugurl 'calendar' %}"><span>Calendar</span></a>
               <li class=""><a href="blog-default-left-sidebar.html"><span>Blog</span></a>
               <li class=""><a href="shop-grid-left-sidebar.html"><span>Shop</span></a>
-              <li class=""><a href="ui-kit.html"><span>Components</span></a>
+              <li class=""><a href="ui-kit.html"><span>Components</span></a> -->
+          	{% for menuitem in menuitems %}
+          	  <li class=""><a href="{% pageurl menuitem %}">{{ menuitem.title }}</a></li>
+          	{% endfor %}
             </ul>
           </div>
         </div>
