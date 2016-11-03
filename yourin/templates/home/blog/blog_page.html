@@ -18,7 +18,7 @@
             <article class="post post-event">
               <header class="post-media">
                 <div data-photo-swipe="gallery">
-                  <a class="thumbnail-classic" href="#">
+                  <a class="thumbnail-classic" href="{% pageurl blog %}">
                     {% image blog.image fill-600x200 as img %}
                     <figure>
                       <img src="{{ img.file.url }}" alt="">

@@ -5,7 +5,6 @@ from datetime import date
 
 from django.db import models as djangomodels
 from django.core.validators import MinValueValidator, MaxValueValidator
-from django.core.exceptions import ValidationError
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models.signals import pre_delete, pre_save
 from django.utils.translation import ugettext_lazy as _
@@ -22,6 +21,7 @@ from wagtail.wagtailsearch import index
 from django_countries.fields import CountryField
 
 from .blocks import BlogTitleBlock, SubtitleBlock, IntroTextBlock, ParagraphBlock, ImageWithCaptionBlock, PullQuoteBlock
+from .validators import validate_image_min, validate_blog_image
 
 #
 #
@@ -36,11 +36,6 @@ def get_upload_to(instance, filename):
     subclasses can override it.
     """
     return instance.get_upload_to(filename)
-
-def validate_image_min(value):
-
-	if value.width < 600 or value.height < 330:
-		raise ValidationError('Deze afbeelding voldoet niet aan de minimum afmeting vereisten (600x330px)')
 
 #
 #
@@ -228,7 +223,9 @@ class Blog(Orderable, Page):
 
 	date = djangomodels.DateField(verbose_name='blog datum', default=date.today)
 	intro_text = djangomodels.TextField(verbose_name='intro text', default='', blank=True, null=True)
-	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
+	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, 
+		blank=True, on_delete=djangomodels.SET_NULL, related_name='+', validators=validate_blog_image
+		)
 
 	blog_content = fields.StreamField([
 		('blog_title', BlogTitleBlock(help_text='Dit is de titel van het artikel, voorzien van een afbeelding')),
