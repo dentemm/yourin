@@ -2,8 +2,12 @@
 
 {% load static wagtailimages_tags wagtailcore_tags yourin_tags %}
 
-{% block content %} 
-	<div class="shell section-254">
+{% block page_title %}
+  {% include 'home/partials/page_title.html' with title='blog' %}
+{% endblock page_title %}
+
+{% block main %} 
+	<div class="shell">
           <div class="range range-sm-center range-lg-left">
             <div class="cell-md-8 cel-lg-9">
               <div class="inset-md-right-20">
@@ -106,63 +110,6 @@
                 <div class="range">
                   <div class="cell-sm-6 cell-md-12 offset-sm-top-41 offset-md-top-0">
                     <!-- RD calendar-->
-                                  <div class="rd-calendar">
-                                    <div class="rdc-panel"><a class="rdc-next"></a><a class="rdc-prev"></a>
-                                      <div class="rdc-month">April</div>
-                                      <div class="rdc-fullyear">2016</div>
-                                    </div>
-                                    <div class="rdc-table"><table><tbody><tr><th class="rdc-table_day">S</th><th class="rdc-table_day">M</th><th class="rdc-table_day">T</th><th class="rdc-table_day">W</th><th class="rdc-table_day">T</th><th class="rdc-table_day">F</th><th class="rdc-table_day">S</th></tr><tr><td><div class="rdc-table_date rdc-table_prev">27</div></td><td><div class="rdc-table_date rdc-table_prev">28</div></td><td><div class="rdc-table_date rdc-table_prev">29</div></td><td><div class="rdc-table_date rdc-table_prev">30</div></td><td><div class="rdc-table_date rdc-table_prev">31</div></td><td><div class="rdc-table_date">1</div></td><td><div class="rdc-table_date">2</div></td></tr><tr><td><div class="rdc-table_date">3</div></td><td><div class="rdc-table_date">4</div></td><td><div class="rdc-table_date">5</div></td><td><div class="rdc-table_date">6</div></td><td><div class="rdc-table_date">7</div></td><td><div class="rdc-table_date">8</div></td><td><div class="rdc-table_date">9</div></td></tr><tr><td><div class="rdc-table_date">10</div></td><td><div class="rdc-table_date">11</div></td><td class="rdc-table_has-events"><div class="rdc-table_date">12</div><div class="rdc-table_events-count">1</div><ul class="rdc-table_events"><li class="rdc-table_event">
-                                          <div class="rdc-event-wrap">
-                                            <article class="post widget-event">
-                                              <div class="post-meta"><span class="icon icon-xxs text-picton-blue mdi mdi-clock"></span>
-                                                <time datetime="2016-01-01" class="text-dark">8:00 AM</time>
-                                              </div>
-                                              <div class="post-title">
-                                                <h6 class="text-regular"><a href="#">Pitae augue vitae matt</a></h6>
-                                              </div>
-                                            </article>
-                                          </div>
-                                        </li></ul></td><td class="rdc-table_has-events"><div class="rdc-table_date">13</div><div class="rdc-table_events-count">1</div><ul class="rdc-table_events"><li class="rdc-table_event">
-                                          <div class="rdc-event-wrap">
-                                            <article class="post widget-event">
-                                              <div class="post-meta"><span class="icon icon-xxs text-picton-blue mdi mdi-clock"></span>
-                                                <time datetime="2016-01-01" class="text-dark">9:00 AM</time>
-                                              </div>
-                                              <div class="post-title">
-                                                <h6 class="text-regular"><a href="#">Pitae augue vitae matt</a></h6>
-                                              </div>
-                                            </article>
-                                          </div>
-                                        </li></ul></td><td><div class="rdc-table_date">14</div></td><td><div class="rdc-table_date">15</div></td><td><div class="rdc-table_date">16</div></td></tr><tr><td><div class="rdc-table_date">17</div></td><td><div class="rdc-table_date">18</div></td><td><div class="rdc-table_date">19</div></td><td><div class="rdc-table_date">20</div></td><td><div class="rdc-table_date">21</div></td><td><div class="rdc-table_date">22</div></td><td><div class="rdc-table_date">23</div></td></tr><tr><td><div class="rdc-table_date">24</div></td><td><div class="rdc-table_date">25</div></td><td><div class="rdc-table_date">26</div></td><td><div class="rdc-table_date">27</div></td><td><div class="rdc-table_date">28</div></td><td><div class="rdc-table_date">29</div></td><td><div class="rdc-table_date">30</div></td></tr></tbody></table></div>
-                                    <div class="rdc-events text-left"><a class="rdc-events_close"></a>
-                                      <ul>
-                                        <li data-date="04/12/2016" class="rdc-event">
-                                          <div class="rdc-event-wrap">
-                                            <article class="post widget-event">
-                                              <div class="post-meta"><span class="icon icon-xxs text-picton-blue mdi mdi-clock"></span>
-                                                <time datetime="2016-01-01" class="text-dark">8:00 AM</time>
-                                              </div>
-                                              <div class="post-title">
-                                                <h6 class="text-regular"><a href="#">Pitae augue vitae matt</a></h6>
-                                              </div>
-                                            </article>
-                                          </div>
-                                        </li>
-                                        <li data-date="04/13/2016" class="rdc-event">
-                                          <div class="rdc-event-wrap">
-                                            <article class="post widget-event">
-                                              <div class="post-meta"><span class="icon icon-xxs text-picton-blue mdi mdi-clock"></span>
-                                                <time datetime="2016-01-01" class="text-dark">9:00 AM</time>
-                                              </div>
-                                              <div class="post-title">
-                                                <h6 class="text-regular"><a href="#">Pitae augue vitae matt</a></h6>
-                                              </div>
-                                            </article>
-                                          </div>
-                                        </li>
-                                      </ul>
-                                    </div>
-                                  </div>
                   </div>
                   <!-- Recent Events-->
                   <div class="cell-sm-6 cell-md-12 offset-top-41">
@@ -237,14 +184,8 @@
                   </div>
                 </div>
                 <!-- Flickr Feed-->
-                <h6 class="offset-top-41 text-uppercase text-spacing-60">Flickr Feed</h6>
-                <div class="text-subline"></div>
-                <div class="offset-top-34">
-                    <div data-photo-swipe="gallery" data-flickr-id="14098790@N07" class="group-xs flickr widget-flickrfeed"><a data-photo-swipe-item="" href="http://farm3.staticflickr.com/2876/12673993723_af008f4f43_c.jpg" data-image_c="href" data-size="800x533" data-type="flickr-item" class="flickr-item thumbnail-classic"><img width="82" height="82" data-title="alt" src="http://farm3.staticflickr.com/2876/12673993723_af008f4f43_q.jpg" alt="IMG_8308" data-image_q="src"></a><a data-photo-swipe-item="" href="http://farm6.staticflickr.com/5490/12673993763_123d4147a9_c.jpg" data-image_c="href" data-size="800x532" data-type="flickr-item" class="flickr-item thumbnail-classic"><img width="82" height="82" data-title="alt" src="http://farm6.staticflickr.com/5490/12673993763_123d4147a9_q.jpg" alt="IMG_8316" data-image_q="src"></a><a data-photo-swipe-item="" href="http://farm8.staticflickr.com/7337/12673987893_bb615fcfed_c.jpg" data-image_c="href" data-size="533x800" data-type="flickr-item" class="flickr-item thumbnail-classic"><img width="82" height="82" data-title="alt" src="http://farm8.staticflickr.com/7337/12673987893_bb615fcfed_q.jpg" alt="IMG_8271" data-image_q="src"></a><a data-photo-swipe-item="" href="http://farm8.staticflickr.com/7375/12673856785_181e542bc9_c.jpg" data-image_c="href" data-size="800x533" data-type="flickr-item" class="flickr-item thumbnail-classic"><img width="82" height="82" data-title="alt" src="http://farm8.staticflickr.com/7375/12673856785_181e542bc9_q.jpg" alt="IMG_8246" data-image_q="src"></a><a data-photo-swipe-item="" href="http://farm6.staticflickr.com/5471/12673981363_e10f627485_c.jpg" data-image_c="href" data-size="800x532" data-type="flickr-item" class="flickr-item thumbnail-classic"><img width="82" height="82" data-title="alt" src="http://farm6.staticflickr.com/5471/12673981363_e10f627485_q.jpg" alt="IMG_8225" data-image_q="src"></a><a data-photo-swipe-item="" href="http://farm4.staticflickr.com/3717/12674333434_7fb9aba076_c.jpg" data-image_c="href" data-size="800x533" data-type="flickr-item" class="flickr-item thumbnail-classic"><img width="82" height="82" data-title="alt" src="http://farm4.staticflickr.com/3717/12674333434_7fb9aba076_q.jpg" alt="IMG_8179" data-image_q="src"></a><a data-photo-swipe-item="" href="http://farm8.staticflickr.com/7299/12673846995_0c94d107b1_c.jpg" data-image_c="href" data-size="533x800" data-type="flickr-item" class="flickr-item thumbnail-classic"><img width="82" height="82" data-title="alt" src="http://farm8.staticflickr.com/7299/12673846995_0c94d107b1_q.jpg" alt="IMG_8177" data-image_q="src"></a><a data-photo-swipe-item="" href="http://farm4.staticflickr.com/3806/9194473343_c3a1be0da7_c.jpg" data-image_c="href" data-size="533x800" data-type="flickr-item" class="flickr-item thumbnail-classic"><img width="82" height="82" data-title="alt" src="http://farm4.staticflickr.com/3806/9194473343_c3a1be0da7_q.jpg" alt="IMG_6732-Edit" data-image_q="src"></a><a data-photo-swipe-item="" href="http://farm4.staticflickr.com/3738/9194470777_589803ef34_c.jpg" data-image_c="href" data-size="533x800" data-type="flickr-item" class="flickr-item thumbnail-classic"><img width="82" height="82" data-title="alt" src="http://farm4.staticflickr.com/3738/9194470777_589803ef34_q.jpg" alt="IMG_6705-Edit" data-image_q="src"></a>
-                    </div>
-                </div>
               </aside>
             </div>
           </div>
         </div>
-{% endblock content %}
+{% endblock main %}
