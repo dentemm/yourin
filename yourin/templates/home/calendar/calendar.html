@@ -2,7 +2,11 @@
 
 {% load static wagtailimages_tags wagtailcore_tags %}
 
-{% block content %}
+{% block page_title %}
+  {% include 'home/partials/page_title.html' with title='kalender' icon='fa fa-calendar' %}
+{% endblock page_title %}
+
+{% block main %}
 <div class="shell">
   <div class="range range-sm-center">
     <div class="cell-sm-10 cell-md-8 cell-lg-7">
@@ -235,4 +239,4 @@
     </div>
   </div>
 </div>
-{% endblock content %}
+{% endblock main %}
