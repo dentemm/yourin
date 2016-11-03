@@ -15,9 +15,30 @@
           <section>
             <!-- Post Event-->
           {% for blog in page.blogs %}
-            {{ blog }}
             <article class="post post-event">
-              TEST
+              <header class="post-media">
+                <div data-photo-swipe="gallery">
+                  <a class="thumbnail-classic" href="#">
+                    {% image blog.image fill-600x200 as img %}
+                    <figure>
+                      <img src="{{ img.file.url }}" alt="">
+                    </figure>
+                  </a>
+                </div>
+              </header>
+              <!-- Post content-->
+              <section class="post-content text-left offset-top-41">
+                <h3 class="offset-top-10"><a href="events-list-single-left-sidebar.html">{{ blog.title|title }} -- {{ blog.date }}</a></h3>
+                <div class="post-body">
+                  <div class="inset-md-right-115">
+                    <p>{{ blog.intro_text}}</p>
+                  </div>
+                </div><a href="events-list-single-left-sidebar.html" class="btn btn-sm btn-primary offset-top-30">Lees Verder</a>
+                <!-- Post meta-->
+                <div class="post-meta context-dark">
+                  <time datetime="{{ blog.date|date:'Y-m-d'}}"><span class="post-meta-day">{{ blog.date|date:'d'}}</span><span class="big text-uppercase post-meta-month">{{ blog.date|date:'b'|upper }}</span></time>
+                </div>
+              </section>
             </article>
           {% endfor %}
             <article class="post post-event">
