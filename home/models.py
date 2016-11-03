@@ -203,7 +203,7 @@ class NewsArticle(Page):
 	update_date = djangomodels.DateField(auto_now=True, null=True)
 
 	name = djangomodels.CharField(verbose_name='naam', max_length=164)
-	image = djangomodels.ForeignKey('wagtailimages.Image', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
+	image = djangomodels.ForeignKey('home.CustomImage', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 	# Streamfield goes here
 
 
@@ -228,6 +228,7 @@ class Blog(Orderable, Page):
 
 	date = djangomodels.DateField(verbose_name='blog datum', default=date.today)
 	intro_text = djangomodels.TextField(verbose_name='intro text', default='', blank=True, null=True)
+	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 
 	blog_content = fields.StreamField([
 		('blog_title', BlogTitleBlock(help_text='Dit is de titel van het artikel, voorzien van een afbeelding')),
@@ -239,18 +240,19 @@ class Blog(Orderable, Page):
 	], verbose_name='Blog Inhoud')
 
 
-#Blog.parent_page_types = ['home.BlogIndex', ]
+Blog.parent_page_types = ['home.BlogIndex', ]
 Blog.subpage_types = []
 
 Blog.content_panels = [
 	MultiFieldPanel([
 		FieldRowPanel([
 				FieldPanel('title', classname='col12'),
-				#FieldPanel('author', classname='col6'),
+				FieldPanel('intro_text', classname='col6'),
 				#FieldPanel('date_posted', classname='col6'),
 			]),
 		], heading='Blog informatie',
 	),
+	ImageChooserPanel('image'),
 	StreamFieldPanel('blog_content'),
 ]
 
@@ -282,7 +284,7 @@ class BlogIndex(Page):
 
 		# Pagination
 		page = request.GET.get('page')
-		paginator = Paginator(blogs, 5)  # Show 10 blogs per page
+		paginator = Paginator(blogs, 3)  # Show 3 blogs per page
 
 		try:
 			blogs = paginator.page(page)
@@ -297,7 +299,6 @@ class BlogIndex(Page):
 		context = super(BlogIndex, self).get_context(request)
 		context['blogs'] = blogs
 		return context
-
 
 BlogIndex.parent_page_types = [
 	'home.HomePage',
@@ -321,7 +322,7 @@ class CalendarEvent(Page):
 	event_duration = djangomodels.PositiveIntegerField('Duur (# dagen)', default=1, validators=[MaxValueValidator(21),])
 	website = djangomodels.URLField(verbose_name='event website')
 
-	image = djangomodels.ForeignKey('wagtailimages.Image', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
+	image = djangomodels.ForeignKey('home.CustomImage', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 	category = djangomodels.ForeignKey('home.EventCategory', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='events')
 
 

@@ -8,184 +8,183 @@
 
 {% block main %} 
 	<div class="shell">
-          <div class="range range-sm-center range-lg-left">
-            <div class="cell-md-8 cel-lg-9">
-              <div class="inset-md-right-20">
-                <!-- Classic Thumbnail-->
-                <!-- Classic Gallery Carousel-->
-                <!-- Classic Thumbnail-->
-                <!-- Embed Video-->
-                <!-- Classic Soundcloud Player-->
-                <!-- Classic Thumbnail-->
-                <!-- Classic Gallery Carousel-->
-                <!-- Classic Thumbnail-->
-                <!-- Embed Video-->
-                <!-- Classic Soundcloud Player-->
-                
-                <!-- Events list-->
-                <section>
-                  <!-- Post Event-->
-                  <article class="post post-event">
-                    <!-- Post media-->
-                    <header class="post-media">
-                      <div data-photo-swipe="gallery"><a class="thumbnail-classic" href="events-list-single-left-sidebar.html" target="_self">
-                          <figure><img width="570" height="321" src="images/blog/post-02-570x321.jpg" alt="">
-                          </figure></a>
-                      </div>
-                    </header>
-                    <!-- Post content-->
-                    <section class="post-content text-left offset-top-41">
-                      <!-- Post Title-->
-                      <h3 class="offset-top-10"><a href="events-list-single-left-sidebar.html">Design trends of 2017 revealed</a></h3>
-                      <!-- Post Body-->
-                      <div class="post-body">
-                        <div class="inset-md-right-115">
-                          <p>Today John Doe will tell you about the hottest web- and graphic design trends of the next year. John is a professional designer with an impressive portfolio. He is always aware of the latest technologies, so be sure: his advice are worth listening to.</p>
-                        </div>
-                      </div><a href="events-list-single-left-sidebar.html" class="btn btn-sm btn-primary offset-top-30">Read More</a>
-                      <!-- Post meta-->
-                      <div class="post-meta context-dark">
-                        <time datetime="2016-01-01"><span class="post-meta-day">8</span><span class="big text-uppercase post-meta-month">Mar</span></time>
-                      </div>
-                    </section>
-                  </article>
-                  <hr class="hr bg-lighter offset-top-41 offset-sm-top-66">
-                  <div class="offset-top-41 offset-sm-top-66">
-                    <!-- Post Event-->
-                    <article class="post post-event">
-                      <!-- Post media-->
-                      <header class="post-media">
-                        <div data-photo-swipe="gallery"><a class="thumbnail-classic" href="events-list-single-left-sidebar.html" target="_self">
-                                            <figure><img width="570" height="321" src="images/blog/post-03-570x321.jpg" alt="">
-                                            </figure></a>
-                        </div>
-                      </header>
-                      <!-- Post content-->
-                      <section class="post-content text-left offset-top-41">
-                        <!-- Post Title-->
-                        <h3 class="offset-top-10"><a href="events-list-single-left-sidebar.html">Web Design Conference comes to Oakville in 2016</a></h3>
-                        <!-- Post Body-->
-                        <div class="post-body">
-                          <div class="inset-md-right-115">
-                            <p>Intense is pleased to host the next Web Design Conference, which will take place this year here, in Oakville. Learn about the topics that will be covered at the upcoming event, and how to save on the tickets in our spotlight.</p>
-                          </div>
-                        </div><a href="events-list-single-left-sidebar.html" class="btn btn-sm btn-primary offset-top-30">Read More</a>
-                        <!-- Post meta-->
-                        <div class="post-meta context-dark">
-                          <time datetime="2016-01-01"><span class="post-meta-day">8</span><span class="big text-uppercase post-meta-month">Mar</span></time>
-                        </div>
-                      </section>
-                    </article>
+    <div class="range range-sm-center range-lg-left">
+      <div class="cell-md-8 cel-lg-9">
+        <div class="inset-md-right-20">                
+          <!-- Events list-->
+          <section>
+            <!-- Post Event-->
+          {% for blog in page.blogs %}
+            {{ blog }}
+            <article class="post post-event">
+              TEST
+            </article>
+          {% endfor %}
+            <article class="post post-event">
+              <!-- Post media-->
+              <header class="post-media">
+                <div data-photo-swipe="gallery">
+                  <a class="thumbnail-classic" href="#">
+                    <figure>
+                      <img width="570" height="150" src="images/blog/post-02-570x321.jpg" alt="">
+                    </figure>
+                  </a>
+                </div>
+              </header>
+              <!-- Post content-->
+              <section class="post-content text-left offset-top-41">
+                <!-- Post Title-->
+                <h3 class="offset-top-10"><a href="events-list-single-left-sidebar.html">Design trends of 2017 revealed</a></h3>
+                <!-- Post Body-->
+                <div class="post-body">
+                  <div class="inset-md-right-115">
+                    <p>Today John Doe will tell you about the hottest web- and graphic design trends of the next year. John is a professional designer with an impressive portfolio. He is always aware of the latest technologies, so be sure: his advice are worth listening to.</p>
                   </div>
-                  <div class="offset-top-66">
-                    <!-- Classic Pagination-->
-                    <nav>
-                      <ul class="pagination-classic">
-                        <li><a href="#">Prev</a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">Next</a></li>
-                      </ul>
-                    </nav>
-                    <!--// Classic Pagination-->
-                    <!--ul.pagination-classic-->
-                    <!--  li.previous-->
-                    <!--    a.btn.btn-default(href='#' class= size)= nameListPrev-->
-                    <!--  each val, index in amountList-->
-                    <!--    - var isActive = (index == active - 1)? "active": ""-->
-                    <!--    - var isHidden = (index > 2)? "veil reveal-xs-inline-block": ""-->
-                    <!--    li(class="#{isHidden} #{isActive}")-->
-                    <!--      a.btn.btn-default(href='#' class="#{size}" )= val-->
-                    <!--  li.next-->
-                    <!--    a.btn.btn-default(href='#' class= size)= nameListNext-->
+                </div><a href="events-list-single-left-sidebar.html" class="btn btn-sm btn-primary offset-top-30">Read More</a>
+                <!-- Post meta-->
+                <div class="post-meta context-dark">
+                  <time datetime="2016-01-01"><span class="post-meta-day">8</span><span class="big text-uppercase post-meta-month">Mar</span></time>
+                </div>
+              </section>
+            </article>
+            <hr class="hr bg-lighter offset-top-41 offset-sm-top-66">
+            <div class="offset-top-41 offset-sm-top-66">
+              <!-- Post Event-->
+              <article class="post post-event">
+                <!-- Post media-->
+                <header class="post-media">
+                  <div data-photo-swipe="gallery"><a class="thumbnail-classic" href="events-list-single-left-sidebar.html" target="_self">
+                                      <figure><img width="570" height="321" src="images/blog/post-03-570x321.jpg" alt="">
+                                      </figure></a>
+                  </div>
+                </header>
+                <!-- Post content-->
+                <section class="post-content text-left offset-top-41">
+                  <!-- Post Title-->
+                  <h3 class="offset-top-10"><a href="events-list-single-left-sidebar.html">Web Design Conference comes to Oakville in 2016</a></h3>
+                  <!-- Post Body-->
+                  <div class="post-body">
+                    <div class="inset-md-right-115">
+                      <p>Intense is pleased to host the next Web Design Conference, which will take place this year here, in Oakville. Learn about the topics that will be covered at the upcoming event, and how to save on the tickets in our spotlight.</p>
+                    </div>
+                  </div><a href="events-list-single-left-sidebar.html" class="btn btn-sm btn-primary offset-top-30">Read More</a>
+                  <!-- Post meta-->
+                  <div class="post-meta context-dark">
+                    <time datetime="2016-01-01"><span class="post-meta-day">8</span><span class="big text-uppercase post-meta-month">Mar</span></time>
                   </div>
                 </section>
+              </article>
+            </div>
+            <div class="offset-top-66">
+              <!-- Classic Pagination-->
+              <nav>
+                <ul class="pagination-classic">
+                  <li><a href="#">Prev</a></li>
+                  <li class="active"><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li><a href="#">Next</a></li>
+                </ul>
+              </nav>
+              <!--// Classic Pagination-->
+              <!--ul.pagination-classic-->
+              <!--  li.previous-->
+              <!--    a.btn.btn-default(href='#' class= size)= nameListPrev-->
+              <!--  each val, index in amountList-->
+              <!--    - var isActive = (index == active - 1)? "active": ""-->
+              <!--    - var isHidden = (index > 2)? "veil reveal-xs-inline-block": ""-->
+              <!--    li(class="#{isHidden} #{isActive}")-->
+              <!--      a.btn.btn-default(href='#' class="#{size}" )= val-->
+              <!--  li.next-->
+              <!--    a.btn.btn-default(href='#' class= size)= nameListNext-->
+            </div>
+          </section>
+        </div>
+      </div>
+      <div class="cell-md-4 offset-top-66 offset-md-top-0 cell-lg-3">
+        <!-- Section Blog Events-->
+        <aside class="text-left">
+          <div class="range">
+            <div class="cell-sm-6 cell-md-12 offset-sm-top-41 offset-md-top-0">
+              <!-- RD calendar-->
+            </div>
+            <!-- Recent Events-->
+            <div class="cell-sm-6 cell-md-12 offset-top-41">
+              <h6 class="text-uppercase text-spacing-60">Recent Events</h6>
+              <div class="text-subline"></div>
+              <div class="offset-top-34">
+                              <!-- Event Widget-->
+                              <article class="post widget-event text-left"><a href="#">
+                                  <div class="unit unit-horizontal unit-spacing-xs unit-middle">
+                                    <div class="unit-left"><img width="46" height="46" src="images/blog/post-thumb-01-46x46.jpg" alt="" class="img-circle"></div>
+                                    <div class="unit-body">
+                                      <div class="post-meta">
+                                        <ul class="list-inline list-inline-sm">
+                                          <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
+                                            <time datetime="2016-01-01" class="text-dark">05/14/2015</time>
+                                          </li>
+                                          <li><span class="icon-xxs text-picton-blue mdi mdi-clock"></span>
+                                            <time datetime="2016-01-01" class="text-dark">9:00 PM</time>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                      <div class="post-title">
+                                        <h6 class="text-regular">Let’s Change the world</h6>
+                                      </div>
+                                    </div>
+                                  </div></a></article>
+              </div>
+              <div class="offset-top-30">
+                              <!-- Event Widget-->
+                              <article class="post widget-event text-left"><a href="#">
+                                  <div class="unit unit-horizontal unit-spacing-xs unit-middle">
+                                    <div class="unit-left"><img width="46" height="46" src="images/blog/post-thumb-02-46x46.jpg" alt="" class="img-circle"></div>
+                                    <div class="unit-body">
+                                      <div class="post-meta">
+                                        <ul class="list-inline list-inline-sm">
+                                          <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
+                                            <time datetime="2016-01-01" class="text-dark">05/14/2015</time>
+                                          </li>
+                                          <li><span class="icon-xxs text-picton-blue mdi mdi-clock"></span>
+                                            <time datetime="2016-01-01" class="text-dark">9:00 PM</time>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                      <div class="post-title">
+                                        <h6 class="text-regular">The meaning of Web De...</h6>
+                                      </div>
+                                    </div>
+                                  </div></a></article>
+              </div>
+              <div class="offset-top-30">
+                <!-- Event Widget-->
+                <article class="post widget-event text-left"><a href="#">
+                  <div class="unit unit-horizontal unit-spacing-xs unit-middle">
+                    <div class="unit-left"><img width="46" height="46" src="images/blog/post-thumb-03-46x46.jpg" alt="" class="img-circle"></div>
+                    <div class="unit-body">
+                      <div class="post-meta">
+                        <ul class="list-inline list-inline-sm">
+                          <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
+                            <time datetime="2016-01-01" class="text-dark">05/14/2015</time>
+                          </li>
+                          <li><span class="icon-xxs text-picton-blue mdi mdi-clock"></span>
+                            <time datetime="2016-01-01" class="text-dark">9:00 PM</time>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="post-title">
+                        <h6 class="text-regular">Get Started with Templa...</h6>
+                      </div>
+                    </div>
+                  </div>
+                </a></article>
               </div>
             </div>
-            <div class="cell-md-4 offset-top-66 offset-md-top-0 cell-lg-3">
-              <!-- Section Blog Events-->
-              <aside class="text-left">
-                <div class="range">
-                  <div class="cell-sm-6 cell-md-12 offset-sm-top-41 offset-md-top-0">
-                    <!-- RD calendar-->
-                  </div>
-                  <!-- Recent Events-->
-                  <div class="cell-sm-6 cell-md-12 offset-top-41">
-                    <h6 class="text-uppercase text-spacing-60">Recent Events</h6>
-                    <div class="text-subline"></div>
-                    <div class="offset-top-34">
-                                    <!-- Event Widget-->
-                                    <article class="post widget-event text-left"><a href="#">
-                                        <div class="unit unit-horizontal unit-spacing-xs unit-middle">
-                                          <div class="unit-left"><img width="46" height="46" src="images/blog/post-thumb-01-46x46.jpg" alt="" class="img-circle"></div>
-                                          <div class="unit-body">
-                                            <div class="post-meta">
-                                              <ul class="list-inline list-inline-sm">
-                                                <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
-                                                  <time datetime="2016-01-01" class="text-dark">05/14/2015</time>
-                                                </li>
-                                                <li><span class="icon-xxs text-picton-blue mdi mdi-clock"></span>
-                                                  <time datetime="2016-01-01" class="text-dark">9:00 PM</time>
-                                                </li>
-                                              </ul>
-                                            </div>
-                                            <div class="post-title">
-                                              <h6 class="text-regular">Let’s Change the world</h6>
-                                            </div>
-                                          </div>
-                                        </div></a></article>
-                    </div>
-                    <div class="offset-top-30">
-                                    <!-- Event Widget-->
-                                    <article class="post widget-event text-left"><a href="#">
-                                        <div class="unit unit-horizontal unit-spacing-xs unit-middle">
-                                          <div class="unit-left"><img width="46" height="46" src="images/blog/post-thumb-02-46x46.jpg" alt="" class="img-circle"></div>
-                                          <div class="unit-body">
-                                            <div class="post-meta">
-                                              <ul class="list-inline list-inline-sm">
-                                                <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
-                                                  <time datetime="2016-01-01" class="text-dark">05/14/2015</time>
-                                                </li>
-                                                <li><span class="icon-xxs text-picton-blue mdi mdi-clock"></span>
-                                                  <time datetime="2016-01-01" class="text-dark">9:00 PM</time>
-                                                </li>
-                                              </ul>
-                                            </div>
-                                            <div class="post-title">
-                                              <h6 class="text-regular">The meaning of Web De...</h6>
-                                            </div>
-                                          </div>
-                                        </div></a></article>
-                    </div>
-                    <div class="offset-top-30">
-                                    <!-- Event Widget-->
-                                    <article class="post widget-event text-left"><a href="#">
-                                        <div class="unit unit-horizontal unit-spacing-xs unit-middle">
-                                          <div class="unit-left"><img width="46" height="46" src="images/blog/post-thumb-03-46x46.jpg" alt="" class="img-circle"></div>
-                                          <div class="unit-body">
-                                            <div class="post-meta">
-                                              <ul class="list-inline list-inline-sm">
-                                                <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
-                                                  <time datetime="2016-01-01" class="text-dark">05/14/2015</time>
-                                                </li>
-                                                <li><span class="icon-xxs text-picton-blue mdi mdi-clock"></span>
-                                                  <time datetime="2016-01-01" class="text-dark">9:00 PM</time>
-                                                </li>
-                                              </ul>
-                                            </div>
-                                            <div class="post-title">
-                                              <h6 class="text-regular">Get Started with Templa...</h6>
-                                            </div>
-                                          </div>
-                                        </div></a></article>
-                    </div>
-                  </div>
-                </div>
-                <!-- Flickr Feed-->
-              </aside>
-            </div>
           </div>
-        </div>
+          <!-- Flickr Feed-->
+        </aside>
+      </div>
+    </div>
+  </div>
 {% endblock main %}
