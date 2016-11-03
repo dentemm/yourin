@@ -1,29 +1,28 @@
 {% extends 'layout.html' %}
 
 {% block page_title %}
-  {% include 'home/partials/page_title.html' %}
+  {% include 'home/partials/page_title.html' with title='blog' %}
 {% endblock page_title %}
 
 {% block main %}
-
+<div class="shell text-center">
+  <h1>Work In Progress</h1>
+</div>
+<!-- 
 <div style="height: 200px;"></div>
 <div class="shell">
   <div class="range range-xs-center">
     <div class="cell-md-8">
       <section>
         <article class="post post-default text-left">
-          <!-- Post Header-->
           <div class="header post-header">
-            <!-- Post Meta-->
             <ul class="post-controls list-inline list-inline-sm p text-dark">
               <li><span class="text-middle icon-xxs text-picton-blue mdi mdi-clock"></span>
                 <time datetime="2016-01-01" class="text-middle small">Mar 7, 2016</time>
               </li>
               <li><span class="text-middle icon-xxs text-picton-blue mdi mdi-account-outline">&nbsp;</span><span class="text-middle small">July Mao</span></li>
             </ul>
-            <!-- Post Meta-->
             <h3 class="post-title"><a href="blog-default-single-left-sidebar.html#">5 Steps to Blog’s Success.</a></h3>
-            <!-- Post Media-->
             <div class="post-media offset-top-34">
               <header class="post-media">
                 <div data-photo-swipe="gallery"><a class="thumbnail-classic" href="blog-default-single-left-sidebar.html" target="_self">
@@ -33,7 +32,6 @@
               </header>
             </div>
           </div>
-          <!-- PostContent-->
           <section class="post-content offset-top-41">
             <p>Unfortunately people will not come to your blog just to see what you have published on it. To make sure that your blog becomes a successful one, you have to work on it to attract visitors interested in your content.</p>
             <blockquote>
@@ -47,5 +45,5 @@
     </div>
     <div class="cell-md-4"></div>
   </div>
-</div>
+</div> -->
 {% endblock main %}

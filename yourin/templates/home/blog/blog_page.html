@@ -3,7 +3,7 @@
 {% load static wagtailimages_tags wagtailcore_tags yourin_tags %}
 
 {% block page_title %}
-  {% include 'home/partials/page_title.html' with title='blog' %}
+  {% include 'home/partials/page_title.html' with title='blog' icon='fa fa-commenting-o' %}
 {% endblock page_title %}
 
 {% block main %} 
@@ -28,12 +28,12 @@
               </header>
               <!-- Post content-->
               <section class="post-content text-left offset-top-41">
-                <h3 class="offset-top-10"><a href="events-list-single-left-sidebar.html">{{ blog.title|title }} -- {{ blog.date }}</a></h3>
+                <h3 class="offset-top-10"><a href="events-list-single-left-sidebar.html">{{ blog.title|title }}</a></h3>
                 <div class="post-body">
                   <div class="inset-md-right-115">
                     <p>{{ blog.intro_text}}</p>
                   </div>
-                </div><a href="events-list-single-left-sidebar.html" class="btn btn-sm btn-primary offset-top-30">Lees Verder</a>
+                </div><a href="{% pageurl blog %}" class="btn btn-sm btn-primary offset-top-30">Lees Verder</a>
                 <!-- Post meta-->
                 <div class="post-meta context-dark">
                   <time datetime="{{ blog.date|date:'Y-m-d'}}"><span class="post-meta-day">{{ blog.date|date:'d'}}</span><span class="big text-uppercase post-meta-month">{{ blog.date|date:'b'|upper }}</span></time>
@@ -61,7 +61,7 @@
                   <div class="inset-md-right-115">
                     <p>Today John Doe will tell you about the hottest web- and graphic design trends of the next year. John is a professional designer with an impressive portfolio. He is always aware of the latest technologies, so be sure: his advice are worth listening to.</p>
                   </div>
-                </div><a href="events-list-single-left-sidebar.html" class="btn btn-sm btn-primary offset-top-30">Read More</a>
+                </div><a href="events-list-single-left-sidebar.html" class="btn btn-sm btn-primary offset-top-30">Lees Verder</a>
                 <!-- Post meta-->
                 <div class="post-meta context-dark">
                   <time datetime="2016-01-01"><span class="post-meta-day">8</span><span class="big text-uppercase post-meta-month">Mar</span></time>
@@ -82,13 +82,13 @@
                 <!-- Post content-->
                 <section class="post-content text-left offset-top-41">
                   <!-- Post Title-->
-                  <h3 class="offset-top-10"><a href="events-list-single-left-sidebar.html">Web Design Conference comes to Oakville in 2016</a></h3>
+                  <h3 class="offset-top-10"><a href="events-list-single-left-sidebar.html">Nulla vitae elit libero, a pharetra augue.</a></h3>
                   <!-- Post Body-->
                   <div class="post-body">
                     <div class="inset-md-right-115">
-                      <p>Intense is pleased to host the next Web Design Conference, which will take place this year here, in Oakville. Learn about the topics that will be covered at the upcoming event, and how to save on the tickets in our spotlight.</p>
+                      <p>Donec id elit non mi porta gravida at eget metus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna. Curabitur blandit tempus porttitor. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
                     </div>
-                  </div><a href="events-list-single-left-sidebar.html" class="btn btn-sm btn-primary offset-top-30">Read More</a>
+                  </div><a href="events-list-single-left-sidebar.html" class="btn btn-sm btn-primary offset-top-30">Lees Verder</a>
                   <!-- Post meta-->
                   <div class="post-meta context-dark">
                     <time datetime="2016-01-01"><span class="post-meta-day">8</span><span class="big text-uppercase post-meta-month">Mar</span></time>
@@ -100,14 +100,15 @@
               <!-- Classic Pagination-->
               <nav>
                 <ul class="pagination-classic">
-                  <li><a href="#">Prev</a></li>
+                  <li><a href="#">Vorige</a></li>
                   <li class="active"><a href="#">1</a></li>
                   <li><a href="#">2</a></li>
                   <li><a href="#">3</a></li>
                   <li><a href="#">4</a></li>
-                  <li><a href="#">Next</a></li>
+                  <li><a href="#">Volgende</a></li>
                 </ul>
               </nav>
+              <div style="height: 20px;"></div>
               <!--// Classic Pagination-->
               <!--ul.pagination-classic-->
               <!--  li.previous-->
@@ -151,7 +152,7 @@
                                         </ul>
                                       </div>
                                       <div class="post-title">
-                                        <h6 class="text-regular">Let’s Change the world</h6>
+                                        <h6 class="text-regular">Euismod Dolor Ultricies Risus Vulputate</h6>
                                       </div>
                                     </div>
                                   </div></a></article>
@@ -173,7 +174,7 @@
                                         </ul>
                                       </div>
                                       <div class="post-title">
-                                        <h6 class="text-regular">The meaning of Web De...</h6>
+                                        <h6 class="text-regular">Pellentesque Ornare Sem Nibh Ligula</h6>
                                       </div>
                                     </div>
                                   </div></a></article>
@@ -195,7 +196,7 @@
                         </ul>
                       </div>
                       <div class="post-title">
-                        <h6 class="text-regular">Get Started with Templa...</h6>
+                        <h6 class="text-regular">Inceptos Malesuada Venenatis Risus</h6>
                       </div>
                     </div>
                   </div>
