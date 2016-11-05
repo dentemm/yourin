@@ -5,8 +5,8 @@
 /venv/
 /static/
 /media/
-/dsshop/media/cache/
-/dsshop/media/images/products/
+/yourin/media/cache/
+/yourin/media/images/products/
 .env
 dev.py
 # settings/

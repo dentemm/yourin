@@ -18,6 +18,17 @@ import os
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
+# Amazon S3 requirements? 
+os.environ['S3_USE_SIGV4'] = 'True'
+os.environ['SWF'] = 'eu-central-1'
+
+# AMAZON S3 STORAGE
+AWS_STORAGE_BUCKET_NAME = 'yourin'
+AWS_REGION = 'eu-central-1'
+AWS_S3_HOST = 's3.eu-central-1.amazonaws.com'
+
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.eu-central-1.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
