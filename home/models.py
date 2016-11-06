@@ -181,11 +181,31 @@ Address.panels = [
 class HomePage(Page):
     template = 'home/home.html'
 
+HomePage.subpage_types = [
+	'home.ContactPage',
+	'home.AboutPage',
+	'home.CalendarIndex',
+	'home.BlogIndex',
+	'home.InfluencerIndex',
+]
+
 class AboutPage(Page):
 	template = 'home/about.html'
 
+AboutPage.parent_page_types = [
+	'home.HomePage',
+]
+
+AboutPage.subpage_types = []
+
 class ContactPage(Page):
 	template = 'home/contact.html'
+
+ContactPage.parent_page_types = [
+	'home.HomePage'
+]
+
+ContactPage.subpage_types = []
 
 class CalendarPage(Page):
 	template = 'home/calendar/calendar.html'
