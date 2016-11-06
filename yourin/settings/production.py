@@ -14,7 +14,7 @@ AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 
 MEDIAFILES_LOCATION = 'media'
 MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
-DEFAULT_FILE_STORAGE = 'dsshop.custom_storages.MediaStorage'
+DEFAULT_FILE_STORAGE = 'home.custom_storages.MediaStorage'
 
 # WHITENOISE
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
