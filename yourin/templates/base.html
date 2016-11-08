@@ -11,6 +11,7 @@
         <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="{% static 'images/favicon.png' %}" rel="shortcut icon">
 
         {# Global stylesheets #}
         <link rel="stylesheet" type="text/css" href="{% static 'css/style-sunset.css' %}"/>
