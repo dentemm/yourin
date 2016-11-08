@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 
-{% load static wagtailimages_tags wagtailcore_tags yourin_tags %}
+{% load staticfiles wagtailimages_tags wagtailcore_tags yourin_tags %}
 
 {% block page_title %}
   {% include 'home/partials/page_title.html' with title='blog' icon='fa fa-commenting-o' %}
@@ -47,7 +47,7 @@
                 <div data-photo-swipe="gallery">
                   <a class="thumbnail-classic" href="#">
                     <figure>
-                      <img width="570" height="150" src="images/blog/post-02-570x321.jpg" alt="">
+                      <img width="570" height="150" src="{% static 'images/blog/post-02-570x321.jpg' %}" alt="">
                     </figure>
                   </a>
                 </div>
@@ -55,13 +55,13 @@
               <!-- Post content-->
               <section class="post-content text-left offset-top-41">
                 <!-- Post Title-->
-                <h3 class="offset-top-10"><a href="events-list-single-left-sidebar.html">Design trends of 2017 revealed</a></h3>
+                <h3 class="offset-top-10"><a href="events-list-single-left-sidebar.html">Demo blog post</a></h3>
                 <!-- Post Body-->
                 <div class="post-body">
                   <div class="inset-md-right-115">
-                    <p>Today John Doe will tell you about the hottest web- and graphic design trends of the next year. John is a professional designer with an impressive portfolio. He is always aware of the latest technologies, so be sure: his advice are worth listening to.</p>
+                    <p>Donec id elit non mi porta gravida at eget metus. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
                   </div>
-                </div><a href="events-list-single-left-sidebar.html" class="btn btn-sm btn-primary offset-top-30">Lees Verder</a>
+                </div><a href="#" class="btn btn-sm btn-primary offset-top-30">Lees Verder</a>
                 <!-- Post meta-->
                 <div class="post-meta context-dark">
                   <time datetime="2016-01-01"><span class="post-meta-day">8</span><span class="big text-uppercase post-meta-month">Mar</span></time>
@@ -75,20 +75,20 @@
                 <!-- Post media-->
                 <header class="post-media">
                   <div data-photo-swipe="gallery"><a class="thumbnail-classic" href="events-list-single-left-sidebar.html" target="_self">
-                                      <figure><img width="570" height="321" src="images/blog/post-03-570x321.jpg" alt="">
+                                      <figure><img width="570" height="321" src="{% static 'images/blog/post-03-570x321.jpg' %}" alt="">
                                       </figure></a>
                   </div>
                 </header>
                 <!-- Post content-->
                 <section class="post-content text-left offset-top-41">
                   <!-- Post Title-->
-                  <h3 class="offset-top-10"><a href="events-list-single-left-sidebar.html">Nulla vitae elit libero, a pharetra augue.</a></h3>
+                  <h3 class="offset-top-10"><a href="events-list-single-left-sidebar.html">Nog wat meer demo inhoud</a></h3>
                   <!-- Post Body-->
                   <div class="post-body">
                     <div class="inset-md-right-115">
                       <p>Donec id elit non mi porta gravida at eget metus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna. Curabitur blandit tempus porttitor. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
                     </div>
-                  </div><a href="events-list-single-left-sidebar.html" class="btn btn-sm btn-primary offset-top-30">Lees Verder</a>
+                  </div><a href="#" class="btn btn-sm btn-primary offset-top-30">Lees Verder</a>
                   <!-- Post meta-->
                   <div class="post-meta context-dark">
                     <time datetime="2016-01-01"><span class="post-meta-day">8</span><span class="big text-uppercase post-meta-month">Mar</span></time>
@@ -139,7 +139,7 @@
                               <!-- Event Widget-->
                               <article class="post widget-event text-left"><a href="#">
                                   <div class="unit unit-horizontal unit-spacing-xs unit-middle">
-                                    <div class="unit-left"><img width="46" height="46" src="images/blog/post-thumb-01-46x46.jpg" alt="" class="img-circle"></div>
+                                    <div class="unit-left"><img width="46" height="46" src="{% static 'images/blog/post-thumb-01-46x46.jpg' %}" alt="" class="img-circle"></div>
                                     <div class="unit-body">
                                       <div class="post-meta">
                                         <ul class="list-inline list-inline-sm">
@@ -161,7 +161,7 @@
                               <!-- Event Widget-->
                               <article class="post widget-event text-left"><a href="#">
                                   <div class="unit unit-horizontal unit-spacing-xs unit-middle">
-                                    <div class="unit-left"><img width="46" height="46" src="images/blog/post-thumb-02-46x46.jpg" alt="" class="img-circle"></div>
+                                    <div class="unit-left"><img width="46" height="46" src="{% static 'images/blog/post-thumb-02-46x46.jpg' %}" alt="" class="img-circle"></div>
                                     <div class="unit-body">
                                       <div class="post-meta">
                                         <ul class="list-inline list-inline-sm">
@@ -183,7 +183,7 @@
                 <!-- Event Widget-->
                 <article class="post widget-event text-left"><a href="#">
                   <div class="unit unit-horizontal unit-spacing-xs unit-middle">
-                    <div class="unit-left"><img width="46" height="46" src="images/blog/post-thumb-03-46x46.jpg" alt="" class="img-circle"></div>
+                    <div class="unit-left"><img width="46" height="46" src="{% static 'images/blog/post-thumb-03-46x46.jpg' %}" alt="" class="img-circle"></div>
                     <div class="unit-body">
                       <div class="post-meta">
                         <ul class="list-inline list-inline-sm">
