@@ -329,6 +329,21 @@ BlogIndex.search_fields = Page.search_fields + [
 	index.SearchField('intro'),
 ]
 
+class EventIndex(Page):
+
+	template = 'home/event/event_index.html'
+
+EventIndex.parent_page_types = [
+	'home.HomePage'
+]
+
+EventIndex.parent_page_types = [
+	'home.Event'
+]
+
+class Event(Page):
+	pass 
+
 class CalendarEvent(Page):
 
 	template = 'home/calendar/calendar_event.html'
