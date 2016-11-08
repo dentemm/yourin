@@ -1,17 +1,25 @@
-{% extends "base.html" %}
+{% extends 'layout.html' %}
 {% load static wagtailcore_tags %}
 
 {% block body_class %}template-searchresults{% endblock %}
 
 {% block title %}Search{% endblock %}
 
-{% block content %}
-    <h1>Search</h1>
+{% block page_title %}
+  {% include 'home/partials/page_title.html' with title='zoeken' icon='fa fa-search-plus' %}
+{% endblock page_title %}
 
-    <form action="{% url 'search' %}" method="get">
-        <input type="text" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
-        <input type="submit" value="Search" class="button">
-    </form>
+{% block main %}
+    <div class="shell">
+        <form action="{% url 'search' %}" method="GET" class="form-search rd-search">
+            <div class="form-group">
+                <label for="search-results" class="form-label form-search-label form-label-sm rd-input-label">Nieuwe zoekopdracht</label>
+                <input id="search-results" type="text" name="query" {% if search_query %} value="{{ search_query }}"{% endif %} autocomplete="off" class="form-search-input input-sm form-control input-sm">
+            </div>
+            <button type="submit" class="form-search-submit"><span class="mdi mdi-magnify"></span></button>
+        </form>
+    </div>
+
 
     {% if search_results %}
         <ul>
@@ -35,4 +43,4 @@
     {% elif search_query %}
         No results found
     {% endif %}
-{% endblock %}
+{% endblock main %}
