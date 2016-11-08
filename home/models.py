@@ -342,7 +342,48 @@ EventIndex.parent_page_types = [
 ]
 
 class Event(Page):
-	pass 
+
+	template = 'home/event/event_detail.html'
+
+	name = djangomodels.CharField(verbose_name='naam', max_length=164, default='')
+	description = djangomodels.TextField(verbose_name='beschrijving', null=True)
+	event_date = djangomodels.DateField(verbose_name='datum', default=date.today)
+	event_duration = djangomodels.PositiveIntegerField('Duur (# dagen)', default=1, validators=[MaxValueValidator(21),])
+	website = djangomodels.URLField(verbose_name='event website', null=True)
+
+	image = djangomodels.ForeignKey('home.CustomImage', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
+	category = djangomodels.ForeignKey('home.EventCategory', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='events')
+
+# Festival page panels
+Event.content_panels = [
+
+	MultiFieldPanel([
+			FieldRowPanel([
+					FieldPanel('name', classname='col6'),
+					FieldPanel('category', classname='col6'),
+				]
+			),
+			FieldRowPanel([
+				FieldPanel('event_date', classname='col6'),
+				FieldPanel('event_duration', classname='col6'),
+				],
+			),
+			FieldRowPanel([
+				FieldPanel('website', classname='col6'),
+				],
+			),
+			FieldPanel('description'),
+			ImageChooserPanel('image'),
+		],
+		heading='Evenement gegevens'
+	),
+]
+
+Event.parent_page_types = [
+	'home.EventIndex', 
+]
+
+Event.subpage_types = []
 
 class CalendarEvent(Page):
 
@@ -355,7 +396,7 @@ class CalendarEvent(Page):
 	website = djangomodels.URLField(verbose_name='event website')
 
 	image = djangomodels.ForeignKey('home.CustomImage', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
-	category = djangomodels.ForeignKey('home.EventCategory', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='events')
+	category = djangomodels.ForeignKey('home.EventCategory', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='calendar_events')
 
 
 CalendarEvent.parent_page_types = [
