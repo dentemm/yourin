@@ -1,0 +1,89 @@
+{% extends 'layout.html' %}
+
+{% load staticfiles %}
+
+{% block page_title %}
+  {% include 'home/partials/page_title.html' with title='Influencers' icon='mdi mdi-account-circle' %}
+{% endblock page_title %}
+
+{% block main %}
+<section>
+  <div class="shell">
+    <div class="range range-xs-center">
+      <div class="cell-xs-10 cell-sm-5">
+                <!-- Member block type 5-->
+                <div class="member-block-type-5 inset-md-right-20"><img src="images/users/user-john-doe-437x437.jpg" width="437" height="437" alt="" class="img-responsive center-block">
+                  <div class="member-block-body"><a href="contact-me.html" class="btn btn-block btn-primary">get in touch</a>
+                    <div class="offset-top-34">
+                      <ul class="list-inline list-inline-xs">
+                        <li><a href="#" class="icon icon-xxs icon-circle icon-darker-filled fa-facebook"></a></li>
+                        <li><a href="#" class="icon icon-xxs icon-circle icon-darker-filled fa-twitter"></a></li>
+                        <li><a href="#" class="icon icon-xxs icon-circle icon-darker-filled fa-google-plus"></a></li>
+                        <li><a href="#" class="icon icon-xxs icon-circle icon-darker-filled fa-linkedin"></a></li>
+                      </ul>
+                    </div>
+                    <address class="contact-info offset-top-20 offset-sm-top-34">
+                      <ul class="list-unstyled p">
+                        <li><span class="icon icon-xxs text-middle text-dark mdi mdi-phone"></span><a href="callto:1-800-1234-567" class="text-middle reveal-inline-block">1-800-1234-567</a></li>
+                        <li><span class="icon icon-xxs text-middle text-dark mdi mdi-email-open"></span><a href="mailto:info@demolink.org" class="text-middle reveal-inline-block text-picton-blue">info@demolink.org</a></li>
+                      </ul>
+                    </address>
+                  </div>
+                </div>
+      </div>
+      <div class="cell-xs-10 cell-sm-7 text-sm-left">
+        <div>
+          <h1>John Doe</h1>
+        </div>
+        <p class="small text-darker offset-top-4">UI/UX Designer</p>
+        <hr class="divider bg-mantis hr-sm-left-0">
+        <p class="text-left">Hello! My name is John Doe, and I am a jack of all trades when it comes to web design, app development and content marketing. With 12 years of experience I am proud to be called a web designer.</p>
+        <div class="offset-top-30 text-center">
+          <p>
+            <q class="text-italic h3 text-bold">I am really happy I’ve purchased a template from TemplateMonster. Congratulations!</q>
+          </p>
+        </div>
+        <div class="offset-top-30">
+          <p class="text-left">Web design is my expertise. I offer a wide range of services from wireframing to full-cycle web development. No matter what size is your project of – it will be done quickly and on the highest quality level.</p>
+        </div>
+        <div class="offset-top-50">
+                  <!-- Linear progress bar-->
+                  <div data-to="70" class="progress-linear animated-first">
+                    <div class="progress-header clearfix"><span class="small text-ubold pull-left">HTML/CSS</span><span class="small text-ubold pull-right progress-value">70</span></div>
+                    <div class="progress-bar-linear-wrap">
+                      <div class="progress-bar-linear bg-success" style="width: 70%;"></div>
+                    </div>
+                  </div>
+          <div class="offset-top-50">
+                    <!-- Linear progress bar-->
+                    <div data-to="54" class="progress-linear animated-first">
+                      <div class="progress-header clearfix"><span class="small text-ubold pull-left">Java Script</span><span class="small text-ubold pull-right progress-value">54</span></div>
+                      <div class="progress-bar-linear-wrap">
+                        <div class="progress-bar-linear bg-info" style="width: 54%;"></div>
+                      </div>
+                    </div>
+          </div>
+          <div class="offset-top-50">
+                    <!-- Linear progress bar-->
+                    <div data-to="87" class="progress-linear animated-first">
+                      <div class="progress-header clearfix"><span class="small text-ubold pull-left">PHP</span><span class="small text-ubold pull-right progress-value">87</span></div>
+                      <div class="progress-bar-linear-wrap">
+                        <div class="progress-bar-linear bg-warning" style="width: 87%;"></div>
+                      </div>
+                    </div>
+          </div>
+          <div class="offset-top-50">
+                    <!-- Linear progress bar-->
+                    <div data-to="65" class="progress-linear animated-first">
+                      <div class="progress-header clearfix"><span class="small text-ubold pull-left">UI/UX Design</span><span class="small text-ubold pull-right progress-value">65</span></div>
+                      <div class="progress-bar-linear-wrap">
+                        <div class="progress-bar-linear bg-danger" style="width: 65%;"></div>
+                      </div>
+                    </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock main %}
