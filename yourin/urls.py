@@ -4,6 +4,8 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.views import defaults
+from django.http import HttpResponseNotFound
+from django.http.request import HttpRequest
 
 from search import views as search_views
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
@@ -17,6 +19,8 @@ urlpatterns = [
     url(r'^documents/', include(wagtaildocs_urls)),
 
     url(r'^search/$', search_views.search, name='search'),
+
+    #url(r'^404/$', defaults.page_not_found, ),
 
     url(r'', include(wagtail_urls)),
 ]

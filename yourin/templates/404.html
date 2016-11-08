@@ -1,32 +1,6 @@
-{% extends 'layout.html' %}
+{% extends 'base.html' %}
 
-{% load wagtailcore_tags %}
 
 {% block content %}
-
-    <div class="bg-overlay-white">
-      <div class="one-page">
-        <div class="one-page-header">
-          <!--Navbar Brand-->
-          <div class="rd-navbar-brand"><a href="index.html"><img style="margin-top: -5px;margin-left: -15px;" width="138" height="31" src="images/intense/logo-dark.png" alt=""></a></div>
-        </div>
-        <!-- 505-->
-        <section>
-          <div class="shell text-center">
-            <div class="range">
-              <div class="section-110 section-cover range range-xs-center range-xs-middle">
-                <div class="cell-lg-6">
-                  <h3>Deze pagina bestaat niet</h3>
-                  <hr class="divider bg-mantis">
-                  <div class="text-extra-big text-light">404</div>
-                  <p class="offset-top-50">Helaas, deze pagina werd niet teruggevonden. Je kan best terugkeren naar de startpagina of een boodschap achterlaten.</p>
-                  <div class="group offset-top-30"><a href="{% slugurl 'home' %}" class="btn btn-icon btn-icon-left btn-primary"><span class="icon mdi mdi-arrow-left"></span>Naar homepagina</a><a href="{% slugurl 'contact' %}" class="btn btn-icon btn-icon-left btn-info"><span class="icon mdi mdi-email-outline"></span>Contacteer ons</a></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
 
 {% endblock %}

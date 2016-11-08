@@ -6,7 +6,7 @@
   {% include 'home/partials/page_title.html' with title='kalender' icon='fa fa-calendar' %}
 {% endblock page_title %}
 
-{- block main -}
+{% block main %}
 <div class="shell">
   <div class="range range-sm-center">
     <div class="cell-sm-10 cell-md-8 cell-lg-7">
@@ -170,73 +170,122 @@
     <div class="cell-md-3 cell-lg-3 offset-top-66 offset-md-top-0">
       <!-- Section Blog Modern-->
       <aside class="text-left">
-        <!-- Search Form-->
-        <h6 class="text-uppercase text-spacing-60">Search</h6>
-        <div class="text-subline"></div>
-        <div class="offset-top-34">
-                        <!-- RD Search Form-->
-                        <form action="search-results.html" method="GET" class="form-search rd-search">
-                          <div class="form-group">
-                            <label for="blog-sidebar-2-form-search-widget" class="form-label form-search-label form-label-sm rd-input-label">Search</label>
-                            <input id="blog-sidebar-2-form-search-widget" type="text" name="s" autocomplete="off" class="form-search-input input-sm form-control input-sm">
-                          </div>
-                          <button type="submit" class="form-search-submit"><span class="mdi mdi-magnify"></span></button>
-                        </form>
-        </div>
-        <!-- Twitter Feed-->
-        <h6 class="offset-top-41 text-uppercase text-spacing-60">Twitter Feed</h6>
-        <div class="text-subline"></div>
-        <div class="offset-top-34">
-                        <div data-twitter-username="templatemonster" data-twitter-date-hours=" hours ago" data-twitter-date-minutes=" minutes ago" class="twitter">
-                          <div data-twitter-type="tweet" class="twitter-sm" style="opacity: 1;">
-                            <div data-date="text" class="twitter-date text-dark small">18 hours ago</div>
-                            <div data-tweet="text" class="twitter-text">★★★★★
-"It's a Wonderful Wordpress Theme With Lots of Features For Making the Best Website..." Review by Eva I.
-<a href="https://cards.twitter.com/cards/pobfa/2hozi" target="_blank">cards.twitter.com/cards/pobfa/2h…</a> </div>
-                            <div data-screen_name="text" class="twitter-name text-bold big"><a href="https://twitter.com/templatemonster" target="_blank" title="templatemonster on Twitter">@templatemonster</a></div>
-                          </div>
-                          <div data-twitter-type="tweet" class="twitter-sm" style="opacity: 1;">
-                            <div data-date="text" class="twitter-date text-dark small">20 hours ago</div>
-                            <div data-tweet="text" class="twitter-text">Attain New Knowledge &amp; Challenge Your Skills With <a href="https://twitter.com/TemplateMonster" target="_blank" title="TemplateMonster on Twitter">@TemplateMonster</a> <a href="https://twitter.com/search?q=%23Certification&amp;src=hash" target="_blank" title="Search for #Certification">#Certification</a> Center - <a href="https://goo.gl/bdDAww" target="_blank">goo.gl/bdDAww</a>  <a href="https://goo.gl/bdDAww" target="_blank">goo.gl/bdDAww</a> </div>
-                            <div data-screen_name="text" class="twitter-name text-bold big"><a href="https://twitter.com/templatemonster" target="_blank" title="templatemonster on Twitter">@templatemonster</a></div>
-                          </div>
-                        <span id="loading_tweet" style="display: none;">Loading...</span></div>
-        </div>
-        <div class="range offset-top-41">
-          <div class="cell-xs-6 cell-md-12">
-            <!-- Category-->
-            <h6 class="text-uppercase text-spacing-60">Categories</h6>
-            <div class="text-subline"></div>
-            <ul class="list list-marked offset-top-30">
-              <li><a href="#">Web Design <span class="text-dark">(37)</span></a></li>
-              <li><a href="#">UX <span class="text-dark">(211)</span></a></li>
-              <li><a href="#">Marketing <span class="text-dark">(12)</span></a></li>
-              <li><a href="#">Events <span class="text-dark">(7)</span></a></li>
-              <li><a href="#">News <span class="text-dark">(15)</span></a></li>
-            </ul>
-          </div>
-          <div class="cell-xs-6 cell-md-12 offset-top-41 offset-xs-top-0 offset-md-top-41">
-            <!-- Archive-->
-            <h6 class="text-uppercase text-spacing-60">Archive</h6>
-            <div class="text-subline"></div>
-            <ul class="list list-marked offset-top-30">
-              <li><a href="#">January 2016 <span class="text-dark">(17)</span></a></li>
-              <li><a href="#">December 2015 <span class="text-dark">(121)</span></a></li>
-              <li><a href="#">November 2015 <span class="text-dark">(19)</span></a></li>
-              <li><a href="#">October 2015 <span class="text-dark">(9)</span></a></li>
-              <li><a href="#">September 2015 <span class="text-dark">(25)</span></a></li>
-            </ul>
-          </div>
-        </div>
-        <!-- Tags-->
-        <h6 class="offset-top-41 text-uppercase text-spacing-60">Tags</h6>
-        <div class="text-subline"></div>
-        <div class="offset-top-34">
-            <div class="group-xs"><a href="#" class="btn btn-xs btn-default">Web</a><a href="#" class="btn btn-xs btn-default">UX</a><a href="#" class="btn btn-xs btn-default">Marketing</a><a href="#" class="btn btn-xs btn-default">News</a><a href="#" class="btn btn-xs btn-default">Design</a><a href="#" class="btn btn-xs btn-default">Events</a>
-            </div>
-        </div>
+        <!-- RD calendar / kalender-->
+        
+<div class="range">
+                  <div class="cell-sm-6 cell-md-12 offset-sm-top-41 offset-md-top-0">
+                    <!-- RD calendar-->
+                                  <div class="rd-calendar">
+                                    <div class="rdc-panel"><a class="rdc-next"></a><a class="rdc-prev"></a>
+                                      <div class="rdc-month">November</div>
+                                      <div class="rdc-fullyear">2016</div>
+                                    </div>
+                                    <div class="rdc-table"><table><tbody><tr><th class="rdc-table_day">S</th><th class="rdc-table_day">M</th><th class="rdc-table_day">T</th><th class="rdc-table_day">W</th><th class="rdc-table_day">T</th><th class="rdc-table_day">F</th><th class="rdc-table_day">S</th></tr><tr><td><div class="rdc-table_date rdc-table_prev">30</div></td><td><div class="rdc-table_date rdc-table_prev">31</div></td><td><div class="rdc-table_date">1</div></td><td><div class="rdc-table_date">2</div></td><td><div class="rdc-table_date">3</div></td><td><div class="rdc-table_date">4</div></td><td><div class="rdc-table_date">5</div></td></tr><tr><td><div class="rdc-table_date">6</div></td><td><div class="rdc-table_date">7</div></td><td><div class="rdc-table_date rdc-table_today">8</div></td><td><div class="rdc-table_date">9</div></td><td><div class="rdc-table_date">10</div></td><td><div class="rdc-table_date">11</div></td><td><div class="rdc-table_date">12</div></td></tr><tr><td><div class="rdc-table_date">13</div></td><td><div class="rdc-table_date">14</div></td><td><div class="rdc-table_date">15</div></td><td><div class="rdc-table_date">16</div></td><td><div class="rdc-table_date">17</div></td><td><div class="rdc-table_date">18</div></td><td><div class="rdc-table_date">19</div></td></tr><tr><td><div class="rdc-table_date">20</div></td><td><div class="rdc-table_date">21</div></td><td><div class="rdc-table_date">22</div></td><td><div class="rdc-table_date">23</div></td><td><div class="rdc-table_date">24</div></td><td><div class="rdc-table_date">25</div></td><td><div class="rdc-table_date">26</div></td></tr><tr><td><div class="rdc-table_date">27</div></td><td><div class="rdc-table_date">28</div></td><td><div class="rdc-table_date">29</div></td><td><div class="rdc-table_date">30</div></td><td><div class="rdc-table_date rdc-table_next">1</div></td><td><div class="rdc-table_date rdc-table_next">2</div></td><td><div class="rdc-table_date rdc-table_next">3</div></td></tr></tbody></table></div>
+                                    <div class="rdc-events text-left"><a class="rdc-events_close"></a>
+                                      <ul>
+                                        <li data-date="04/12/2016" class="rdc-event">
+                                          <div class="rdc-event-wrap">
+                                            <article class="post widget-event">
+                                              <div class="post-meta"><span class="icon icon-xxs text-picton-blue mdi mdi-clock"></span>
+                                                <time datetime="2016-01-01" class="text-dark">8:00 AM</time>
+                                              </div>
+                                              <div class="post-title">
+                                                <h6 class="text-regular"><a href="#">Pitae augue vitae matt</a></h6>
+                                              </div>
+                                            </article>
+                                          </div>
+                                        </li>
+                                        <li data-date="04/13/2016" class="rdc-event">
+                                          <div class="rdc-event-wrap">
+                                            <article class="post widget-event">
+                                              <div class="post-meta"><span class="icon icon-xxs text-picton-blue mdi mdi-clock"></span>
+                                                <time datetime="2016-01-01" class="text-dark">9:00 AM</time>
+                                              </div>
+                                              <div class="post-title">
+                                                <h6 class="text-regular"><a href="#">Pitae augue vitae matt</a></h6>
+                                              </div>
+                                            </article>
+                                          </div>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                  </div>
+                  <!-- Recent Events-->
+                  <div class="cell-sm-6 cell-md-12 offset-top-41">
+                    <h6 class="text-uppercase text-spacing-60">Recent Events</h6>
+                    <div class="text-subline"></div>
+                    <div class="offset-top-34">
+                                    <!-- Event Widget-->
+                                    <article class="post widget-event text-left"><a href="#">
+                                        <div class="unit unit-horizontal unit-spacing-xs unit-middle">
+                                          <div class="unit-left"><img width="46" height="46" src="images/blog/post-thumb-01-46x46.jpg" alt="" class="img-circle"></div>
+                                          <div class="unit-body">
+                                            <div class="post-meta">
+                                              <ul class="list-inline list-inline-sm">
+                                                <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
+                                                  <time datetime="2016-01-01" class="text-dark">05/14/2015</time>
+                                                </li>
+                                                <li><span class="icon-xxs text-picton-blue mdi mdi-clock"></span>
+                                                  <time datetime="2016-01-01" class="text-dark">9:00 PM</time>
+                                                </li>
+                                              </ul>
+                                            </div>
+                                            <div class="post-title">
+                                              <h6 class="text-regular">Let’s Change the world</h6>
+                                            </div>
+                                          </div>
+                                        </div></a></article>
+                    </div>
+                    <div class="offset-top-30">
+                                    <!-- Event Widget-->
+                                    <article class="post widget-event text-left"><a href="#">
+                                        <div class="unit unit-horizontal unit-spacing-xs unit-middle">
+                                          <div class="unit-left"><img width="46" height="46" src="images/blog/post-thumb-02-46x46.jpg" alt="" class="img-circle"></div>
+                                          <div class="unit-body">
+                                            <div class="post-meta">
+                                              <ul class="list-inline list-inline-sm">
+                                                <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
+                                                  <time datetime="2016-01-01" class="text-dark">05/14/2015</time>
+                                                </li>
+                                                <li><span class="icon-xxs text-picton-blue mdi mdi-clock"></span>
+                                                  <time datetime="2016-01-01" class="text-dark">9:00 PM</time>
+                                                </li>
+                                              </ul>
+                                            </div>
+                                            <div class="post-title">
+                                              <h6 class="text-regular">The meaning of Web De...</h6>
+                                            </div>
+                                          </div>
+                                        </div></a></article>
+                    </div>
+                    <div class="offset-top-30">
+                                    <!-- Event Widget-->
+                                    <article class="post widget-event text-left"><a href="#">
+                                        <div class="unit unit-horizontal unit-spacing-xs unit-middle">
+                                          <div class="unit-left"><img width="46" height="46" src="images/blog/post-thumb-03-46x46.jpg" alt="" class="img-circle"></div>
+                                          <div class="unit-body">
+                                            <div class="post-meta">
+                                              <ul class="list-inline list-inline-sm">
+                                                <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
+                                                  <time datetime="2016-01-01" class="text-dark">05/14/2015</time>
+                                                </li>
+                                                <li><span class="icon-xxs text-picton-blue mdi mdi-clock"></span>
+                                                  <time datetime="2016-01-01" class="text-dark">9:00 PM</time>
+                                                </li>
+                                              </ul>
+                                            </div>
+                                            <div class="post-title">
+                                              <h6 class="text-regular">Get Started with Templa...</h6>
+                                            </div>
+                                          </div>
+                                        </div></a></article>
+                    </div>
+                  </div>
+                </div>
+
       </aside>
     </div>
   </div>
 </div>
-{- endblock main -}
+{% endblock main %}
