@@ -36,7 +36,10 @@ footer h6 {
 
 .bg-gray-base {background: #191919;}
 
+/* RD CALENDAR */
+/*.rdc-table_date{background:orange; color:white;}*/
 
+.rdc-table_date.rdc-table_prev, .rdc-table_date.rdc-table_next{opacity: 0.1}
 
 /* RD CALENDAR */
 /*.rdc-table_date.rdc-table_next {

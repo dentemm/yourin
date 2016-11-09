@@ -1444,8 +1444,8 @@ $document.ready(function () {
       var calendarItem = $(plugins.calendar[i]);
 
       calendarItem.rdCalendar({
-        days: calendarItem.attr("data-days") ? c.attr("data-days").split(/\s?,\s?/i) : ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-        month: calendarItem.attr("data-months") ? c.attr("data-months").split(/\s?,\s?/i) : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+        days: calendarItem.attr("data-days") ? c.attr("data-days").split(/\s?,\s?/i) : ['Z', 'M', 'D', 'W', 'D', 'V', 'Z'],
+        month: calendarItem.attr("data-months") ? c.attr("data-months").split(/\s?,\s?/i) : ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December']
       });
     }
   }

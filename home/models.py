@@ -209,7 +209,7 @@ ContactPage.parent_page_types = [
 ContactPage.subpage_types = []
 
 class CalendarPage(Page):
-	template = 'home/calendar/calendar.html'
+	template = 'home/calendar/calendar_v2.html'
 
 class NewsArticle(Page):
 
@@ -449,7 +449,7 @@ CalendarEvent.content_panels = [
 
 class CalendarIndex(Page):
 
-	template = 'home/calendar/calendar.html'
+	template = 'home/calendar/calendar_v2.html'
 
 CalendarIndex.parent_page_types = [
 	'home.HomePage', 
