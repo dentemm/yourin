@@ -187,6 +187,7 @@ HomePage.subpage_types = [
 	'home.CalendarIndex',
 	'home.BlogIndex',
 	'home.InfluencerIndex',
+	'home.EventIndex',
 ]
 
 class AboutPage(Page):
@@ -202,7 +203,7 @@ class ContactPage(Page):
 	template = 'home/contact.html'
 
 ContactPage.parent_page_types = [
-	'home.HomePage'
+	'home.HomePage',
 ]
 
 ContactPage.subpage_types = []
@@ -333,12 +334,25 @@ class EventIndex(Page):
 
 	template = 'home/event/event_index.html'
 
-EventIndex.parent_page_types = [
-	'home.HomePage'
+	name = djangomodels.CharField(verbose_name='naam', max_length=164, default='')
+
+
+EventIndex.content_panels = Page.content_panels + [
+	MultiFieldPanel([
+			FieldRowPanel([
+				FieldPanel('name', classname='col6'),
+				]
+			),
+		]
+	),
 ]
 
 EventIndex.parent_page_types = [
-	'home.Event'
+	'home.HomePage',
+]
+
+EventIndex.subpage_types = [
+	'home.Event',
 ]
 
 class Event(Page):
@@ -359,8 +373,8 @@ Event.content_panels = [
 
 	MultiFieldPanel([
 			FieldRowPanel([
-					FieldPanel('name', classname='col6'),
-					FieldPanel('category', classname='col6'),
+				FieldPanel('name', classname='col6'),
+				FieldPanel('category', classname='col6'),
 				]
 			),
 			FieldRowPanel([
@@ -449,7 +463,7 @@ class InfluencerIndex(Page):
 	template = 'home/influencer/influencer_page.html'
 
 InfluencerIndex.parent_page_types = [
-	'home.HomePage'
+	'home.HomePage',
 ]
 
 InfluencerIndex.subpage_types = [
