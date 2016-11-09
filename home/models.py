@@ -48,7 +48,7 @@ class CustomImage(AbstractImage):
 	'''
 
 	file = djangomodels.ImageField(
-		verbose_name=_('file'), upload_to=get_upload_to, width_field='width', height_field='height', validators=[validate_image_min]
+		verbose_name=_('file'), upload_to=get_upload_to, width_field='width', height_field='height', validators=[validate_image_min, ]
 	)
 
 CustomImage.admin_form_fields = Image.admin_form_fields
@@ -246,11 +246,11 @@ class Blog(Orderable, Page):
 	edited = djangomodels.DateField(auto_now=True)
 	intro_text = djangomodels.TextField(verbose_name='intro text', default='', blank=True, null=True)
 	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, 
-		blank=True, on_delete=djangomodels.SET_NULL, related_name='+', validators=validate_blog_image
+		blank=True, on_delete=djangomodels.SET_NULL, related_name='+'
 		)
 
 	blog_content = fields.StreamField([
-		('blog_title', BlogTitleBlock(help_text='Dit is de titel van het artikel, voorzien van een afbeelding')),
+		#('blog_title', BlogTitleBlock(help_text='Dit is de titel van het artikel, voorzien van een afbeelding')),
 		('blog_intro', IntroTextBlock(help_text='Hiermee kan je optioneel een korte inleiding voorzien')),
 		('blog_subtitle', SubtitleBlock()),	
 		('blog_paragraph', ParagraphBlock()),
