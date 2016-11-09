@@ -37,6 +37,9 @@ class ImageWithCaptionBlock(blocks.StructBlock):
 		icon = 'image'
 
 class PullQuoteBlock(blocks.StructBlock):
+
+	quote = blocks.CharBlock(label='Citaat', required=True, max_length=164, help_text='Geef hier een citaat in')
+
 	class Meta:
 		template = 'home/blocks/pullquote_block.html'
 		label = 'citaat'
