@@ -28,6 +28,12 @@ footer h6 {
 
 .btn-primary {background-color: #e54044; border-color: #e3151e;}
 
+.label-primary {background-color: #e54044; border-color: #e3151e;}
+
+.rdc-panel {background: #e54044}
+
+.rdc-table_today {background-color: #e54044}
+
 .pagination-classic > li + li:not(:last-child).active > a, .pagination-classic > li + li:not(:last-child).active > span {background: #e54044; border-color: #e3151e;}
 
 .rd-navbar-default.rd-navbar-static .rd-navbar-nav > li > a:after, .rd-navbar-floated.rd-navbar-static .rd-navbar-nav > li > a:after {
