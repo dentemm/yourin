@@ -242,7 +242,8 @@ class Blog(Orderable, Page):
 	'''
 	template = 'home/blog/blog_detail.html'
 
-	date = djangomodels.DateField(verbose_name='blog datum', default=date.today)
+	date = djangomodels.DateField(auto_now_add=True)
+	edited = djangomodels.DateField(auto_now=True)
 	intro_text = djangomodels.TextField(verbose_name='intro text', default='', blank=True, null=True)
 	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, 
 		blank=True, on_delete=djangomodels.SET_NULL, related_name='+', validators=validate_blog_image
