@@ -24,7 +24,7 @@ class IntroTextBlock(blocks.TextBlock):
 		label = 'intro'
 		icon = 'snippet'
 
-class ParagraphBlock(blocks.RichTextBlock):
+class ParagraphBlock(blocks.TextBlock):
 
 	text = blocks.TextBlock(min_length=160, required=True, help_text='Plaats hier de tekst voor 1 paragraaf, en voeg zoveel paragrafen toe als nodig')
 
@@ -32,6 +32,15 @@ class ParagraphBlock(blocks.RichTextBlock):
 		template = 'home/blocks/paragraph_block.html'
 		label = 'paragraaf'
 		icon = 'edit'
+
+# class ParagraphBlock(blocks.RichTextBlock):
+
+# 	text = blocks.TextBlock(min_length=160, required=True, help_text='Plaats hier de tekst voor 1 paragraaf, en voeg zoveel paragrafen toe als nodig')
+
+# 	class Meta:
+# 		template = 'home/blocks/paragraph_block.html'
+# 		label = 'paragraaf'
+# 		icon = 'edit'
 
 class ImageWithCaptionBlock(blocks.StructBlock):
 	class Meta:

@@ -41,6 +41,18 @@
                 </div>
               </header>
             </div>
+            <div>
+              {{ page.blog_content }}
+            </div>
+            <div class="offset-top-34">
+              <div class="group-xs">
+                <a href="#" class="btn btn-xs btn-default">Web</a>
+                <a href="#" class="btn btn-xs btn-default">UX</a>
+                <a href="#" class="btn btn-xs btn-default">Marketing</a>
+                <a href="#" class="btn btn-xs btn-default">Nieuws</a>
+              </div>
+            </div>
+            <a href="{% slugurl 'blog-index' %}" class="offset-top-24 btn btn-primary"><i class="fa fa-chevron-circle-left"></i> Terug naar overzicht</a>
           </div>
         </article>
       </section>
@@ -49,42 +61,4 @@
   </div>
 </div>
 
-
-<div class="shell section-bottom-50">
-  <div class="range range-xs-center">
-    <div class="cell-md-8">
-      <section>
-        <article class="post post-default text-left">
-          <div class="header post-header">
-            <ul class="post-controls list-inline list-inline-sm p text-dark">
-              <li><span class="text-middle icon-xxs text-picton-blue mdi mdi-clock"></span>
-                <time datetime="2016-01-01" class="text-middle small">Mar 7, 2016</time>
-              </li>
-              <li><span class="text-middle icon-xxs text-picton-blue mdi mdi-account-outline">&nbsp;</span><span class="text-middle small">July Mao</span></li>
-            </ul>
-            <h3 class="post-title"><a href="blog-default-single-left-sidebar.html#">5 Steps to Blog’s Success.</a></h3>
-            <div class="post-media offset-top-34">
-              <header class="post-media">
-                <div data-photo-swipe="gallery"><a class="thumbnail-classic" href="blog-default-single-left-sidebar.html" target="_self">
-                                    <figure><img width="570" height="321" src="images/blog/post-01-570x321.jpg" alt="">
-                                    </figure></a>
-                </div>
-              </header>
-            </div>
-          </div>
-          <section class="post-content offset-top-41">
-            <p>Unfortunately people will not come to your blog just to see what you have published on it. To make sure that your blog becomes a successful one, you have to work on it to attract visitors interested in your content.</p>
-            <div class="section-24 text-center">
-              <p>
-                <q class="text-italic h3">I am really happy I’ve purchased a template from TemplateMonster. Congratulations!</q>
-              </p>
-            </div>
-            <p>This can be achieved by serious work on some important aspects. In a word, give people the reason to see what you have to say or offer.</p><a href="{% slugurl 'blog-index' %}" class="offset-top-24 btn btn-primary">Terug naar overzicht</a>
-          </section>
-        </article>
-      </section>
-    </div>
-    <div class="cell-md-4"></div>
-  </div>
-</div> 
 {% endblock main %}
