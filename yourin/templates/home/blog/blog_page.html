@@ -15,7 +15,7 @@
           <section>
             <!-- Post Event-->
           {% for blog in page.blogs %}
-            <article class="post post-event">
+            <article class="post post-event section-bottom-40">
               <header class="post-media">
                 <div data-photo-swipe="gallery">
                   <a class="thumbnail-classic" href="{% pageurl blog %}">
@@ -39,7 +39,12 @@
                   <time datetime="{{ blog.date|date:'Y-m-d'}}"><span class="post-meta-day">{{ blog.date|date:'d'}}</span><span class="big text-uppercase post-meta-month">{{ blog.date|date:'b'|upper }}</span></time>
                 </div>
               </section>
+              {% if not forloop.last %}
+              <hr class="hr bg-gray">
+              {% endif  %}
             </article>
+
+
           {% endfor %}
             <article class="post post-event">
               <!-- Post media-->
