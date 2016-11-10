@@ -1,6 +1,79 @@
 {% extends 'layout.html' %}
 
 {% block content %}
+<section class="context-dark">
+  <!-- Swiper-->
+  <div data-height="33%" data-min-height="600px" data-dots="true" class="swiper-container swiper-slider swiper-container-horizontal" style="height: 600px;">
+    <div class="swiper-wrapper" style="transition-duration: 0ms; -webkit-transition-duration: 0ms; transform: translate3d(-1440px, 0px, 0px);"><div data-slide-bg="images/slide-03-1920x640.jpg" style="background-image: url(http://livedemo00.template-help.com/wt_58888_v6/intense-real-estate/images/slide-03-1920x640.jpg); background-size: cover; width: 1440px; background-position: 50% 50%;" class="swiper-slide swiper-slide-overlay-disable swiper-slide-duplicate swiper-slide-prev" data-swiper-slide-index="2"></div>
+      <div data-slide-bg="images/slide-01-1920x640.jpg" style="background-image: url(http://livedemo00.template-help.com/wt_58888_v6/intense-real-estate/images/slide-01-1920x640.jpg); background-size: cover; width: 1440px; background-position: 50% 50%;" class="swiper-slide swiper-slide-overlay-disable swiper-slide-active" data-swiper-slide-index="0"></div>
+      <div data-slide-bg="images/slide-02-1920x640.jpg" style="background-image: url(http://livedemo00.template-help.com/wt_58888_v6/intense-real-estate/images/slide-02-1920x640.jpg); background-size: cover; width: 1440px; background-position: 50% 50%;" class="swiper-slide swiper-slide-overlay-disable swiper-slide-next" data-swiper-slide-index="1"></div>
+      <div data-slide-bg="images/slide-03-1920x640.jpg" style="background-image: url(http://livedemo00.template-help.com/wt_58888_v6/intense-real-estate/images/slide-03-1920x640.jpg); background-size: cover; width: 1440px; background-position: 50% 50%;" class="swiper-slide swiper-slide-overlay-disable" data-swiper-slide-index="2"></div>
+    <div data-slide-bg="images/slide-01-1920x640.jpg" style="background-image: url(http://livedemo00.template-help.com/wt_58888_v6/intense-real-estate/images/slide-01-1920x640.jpg); background-size: cover; width: 1440px; background-position: 50% 50%;" class="swiper-slide swiper-slide-overlay-disable swiper-slide-duplicate" data-swiper-slide-index="0"></div></div>
+    <div class="swiper-caption-wraper">
+      <div class="shell section-41">
+        <div class="range range-xs-center">
+          <h1 class="text-bold">Professional realtor works for you</h1>
+          <div class="cell-xs-10 cell-md-7 cell-lg-6">
+            <div class="offset-top-24 offset-md-top-50 text-left">
+              <!-- Responsive-tabs-->
+              <div data-type="horizontal" class="responsive-tabs responsive-tabs-dashed" style="width: 100%;">
+                <ul data-group="tabs-group-default" class="resp-tabs-list tabs-group-default">
+                  <li class="resp-tab-item tabs-group-default resp-tab-active" aria-controls="tabs-group-default_tab_item-0" role="tab">sale </li>
+                  <li class="resp-tab-item tabs-group-default" aria-controls="tabs-group-default_tab_item-1" role="tab">rent</li>
+                  <li class="resp-tab-item tabs-group-default" aria-controls="tabs-group-default_tab_item-2" role="tab">commercial</li>
+                </ul>
+                <div data-group="tabs-group-default" class="resp-tabs-container text-left tabs-group-default">
+                  <div class="resp-accordion tabs-group-default resp-tab-active" role="tab" aria-controls="tabs-group-default_tab_item-0" style="background-image: none; background-position: initial initial; background-repeat: initial initial;"><span class="resp-arrow"></span>sale </div><div class="offset-md-top-10 resp-tab-content tabs-group-default resp-tab-content-active" aria-labelledby="tabs-group-default_tab_item-0" style="display:block">
+                    <form>
+                      <div class="group-sm group-top">
+                        <div style="max-width: 390px" class="group-item element-fullwidth">
+                          <div class="form-group">
+                            <label for="home-tabs1-search-form-input" class="form-label rd-input-label">Search by City or Address:</label>
+                            <input id="home-tabs1-search-form-input" type="text" name="s" autocomplete="off" class="form-control">
+                          </div>
+                        </div>
+                        <button type="button" style="max-width: 120px" class="btn btn-primary element-fullwidth">search</button>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="resp-accordion tabs-group-default" role="tab" aria-controls="tabs-group-default_tab_item-1"><span class="resp-arrow"></span>rent</div><div class="offset-md-top-10 resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-1">
+                    <form>
+                      <div class="group-sm group-top">
+                        <div style="max-width: 390px" class="group-item element-fullwidth">
+                          <div class="form-group">
+                            <label for="home-tabs2-search-form-input" class="form-label rd-input-label">Search by  Address or City:</label>
+                            <input id="home-tabs2-search-form-input" type="text" name="s" autocomplete="off" class="form-control">
+                          </div>
+                        </div>
+                        <button type="button" style="max-width: 120px" class="btn btn-primary element-fullwidth">search</button>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="resp-accordion tabs-group-default" role="tab" aria-controls="tabs-group-default_tab_item-2"><span class="resp-arrow"></span>commercial</div><div class="offset-md-top-10 resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-2">
+                    <form>
+                      <div class="group-sm group-top">
+                        <div style="max-width: 390px" class="group-item element-fullwidth">
+                          <div class="form-group">
+                            <label for="home-tabs3-search-form-input" class="form-label rd-input-label">Search by City or Address:</label>
+                            <input id="home-tabs3-search-form-input" type="text" name="s" autocomplete="off" class="form-control">
+                          </div>
+                        </div>
+                        <button type="button" style="max-width: 120px" class="btn btn-primary element-fullwidth">search</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Swiper Pagination-->
+    <div class="swiper-pagination swiper-pagination-type-2 swiper-pagination-clickable"><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span></div>
+  </div>
+</section>
+
 <!-- Who we are?-->
 <section class="section-98 section-sm-110 bg-gray-darkest context-dark">
   <div class="shell-fluid">
