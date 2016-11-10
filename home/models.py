@@ -142,6 +142,34 @@ class Partner(djangomodels.Model):
 	name = djangomodels.CharField(verbose_name='naam', max_length=64)
 	website = djangomodels.URLField(verbose_name='website')
 	description = djangomodels.TextField(verbose_name='beschrijving')
+	logo = djangomodels.ForeignKey('home.CustomImage', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
+
+	def __str__(self):
+		return self.name
+
+	class Meta:
+		verbose_name = 'partner'
+		verbose_name_plural = 'partners'
+		ordering = ['name', ]
+
+Partner.panels = [
+	MultiFieldPanel([
+			FieldRowPanel([
+					FieldPanel('name', classname='col6'),
+					FieldPanel('website', classname='col6')
+
+				]
+			),
+			FieldRowPanel([
+					FieldPanel('description'),
+				]
+			),
+			ImageChooserPanel('logo'),
+
+		], heading='Partner informatie'
+	),
+	#ImageChooserPanel('logo'),
+]
 
 @register_snippet
 class Address(djangomodels.Model):
@@ -176,8 +204,7 @@ Address.panels = [
 					FieldPanel('country', classname='col6'),
 				]
 			),
-		],
-		heading='Adresgegevens'
+		], heading='Adresgegevens'
 	),
 ]
 
@@ -190,7 +217,11 @@ Address.panels = [
 class HomePage(Page):
     template = 'home/home.html'
 
-   
+HomePage.content_panels = Page.content_panels + [
+	InlinePanel('partners', label='Partners'),
+]
+
+
 
 HomePage.subpage_types = [
 	'home.ContactPage',
