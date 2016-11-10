@@ -75,6 +75,12 @@ def image_delete(sender, instance, **kwargs):
 @receiver(pre_delete, sender=CustomRendition)
 def rendition_delete(sender, instance, **kwargs):
     instance.file.delete(False)
+
+class Partners(djangomodels.Model):
+
+	name = djangomodels.CharField(verbose_name='naam', max_length=64)
+	website = djangomodels.URLField(verbose_name='website')
+	description = djangomodels.TextField(verbose_name='beschrijving')
 	
 
 #

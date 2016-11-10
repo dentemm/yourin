@@ -74,20 +74,26 @@
               </form> -->
           </div>
         </div>
-        <div class="cell-xs-12 offset-top-66 cell-lg-3 cell-lg-push-1 offset-lg-top-0">
+        <div class="cell-xs-12 offset-top-66 cell-lg-3 cell-lg-push-1 offset-lg-top-0 text-center">
           <!-- Footer brand-->
-          <div class="footer-brand"><a href="#"><img style="margin-top: -5px;margin-left: -15px;" height="80" src="{% static 'images/logo.png' %}" alt=""></a></div>
+          <div class="footer-brand">
+            <a href="{% slugurl 'home' %}">
+              <img style="margin-top: -5px;margin-left: -15px;" height="80" src="{% static 'images/logo.png' %}" alt="">
+            </a>
+          </div>
           <p class="offset-top-4">Entertainment voor jongeren</p>
 	        <ul class="list-inline">
-         	<li>
-         		<a href="https://www.facebook.com/yourin.be/" class="icon fa fa-facebook icon-xxs icon-circle icon-darker-filled"></a>
-     		</li>
+         	  <li>
+         		  <a href="https://www.facebook.com/yourin.be/" class="icon fa fa-facebook icon-xxs icon-circle icon-darker-filled"></a>
+     		     </li>
           	<li>
-          		<a href="#" class="icon fa fa-twitter icon-xxs icon-circle icon-darker-filled"></a>
-      		</li>
-          	<li><a href="#" class="icon fa fa-google-plus icon-xxs icon-circle icon-darker-filled"></a></li>
-          	<li><a href="#" class="icon fa fa-linkedin icon-xxs icon-circle icon-darker-filled"></a></li>
-	      </ul>
+          		<a href="https://twitter.com/yourinbe" class="icon fa fa-twitter icon-xxs icon-circle icon-darker-filled"></a>
+      		  </li>
+          	<!-- <li><a href="#" class="icon fa fa-google-plus icon-xxs icon-circle icon-darker-filled"></a></li> -->
+          	<li>
+              <a href="https://www.linkedin.com/company/4982091" class="icon fa fa-linkedin icon-xxs icon-circle icon-darker-filled"></a>
+            </li>
+        </ul>
         </div>
       </div>
     </div>
