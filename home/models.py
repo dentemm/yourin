@@ -18,6 +18,8 @@ from wagtail.wagtailimages.models import Image, AbstractImage, AbstractRendition
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 
+from modelcluster.fields import ParentalKey
+
 from django_countries.fields import CountryField
 
 from .blocks import BlogTitleBlock, SubtitleBlock, IntroTextBlock, ParagraphBlock, ImageWithCaptionBlock, PullQuoteBlock
@@ -76,12 +78,6 @@ def image_delete(sender, instance, **kwargs):
 def rendition_delete(sender, instance, **kwargs):
     instance.file.delete(False)
 
-class Partners(djangomodels.Model):
-
-	name = djangomodels.CharField(verbose_name='naam', max_length=64)
-	website = djangomodels.URLField(verbose_name='website')
-	description = djangomodels.TextField(verbose_name='beschrijving')
-	
 
 #
 #
@@ -141,6 +137,13 @@ Location.panels = [
 ]
 
 @register_snippet
+class Partner(djangomodels.Model):
+
+	name = djangomodels.CharField(verbose_name='naam', max_length=64)
+	website = djangomodels.URLField(verbose_name='website')
+	description = djangomodels.TextField(verbose_name='beschrijving')
+
+@register_snippet
 class Address(djangomodels.Model):
 
 	city = djangomodels.CharField(verbose_name='stad', max_length=40)
@@ -187,6 +190,8 @@ Address.panels = [
 class HomePage(Page):
     template = 'home/home.html'
 
+   
+
 HomePage.subpage_types = [
 	'home.ContactPage',
 	'home.AboutPage',
@@ -194,6 +199,19 @@ HomePage.subpage_types = [
 	'home.BlogIndex',
 	'home.InfluencerIndex',
 	'home.EventIndex',
+]
+
+class YourinPartner(djangomodels.Model):
+	'''
+	Through model voor m2m relatie tussen Homepage en Partner
+	'''
+
+	partner = djangomodels.ForeignKey('home.Partner')
+	page = ParentalKey('home.HomePage', related_name='partners')
+
+	
+YourinPartner.panels = [
+	FieldPanel('partner'),
 ]
 
 class AboutPage(Page):
