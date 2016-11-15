@@ -25,6 +25,9 @@ from django_countries.fields import CountryField
 from .blocks import BlogTitleBlock, SubtitleBlock, IntroTextBlock, ParagraphBlock, ImageWithCaptionBlock, PullQuoteBlock
 from .validators import validate_image_min, validate_blog_image
 
+
+yourin_variables = {}
+
 #
 #
 # HELPER FUNCTIES
@@ -84,9 +87,6 @@ def rendition_delete(sender, instance, **kwargs):
 # SNIPPETS 
 #
 #
-
-# @register_snippet
-# class Influencer(djangomodels.Model):
 
 @register_snippet
 class EventCategory(djangomodels.Model):
@@ -213,7 +213,6 @@ Address.panels = [
 # CMS PAGES
 #
 #
-
 class BasePage(Page):
 
 	catchphrase = djangomodels.CharField(verbose_name='catchphrase', max_length=164, default='Entertainment voor jongeren')
@@ -221,9 +220,16 @@ class BasePage(Page):
 	def get_context(self, request, *args, **kwargs):
 
 		ctx = super(BasePage, self).get_context(request, *args, **kwargs)
-		ctx['catchphrase'] = self.catchphrase
+
+		ctx['yourin'] = yourin_variables
 
 		return ctx
+
+	def save(self, *args, **kwargs):
+
+		yourin_variables['catchphrase'] = self.catchphrase
+
+		super(BasePage, self).save(*args, **kwargs)
 
 	class Meta:
 		abstract = True
@@ -243,8 +249,6 @@ HomePage.content_panels = Page.content_panels + [
 	),
 	InlinePanel('partners', label='Partners'),
 ]
-
-
 
 HomePage.subpage_types = [
 	'home.ContactPage',
@@ -268,7 +272,7 @@ YourinPartner.panels = [
 	FieldPanel('partner'),
 ]
 
-class AboutPage(Page):
+class AboutPage(BasePage):
 	template = 'home/about.html'
 
 AboutPage.parent_page_types = [
@@ -277,7 +281,7 @@ AboutPage.parent_page_types = [
 
 AboutPage.subpage_types = []
 
-class ContactPage(Page):
+class ContactPage(BasePage):
 	template = 'home/contact.html'
 
 ContactPage.parent_page_types = [
@@ -286,10 +290,10 @@ ContactPage.parent_page_types = [
 
 ContactPage.subpage_types = []
 
-class CalendarPage(Page):
+class CalendarPage(BasePage):
 	template = 'home/calendar/calendar_v2.html'
 
-class NewsArticle(Page):
+class NewsArticle(BasePage):
 
 	template = 'home/article_page.html'
 
@@ -312,7 +316,7 @@ NewsArticle.content_panels = [
 		heading='Nieuws artikel')
 ]
 
-class Blog(Orderable, Page):
+class Blog(Orderable, BasePage):
 	'''
 	Dit model beschijft 1 enkele blog post. 
 	TODO: 	mogelijk is het beter om de title block (en eventueel intro block) niet als streamfield onderdelen
@@ -353,7 +357,7 @@ Blog.content_panels = [
 	StreamFieldPanel('blog_content'),
 ]
 
-class BlogIndex(Page):
+class BlogIndex(BasePage):
 
 	template = 'home/blog/blog_page.html'
 
@@ -409,7 +413,7 @@ BlogIndex.search_fields = Page.search_fields + [
 	index.SearchField('intro'),
 ]
 
-class EventIndex(Page):
+class EventIndex(BasePage):
 
 	template = 'home/event/event_index.html'
 
@@ -434,7 +438,7 @@ EventIndex.subpage_types = [
 	'home.Event',
 ]
 
-class Event(Page):
+class Event(BasePage):
 
 	template = 'home/event/event_detail.html'
 
@@ -478,7 +482,7 @@ Event.parent_page_types = [
 
 Event.subpage_types = []
 
-class CalendarEvent(Page):
+class CalendarEvent(BasePage):
 
 	template = 'home/calendar/calendar_event.html'
 
@@ -526,7 +530,7 @@ CalendarEvent.content_panels = [
 	),
 ]
 
-class CalendarIndex(Page):
+class CalendarIndex(BasePage):
 
 	template = 'home/calendar/calendar_v2.html'
 
@@ -538,7 +542,7 @@ CalendarIndex.subpage_types = [
 	'home.CalendarEvent',
 ]
 
-class InfluencerIndex(Page):
+class InfluencerIndex(BasePage):
 	template = 'home/influencer/influencer_page.html'
 
 InfluencerIndex.parent_page_types = [
@@ -549,7 +553,7 @@ InfluencerIndex.subpage_types = [
 	'home.Influencer',
 ]
 
-class Influencer(Page):
+class Influencer(BasePage):
 
 	template = 'home/influencer/influencer_detail.html'
 
