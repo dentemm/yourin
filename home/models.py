@@ -213,6 +213,11 @@ Address.panels = [
 # CMS PAGES
 #
 #
+class HomePageNumbers(djangomodels.Model):
+
+	name = djangomodels.CharField(verbose_name='naam', max_length=28)
+	value = djangomodels.PositiveIntegerField(verbose_name='aantal', default=1)
+
 class BasePage(Page):
 
 	catchphrase = djangomodels.CharField(verbose_name='catchphrase', max_length=164, default='Entertainment voor jongeren')
@@ -238,6 +243,9 @@ class BasePage(Page):
 class HomePage(BasePage):
     template = 'home/home.html'
 
+    class Meta:
+    	verbose_name = 'startpagina'
+
 
 HomePage.content_panels = Page.content_panels + [
 	MultiFieldPanel([
@@ -261,7 +269,7 @@ HomePage.subpage_types = [
 
 class YourinPartner(djangomodels.Model):
 	'''
-	Through model voor m2m relatie tussen Homepage en Partner
+	Through / join model voor m2m relatie tussen Homepage en Partner
 	'''
 
 	partner = djangomodels.ForeignKey('home.Partner')
