@@ -214,10 +214,33 @@ Address.panels = [
 #
 #
 
-class HomePage(Page):
+class BasePage(Page):
+
+	catchphrase = djangomodels.CharField(verbose_name='catchphrase', max_length=164, default='Entertainment voor jongeren')
+
+	def get_context(request, *args, **kwargs):
+
+		ctx = super(BasePage, self).get_context(*args, **kwargs)
+		ctx['catchphrase'] = getattr(obj, 'catchphrase')
+
+		return ctx
+
+
+class HomePage(BasePage):
     template = 'home/home.html'
 
+    #catchphrase = djangomodels.CharField(verbose_name='catchphrase', max_length=164, default='Entertainment voor jongeren')
+
+
+
 HomePage.content_panels = Page.content_panels + [
+	MultiFieldPanel([
+			FieldRowPanel([
+					FieldPanel('catchphrase', classname='col12'),
+				]
+			),
+		]
+	),
 	InlinePanel('partners', label='Partners'),
 ]
 
@@ -265,6 +288,9 @@ ContactPage.subpage_types = []
 
 class CalendarPage(Page):
 	template = 'home/calendar/calendar_v2.html'
+
+
+
 
 class NewsArticle(Page):
 
