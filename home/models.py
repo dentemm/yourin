@@ -218,19 +218,19 @@ class BasePage(Page):
 
 	catchphrase = djangomodels.CharField(verbose_name='catchphrase', max_length=164, default='Entertainment voor jongeren')
 
-	def get_context(request, *args, **kwargs):
+	def get_context(self, request, *args, **kwargs):
 
-		ctx = super(BasePage, self).get_context(*args, **kwargs)
-		ctx['catchphrase'] = getattr(obj, 'catchphrase')
+		ctx = super(BasePage, self).get_context(request, *args, **kwargs)
+		ctx['catchphrase'] = self.catchphrase
 
 		return ctx
+
+	class Meta:
+		abstract = True
 
 
 class HomePage(BasePage):
     template = 'home/home.html'
-
-    #catchphrase = djangomodels.CharField(verbose_name='catchphrase', max_length=164, default='Entertainment voor jongeren')
-
 
 
 HomePage.content_panels = Page.content_panels + [
@@ -239,7 +239,7 @@ HomePage.content_panels = Page.content_panels + [
 					FieldPanel('catchphrase', classname='col12'),
 				]
 			),
-		]
+		], heading='Startpagina aanpassingen'
 	),
 	InlinePanel('partners', label='Partners'),
 ]
@@ -288,9 +288,6 @@ ContactPage.subpage_types = []
 
 class CalendarPage(Page):
 	template = 'home/calendar/calendar_v2.html'
-
-
-
 
 class NewsArticle(Page):
 
