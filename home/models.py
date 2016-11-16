@@ -98,6 +98,16 @@ class EventCategory(djangomodels.Model):
 		verbose_name_plural = 'Evenement Categorieën'
 		ordering = ['name', ]
 
+EventCategory.panels = [
+	MultiFieldPanel([
+			FieldRowPanel([
+					FieldPanel('name', classname='col6'),
+				]
+			),
+		]
+	),
+]
+
 @register_snippet
 class NewsCategory(djangomodels.Model):
 
@@ -107,6 +117,18 @@ class NewsCategory(djangomodels.Model):
 		verbose_name = 'Nieuwscategorie'
 		verbose_name_plural = 'Nieuwscategorieën'
 		ordering = ['name', ]
+
+@register_snippet
+class WhatWeDo(djangomodels.Model):
+
+	name = djangomodels.CharField(verbose_name='naam', max_length=40)
+	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
+	extra_info = djangomodels.TextField(verbose_name='info tekst', max_length=512)
+
+	class Meta:
+		verbose_name = 'pijler'
+		verbose_name_plural = 'pijlers'
+
 
 @register_snippet
 class Location(djangomodels.Model):
