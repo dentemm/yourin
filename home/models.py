@@ -25,8 +25,20 @@ from django_countries.fields import CountryField
 from .blocks import BlogTitleBlock, SubtitleBlock, IntroTextBlock, ParagraphBlock, ImageWithCaptionBlock, PullQuoteBlock
 from .validators import validate_image_min, validate_blog_image
 
+#
+#
+# GLOBAL VARIABLES
+#
+#
 
 yourin_variables = {}
+
+
+RELATED_LINK_CHOICES = (
+    (1, _("Facebook")),
+    (2, _("Twitter")),
+    (3, _("Youtube")),
+)
 
 #
 #
@@ -235,6 +247,46 @@ Address.panels = [
 # CMS PAGES
 #
 #
+class LinkFields(djangomodels.Model):
+
+	link_external = djangomodels.URLField('Externe link', blank=True)
+	link_page = djangomodels.ForeignKey(
+		'wagtailcore.Page',
+		null=True,
+		blank=True,
+		related_name='+'
+	)
+
+	class Meta:
+		abstract = True
+
+	@property
+	def link(self):
+
+		if self.link_page:
+			return self.link_page.url
+
+		else:
+			return self.link_external
+
+LinkFields.panels = [
+	FieldPanel('link_external'),
+]
+
+class RelatedLink(LinkFields):
+
+	#title = djangomodels.CharField('titel', max_length=63, help_text='Naam van link')
+
+	title = djangomodels.IntegerField(verbose_name='Link naar', choices=RELATED_LINK_CHOICES)
+
+	class Meta:
+		abstract = True
+
+RelatedLink.panels = [
+	FieldPanel('title'),
+	MultiFieldPanel(LinkFields.panels, 'Link')
+]
+
 class HomePageNumbers(djangomodels.Model):
 
 	name = djangomodels.CharField(verbose_name='naam', max_length=28)
@@ -582,6 +634,16 @@ InfluencerIndex.parent_page_types = [
 InfluencerIndex.subpage_types = [
 	'home.Influencer',
 ]
+
+class InfluencerRelatedLink(Orderable, RelatedLink):
+	'''
+	Deze klasse wordt gebruikt om externe links aan een influencer toe te kennen.
+	Dit zijn links naar facebook, youtube en dergelijke
+	'''
+
+	page = ParentalKey('home.Influencer', related_name='related_links')
+
+
 
 class Influencer(BasePage):
 
