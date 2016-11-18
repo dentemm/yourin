@@ -651,19 +651,11 @@ class Influencer(BasePage):
 	template = 'home/influencer/influencer_detail.html'
 	name = djangomodels.CharField(max_length=128)
 
-	def save(self, *args, **kwargs):
-
-		if self.slug == "" and self.title == "":
-			self.title = self.name
-			self.slug = slugify(self.name)
-
-		return super(Influencer, self).save(*args, **kwargs)
-
 
 Influencer.content_panels =  [
 	MultiFieldPanel([
 			FieldRowPanel([
-				FieldPanel('name', classname='col6')
+				FieldPanel('title', classname='col6')
 				]
 			),
 		], heading='Influencer'
