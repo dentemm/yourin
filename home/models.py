@@ -644,6 +644,45 @@ CalendarIndex.subpage_types = [
 class InfluencerIndex(BasePage):
 	template = 'home/influencer/influencer_page.html'
 
+	@property
+	def influencers(self):
+		# Get list of live blog pages that are descendants of this page
+		influencers = Influencer.objects.live().descendant_of(self)
+
+		# Order by most recent date first
+		influencers = influencers.order_by('-name')
+
+		return influencers
+
+	def get_context(self, request):
+		# Get blogs
+		influencers = self.influencers
+
+		# Filter by tag (als die bestaat)
+		tag = request.GET.get('tag')
+
+		if tag:
+			influencers = influencers.filter(tags__name=tag)
+
+		# Pagination
+		page = request.GET.get('page')
+		paginator = Paginator(influencers, 3)  # Show 3 blogs per page
+
+		try:
+			influencers = paginator.page(page)
+
+		except PageNotAnInteger:
+			influencers = paginator.page(1)
+
+		except EmptyPage:
+			influencers = paginator.page(paginator.num_pages)
+
+		# Update template context
+		context = super(InfluencerIndex, self).get_context(request)
+		context['influencers'] = influencers
+
+		return context
+
 InfluencerIndex.parent_page_types = [
 	'home.HomePage',
 ]
