@@ -649,8 +649,21 @@ class Influencer(BasePage):
 
 	template = 'home/influencer/influencer_detail.html'
 
-Influencer.content_panels = Page.content_panels + [
 
+
+
+Influencer.content_panels =  [
+	MultiFieldPanel([
+			FieldRowPanel([
+				FieldPanel('title', classname='col6')
+				]
+			),
+		], heading='Influencer'
+	), 
+	InlinePanel('related_links', 
+		label='Externe links',
+		help_text='Hier kan je links naar Youtube, FB en andere ingeven',
+		),
 ]
 
 Influencer.parent_page_types = [
