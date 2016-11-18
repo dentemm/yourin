@@ -203,7 +203,7 @@
             <hr class="divider">
             <ul class="list-inline list-inline-xs">
               {% for link in influencer.related_links.all %}
-                <li><a href="#" class="icon fa fa-facebook icon-xs icon-circle icon-darker-filled"></a></li>
+                <li><a href="{{ link.link }}//{{ link }}" class="icon {{ link.icon }} icon-xs icon-circle icon-darker-filled"></a></li>
               {% endfor %}
               <!-- <li><a href="#" class="icon fa fa-facebook icon-xs icon-circle icon-darker-filled"></a></li>
               <li><a href="#" class="icon fa fa-twitter icon-xs icon-circle icon-darker-filled"></a></li>

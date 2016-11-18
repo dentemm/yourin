@@ -271,6 +271,11 @@ class LinkFields(djangomodels.Model):
 		else:
 			return self.link_external
 
+	@property
+	def icon(self):
+
+		return self.icon_class
+
 LinkFields.panels = [
 	FieldPanel('link_external'),
 ]
@@ -280,7 +285,7 @@ class RelatedLink(LinkFields):
 	#title = djangomodels.CharField('titel', max_length=63, help_text='Naam van link')
 
 	title = djangomodels.IntegerField(verbose_name='Link naar', choices=RELATED_LINK_CHOICES)
-	icon_class = ''
+	icon_class = djangomodels.CharField(max_length=128, null=True, blank=True)
 
 	class Meta:
 		abstract = True
@@ -298,6 +303,8 @@ class RelatedLink(LinkFields):
 
 		else:
 			self.icon_class = 'fa fa-external-link'
+
+		print('icon class: %s' % self.icon_class)
 
 		return super(RelatedLink, self).save(*args, **kwargs)
 
