@@ -280,9 +280,24 @@ class RelatedLink(LinkFields):
 	#title = djangomodels.CharField('titel', max_length=63, help_text='Naam van link')
 
 	title = djangomodels.IntegerField(verbose_name='Link naar', choices=RELATED_LINK_CHOICES)
+	icon_class = ''
 
 	class Meta:
 		abstract = True
+
+	def save(self, *args, **kwargs): # FB / TW / YOU
+
+		if self.title == 1:
+			self.icon_class = 'fa fa-facebook'
+
+		elif self.title == 2:
+			self.icon_class = 'fa fa-twitter'
+
+		elif self.title == 3:
+			self.icon_class = 'fa fa-youtube-play'
+
+		else:
+			self.icon_class = 'fa fa-external-link'
 
 RelatedLink.panels = [
 	FieldPanel('title'),
@@ -650,6 +665,8 @@ class Influencer(BasePage):
 
 	template = 'home/influencer/influencer_detail.html'
 	name = djangomodels.CharField(max_length=128)
+	extra_info = djangomodels.TextField(verbose_name='Beschrijving', null=True)
+	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 
 
 Influencer.content_panels =  [
@@ -658,6 +675,8 @@ Influencer.content_panels =  [
 				FieldPanel('title', classname='col6')
 				]
 			),
+			FieldPanel('extra_info'),
+			ImageChooserPanel('image'),
 		], heading='Influencer'
 	), 
 	InlinePanel('related_links', 
