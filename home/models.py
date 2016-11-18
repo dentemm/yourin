@@ -8,7 +8,9 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models.signals import pre_delete, pre_save
 from django.utils.translation import ugettext_lazy as _
+from django.utils.text import slugify
 from django.dispatch import receiver
+
 
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore import fields
@@ -644,18 +646,24 @@ class InfluencerRelatedLink(Orderable, RelatedLink):
 	page = ParentalKey('home.Influencer', related_name='related_links')
 
 
-
 class Influencer(BasePage):
 
 	template = 'home/influencer/influencer_detail.html'
+	name = djangomodels.CharField(max_length=128)
 
+	def save(self, *args, **kwargs):
 
+		if self.slug == "" and self.title == "":
+			self.title = self.name
+			self.slug = slugify(self.name)
+
+		return super(Influencer, self).save(*args, **kwargs)
 
 
 Influencer.content_panels =  [
 	MultiFieldPanel([
 			FieldRowPanel([
-				FieldPanel('title', classname='col6')
+				FieldPanel('name', classname='col6')
 				]
 			),
 		], heading='Influencer'
@@ -663,7 +671,7 @@ Influencer.content_panels =  [
 	InlinePanel('related_links', 
 		label='Externe links',
 		help_text='Hier kan je links naar Youtube, FB en andere ingeven',
-		),
+	),
 ]
 
 Influencer.parent_page_types = [
