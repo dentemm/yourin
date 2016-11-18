@@ -299,6 +299,8 @@ class RelatedLink(LinkFields):
 		else:
 			self.icon_class = 'fa fa-external-link'
 
+		return super(RelatedLink, self).save(*args, **kwargs)
+
 RelatedLink.panels = [
 	FieldPanel('title'),
 	MultiFieldPanel(LinkFields.panels, 'Link')
@@ -703,7 +705,7 @@ class InfluencerRelatedLink(Orderable, RelatedLink):
 class Influencer(BasePage):
 
 	template = 'home/influencer/influencer_detail.html'
-	name = djangomodels.CharField(max_length=128)
+	name = djangomodels.CharField(max_length=128, null=True, blank=True)
 	extra_info = djangomodels.TextField(verbose_name='Beschrijving', null=True)
 	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 

@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block page_title %}
   {% include 'home/partials/page_title.html' with title='Influencers' icon='mdi mdi-account-circle' %}
@@ -192,6 +192,25 @@
     <div class="range range-xs-center offset-top-66">
       <div class="cell-sm-8 cell-lg-12">
         <div class="range">
+          {% for influencer in page.influencers %}
+          <div class="cell-sm-6 cell-lg-3">
+            {% image influencer.image fill-140x140 as img %}
+            <img src="{{ img.file.url}} " width="140" height="140" alt="" class="img-circle img-responsive center-block">
+            <div class="offset-top-24">
+              <h5 class="text-bold"><a href="#">{{ influencer.title|title }}</a></h5>
+            </div>
+            <p class="offset-top-4 small text-bold text-malibu">Software Developer</p>
+            <hr class="divider">
+            <ul class="list-inline list-inline-xs">
+              {% for link in influencer.related_links.all %}
+                <li><a href="#" class="icon fa fa-facebook icon-xs icon-circle icon-darker-filled"></a></li>
+              {% endfor %}
+              <!-- <li><a href="#" class="icon fa fa-facebook icon-xs icon-circle icon-darker-filled"></a></li>
+              <li><a href="#" class="icon fa fa-twitter icon-xs icon-circle icon-darker-filled"></a></li>
+              <li><a href="#" class="icon fa fa-google-plus icon-xs icon-circle icon-darker-filled"></a></li> -->
+            </ul>
+          </div>    
+          {% endfor %}
           <div class="cell-sm-6 cell-lg-3"><img src="images/users/user-john-doe-140x140.jpg" width="140" height="140" alt="" class="img-circle img-responsive center-block">
             <div class="offset-top-24">
               <h5 class="text-bold"><a href="#">John Doe</a></h5>
