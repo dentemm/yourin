@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 
-{% load staticfiles %}
+{% load staticfiles wagtailcore_tags wagtailimages_tags %}
 
 {% block page_title %}
   {% include 'home/partials/page_title.html' with title='Influencers' icon='mdi mdi-account-circle' %}
@@ -12,14 +12,15 @@
     <div class="range range-xs-center">
       <div class="cell-xs-10 cell-sm-5">
                 <!-- Member block type 5-->
-                <div class="member-block-type-5 inset-md-right-20"><img src="images/users/user-john-doe-437x437.jpg" width="437" height="437" alt="" class="img-responsive center-block">
+                <div class="member-block-type-5 inset-md-right-20">
+                  {% image page.image fill-500x500 as img %}
+                  <img src="{{ img.file.url }}" width="437" height="437" alt="" class="img-responsive center-block">
                   <div class="member-block-body"><a href="contact-me.html" class="btn btn-block btn-primary">get in touch</a>
                     <div class="offset-top-34">
                       <ul class="list-inline list-inline-xs">
-                        <li><a href="#" class="icon icon-xxs icon-circle icon-darker-filled fa-facebook"></a></li>
-                        <li><a href="#" class="icon icon-xxs icon-circle icon-darker-filled fa-twitter"></a></li>
-                        <li><a href="#" class="icon icon-xxs icon-circle icon-darker-filled fa-google-plus"></a></li>
-                        <li><a href="#" class="icon icon-xxs icon-circle icon-darker-filled fa-linkedin"></a></li>
+                      {% for link in page.related_links.all %}
+                        <li><a href="{{ link.link }}" class="icon {{ link.icon }} icon-xs icon-circle icon-darker-filled"></a></li>
+                      {% endfor %}
                       </ul>
                     </div>
                     <address class="contact-info offset-top-20 offset-sm-top-34">
@@ -33,7 +34,7 @@
       </div>
       <div class="cell-xs-10 cell-sm-7 text-sm-left">
         <div>
-          <h1>John Doe</h1>
+          <h1>{{ page.title|title }}</h1>
         </div>
         <p class="small text-darker offset-top-4">UI/UX Designer</p>
         <hr class="divider bg-mantis hr-sm-left-0">
