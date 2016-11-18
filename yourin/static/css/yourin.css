@@ -20,6 +20,11 @@ div.veil {text-align: center;}
 
 .section-24 {padding-top: 24px; padding-bottom: 24px;}
 
+.list-inline > li  {
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
 /* FONTS */
 footer {
 	font-family: "Lato", Helvetica, Arial, sans-serif;
