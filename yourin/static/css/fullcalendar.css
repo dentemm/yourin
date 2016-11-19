@@ -5,20 +5,6 @@
  */
 
 
-.fc {
-	direction: ltr;
-	text-align: left;
-}
-
-.fc-rtl {
-	text-align: right;
-}
-
-body .fc { /* extra precedence to overcome jqui */
-	font-size: 1em;
-}
-
-
 /* Colors
 --------------------------------------------------------------------------------------------------*/
 
@@ -79,7 +65,6 @@ body .fc { /* extra precedence to overcome jqui */
 	font-size: 1em;
 	text-align: center;
 	overflow: hidden;
-	font-family: "Courier New", Courier, monospace;
 
 	/* don't allow browser text-selection */
 	-webkit-touch-callout: none;
@@ -103,17 +88,13 @@ NOTE: use percentage font sizes or else old IE chokes
 }
 
 .fc-icon-left-single-arrow:after {
-	content: "\02039";
-	font-weight: bold;
-	font-size: 200%;
-	top: -7%;
+	font-family: FontAwesome;
+	content: "\f053";
 }
 
 .fc-icon-right-single-arrow:after {
-	content: "\0203A";
-	font-weight: bold;
-	font-size: 200%;
-	top: -7%;
+	font-family: FontAwesome;
+	content: "\f054";
 }
 
 .fc-icon-left-double-arrow:after {
@@ -155,6 +136,11 @@ NOTE: use percentage font sizes or else old IE chokes
 .fc-button {
 	background: none;
 	border: none;
+}
+
+.fc-button:hover {
+	background:none;
+	color: #e54044;
 }
 
 	
@@ -329,14 +315,10 @@ hr.fc-divider {
 	font-size: 1em; /* normalize cross-browser */
 }
 
-.fc th {
-	text-align: center;
-}
-
 .fc th,
 .fc td {
-	border-style: solid;
-	border-width: 1px;
+	/*border-style: solid;
+	border-width: 1px;*/
 	padding: 0;
 	vertical-align: top;
 }
@@ -384,6 +366,13 @@ a[data-goto]:hover {
 
 /* Day Row (used within the header and the DayGrid)
 --------------------------------------------------------------------------------------------------*/
+
+th.fc-day-header {
+	color: #858585;
+	font-size: 22px;
+	padding-left: 15px;
+	text-align: left;
+}
 
 .fc-row {
 	position: relative;
@@ -765,8 +754,8 @@ a.fc-more:hover {
 --------------------------------------------------------------------------------------------------*/
 
 .fc-toolbar {
-	text-align: center;
 	margin-bottom: 1em;
+	text-align: center
 }
 
 .fc-toolbar .fc-left {
@@ -892,11 +881,7 @@ a.fc-more:hover {
 	padding: 0 2px; /* column headers can't have as much v space */
 }
 
-.fc-ltr .fc-basic-view .fc-day-top .fc-day-number { float: right; }
-.fc-rtl .fc-basic-view .fc-day-top .fc-day-number { float: left; }
-
 .fc-ltr .fc-basic-view .fc-day-top .fc-week-number { float: left; border-radius: 0 0 3px 0; }
-.fc-rtl .fc-basic-view .fc-day-top .fc-week-number { float: right; border-radius: 0 0 0 3px; }
 
 .fc-basic-view .fc-day-top .fc-week-number {
 	min-width: 1.5em;
@@ -906,10 +891,6 @@ a.fc-more:hover {
 }
 
 /* when week/day number have own column */
-
-.fc-basic-view td.fc-week-number {
-	text-align: center;
-}
 
 .fc-basic-view td.fc-week-number > * {
 	/* work around the way we do column resizing and ensure a minimum width */
@@ -946,10 +927,6 @@ a.fc-more:hover {
 
 .fc-ltr .fc-axis {
 	text-align: right;
-}
-
-.fc-rtl .fc-axis {
-	text-align: left;
 }
 
 .ui-widget td.fc-axis {
@@ -1065,10 +1042,6 @@ a.fc-more:hover {
 
 .fc-ltr .fc-time-grid .fc-event-container { /* space on the sides of events for LTR (default) */
 	margin: 0 2.5% 0 2px;
-}
-
-.fc-rtl .fc-time-grid .fc-event-container { /* space on the sides of events for RTL */
-	margin: 0 2px 0 2.5%;
 }
 
 .fc-time-grid .fc-event,
@@ -1234,14 +1207,6 @@ be a descendant of the grid when it is being dragged.
 	border-bottom-color: transparent;
 }
 
-.fc-rtl .fc-time-grid .fc-now-indicator-arrow {
-	right: 0;
-	/* triangle pointing left... */
-	border-width: 5px 6px 5px 0;
-	border-top-color: transparent;
-	border-bottom-color: transparent;
-}
-
 
 
 /* List View
@@ -1257,10 +1222,6 @@ be a descendant of the grid when it is being dragged.
 }
 
 /* view wrapper */
-
-.fc-rtl .fc-list-view {
-	direction: rtl; /* unlike core views, leverage browser RTL */
-}
 
 .fc-list-view {
 	border-width: 1px;
@@ -1295,9 +1256,6 @@ be a descendant of the grid when it is being dragged.
 .fc-ltr .fc-list-heading-main { float: left; }
 .fc-ltr .fc-list-heading-alt { float: right; }
 
-.fc-rtl .fc-list-heading-main { float: right; }
-.fc-rtl .fc-list-heading-alt { float: left; }
-
 /* event list items */
 
 .fc-list-item.fc-has-url {
@@ -1316,7 +1274,6 @@ be a descendant of the grid when it is being dragged.
 
 /* make the dot closer to the event title */
 .fc-ltr .fc-list-item-marker { padding-right: 0; }
-.fc-rtl .fc-list-item-marker { padding-left: 0; }
 
 .fc-list-item-title a {
 	/* every event title cell has an <a> tag */
