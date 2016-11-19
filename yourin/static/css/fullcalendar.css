@@ -389,20 +389,6 @@ temporary rendered events).
 }
 
 
-/* Scrolling Container
---------------------------------------------------------------------------------------------------*/
-
-.fc-scroller {
-	-webkit-overflow-scrolling: touch;
-}
-
-/* TODO: move to agenda/basic */
-.fc-scroller > .fc-day-grid,
-.fc-scroller > .fc-time-grid {
-	position: relative; /* re-scope all positions */
-	width: 100%; /* hack to force re-sizing this inner element when scrollbars appear/disappear */
-}
-
 
 /* Global Event Styles
 --------------------------------------------------------------------------------------------------*/
@@ -743,6 +729,10 @@ a.fc-more:hover {
 
 .fc-body td.fc-day {
 	box-shadow: 0 3px 11px 0 rgba(0, 0, 0, 0.15);
+}
+
+div.fc-row.fc-week.fc-widget-content {
+	padding-top: -10px;
 }
 
 /* a "rigid" row will take up a constant amount of height because content-skeleton is absolute */
