@@ -36,10 +36,6 @@
 	color: #666;
 }
 
-.fc-unthemed .fc-today {
-	background: #fcf8e3;
-}
-
 .fc-highlight { /* when user is selecting cells */
 	background: #bce8f1;
 	opacity: .3;
@@ -55,6 +51,9 @@
 	background: #d7d7d7;
 }
 
+tbody.fc-body div.fc-day-grid-container {
+	margin-top: -12px;
+}
 
 /* Icons (inline elements with styled text that mock arrow icons)
 --------------------------------------------------------------------------------------------------*/
@@ -327,10 +326,6 @@ hr.fc-divider {
 	border-width: 1px;*/
 	padding: 0;
 	vertical-align: top;
-}
-
-.fc td.fc-today {
-	border-style: double; /* overcome neighboring borders */
 }
 
 
@@ -883,13 +878,22 @@ a.fc-more:hover {
 
 .fc-basic-view .fc-week-number,
 .fc-basic-view .fc-day-number {
-	width: 40px;
-	height: 40px;
-	line-height: 38px;
+	text-align: center;
+	display: block;
+	position: relative;
+	line-height: 42px;
 	font-size: 22px;
 	font-weight: 700;
-	left: 10px;
-	top: 10px;
+	color: #333;
+	left: 20px;
+	top: 12px;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
+
+td.fc-today .fc-day-number {
+	border: 2px solid #333;
 }
 
 .fc-basic-view th.fc-week-number,
