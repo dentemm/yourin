@@ -7,8 +7,8 @@
 {% endblock page_title %}
 
 {% block extra_css %}
-  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.css">
-{% endblock %}
+<!--   <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.css">
+ -->{% endblock %}
 
 {% block main %}
 <section class="bg-overlay-white">
@@ -162,6 +162,11 @@
         // put your options and callbacks here
         locale: 'nl',
         fixedWeekCount: false,
+        header: {
+          left:   'prev',
+          center: 'title',
+          right:  'next'
+        }
     })
 
 });
