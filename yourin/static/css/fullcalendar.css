@@ -14,8 +14,17 @@
 }
 
 .fc-bgevent { /* default look for background events */
-	background: rgb(143, 223, 130);
-	opacity: .3;
+	background: -moz-linear-gradient(90deg, #f5bf2f 0%, #F3A43D 100%);
+	background: -webkit-linear-gradient(90deg, #f5bf2f 0%, #F3A43D 100%);
+	background: -o-linear-gradient(90deg, #f5bf2f 0%, #F3A43D 100%);
+	background: -ms-linear-gradient(90deg, #f5bf2f 0%, #F3A43D 100%);
+	background: linear-gradient(90deg, #f5bf2f 0%, #F3A43D 100%);
+
+	background: -moz-linear-gradient(90deg, #e54044 0%, #F3A43D 100%);
+	background: -webkit-linear-gradient(90deg, #e54044 0%, #F3A43D 100%);
+	background: -o-linear-gradient(90deg, #e54044 0%, #F3A43D 100%);
+	background: -ms-linear-gradient(90deg, #e54044 0%, #F3A43D 100%);
+	background: linear-gradient(90deg, #e54044 0%, #F3A43D 100%);
 }
 
 .fc-nonbusiness { /* default look for non-business-hours areas */
@@ -26,6 +35,7 @@
 tbody.fc-body div.fc-day-grid-container {
 	margin-top: -12px;
 }
+
 
 /* Icons (inline elements with styled text that mock arrow icons)
 --------------------------------------------------------------------------------------------------*/
@@ -731,8 +741,9 @@ a.fc-more:hover {
 	box-shadow: 0 3px 11px 0 rgba(0, 0, 0, 0.15);
 }
 
-div.fc-row.fc-week.fc-widget-content {
-	padding-top: -10px;
+
+.fc-content-skeleton {
+	margin-top: -8px;
 }
 
 /* a "rigid" row will take up a constant amount of height because content-skeleton is absolute */
