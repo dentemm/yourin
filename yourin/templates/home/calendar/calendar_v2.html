@@ -163,13 +163,41 @@
     $('#fullcalendar').fullCalendar({
         // put your options and callbacks here
         locale: 'nl',
-        fixedWeekCount: false,
-        //aspectRatio:0.3,
+        //fixedWeekCount: false,
+        aspectRatio:1.1,
         header: {
           left:   'prev',
           center: 'title',
           right:  'next'
-        }
+        },
+      events: [
+          {
+              title  : 'event1',
+              start  : '2016-11-11'
+          },
+          {
+              title  : 'event2',
+              start  : '2016-11-19',
+          },
+          {
+              title  : 'event3',
+              start  : '2016-11-07',
+          },
+          {
+              title  : 'event4',
+              start  : '2016-11-07',
+          },
+          {
+              title  : 'event3',
+              start  : '2016-11-07',
+          },
+          {
+              title  : 'event4',
+              start  : '2016-11-07',
+          }
+      ]
+
+
     })
 
 });
