@@ -1,10 +1,21 @@
 {% extends 'layout.html' %}
 
+{% load staticfiles %}
+
 {% block page_title %}
   {% include 'home/partials/page_title.html' with title='kalender' icon='fa fa-calendar' %}
 {% endblock page_title %}
 
+{% block extra_css %}
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.css">
+{% endblock %}
+
 {% block main %}
+<section class="bg-overlay-white">
+  <div class="shell-wide">
+      <div id="fullcalendar"></div>
+  </div>
+</section>
 <section id="rd-event-calendar-demo" class="bg-overlay-white">
   <div class="shell-wide">
       <div class="rd-calendar-fullwidth">
@@ -137,3 +148,22 @@
   </div>
 </section>
 {% endblock main %}
+
+{% block extra_js %}
+  {{ block.super }}
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/nl.js' %}"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+
+    // page is now ready, initialize the calendar...
+
+    $('#fullcalendar').fullCalendar({
+        // put your options and callbacks here
+        locale: 'nl',
+        fixedWeekCount: false,
+    })
+
+});
+  </script>
+{% endblock extra_js %}

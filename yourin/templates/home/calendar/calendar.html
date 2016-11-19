@@ -6,6 +6,11 @@
   {% include 'home/partials/page_title.html' with title='kalender' icon='fa fa-calendar' %}
 {% endblock page_title %}
 
+{% block extra_css %}
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.css">
+{% endblock %}
+
 {% block main %}
 <div class="shell">
   <div class="range range-sm-center">
