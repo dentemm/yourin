@@ -160,10 +160,13 @@
 
     // page is now ready, initialize the calendar...
 
+    var eventDates = ['2016-11-07', '2016-11-11', '2016-11-19'];
+
     $('#fullcalendar').fullCalendar({
         // put your options and callbacks here
         locale: 'nl',
         //fixedWeekCount: false,
+        selectable: true,
         aspectRatio: 1.1,
         header: {
           left:   'prev',
@@ -182,7 +185,7 @@
 
             var currentDate = $(this).data('date');
 
-            if($.inArray(currentDate, ['2016-11-06', '2016-11-07']) !== -1) {
+            if($.inArray(currentDate, eventDates) !== -1) {
               console.log($(this).children());
               console.log('hier');
               $(this).children().css('color', 'white');
@@ -192,7 +195,9 @@
         events: [
           {
               title  : 'event1',
-              start  : '2016-11-11'
+              start  : '2016-11-11',
+              className: 'event',
+              //backgroundColor: 'red',
           },
           {
               title  : 'event2',
@@ -216,11 +221,18 @@
               start  : '2016-11-07',
           },
           {
+              title  : 'event4',
+              start  : '2016-11-07',
+              className: 'blog',
+              url: '#',
+          },
+          {
             start: '2016-11-07',
             end: '2016-11-07',
+            title: 'test',
             overlap: false,
             rendering: 'background',
-            //className: 'temm',
+            className: 'blog',
             //color: '#ff9f89',
             //eventTextColor: '#aaa',
           }

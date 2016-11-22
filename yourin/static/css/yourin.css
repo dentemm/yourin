@@ -66,6 +66,14 @@ footer h6 {
 }
 */
 
+.blog .fc-title:before {
+  content: '\f099';
+  font-family: "FontAwesome";
+  font-size: 12px;
+  margin-right: 5px; 
+  color: white;
+}
+
 
 .breadcrumb-classic {
   fill: #f8ba30;
