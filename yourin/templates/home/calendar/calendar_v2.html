@@ -176,16 +176,17 @@
         },
         viewRender: function(view, element) {
 
-          var allElements = $('td.fc-day-top').not('fc-other-month');
+          var allElements = $('td.fc-day-top').not('.fc-other-month');
 
           $(element).find(allElements).each(function(){
-            //console.log($(this));
 
-            if($.inArray($(this).data('date'), ['2016-11-06', '2016-11-07'])) {
-              console.log($(this));
+            var currentDate = $(this).data('date');
+
+            if($.inArray(currentDate, ['2016-11-06', '2016-11-07']) !== -1) {
+              console.log($(this).children());
               console.log('hier');
+              $(this).children().css('color', 'white');
             }
-
           });
         },
         events: [
