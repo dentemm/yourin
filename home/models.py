@@ -548,13 +548,38 @@ class EventIndex(BasePage):
 
 	template = 'home/event/event_index.html'
 
-	name = djangomodels.CharField(verbose_name='naam', max_length=164, default='')
 
+	@property
+	def events(self):
+
+		events = Event.objects.live().descendant_of(self)
+
+		return events
+
+
+	@property
+	def upcoming_events(self):
+
+		events = Event.objects.live().descendant_of(self).filter(event_date__gt=date.today())[:4]
+
+		return events
+
+	def get_context(self, request):
+		# Get blogs
+		events = self.events
+		upcoming_events = self.upcoming_events
+
+		# Update template context
+		context = super(EventIndex, self).get_context(request)
+		context['events'] = events
+		context['upcoming_events'] = upcoming_events
+
+		return context
 
 EventIndex.content_panels = Page.content_panels + [
 	MultiFieldPanel([
 			FieldRowPanel([
-				FieldPanel('name', classname='col6'),
+				FieldPanel('title', classname='col6'),
 				]
 			),
 		]
@@ -573,7 +598,7 @@ class Event(BasePage):
 
 	template = 'home/event/event_detail.html'
 
-	name = djangomodels.CharField(verbose_name='naam', max_length=164, default='')
+	name = djangomodels.CharField(verbose_name='naam', max_length=164, default='', null=True, blank=True)
 	description = djangomodels.TextField(verbose_name='beschrijving', null=True)
 	event_date = djangomodels.DateField(verbose_name='datum', default=date.today)
 	event_duration = djangomodels.PositiveIntegerField('Duur (# dagen)', default=1, validators=[MaxValueValidator(21),])
@@ -582,12 +607,20 @@ class Event(BasePage):
 	image = djangomodels.ForeignKey('home.CustomImage', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 	category = djangomodels.ForeignKey('home.EventCategory', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='events')
 
+	class Meta:
+		verbose_name = 'evenement'
+		verbose_name = 'evenementen'
+		ordering = ['-event_date']
+
+
+
+
 # Festival page panels
 Event.content_panels = [
 
 	MultiFieldPanel([
 			FieldRowPanel([
-				FieldPanel('name', classname='col6'),
+				FieldPanel('title', classname='col6'),
 				FieldPanel('category', classname='col6'),
 				]
 			),
