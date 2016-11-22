@@ -481,9 +481,19 @@ class BlogIndex(BasePage):
 
 		return blogs
 
+	@property
+	def recent_blogs(self):
+
+		blogs = Blog.objects.live().descendant_of(self).order_by('-date')[:5]
+
+		#blogs = blogs.order_by('-date')
+
+		return blogs
+
 	def get_context(self, request):
 		# Get blogs
 		blogs = self.blogs
+		recent_blogs = self.recent_blogs
 
 		# Filter by tag (als die bestaat)
 		tag = request.GET.get('tag')
@@ -507,6 +517,8 @@ class BlogIndex(BasePage):
 		# Update template context
 		context = super(BlogIndex, self).get_context(request)
 		context['blogs'] = blogs
+		context['recent_blogs'] = recent_blogs
+
 		return context
 
 BlogIndex.parent_page_types = [
