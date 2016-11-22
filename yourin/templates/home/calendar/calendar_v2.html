@@ -170,7 +170,25 @@
           center: 'title',
           right:  'next'
         },
-      events: [
+        dayRender: function (date, cell) {
+          //console.log(cell);
+          //cell.css("background-color", "red");
+        },
+        viewRender: function(view, element) {
+
+          var allElements = $('td.fc-day-top').not('fc-other-month');
+
+          $(element).find(allElements).each(function(){
+            //console.log($(this));
+
+            if($.inArray($(this).data('date'), ['2016-11-06', '2016-11-07'])) {
+              console.log($(this));
+              console.log('hier');
+            }
+
+          });
+        },
+        events: [
           {
               title  : 'event1',
               start  : '2016-11-11'
@@ -182,6 +200,7 @@
           {
               title  : 'event3',
               start  : '2016-11-07',
+              //className: 'temm',
           },
           {
               title  : 'event4',
@@ -200,13 +219,12 @@
             end: '2016-11-07',
             overlap: false,
             rendering: 'background',
-            //color: '#ff9f89'
+            //className: 'temm',
+            //color: '#ff9f89',
+            //eventTextColor: '#aaa',
           }
-      ]
-
-
+        ]
     })
-
 });
   </script>
 {% endblock extra_js %}
