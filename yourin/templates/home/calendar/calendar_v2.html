@@ -173,21 +173,13 @@
           center: 'title',
           right:  'next'
         },
-        dayRender: function (date, cell) {
-          //console.log(cell);
-          //cell.css("background-color", "red");
-        },
         viewRender: function(view, element) {
 
+          // Color Day Number white, in stead of default when a date has at least 1 event
           var allElements = $('td.fc-day-top').not('.fc-other-month');
-
           $(element).find(allElements).each(function(){
-
             var currentDate = $(this).data('date');
-
             if($.inArray(currentDate, eventDates) !== -1) {
-              console.log($(this).children());
-              console.log('hier');
               $(this).children().css('color', 'white');
             }
           });
