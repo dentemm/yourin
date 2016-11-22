@@ -322,11 +322,23 @@ class BasePage(Page):
 
 	catchphrase = djangomodels.CharField(verbose_name='catchphrase', max_length=164, default='Entertainment voor jongeren')
 
+
+	@property
+	def footer_blogs(self):
+		# Get list of live blog pages that are descendants of this page
+		blogs = Blog.objects.live().order_by('-date')[:3]
+
+		return blogs
+
+	class Meta:
+		abstract = True
+
 	def get_context(self, request, *args, **kwargs):
 
 		ctx = super(BasePage, self).get_context(request, *args, **kwargs)
 
 		ctx['yourin'] = yourin_variables
+		ctx['footer_blogs'] = self.footer_blogs
 
 		return ctx
 
@@ -336,8 +348,7 @@ class BasePage(Page):
 
 		super(BasePage, self).save(*args, **kwargs)
 
-	class Meta:
-		abstract = True
+
 
 
 class HomePage(BasePage):
