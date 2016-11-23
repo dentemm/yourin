@@ -102,24 +102,31 @@ def rendition_delete(sender, instance, **kwargs):
 #
 #
 
-#@register_snippet
-class EventCategory(djangomodels.Model):
+@register_snippet
+class Category(djangomodels.Model):
 
-	name = djangomodels.CharField(max_length=64)
+	name = djangomodels.CharField(verbose_name='categorie', max_length=64)
+	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
+
 
 	class Meta:
 		verbose_name = 'Evenement Categorie'
 		verbose_name_plural = 'Evenement Categorieën'
 		ordering = ['name', ]
 
-EventCategory.panels = [
+	def __str__(self):
+		return self.name
+
+Category.panels = [
 	MultiFieldPanel([
 			FieldRowPanel([
-					FieldPanel('name', classname='col6'),
+					FieldPanel('name', classname='col6', ),
 				]
 			),
-		]
-	),
+			ImageChooserPanel('image'),
+		], heading='Categorie',
+	), 
+
 ]
 
 #@register_snippet
@@ -596,6 +603,10 @@ EventIndex.subpage_types = [
 	'home.Event',
 ]
 
+class EventCategory(Category):
+
+	page = ParentalKey('home.Event', related_name='categories')
+
 class Event(BasePage):
 
 	template = 'home/event/event_detail.html'
@@ -608,14 +619,12 @@ class Event(BasePage):
 	class_name = djangomodels.CharField(max_length=28, default='cal_event')
 
 	image = djangomodels.ForeignKey('home.CustomImage', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
-	category = djangomodels.ForeignKey('home.EventCategory', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='events')
+	category = djangomodels.ForeignKey('home.Category', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='events')
 
 	class Meta:
 		verbose_name = 'evenement'
 		verbose_name = 'evenementen'
 		ordering = ['-event_date']
-
-
 
 
 # Festival page panels
@@ -641,6 +650,8 @@ Event.content_panels = [
 		],
 		heading='Evenement gegevens'
 	),
+	#InlinePanel('categories', label='categorieën'),
+	
 ]
 
 Event.parent_page_types = [
@@ -660,7 +671,7 @@ class CalendarEvent(BasePage):
 	website = djangomodels.URLField(verbose_name='event website')
 
 	image = djangomodels.ForeignKey('home.CustomImage', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
-	category = djangomodels.ForeignKey('home.EventCategory', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='calendar_events')
+	category = djangomodels.ForeignKey('home.Category', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='calendar_events')
 
 
 CalendarEvent.parent_page_types = [
