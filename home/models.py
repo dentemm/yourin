@@ -446,6 +446,8 @@ class Blog(Orderable, BasePage):
 	date = djangomodels.DateField(auto_now_add=True)
 	edited = djangomodels.DateField(auto_now=True)
 	intro_text = djangomodels.TextField(verbose_name='intro text', default='', blank=True, null=True)
+	class_name = djangomodels.CharField(max_length=28, default='cal_blog')
+
 	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, 
 		blank=True, on_delete=djangomodels.SET_NULL, related_name='+'
 		)
@@ -603,6 +605,7 @@ class Event(BasePage):
 	event_date = djangomodels.DateField(verbose_name='datum', default=date.today)
 	event_duration = djangomodels.PositiveIntegerField('Duur (# dagen)', default=1, validators=[MaxValueValidator(21),])
 	website = djangomodels.URLField(verbose_name='event website', null=True)
+	class_name = djangomodels.CharField(max_length=28, default='cal_event')
 
 	image = djangomodels.ForeignKey('home.CustomImage', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 	category = djangomodels.ForeignKey('home.EventCategory', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='events')
