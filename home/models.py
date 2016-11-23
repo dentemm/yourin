@@ -14,7 +14,7 @@ from django.dispatch import receiver
 
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore import fields
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, FieldRowPanel, StreamFieldPanel
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, FieldRowPanel, StreamFieldPanel, PageChooserPanel
 from wagtail.wagtailsnippets.models import register_snippet
 from wagtail.wagtailimages.models import Image, AbstractImage, AbstractRendition
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
@@ -148,11 +148,28 @@ class WhatWeDo(djangomodels.Model):
 	name = djangomodels.CharField(verbose_name='naam', max_length=40)
 	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 	extra_info = djangomodels.TextField(verbose_name='info tekst', max_length=512)
+	related_page = djangomodels.ForeignKey('wagtailcore.Page', verbose_name='Link naar pagina', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 
 	class Meta:
 		verbose_name = 'homepage pijler'
 		verbose_name_plural = 'homepage pijlers'
 
+WhatWeDo.panels = [
+	MultiFieldPanel([
+			FieldRowPanel([
+					FieldPanel('name', classname='col6'),
+				],
+			),
+			FieldRowPanel([
+					FieldPanel('extra_info', classname='col6')
+				],
+			),
+			ImageChooserPanel('image'),
+			PageChooserPanel('related_page', ['home.InfluencerIndex', 'home.BlogIndex', 'home.EventIndex', 'home.ContactPage', 'home.AboutPage', 'home.CalendarIndex' ])
+
+		], heading="Yourin 'pijlers'"
+	)
+]
 
 @register_snippet
 class Location(djangomodels.Model):
