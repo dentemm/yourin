@@ -7,6 +7,7 @@
         <div class="cell-xs-7 text-xs-left cell-md-4 cell-lg-3 cell-lg-push-4">
           <h6 class="text-uppercase text-spacing-60">Recente blogs</h6>
           <!-- Post Widget-->
+        {% if footer_blogs %}
           {% for blog in footer_blogs %}
           <article class="post widget-post text-left text-picton-blue">
             <a href="blog-classic-single-post.html">
@@ -23,34 +24,22 @@
             </a>
           </article>
           {% endfor %}
+        {% else %}
           <article class="post widget-post text-left text-picton-blue">
             <a href="blog-classic-single-post.html">
               <div class="unit unit-horizontal unit-spacing-xs unit-middle">
                 <div class="unit-body">
-                  <div class="post-meta"><span class="icon-xxs mdi mdi-arrow-right"></span>
+<!--                   <div class="post-meta"><span class="icon-xxs mdi mdi-arrow-right"></span>
                     <time datetime="2016-01-01" class="text-dark">05/14/2015</time>
-                  </div>
+                  </div> -->
                   <div class="post-title">
-                    <h6 class="text-regular">The meaning of Web Design</h6>
+                    <h6 class="text-regular">Er zijn geen blog posts aanwezig ... </h6>
                   </div>
                 </div>
               </div>
             </a>
           </article>
-          <article class="post widget-post text-left text-picton-blue">
-            <a href="blog-classic-single-post.html">
-              <div class="unit unit-horizontal unit-spacing-xs unit-middle">
-                <div class="unit-body">
-                  <div class="post-meta"><span class="icon-xxs mdi mdi-arrow-right"></span>
-                    <time datetime="2016-01-01" class="text-dark">05/14/2015</time>
-                  </div>
-                  <div class="post-title">
-                    <h6 class="text-regular">Get Started with TemplateMonster</h6>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </article>
+        {% endif %}
         </div>
         <div class="cell-xs-5 offset-top-41 offset-xs-top-0 text-xs-left cell-md-3 cell-lg-2 cell-lg-push-3">
           <h6 class="text-uppercase text-spacing-60">Handige links</h6>

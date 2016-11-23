@@ -14,6 +14,7 @@
           <!-- Events list-->
           <section>
             <!-- Post Event-->
+        {% if page.blogs %}
           {% for blog in page.blogs %}
             <article class="post post-event section-bottom-40">
               <header class="post-media">
@@ -43,9 +44,8 @@
               <hr class="hr bg-gray">
               {% endif  %}
             </article>
-
-
           {% endfor %}
+        {% else %}
             <article class="post post-event">
               <!-- Post media-->
               <header class="post-media">
@@ -60,11 +60,11 @@
               <!-- Post content-->
               <section class="post-content text-left offset-top-41">
                 <!-- Post Title-->
-                <h3 class="offset-top-10"><a href="events-list-single-left-sidebar.html">Demo blog post</a></h3>
+                <h3 class="offset-top-10"><a href="events-list-single-left-sidebar.html">Dit is een voorbeeld</a></h3>
                 <!-- Post Body-->
                 <div class="post-body">
                   <div class="inset-md-right-115">
-                    <p>Donec id elit non mi porta gravida at eget metus. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+                    <p>Er zijn nog geen blog posts aangemaakt, vandaar deze tekst. Dit is een dummy blog post, en zal niet meer zichtbaar zijn zodra de eerste blog is geschreven</p>
                   </div>
                 </div><a href="#" class="btn btn-sm btn-primary offset-top-30">Lees Verder</a>
                 <!-- Post meta-->
@@ -74,33 +74,8 @@
               </section>
             </article>
             <hr class="hr bg-lighter offset-top-41 offset-sm-top-66">
-            <div class="offset-top-41 offset-sm-top-66">
-              <!-- Post Event-->
-              <article class="post post-event">
-                <!-- Post media-->
-                <header class="post-media">
-                  <div data-photo-swipe="gallery"><a class="thumbnail-classic" href="events-list-single-left-sidebar.html" target="_self">
-                                      <figure><img width="570" height="321" src="{% static 'images/blog/post-03-570x321.jpg' %}" alt="">
-                                      </figure></a>
-                  </div>
-                </header>
-                <!-- Post content-->
-                <section class="post-content text-left offset-top-41">
-                  <!-- Post Title-->
-                  <h3 class="offset-top-10"><a href="events-list-single-left-sidebar.html">Nog wat meer demo inhoud</a></h3>
-                  <!-- Post Body-->
-                  <div class="post-body">
-                    <div class="inset-md-right-115">
-                      <p>Donec id elit non mi porta gravida at eget metus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna. Curabitur blandit tempus porttitor. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    </div>
-                  </div><a href="#" class="btn btn-sm btn-primary offset-top-30">Lees Verder</a>
-                  <!-- Post meta-->
-                  <div class="post-meta context-dark">
-                    <time datetime="2016-01-01"><span class="post-meta-day">8</span><span class="big text-uppercase post-meta-month">Mar</span></time>
-                  </div>
-                </section>
-              </article>
-            </div>
+        {% endif %}
+
             <div class="offset-top-66">
               <!-- Classic Pagination-->
               {% if blogs.has_other_pages %}
@@ -149,9 +124,10 @@
             <div class="cell-sm-6 cell-md-12 offset-top-41">
               <h6 class="text-uppercase text-spacing-60">Recente artikels</h6>
               <div class="text-subline"></div>
-              <div class="offset-top-34">
                 <!-- Event Widget-->
+            {% if recent_bogs %}
               {% for blog in recent_blogs %}
+              <div class="offset-top-34">
                 <article class="post widget-event text-left">
                   <a href="{% pageurl blog %}">
                     <div class="unit unit-horizontal unit-spacing-xs unit-middle">
@@ -175,33 +151,37 @@
                     </div>
                   </a>
                 </article>
+              </div>
               {% endfor %}
+            {% else %}
+              <div class="offset-top-34">
                 <article class="post widget-event text-left">
                   <a href="#">
                     <div class="unit unit-horizontal unit-spacing-xs unit-middle">
-                      <div class="unit-left"><img width="46" height="46" src="{% static 'images/blog/post-thumb-01-46x46.jpg' %}" alt="" class="img-circle"></div>
+                      <div class="unit-left"><img width="46" height="46" src="" class="img-circle"></div>
                       <div class="unit-body">
                         <div class="post-meta">
                           <ul class="list-inline list-inline-sm">
                             <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
-                              <time datetime="2016-01-01" class="text-dark">05/14/2015</time>
+                              <time datetime="2016-01-01" class="text-dark"> leeg </time>
                             </li>
-                            <li><span class="icon-xxs text-picton-blue mdi mdi-clock"></span>
+                            <!-- <li><span class="icon-xxs text-picton-blue mdi mdi-clock"></span>
                               <time datetime="2016-01-01" class="text-dark">9:00 PM</time>
-                            </li>
+                            </li> -->
                           </ul>
                         </div>
                         <div class="post-title">
-                          <h6 class="text-regular">Euismod Dolor Ultricies Risus Vulputate</h6>
+                          <h6 class="text-regular">Er zijn nog geen blog posts ... </h6>
                         </div>
                       </div>
                     </div>
                   </a>
                 </article>
               </div>
-              <div class="offset-top-30">
-                <!-- Event Widget-->
-                <article class="post widget-event text-left">
+            {% endif %}
+
+<!--              <div class="offset-top-30">
+                 <article class="post widget-event text-left">
                   <a href="#">
                     <div class="unit unit-horizontal unit-spacing-xs unit-middle">
                       <div class="unit-left"><img width="46" height="46" src="{% static 'images/blog/post-thumb-02-46x46.jpg' %}" alt="" class="img-circle"></div>
@@ -223,31 +203,8 @@
                     </div>
                   </a>
                 </article>
-              </div>
-              <div class="offset-top-30">
-                <!-- Event Widget-->
-                <article class="post widget-event text-left"><a href="#">
-                  <div class="unit unit-horizontal unit-spacing-xs unit-middle">
-                    <div class="unit-left"><img width="46" height="46" src="{% static 'images/blog/post-thumb-03-46x46.jpg' %}" alt="" class="img-circle"></div>
-                    <div class="unit-body">
-                      <div class="post-meta">
-                        <ul class="list-inline list-inline-sm">
-                          <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
-                            <time datetime="2016-01-01" class="text-dark">05/14/2015</time>
-                          </li>
-                          <li><span class="icon-xxs text-picton-blue mdi mdi-clock"></span>
-                            <time datetime="2016-01-01" class="text-dark">9:00 PM</time>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="post-title">
-                        <h6 class="text-regular">Inceptos Malesuada Venenatis Risus</h6>
-                      </div>
-                    </div>
-                  </div>
-                </a></article>
-              </div>
-            </div>
+              </div> 
+            </div>-->
           </div>
           <!-- Flickr Feed-->
         </aside>
