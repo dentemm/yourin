@@ -34,7 +34,8 @@
                   <div class="inset-md-right-115">
                     <p>{{ blog.intro_text}}</p>
                   </div>
-                </div><a href="{% pageurl blog %}" class="btn btn-sm btn-primary offset-top-30">Lees Verder</a>
+                </div>
+                <a href="{% pageurl blog %}" class="btn btn-sm btn-primary offset-top-30">Lees Verder</a>
                 <!-- Post meta-->
                 <div class="post-meta context-dark">
                   <time datetime="{{ blog.date|date:'Y-m-d'}}"><span class="post-meta-day">{{ blog.date|date:'d'}}</span><span class="big text-uppercase post-meta-month">{{ blog.date|date:'b'|upper }}</span></time>
@@ -125,8 +126,33 @@
               <h6 class="text-uppercase text-spacing-60">Recente artikels</h6>
               <div class="text-subline"></div>
                 <!-- Event Widget-->
-            {% if recent_bogs %}
-              {% for blog in recent_blogs %}
+          {% if recent_blogs %}
+            {% for blog in recent_blogs %}
+              {% if forloop.first %}
+              <div class="offset-top-34">
+                <article class="post widget-event text-left">
+                  <a href="#">
+                    <div class="unit unit-horizontal unit-spacing-xs unit-middle">
+                      <div class="unit-left"><img width="46" height="46" src="" class="img-circle"></div>
+                      <div class="unit-body">
+                        <div class="post-meta">
+                          <ul class="list-inline list-inline-sm">
+                            <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
+                              <time datetime="2016-01-01" class="text-dark"> leeg </time>
+                            </li>
+                            <!-- <li><span class="icon-xxs text-picton-blue mdi mdi-clock"></span>
+                              <time datetime="2016-01-01" class="text-dark">9:00 PM</time>
+                            </li> -->
+                          </ul>
+                        </div>
+                        <div class="post-title">De post hier links is momenteel de enige ... </h6>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </article>
+              </div>
+              {% else %}
               <div class="offset-top-34">
                 <article class="post widget-event text-left">
                   <a href="{% pageurl blog %}">
@@ -152,8 +178,9 @@
                   </a>
                 </article>
               </div>
-              {% endfor %}
-            {% else %}
+              {% endif %}
+            {% endfor %}
+          {% else %}
               <div class="offset-top-34">
                 <article class="post widget-event text-left">
                   <a href="#">

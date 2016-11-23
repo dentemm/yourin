@@ -242,35 +242,38 @@
           <div class="cell-sm-6 cell-md-12 offset-top-41">
             <h6 class="text-uppercase text-spacing-60">Opkomende evenementen</h6>
             <div class="text-subline"></div>
-            <div class="offset-top-34">
+            
               <!-- Event Widget-->
+            {% if upcoming_events %}
               {% for event in upcoming_events %}
-              <article class="post widget-event text-left">
-                <a href="#">
-                  <div class="unit unit-horizontal unit-spacing-xs unit-middle">
-                    {% image event.image fill-100x100 as img %}
-                    <div class="unit-left"><img width="46" height="46" src="{{ img.file.url }}" class="img-circle"></div>
-                    <div class="unit-body">
-                      <div class="post-meta">
-                        <ul class="list-inline list-inline-sm">
-                          <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
-                            <time datetime="2016-01-01" class="text-dark">{{ event.event_date|date:'j F'}}</time>
-                          </li>
-<!--                           <li><span class="icon-xxs text-picton-blue mdi mdi-clock"></span>
-                            <time datetime="2016-01-01" class="text-dark">9:00 PM</time>
-                          </li> -->
-                        </ul>
-                      </div>
-                      <div class="post-title">
-                        <h6 class="text-regular">{{ event.title|title }}</h6>
+              <div class="offset-top-34">
+                <article class="post widget-event text-left">
+                  <a href="#">
+                    <div class="unit unit-horizontal unit-spacing-xs unit-middle">
+                      {% image event.image fill-100x100 as img %}
+                      <div class="unit-left"><img width="46" height="46" src="{{ img.file.url }}" class="img-circle"></div>
+                      <div class="unit-body">
+                        <div class="post-meta">
+                          <ul class="list-inline list-inline-sm">
+                            <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
+                              <time datetime="2016-01-01" class="text-dark">{{ event.event_date|date:'j F'}}</time>
+                            </li>
+  <!--                           <li><span class="icon-xxs text-picton-blue mdi mdi-clock"></span>
+                              <time datetime="2016-01-01" class="text-dark">9:00 PM</time>
+                            </li> -->
+                          </ul>
+                        </div>
+                        <div class="post-title">
+                          <h6 class="text-regular">{{ event.title|title }}</h6>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </a>
-              </article>
+                  </a>
+                </article>
+              </div>
               {% endfor %}
-            </div>
-            <div class="offset-top-30">
+            {% else %}
+            <div class="offset-top-34">
               <!-- Event Widget-->
               <article class="post widget-event text-left"><a href="#">
                   <div class="unit unit-horizontal unit-spacing-xs unit-middle">
@@ -279,49 +282,21 @@
                       <div class="post-meta">
                         <ul class="list-inline list-inline-sm">
                           <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
-                            <time datetime="2016-01-01" class="text-dark">05/14/2015</time>
-                          </li>
-                          <li><span class="icon-xxs text-picton-blue mdi mdi-clock"></span>
-                            <time datetime="2016-01-01" class="text-dark">9:00 PM</time>
+                            <time datetime="2016-01-01" class="text-dark">leeg ...</time>
                           </li>
                         </ul>
                       </div>
                       <div class="post-title">
-                        <h6 class="text-regular">The meaning of Web De...</h6>
+                        <h6 class="text-regular">Geen evenementen gepland</h6>
                       </div>
                     </div>
                   </div>
                 </a>
               </article>
             </div>
-            <div class="offset-top-30">
-              <!-- Event Widget-->
-              <article class="post widget-event text-left">
-                <a href="#">
-                  <div class="unit unit-horizontal unit-spacing-xs unit-middle">
-                    <div class="unit-left"><img width="46" height="46" src="images/blog/post-thumb-03-46x46.jpg" alt="" class="img-circle"></div>
-                    <div class="unit-body">
-                      <div class="post-meta">
-                        <ul class="list-inline list-inline-sm">
-                          <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
-                            <time datetime="2016-01-01" class="text-dark">05/14/2015</time>
-                          </li>
-                          <li><span class="icon-xxs text-picton-blue mdi mdi-clock"></span>
-                            <time datetime="2016-01-01" class="text-dark">9:00 PM</time>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="post-title">
-                        <h6 class="text-regular">Get Started with Templa...</h6>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </article>
-            </div>
+            {% endif %}
           </div>
         </div>
-
       </aside>
     </div>
   </div>

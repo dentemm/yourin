@@ -102,7 +102,7 @@ def rendition_delete(sender, instance, **kwargs):
 #
 #
 
-@register_snippet
+#@register_snippet
 class EventCategory(djangomodels.Model):
 
 	name = djangomodels.CharField(max_length=64)
@@ -122,7 +122,7 @@ EventCategory.panels = [
 	),
 ]
 
-@register_snippet
+#@register_snippet
 class NewsCategory(djangomodels.Model):
 
 	name = djangomodels.CharField(max_length=64)
@@ -140,8 +140,8 @@ class WhatWeDo(djangomodels.Model):
 	extra_info = djangomodels.TextField(verbose_name='info tekst', max_length=512)
 
 	class Meta:
-		verbose_name = 'pijler'
-		verbose_name_plural = 'pijlers'
+		verbose_name = 'homepage pijler'
+		verbose_name_plural = 'homepage pijlers'
 
 
 @register_snippet
@@ -454,8 +454,8 @@ class Blog(Orderable, BasePage):
 
 	blog_content = fields.StreamField([
 		#('blog_title', BlogTitleBlock(help_text='Dit is de titel van het artikel, voorzien van een afbeelding')),
-		('blog_intro', IntroTextBlock(help_text='Hiermee kan je optioneel een korte inleiding voorzien')),
-		('blog_subtitle', SubtitleBlock()),	
+		#('blog_intro', IntroTextBlock(help_text='Hiermee kan je optioneel een korte inleiding voorzien')),
+		#('blog_subtitle', SubtitleBlock()),	
 		('blog_paragraph', ParagraphBlock()),
 		('blog_image', ImageWithCaptionBlock()),
 		('blog_quote', PullQuoteBlock()),
@@ -468,8 +468,8 @@ Blog.subpage_types = []
 Blog.content_panels = [
 	MultiFieldPanel([
 		FieldRowPanel([
-				FieldPanel('title', classname='col12'),
-				FieldPanel('intro_text', classname='col6'),
+				FieldPanel('title', classname='col6'),
+				FieldPanel('intro_text', classname='col10'),
 				#FieldPanel('date_posted', classname='col6'),
 			]),
 		], heading='Blog informatie',
@@ -578,7 +578,7 @@ class EventIndex(BasePage):
 
 		return context
 
-EventIndex.content_panels = Page.content_panels + [
+EventIndex.content_panels = [
 	MultiFieldPanel([
 			FieldRowPanel([
 				FieldPanel('title', classname='col6'),
