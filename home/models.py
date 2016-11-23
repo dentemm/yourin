@@ -21,6 +21,9 @@ from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 
 from modelcluster.fields import ParentalKey
+from modelcluster.tags import ClusterTaggableManager
+
+from taggit.models import TaggedItemBase
 
 from django_countries.fields import CountryField
 
@@ -419,28 +422,31 @@ ContactPage.subpage_types = []
 class CalendarPage(BasePage):
 	template = 'home/calendar/calendar_v2.html'
 
-class NewsArticle(BasePage):
+# class NewsArticle(BasePage):
 
-	template = 'home/article_page.html'
+# 	template = 'home/article_page.html'
 
-	pub_date = djangomodels.DateField(auto_now_add=True, null=True)
-	update_date = djangomodels.DateField(auto_now=True, null=True)
+# 	pub_date = djangomodels.DateField(auto_now_add=True, null=True)
+# 	update_date = djangomodels.DateField(auto_now=True, null=True)
 
-	name = djangomodels.CharField(verbose_name='naam', max_length=164)
-	image = djangomodels.ForeignKey('home.CustomImage', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
-	# Streamfield goes here
+# 	name = djangomodels.CharField(verbose_name='naam', max_length=164)
+# 	image = djangomodels.ForeignKey('home.CustomImage', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
+# 	# Streamfield goes here
 
 
 
-NewsArticle.content_panels = [
-	MultiFieldPanel([
-			FieldRowPanel([
-				FieldPanel('name',classname='col6'),
-				]
-			),
-		],
-		heading='Nieuws artikel')
-]
+# NewsArticle.content_panels = [
+# 	MultiFieldPanel([
+# 			FieldRowPanel([
+# 				FieldPanel('name',classname='col6'),
+# 				]
+# 			),
+# 		],
+# 		heading='Nieuws artikel')
+# ]
+
+class BlogTag(TaggedItemBase):
+    content_object = ParentalKey('home.Blog', related_name='tagged_items')
 
 class Blog(Orderable, BasePage):
 	'''
@@ -454,6 +460,7 @@ class Blog(Orderable, BasePage):
 	edited = djangomodels.DateField(auto_now=True)
 	intro_text = djangomodels.TextField(verbose_name='intro text', default='', blank=True, null=True)
 	class_name = djangomodels.CharField(max_length=28, default='cal_blog')
+	tags = ClusterTaggableManager(through=BlogTag, blank=True)
 
 	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, 
 		blank=True, on_delete=djangomodels.SET_NULL, related_name='+'
@@ -479,10 +486,13 @@ Blog.content_panels = [
 				FieldPanel('intro_text', classname='col10'),
 				#FieldPanel('date_posted', classname='col6'),
 			]),
+		ImageChooserPanel('image'),
+
 		], heading='Blog informatie',
 	),
-	ImageChooserPanel('image'),
+	
 	StreamFieldPanel('blog_content'),
+	FieldPanel('tags')
 ]
 
 class BlogIndex(BasePage):
@@ -607,6 +617,9 @@ class EventCategory(Category):
 
 	page = ParentalKey('home.Event', related_name='categories')
 
+class EventTag(TaggedItemBase):
+    content_object = ParentalKey('home.Event', related_name='tagged_items')
+
 class Event(BasePage):
 
 	template = 'home/event/event_detail.html'
@@ -617,6 +630,7 @@ class Event(BasePage):
 	event_duration = djangomodels.PositiveIntegerField('Duur (# dagen)', default=1, validators=[MaxValueValidator(21),])
 	website = djangomodels.URLField(verbose_name='event website', null=True)
 	class_name = djangomodels.CharField(max_length=28, default='cal_event')
+	tags = ClusterTaggableManager(through=EventTag, blank=True)
 
 	image = djangomodels.ForeignKey('home.CustomImage', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 	category = djangomodels.ForeignKey('home.Category', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='events')
@@ -647,6 +661,7 @@ Event.content_panels = [
 			),
 			FieldPanel('description'),
 			ImageChooserPanel('image'),
+			FieldPanel('tags'),
 		],
 		heading='Evenement gegevens'
 	),
