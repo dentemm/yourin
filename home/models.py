@@ -35,7 +35,6 @@ from .validators import validate_image_min, validate_blog_image
 # GLOBAL VARIABLES
 #
 #
-
 yourin_variables = {}
 
 
@@ -157,11 +156,11 @@ class WhatWeDo(djangomodels.Model):
 WhatWeDo.panels = [
 	MultiFieldPanel([
 			FieldRowPanel([
-					FieldPanel('name', classname='col6'),
+					FieldPanel('name', classname='col9'),
 				],
 			),
 			FieldRowPanel([
-					FieldPanel('extra_info', classname='col6')
+					FieldPanel('extra_info', classname='col9')
 				],
 			),
 			ImageChooserPanel('image'),
@@ -231,7 +230,6 @@ Partner.panels = [
 
 		], heading='Partner informatie'
 	),
-	#ImageChooserPanel('logo'),
 ]
 
 @register_snippet
@@ -340,11 +338,6 @@ RelatedLink.panels = [
 	MultiFieldPanel(LinkFields.panels, 'Link')
 ]
 
-class HomePageNumbers(djangomodels.Model):
-
-	name = djangomodels.CharField(verbose_name='naam', max_length=28)
-	value = djangomodels.PositiveIntegerField(verbose_name='aantal', default=1)
-
 class BasePage(Page):
 
 	catchphrase = djangomodels.CharField(verbose_name='catchphrase', max_length=164, default='Entertainment voor jongeren')
@@ -375,15 +368,20 @@ class BasePage(Page):
 
 		super(BasePage, self).save(*args, **kwargs)
 
+class HomePageNumbers(djangomodels.Model):
 
+	name = djangomodels.CharField(verbose_name='naam', max_length=28)
+	value = djangomodels.PositiveIntegerField(verbose_name='aantal', default=1)
 
+class HomePageContent(Orderable, WhatWeDo):
+
+	page = ParentalKey('home.HomePage', related_name='content')
 
 class HomePage(BasePage):
     template = 'home/home.html'
 
     class Meta:
     	verbose_name = 'startpagina'
-
 
 HomePage.content_panels = Page.content_panels + [
 	MultiFieldPanel([
@@ -393,6 +391,7 @@ HomePage.content_panels = Page.content_panels + [
 			),
 		], heading='Startpagina aanpassingen'
 	),
+	InlinePanel('content', label='Inhoud', help_text='Hiermee kan je de inhoud van de startpagina instellen. Dit zijn de zogenaamde pijlers van Yourin, en deze kunnen gewijzigd, verwijderd en toegevoegd worden.'),
 	InlinePanel('partners', label='Partners'),
 ]
 
@@ -438,29 +437,6 @@ ContactPage.subpage_types = []
 
 class CalendarPage(BasePage):
 	template = 'home/calendar/calendar_v2.html'
-
-# class NewsArticle(BasePage):
-
-# 	template = 'home/article_page.html'
-
-# 	pub_date = djangomodels.DateField(auto_now_add=True, null=True)
-# 	update_date = djangomodels.DateField(auto_now=True, null=True)
-
-# 	name = djangomodels.CharField(verbose_name='naam', max_length=164)
-# 	image = djangomodels.ForeignKey('home.CustomImage', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
-# 	# Streamfield goes here
-
-
-
-# NewsArticle.content_panels = [
-# 	MultiFieldPanel([
-# 			FieldRowPanel([
-# 				FieldPanel('name',classname='col6'),
-# 				]
-# 			),
-# 		],
-# 		heading='Nieuws artikel')
-# ]
 
 class BlogTag(TaggedItemBase):
     content_object = ParentalKey('home.Blog', related_name='tagged_items')
@@ -591,7 +567,6 @@ class EventIndex(BasePage):
 		events = Event.objects.live().descendant_of(self)
 
 		return events
-
 
 	@property
 	def upcoming_events(self):
@@ -810,14 +785,12 @@ class InfluencerRelatedLink(Orderable, RelatedLink):
 
 	page = ParentalKey('home.Influencer', related_name='related_links')
 
-
 class Influencer(BasePage):
 
 	template = 'home/influencer/influencer_detail.html'
 	name = djangomodels.CharField(max_length=128, null=True, blank=True)
 	extra_info = djangomodels.TextField(verbose_name='Beschrijving', null=True)
 	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
-
 
 Influencer.content_panels =  [
 	MultiFieldPanel([
