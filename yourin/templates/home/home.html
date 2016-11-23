@@ -1,5 +1,7 @@
 {% extends 'layout.html' %}
 
+{% load staticfiles wagtailcore_tags %}
+
 {% block content %}
 <section class="context-dark">
   <!-- Swiper-->
@@ -9,6 +11,8 @@
       <div data-slide-bg="images/slide-02-1920x640.jpg" style="background-image: url(http://livedemo00.template-help.com/wt_58888_v6/intense-real-estate/images/slide-02-1920x640.jpg); background-size: cover; width: 1440px; background-position: 50% 50%;" class="swiper-slide swiper-slide-overlay-disable swiper-slide-next" data-swiper-slide-index="1"></div>
       <div data-slide-bg="images/slide-03-1920x640.jpg" style="background-image: url(http://livedemo00.template-help.com/wt_58888_v6/intense-real-estate/images/slide-03-1920x640.jpg); background-size: cover; width: 1440px; background-position: 50% 50%;" class="swiper-slide swiper-slide-overlay-disable" data-swiper-slide-index="2"></div>
     <div data-slide-bg="images/slide-01-1920x640.jpg" style="background-image: url(http://livedemo00.template-help.com/wt_58888_v6/intense-real-estate/images/slide-01-1920x640.jpg); background-size: cover; width: 1440px; background-position: 50% 50%;" class="swiper-slide swiper-slide-overlay-disable swiper-slide-duplicate" data-swiper-slide-index="0"></div></div>
+
+
     <div class="swiper-caption-wraper">
       <div class="shell section-41">
         <div class="range range-xs-center">
@@ -76,62 +80,56 @@
   <div class="shell-fluid">
     <div class="range range-xs-center">
       <div class="cell-xs-8 cell-sm-6 cell-lg-3">
-        <!-- Thumbnail terry
-        -->
-        <figure class="thumbnail-terry
-        "><a href="#"><img width="442" height="280" src="images/home-img-01-442-280.jpg" alt=""></a>
+        <figure class="thumbnail-terry"><a href="#"><img style="height: 200px;" width="442" height="280" src="{% static 'images/cal_bg.jpg' %}" alt=""></a>
           <figcaption>
             <div>
-              <h4 class="thumbnail-terry
-              -title">With Swimming Pool </h4>
+              <h4 class="thumbnail-terry-title">Influencers<br></h4>
             </div>
-            <p class="thumbnail-terry
-            -desc offset-top-0">32 properties</p><a href="catalog.html" class="btn offset-top-10 offset-md-top-0 btn-primary">choose an apartment</a>
+            <p class="thumbnail-terry-desc offset-top-0"></p>
+            <a href="{% slugurl 'influencers' %}" class="btn offset-top-10 offset-md-top-0 btn-primary">Naar pagina</a>
           </figcaption>
         </figure>
       </div>
       <div class="cell-xs-8 cell-sm-6 cell-lg-3 offset-top-30 offset-sm-top-0">
-        <!-- Thumbnail terry
-        -->
-        <figure class="thumbnail-terry
-        "><a href="#"><img width="442" height="280" src="images/home-img-02-442-280.jpg" alt=""></a>
+        <figure class="thumbnail-terry"><a href="#"><img style="height: 200px;" width="442" height="280" src="{% static 'images/home/blog.jpg' %}" alt=""></a>
           <figcaption>
             <div>
-              <h4 class="thumbnail-terry
-              -title">Cozy Houses</h4>
+              <h4 class="thumbnail-terry-title">Blog<br></h4>
             </div>
-            <p class="thumbnail-terry
-            -desc offset-top-0">54 properties</p><a href="catalog.html" class="btn offset-top-10 offset-md-top-0 btn-primary">choose an apartment</a>
+            <p class="thumbnail-terry-desc offset-top-0"></p>
+            <a href="catalog.html" class="btn offset-top-10 offset-md-top-0 btn-primary">Naar pagina</a>
           </figcaption>
         </figure>
       </div>
       <div class="cell-xs-8 cell-sm-6 cell-lg-3 offset-top-30 offset-lg-top-0">
         <!-- Thumbnail terry
         -->
-        <figure class="thumbnail-terry
-        "><a href="#"><img width="442" height="280" src="images/home-img-03-442-280.jpg" alt=""></a>
+        <figure class="thumbnail-terry">
+          <a href="#">
+            <img style="height: 200px;" width="442" height="280" src="images/home-img-03-442-280.jpg" alt="">
+          </a>
           <figcaption>
             <div>
-              <h4 class="thumbnail-terry
-              -title">Studio Apartments</h4>
+              <h4 class="thumbnail-terry-title">Events<br></h4>
             </div>
-            <p class="thumbnail-terry
-            -desc offset-top-0">32 properties</p><a href="catalog.html" class="btn offset-top-10 offset-md-top-0 btn-primary">choose an apartment</a>
+            <p class="thumbnail-terry-desc offset-top-0"></p>
+            <a href="catalog.html" class="btn offset-top-10 offset-md-top-0 btn-primary">Naar pagina</a>
           </figcaption>
         </figure>
       </div>
       <div class="cell-xs-8 cell-sm-6 cell-lg-3 offset-top-30 offset-lg-top-0">
         <!-- Thumbnail terry
         -->
-        <figure class="thumbnail-terry
-        "><a href="#"><img width="442" height="280" src="images/home-img-04-442-280.jpg" alt=""></a>
+        <figure class="thumbnail-terry">
+          <a href="#">
+            <img style="height: 200px;" width="442" height="280" src="images/home-img-04-442-280.jpg" alt="">
+          </a>
           <figcaption>
             <div>
-              <h4 class="thumbnail-terry
-              -title">Luxury Houses</h4>
+              <h4 class="thumbnail-terry-title">Nog iets?<br></h4>
             </div>
-            <p class="thumbnail-terry
-            -desc offset-top-0">19 properties</p><a href="catalog.html" class="btn offset-top-10 offset-md-top-0 btn-primary">choose an apartment</a>
+            <p class="thumbnail-terry-desc offset-top-0"></p>
+            <a href="catalog.html" class="btn offset-top-10 offset-md-top-0 btn-primary">Naar pagina</a>
           </figcaption>
         </figure>
       </div>

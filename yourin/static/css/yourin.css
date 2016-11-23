@@ -48,7 +48,8 @@ footer h6 {
   will-change: transform; }
 
 .thumbnail-terry figure figcaption, .thumbnail-terry figcaption {
-  position: absolute; }
+	color:white;
+  	position: absolute; }
 
 .thumbnail-terry:before {
   display: none;
@@ -155,9 +156,9 @@ footer h6 {
 /* COLOR ADJUSTMENTS */
 .label-danger {background-color: #e54044}
 
-.btn-primary {background-color: #e54044; border-color: #e3151e;}
+.btn-primary {background-color: #e54044; border-color: #e54044;}
 
-.label-primary {background-color: #e54044; border-color: #e3151e;}
+.label-primary {background-color: #e54044; border-color: #e54044;}
 
 .rdc-panel {background: #e54044}
 
