@@ -3,20 +3,23 @@
 <div class="rd-navbar-wrap" style="height: 121px;">
   <nav data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-static" class="rd-navbar rd-navbar-default rd-navbar-light rd-navbar-static" data-lg-auto-height="true" data-md-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-stick-up="true">
     <div class="rd-navbar-inner">
-      <!-- RD Navbar Panel-->
       <div class="rd-navbar-panel">
-        <!-- RD Navbar Toggle-->
         <button data-rd-navbar-toggle=".rd-navbar, .rd-navbar-nav-wrap" class="rd-navbar-toggle"><span></span></button>
-        <!--Navbar Brand-->
-        <div class="rd-navbar-brand"><a href="index.html"><img style="margin-top: -20px; margin-bottom:-20px; margin-left: -15px;" height="80" src="{% static 'images/logo.png' %}" alt=""></a></div>
+        <div class="rd-navbar-brand">
+          <a href="{% slugurl 'home' %}">
+            <img style="margin-top: -20px; margin-bottom:-20px; margin-left: -15px;" height="80" src="{% static 'images/logo.png' %}" alt="">
+          </a>
+        </div>
       </div>
       <div class="rd-navbar-menu-wrap">
         <div class="rd-navbar-nav-wrap">
           <div class="rd-navbar-mobile-scroll">
-            <!--Navbar Brand Mobile-->
-            <div class="rd-navbar-mobile-brand"><a href="index.html"><img style="margin-top: -5px;margin-left: -15px;" height="80" src="{% static 'images/logo.png' %}" alt=""></a></div>
+            <div class="rd-navbar-mobile-brand">
+              <a href="{% slugurl 'home' %}">
+                <img style="margin-top: -5px;margin-left: -15px;" height="80" src="{% static 'images/logo.png' %}" alt="">
+              </a>
+            </div>
             <div class="form-search-wrap">
-              <!-- RD Search Form-->
               <form action="search-results.html" method="GET" class="form-search rd-search">
                 <div class="form-group">
                   <label for="rd-navbar-form-search-widget" class="form-label form-search-label form-label-sm rd-input-label">Zoeken</label>
@@ -25,17 +28,20 @@
                 <button type="submit" class="form-search-submit"><span class="mdi mdi-magnify"></span></button>
               </form>
             </div>
-            <!-- RD Navbar Nav-->
             <ul class="rd-navbar-nav">
               <li class=""><a href="{% slugurl 'home' %}"><span>Home</span><!--<span class="rd-navbar-label text-middle label-custom label-danger label-xs-custom label-rounded-custom label">new</span>--></a>
           	{% for menuitem in menuitems %}
-          	  <li class="{% if calling_page.url == menuitem.url %} active{% endif %}"><a href="{% pageurl menuitem %}">{{ menuitem.title }}</a></li>
+          	  <li class="{% if calling_page.url == menuitem.url %} active{% endif %}">
+                <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+              </li>
           	{% endfor %}
             </ul>
           </div>
         </div>
-        <!--RD Navbar Search-->
-        <div class="rd-navbar-search"><a data-rd-navbar-toggle=".rd-navbar-inner,.rd-navbar-search" href="#" class="rd-navbar-search-toggle mdi"><span></span></a>
+        <div class="rd-navbar-search">
+          <a data-rd-navbar-toggle=".rd-navbar-inner,.rd-navbar-search" href="#" class="rd-navbar-search-toggle mdi">
+            <span></span>
+          </a>
           <form action="{% url 'search' %}" method="GET" class="rd-navbar-search-form search-form-icon-right rd-search">
             <div class="form-group">
               <label for="rd-navbar-search-form-input" class="form-label rd-input-label">Geef hier je zoekterm in ... </label>
