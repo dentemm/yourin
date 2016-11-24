@@ -14,6 +14,16 @@ span.big {color: white;}
 
 div.veil {text-align: center;}
 
+div.btn.btn-primary:hover, div.btn.btn-primary:focus, div.btn.btn-primary:active:hover{
+  color: white;
+  background-color: #e54044;;
+  border-color: #e54044;
+  pointer-events: none;
+}
+div.btn.btn-primary{
+	pointer-events: none;
+}
+
 .section-bottom-20 {padding-bottom: 20px;}
 
 .section-bottom-40 {padding-bottom: 40px;}
@@ -177,11 +187,11 @@ footer h6 {
 
 .rdc-table_date.rdc-table_prev, .rdc-table_date.rdc-table_next{opacity: 0.1}
 
-/* RD CALENDAR */
-/*.rdc-table_date.rdc-table_next {
-	opacity: 0.2;
+/* ICON LINK ALTERATIONS */
+a.icon-rect.fa-youtube-play:hover, a.icon-circle.fa-youtube-play:hover, a.icon-outlined.fa-youtube-play:hover, a.icon-rounded.fa-youtube-play:hover {
+  color: #fff;
+  background: #cc181e;
 }
-*/
 
 .cal_blog .fc-title:before {
   content: '\f27b';

@@ -8,29 +8,31 @@
 
 {% block main %}
 <section>
-  <div class="shell">
+  <div class="shell section-bottom-40">
     <div class="range range-xs-center">
       <div class="cell-xs-10 cell-sm-5">
-                <!-- Member block type 5-->
-                <div class="member-block-type-5 inset-md-right-20">
-                  {% image page.image fill-500x500 as img %}
-                  <img src="{{ img.file.url }}" width="437" height="437" alt="" class="img-responsive center-block">
-                  <div class="member-block-body"><a href="contact-me.html" class="btn btn-block btn-primary">get in touch</a>
-                    <div class="offset-top-34">
-                      <ul class="list-inline list-inline-xs">
-                      {% for link in page.related_links.all %}
-                        <li><a href="{{ link.link }}" class="icon {{ link.icon }} icon-xs icon-circle icon-darker-filled"></a></li>
-                      {% endfor %}
-                      </ul>
-                    </div>
-                    <address class="contact-info offset-top-20 offset-sm-top-34">
-                      <ul class="list-unstyled p">
-                        <li><span class="icon icon-xxs text-middle text-dark mdi mdi-phone"></span><a href="callto:1-800-1234-567" class="text-middle reveal-inline-block">1-800-1234-567</a></li>
-                        <li><span class="icon icon-xxs text-middle text-dark mdi mdi-email-open"></span><a href="mailto:info@demolink.org" class="text-middle reveal-inline-block text-picton-blue">info@demolink.org</a></li>
-                      </ul>
-                    </address>
-                  </div>
-                </div>
+        <!-- Member block type 5-->
+        <div class="member-block-type-5 inset-md-right-20">
+          {% image page.image fill-500x500 as img %}
+          <img src="{{ img.file.url }}" width="437" height="437" alt="" class="img-responsive center-block">
+          <div class="member-block-body">
+            <div class="btn btn-block btn-primary">
+              <i class="fa fa-arrow-down"></i> Volg mij! <i class="fa fa-arrow-down"></i></div>
+            <div class="offset-top-34">
+              <ul class="list-inline list-inline-xs text-center">
+              {% for link in page.related_links.all %}
+                <li><a href="{{ link.link }}" class="icon {{ link.icon }} icon-xs icon-circle icon-darker-filled"></a></li>
+              {% endfor %}
+              </ul>
+            </div>
+<!--             <address class="contact-info offset-top-20 offset-sm-top-34">
+              <ul class="list-unstyled p">
+                <li><span class="icon icon-xxs text-middle text-dark mdi mdi-phone"></span><a href="callto:1-800-1234-567" class="text-middle reveal-inline-block">1-800-1234-567</a></li>
+                <li><span class="icon icon-xxs text-middle text-dark mdi mdi-email-open"></span><a href="mailto:info@demolink.org" class="text-middle reveal-inline-block text-picton-blue">info@demolink.org</a></li>
+              </ul>
+            </address> -->
+          </div>
+        </div>
       </div>
       <div class="cell-xs-10 cell-sm-7 text-sm-left">
         <div>
@@ -48,39 +50,39 @@
           <p class="text-left">Web design is my expertise. I offer a wide range of services from wireframing to full-cycle web development. No matter what size is your project of – it will be done quickly and on the highest quality level.</p>
         </div>
         <div class="offset-top-50">
-                  <!-- Linear progress bar-->
-                  <div data-to="70" class="progress-linear animated-first">
-                    <div class="progress-header clearfix"><span class="small text-ubold pull-left">HTML/CSS</span><span class="small text-ubold pull-right progress-value">70</span></div>
-                    <div class="progress-bar-linear-wrap">
-                      <div class="progress-bar-linear bg-success" style="width: 70%;"></div>
-                    </div>
-                  </div>
-          <div class="offset-top-50">
-                    <!-- Linear progress bar-->
-                    <div data-to="54" class="progress-linear animated-first">
-                      <div class="progress-header clearfix"><span class="small text-ubold pull-left">Java Script</span><span class="small text-ubold pull-right progress-value">54</span></div>
-                      <div class="progress-bar-linear-wrap">
-                        <div class="progress-bar-linear bg-info" style="width: 54%;"></div>
-                      </div>
-                    </div>
+          <!-- Linear progress bar-->
+          <div data-to="70" class="progress-linear animated-first">
+            <div class="progress-header clearfix"><span class="small text-ubold pull-left">HTML/CSS</span><span class="small text-ubold pull-right progress-value">70</span></div>
+            <div class="progress-bar-linear-wrap">
+              <div class="progress-bar-linear bg-success" style="width: 70%;"></div>
+            </div>
           </div>
           <div class="offset-top-50">
-                    <!-- Linear progress bar-->
-                    <div data-to="87" class="progress-linear animated-first">
-                      <div class="progress-header clearfix"><span class="small text-ubold pull-left">PHP</span><span class="small text-ubold pull-right progress-value">87</span></div>
-                      <div class="progress-bar-linear-wrap">
-                        <div class="progress-bar-linear bg-warning" style="width: 87%;"></div>
-                      </div>
-                    </div>
+            <!-- Linear progress bar-->
+            <div data-to="54" class="progress-linear animated-first">
+              <div class="progress-header clearfix"><span class="small text-ubold pull-left">Java Script</span><span class="small text-ubold pull-right progress-value">54</span></div>
+              <div class="progress-bar-linear-wrap">
+                <div class="progress-bar-linear bg-info" style="width: 54%;"></div>
+              </div>
+            </div>
           </div>
           <div class="offset-top-50">
-                    <!-- Linear progress bar-->
-                    <div data-to="65" class="progress-linear animated-first">
-                      <div class="progress-header clearfix"><span class="small text-ubold pull-left">UI/UX Design</span><span class="small text-ubold pull-right progress-value">65</span></div>
-                      <div class="progress-bar-linear-wrap">
-                        <div class="progress-bar-linear bg-danger" style="width: 65%;"></div>
-                      </div>
-                    </div>
+            <!-- Linear progress bar-->
+            <div data-to="87" class="progress-linear animated-first">
+              <div class="progress-header clearfix"><span class="small text-ubold pull-left">PHP</span><span class="small text-ubold pull-right progress-value">87</span></div>
+              <div class="progress-bar-linear-wrap">
+                <div class="progress-bar-linear bg-warning" style="width: 87%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="offset-top-50">
+            <!-- Linear progress bar-->
+            <div data-to="65" class="progress-linear animated-first">
+              <div class="progress-header clearfix"><span class="small text-ubold pull-left">UI/UX Design</span><span class="small text-ubold pull-right progress-value">65</span></div>
+              <div class="progress-bar-linear-wrap">
+                <div class="progress-bar-linear bg-danger" style="width: 65%;"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

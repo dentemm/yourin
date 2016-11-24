@@ -810,7 +810,7 @@ class Influencer(BasePage):
 	template = 'home/influencer/influencer_detail.html'
 	name = djangomodels.CharField(max_length=128, null=True, blank=True)
 	extra_info = djangomodels.TextField(verbose_name='Beschrijving', null=True)
-	quote = djangomodels.CharField(verbose_name='Influencer citaat', max_length=255)
+	quote = djangomodels.CharField(verbose_name='Influencer citaat', max_length=255, blank=True, null=True)
 	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 
 Influencer.content_panels =  [
