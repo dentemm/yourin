@@ -108,6 +108,7 @@
     <div class="range range-sm-center text-center">
       <div class="cell-sm-8 cell-md-12">
         <div class="range">
+        {% for number in page.numbers.all %}
           <div class="cell-md-3 cell-sm-6">
             <!-- Counter type 2-->
             <div class="counter-type-2">
@@ -118,6 +119,7 @@
               <h6 class="text-uppercase text-bold text-spacing-60 offset-top-20">Festivals</h6>
             </div>
           </div>
+        {% endfor %}
           <div class="cell-md-3 cell-sm-6 offset-top-66 offset-sm-top-0">
             <!-- Counter type 2-->
             <div class="counter-type-2">

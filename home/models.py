@@ -44,6 +44,54 @@ RELATED_LINK_CHOICES = (
     (3, _("Youtube")),
 )
 
+ICON_CHOICES = (
+	('bar-chart', 'Grafiek'),
+	('car', 'Auto'),
+	('battery-3', 'Batterij'),
+	('bolt', 'Bliksem'),
+	('bomb', 'Bom'),
+	('calendar', 'kalender'),
+	('camera', 'Fototoestel'),
+	('child', 'Link'),
+	('cloud', 'Wolk'),
+	('commenting-o', 'Tekstballon'),
+	('exclamation', 'Uitroepteken'),
+	('flag', 'Vlag'),
+	('gift', 'Geschenk'),
+	('group', 'Groep mensen'),
+	('glass', 'Glas'),
+	('home', 'Home'),
+	('heart-o', 'Hart'),
+	('cutlery', 'Bestek'),
+	('globe', 'Wereldbol'),
+	('hashtag', 'Hashtag'),
+	('key', 'Sleutel'),
+	('magic', 'Toverstaf'),
+	('microphone', 'Microfoon'),
+	('mobile', 'GSM'),
+	('paint-brush', 'Penceel'),
+	('pencil', 'Potlood'),
+	('quote-right', 'Aanhalingstekens'),
+	('shopping-basket', 'Mandje'),
+	('star', 'Ster'),
+	('user', 'Gebruiker'),
+	('video-camera', 'Camera'),
+)
+
+ICON_COLOR_CHOICES = (
+	('text-default', 'Zwart'),
+	('text-gray', 'Lichtgijs'),
+	('text-primary', 'Groen'),
+	('text-deluge', 'Paars'),
+	('text-piction-blue', 'Blauw'),
+	('text-mantis', 'Lichtgroen'),
+	('text-malibu', 'Lichtblauw'),
+	('text-carrot', 'Oranje'),
+	('text-red', 'Rood'),
+	('text-blue-gray', 'Paars-blauw'),
+	('text-pink', 'Donkerpaars')
+)
+
 #
 #
 # HELPER FUNCTIES
@@ -141,34 +189,6 @@ class NewsCategory(djangomodels.Model):
 		verbose_name_plural = 'Nieuwscategorieën'
 		ordering = ['name', ]
 
-@register_snippet
-class WhatWeDo(djangomodels.Model):
-
-	name = djangomodels.CharField(verbose_name='naam', max_length=40)
-	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
-	extra_info = djangomodels.TextField(verbose_name='info tekst', max_length=512, null=True, blank=True)
-	related_page = djangomodels.ForeignKey('wagtailcore.Page', verbose_name='Link naar pagina', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
-
-	class Meta:
-		verbose_name = 'homepage pijler'
-		verbose_name_plural = 'homepage pijlers'
-
-WhatWeDo.panels = [
-	MultiFieldPanel([
-			FieldRowPanel([
-					FieldPanel('name', classname='col9'),
-				],
-			),
-			FieldRowPanel([
-					FieldPanel('extra_info', classname='col9')
-				],
-			),
-			ImageChooserPanel('image'),
-			PageChooserPanel('related_page', ['home.InfluencerIndex', 'home.BlogIndex', 'home.EventIndex', 'home.ContactPage', 'home.AboutPage', 'home.CalendarIndex' ])
-
-		], heading="Yourin 'pijlers'"
-	)
-]
 
 @register_snippet
 class Location(djangomodels.Model):
@@ -266,6 +286,57 @@ Address.panels = [
 				]
 			),
 		], heading='Adresgegevens'
+	),
+]
+
+class WhatWeDo(djangomodels.Model):
+
+	name = djangomodels.CharField(verbose_name='naam', max_length=40)
+	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
+	extra_info = djangomodels.TextField(verbose_name='info tekst', max_length=512, null=True, blank=True)
+	related_page = djangomodels.ForeignKey('wagtailcore.Page', verbose_name='Link naar pagina', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
+
+	class Meta:
+		verbose_name = 'homepage pijler'
+		verbose_name_plural = 'homepage pijlers'
+
+WhatWeDo.panels = [
+	MultiFieldPanel([
+			FieldRowPanel([
+					FieldPanel('name', classname='col9'),
+				],
+			),
+			FieldRowPanel([
+					FieldPanel('extra_info', classname='col9')
+				],
+			),
+			ImageChooserPanel('image'),
+			PageChooserPanel('related_page', ['home.InfluencerIndex', 'home.BlogIndex', 'home.EventIndex', 'home.ContactPage', 'home.AboutPage', 'home.CalendarIndex' ])
+
+		], heading="Yourin 'pijlers'"
+	)
+]
+
+class Numbers(djangomodels.Model):
+
+	name = djangomodels.CharField(verbose_name='naam', max_length=28)
+	value = djangomodels.PositiveIntegerField(verbose_name='cijfer', default=1)
+	icon = djangomodels.CharField(verbose_name='icoon', max_length=28, choices=ICON_CHOICES, default='bar-chart')
+	icon_color = djangomodels.CharField(verbose_name='kleur icoon', max_length=32, choices=ICON_COLOR_CHOICES, default='text-default')
+
+Numbers.panels = [
+	MultiFieldPanel([
+			FieldRowPanel([
+				FieldPanel('name', classname='col6'),
+				FieldPanel('value', classname='col6')
+				]
+			),
+			FieldRowPanel([
+				FieldPanel('icon', classname='col6'),
+				FieldPanel('icon_color', classname='col6')
+				]
+			),
+		], heading="Marketing cijfers"
 	),
 ]
 
@@ -368,14 +439,13 @@ class BasePage(Page):
 
 		super(BasePage, self).save(*args, **kwargs)
 
-class HomePageNumbers(djangomodels.Model):
-
-	name = djangomodels.CharField(verbose_name='naam', max_length=28)
-	value = djangomodels.PositiveIntegerField(verbose_name='aantal', default=1)
-
 class HomePageContent(Orderable, WhatWeDo):
 
 	page = ParentalKey('home.HomePage', related_name='contents')
+
+class HomePageNumbers(Orderable, Numbers):
+
+	page = ParentalKey('home.HomePage', related_name='numbers')
 
 class HomePage(BasePage):
     template = 'home/home.html'
@@ -391,7 +461,8 @@ HomePage.content_panels = Page.content_panels + [
 			),
 		], heading='Startpagina aanpassingen'
 	),
-	InlinePanel('contents', label='Inhoud', help_text='Hiermee kan je de inhoud van de startpagina instellen. Dit zijn de zogenaamde pijlers van Yourin, en deze kunnen gewijzigd, verwijderd en toegevoegd worden.'),
+	InlinePanel('contents', label='Pijlers', help_text='Hiermee kan je de inhoud van de startpagina instellen. Dit zijn de zogenaamde pijlers van Yourin, en deze kunnen gewijzigd, verwijderd en toegevoegd worden.'),
+	InlinePanel('numbers', label='Marketing numbers', help_text='Dit zijn enkele cijfers die op de startpagina worden weergegeven. Er zijn een aantal icoontjes gedefinieerd, maar deze lijst kan op vraag eenvoudig worden uitgebreid!'),
 	InlinePanel('partners', label='Partners'),
 ]
 
