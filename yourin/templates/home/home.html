@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 
-{% load staticfiles wagtailcore_tags %}
+{% load staticfiles wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
 <section class="context-dark">
@@ -79,60 +79,25 @@
 <section class="section-34">
   <div class="shell-fluid">
     <div class="range range-xs-center">
+    {% if page.contents.all %}
+      {% for content in page.contents.all %}
       <div class="cell-xs-8 cell-sm-6 cell-lg-3">
-        <figure class="thumbnail-terry"><a href="#"><img style="height: 200px;" width="442" height="280" src="{% static 'images/cal_bg.jpg' %}" alt=""></a>
-          <figcaption>
-            <div>
-              <h4 class="thumbnail-terry-title">Influencers<br></h4>
-            </div>
-            <p class="thumbnail-terry-desc offset-top-0"></p>
-            <a href="{% slugurl 'influencers' %}" class="btn offset-top-10 offset-md-top-0 btn-primary">Naar pagina</a>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="cell-xs-8 cell-sm-6 cell-lg-3 offset-top-30 offset-sm-top-0">
-        <figure class="thumbnail-terry"><a href="#"><img style="height: 200px;" width="442" height="280" src="{% static 'images/home/blog.jpg' %}" alt=""></a>
-          <figcaption>
-            <div>
-              <h4 class="thumbnail-terry-title">Blog<br></h4>
-            </div>
-            <p class="thumbnail-terry-desc offset-top-0"></p>
-            <a href="catalog.html" class="btn offset-top-10 offset-md-top-0 btn-primary">Naar pagina</a>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="cell-xs-8 cell-sm-6 cell-lg-3 offset-top-30 offset-lg-top-0">
-        <!-- Thumbnail terry
-        -->
         <figure class="thumbnail-terry">
-          <a href="#">
-            <img style="height: 200px;" width="442" height="280" src="images/home-img-03-442-280.jpg" alt="">
+          <a href="{% pageurl content.related_page %}">
+            {% image content.image width-450 as img%}
+            <img style="height: 200px;" src="{{ img.file.url }}">
           </a>
           <figcaption>
             <div>
-              <h4 class="thumbnail-terry-title">Events<br></h4>
+              <h4 class="thumbnail-terry-title">{{ content.name|title }}<br></h4>
             </div>
             <p class="thumbnail-terry-desc offset-top-0"></p>
-            <a href="catalog.html" class="btn offset-top-10 offset-md-top-0 btn-primary">Naar pagina</a>
+            <a href="{% pageurl content.related_page %}" class="btn offset-top-10 offset-md-top-0 btn-primary">Naar pagina</a>
           </figcaption>
         </figure>
       </div>
-      <div class="cell-xs-8 cell-sm-6 cell-lg-3 offset-top-30 offset-lg-top-0">
-        <!-- Thumbnail terry
-        -->
-        <figure class="thumbnail-terry">
-          <a href="#">
-            <img style="height: 200px;" width="442" height="280" src="images/home-img-04-442-280.jpg" alt="">
-          </a>
-          <figcaption>
-            <div>
-              <h4 class="thumbnail-terry-title">Nog iets?<br></h4>
-            </div>
-            <p class="thumbnail-terry-desc offset-top-0"></p>
-            <a href="catalog.html" class="btn offset-top-10 offset-md-top-0 btn-primary">Naar pagina</a>
-          </figcaption>
-        </figure>
-      </div>
+      {% endfor %}
+    {% endif %}
     </div>
   </div>
 </section>

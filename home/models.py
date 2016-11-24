@@ -146,7 +146,7 @@ class WhatWeDo(djangomodels.Model):
 
 	name = djangomodels.CharField(verbose_name='naam', max_length=40)
 	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
-	extra_info = djangomodels.TextField(verbose_name='info tekst', max_length=512)
+	extra_info = djangomodels.TextField(verbose_name='info tekst', max_length=512, null=True, blank=True)
 	related_page = djangomodels.ForeignKey('wagtailcore.Page', verbose_name='Link naar pagina', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 
 	class Meta:
@@ -375,7 +375,7 @@ class HomePageNumbers(djangomodels.Model):
 
 class HomePageContent(Orderable, WhatWeDo):
 
-	page = ParentalKey('home.HomePage', related_name='content')
+	page = ParentalKey('home.HomePage', related_name='contents')
 
 class HomePage(BasePage):
     template = 'home/home.html'
@@ -391,7 +391,7 @@ HomePage.content_panels = Page.content_panels + [
 			),
 		], heading='Startpagina aanpassingen'
 	),
-	InlinePanel('content', label='Inhoud', help_text='Hiermee kan je de inhoud van de startpagina instellen. Dit zijn de zogenaamde pijlers van Yourin, en deze kunnen gewijzigd, verwijderd en toegevoegd worden.'),
+	InlinePanel('contents', label='Inhoud', help_text='Hiermee kan je de inhoud van de startpagina instellen. Dit zijn de zogenaamde pijlers van Yourin, en deze kunnen gewijzigd, verwijderd en toegevoegd worden.'),
 	InlinePanel('partners', label='Partners'),
 ]
 
