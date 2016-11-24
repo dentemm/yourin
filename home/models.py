@@ -29,6 +29,7 @@ from django_countries.fields import CountryField
 
 from .blocks import BlogTitleBlock, SubtitleBlock, IntroTextBlock, ParagraphBlock, ImageWithCaptionBlock, PullQuoteBlock, BlogEmbedBlock
 from .validators import validate_image_min, validate_blog_image
+from .variables import RELATED_LINK_CHOICES, ICON_CHOICES, ICON_COLOR_CHOICES
 
 #
 #
@@ -38,59 +39,6 @@ from .validators import validate_image_min, validate_blog_image
 yourin_variables = {}
 
 
-RELATED_LINK_CHOICES = (
-    (1, _("Facebook")),
-    (2, _("Twitter")),
-    (3, _("Youtube")),
-)
-
-ICON_CHOICES = (
-	('bar-chart', 'Grafiek'),
-	('car', 'Auto'),
-	('battery-3', 'Batterij'),
-	('bolt', 'Bliksem'),
-	('bomb', 'Bom'),
-	('calendar', 'kalender'),
-	('camera', 'Fototoestel'),
-	('child', 'Link'),
-	('cloud', 'Wolk'),
-	('commenting-o', 'Tekstballon'),
-	('exclamation', 'Uitroepteken'),
-	('flag', 'Vlag'),
-	('gift', 'Geschenk'),
-	('group', 'Groep mensen'),
-	('glass', 'Glas'),
-	('home', 'Home'),
-	('heart-o', 'Hart'),
-	('cutlery', 'Bestek'),
-	('globe', 'Wereldbol'),
-	('hashtag', 'Hashtag'),
-	('key', 'Sleutel'),
-	('magic', 'Toverstaf'),
-	('microphone', 'Microfoon'),
-	('mobile', 'GSM'),
-	('paint-brush', 'Penceel'),
-	('pencil', 'Potlood'),
-	('quote-right', 'Aanhalingstekens'),
-	('shopping-basket', 'Mandje'),
-	('star', 'Ster'),
-	('user', 'Gebruiker'),
-	('video-camera', 'Camera'),
-)
-
-ICON_COLOR_CHOICES = (
-	('text-default', 'Zwart'),
-	('text-gray', 'Lichtgijs'),
-	('text-primary', 'Groen'),
-	('text-deluge', 'Paars'),
-	('text-piction-blue', 'Blauw'),
-	('text-mantis', 'Lichtgroen'),
-	('text-malibu', 'Lichtblauw'),
-	('text-carrot', 'Oranje'),
-	('text-red', 'Rood'),
-	('text-blue-gray', 'Paars-blauw'),
-	('text-pink', 'Donkerpaars')
-)
 
 #
 #
@@ -862,6 +810,7 @@ class Influencer(BasePage):
 	template = 'home/influencer/influencer_detail.html'
 	name = djangomodels.CharField(max_length=128, null=True, blank=True)
 	extra_info = djangomodels.TextField(verbose_name='Beschrijving', null=True)
+	quote = djangomodels.CharField(verbose_name='Influencer citaat', max_length=255)
 	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 
 Influencer.content_panels =  [
@@ -871,6 +820,7 @@ Influencer.content_panels =  [
 				]
 			),
 			FieldPanel('extra_info'),
+			FieldPanel('quote'),
 			ImageChooserPanel('image'),
 		], heading='Influencer'
 	), 
