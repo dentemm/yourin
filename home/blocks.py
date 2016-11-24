@@ -26,12 +26,19 @@ class IntroTextBlock(blocks.TextBlock):
 
 class ParagraphBlock(blocks.TextBlock):
 
-	text = blocks.TextBlock(min_length=160, required=True, help_text='Plaats hier de tekst voor 1 paragraaf, en voeg zoveel paragrafen toe als nodig')
+	text = blocks.TextBlock(label='Paragraaf tekst', min_length=160, required=True, help_text='Plaats hier de tekst voor 1 paragraaf, en voeg zoveel paragrafen toe als nodig')
 
 	class Meta:
 		template = 'home/blocks/paragraph_block.html'
 		label = 'paragraaf'
 		icon = 'edit'
+
+class BlogEmbedBlock(blocks.URLBlock):
+
+	class Meta:
+		template = 'home/blocks/embed_block.html'
+		label = 'video embed'
+		icon = 'media'
 
 # class ParagraphBlock(blocks.RichTextBlock):
 

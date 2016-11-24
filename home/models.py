@@ -11,7 +11,6 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.text import slugify
 from django.dispatch import receiver
 
-
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore import fields
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, FieldRowPanel, StreamFieldPanel, PageChooserPanel
@@ -19,6 +18,7 @@ from wagtail.wagtailsnippets.models import register_snippet
 from wagtail.wagtailimages.models import Image, AbstractImage, AbstractRendition
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
+from wagtail.wagtailembeds.blocks import EmbedBlock
 
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
@@ -27,7 +27,7 @@ from taggit.models import TaggedItemBase
 
 from django_countries.fields import CountryField
 
-from .blocks import BlogTitleBlock, SubtitleBlock, IntroTextBlock, ParagraphBlock, ImageWithCaptionBlock, PullQuoteBlock
+from .blocks import BlogTitleBlock, SubtitleBlock, IntroTextBlock, ParagraphBlock, ImageWithCaptionBlock, PullQuoteBlock, BlogEmbedBlock
 from .validators import validate_image_min, validate_blog_image
 
 #
@@ -537,6 +537,7 @@ class Blog(Orderable, BasePage):
 		('blog_paragraph', ParagraphBlock()),
 		('blog_image', ImageWithCaptionBlock()),
 		('blog_quote', PullQuoteBlock()),
+		('blog_video', BlogEmbedBlock()),
 	], verbose_name='Blog Inhoud')
 
 
