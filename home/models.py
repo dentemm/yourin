@@ -29,7 +29,7 @@ from django_countries.fields import CountryField
 
 from .blocks import BlogTitleBlock, SubtitleBlock, IntroTextBlock, ParagraphBlock, ImageWithCaptionBlock, PullQuoteBlock, BlogEmbedBlock
 from .validators import validate_image_min, validate_blog_image
-from .variables import RELATED_LINK_CHOICES, ICON_CHOICES, ICON_COLOR_CHOICES
+from .variables import RELATED_LINK_CHOICES, ICON_CHOICES, ICON_COLOR_CHOICES, EVENT_CATEGORY_CHOICES
 
 #
 #
@@ -103,8 +103,8 @@ def rendition_delete(sender, instance, **kwargs):
 @register_snippet
 class Category(djangomodels.Model):
 
-	name = djangomodels.CharField(verbose_name='categorie', max_length=64)
-	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
+	name = djangomodels.PositiveIntegerField(verbose_name='categorie', choices=EVENT_CATEGORY_CHOICES)
+	#image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 
 
 	class Meta:

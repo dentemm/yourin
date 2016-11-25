@@ -1,5 +1,12 @@
 from django.utils.translation import ugettext_lazy as _
 
+EVENT_CATEGORY_CHOICES = (
+	(1, 'Sport'),
+	(2, 'Kamp'),
+	(3, 'Festival'),
+	(4, 'Club'),
+)
+
 RELATED_LINK_CHOICES = (
     (1, _("Facebook")),
     (2, _("Twitter")),
