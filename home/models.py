@@ -103,7 +103,7 @@ def rendition_delete(sender, instance, **kwargs):
 @register_snippet
 class Category(djangomodels.Model):
 
-	name = djangomodels.PositiveIntegerField(verbose_name='categorie', choices=EVENT_CATEGORY_CHOICES)
+	name = djangomodels.PositiveIntegerField(verbose_name='categorie', choices=EVENT_CATEGORY_CHOICES, default=1)
 	#image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 
 
@@ -126,17 +126,6 @@ Category.panels = [
 	), 
 
 ]
-
-#@register_snippet
-class NewsCategory(djangomodels.Model):
-
-	name = djangomodels.CharField(max_length=64)
-
-	class Meta:
-		verbose_name = 'Nieuwscategorie'
-		verbose_name_plural = 'Nieuwscategorieën'
-		ordering = ['name', ]
-
 
 @register_snippet
 class Location(djangomodels.Model):
@@ -645,7 +634,8 @@ class Event(BasePage):
 	tags = ClusterTaggableManager(through=EventTag, blank=True)
 
 	image = djangomodels.ForeignKey('home.CustomImage', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
-	category = djangomodels.ForeignKey('home.Category', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='events')
+	#category = djangomodels.ForeignKey('home.Category', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='events')
+	category = djangomodels.PositiveIntegerField(choices=EVENT_CATEGORY_CHOICES, default=1)
 
 	class Meta:
 		verbose_name = 'evenement'
