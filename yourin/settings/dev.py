@@ -31,6 +31,15 @@ DATABASES = {
     }
 } 
 
+# WAGTAILSEARCH_BACKENDS = {
+#     'default': {
+#         'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch2',
+#         'URLS': ['http://localhost:9200'],
+#         'INDEX': 'wagtail',
+#         'TIMEOUT': 5,
+#     }
+# }
+
 try:
     from .local import *
 except ImportError:

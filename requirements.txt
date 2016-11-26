@@ -22,6 +22,7 @@ django-toolbelt==0.0.1
 django-treebeard==4.0.1
 django-widget-tweaks==1.4.1
 djangorestframework==3.5.1
+elasticsearch==5.0.1
 geopy==1.11.0
 gunicorn==19.4.5
 html5lib==0.999999999
@@ -41,6 +42,7 @@ requests-oauthlib==0.6.1
 rjsmin==1.0.12
 six==1.10.0
 static3==0.6.1
+urllib3==1.19.1
 wagtail==1.7
 webencodings==0.5
 whitenoise==2.0.6

@@ -22,56 +22,34 @@
         <h1 class="text-center">Zoekresultaten</h1>
         <hr class="divider bg-mantis">
         {% if search_results %}
-            <ul>
-                {% for result in search_results %}
-                    <li>
-                        <h4><a href="{% pageurl result %}">{{ result }}</a></h4>
-                        {% if result.search_description %}
-                            {{ result.search_description|safe }}
-                        {% endif %}
-                    </li>
-                {% endfor %}
-                {% for result in search_results %}
-                <h1>{{ result.catchphrase }} -- {{ result.search_description }} --</h1>
-                <h2>tim</h2>
-                <div class="inset-lg-left-50 inset-xl-left-0">
-                  <div class="unit unit-sm unit-sm-horizontal text-sm-left">
-                    <div class="unit-left"><span class="icon icon-circle mdi mdi-emoticon material-icons-tag_faces text-picton-blue offset-sm-top-14"></span></div>
-                    <div class="unit-body">
-                      <h4 class="text-bold text-uppercase offset-sm-top-24">
-                        <span class="text-middle">Dit is een random tekst</span>
-                        <span class="text-middle label-custom label-danger label-rounded-custom label">Blog</span> 
-                      </h4>
-                      <p>The script comes with ready-made presets, which will let you customize the form with comfort. The script also provides full customization of an email template.</p>
-                    </div>
-                  </div>
-                  <hr class="hr hr-gradient">
-                  <div>
-                    <div class="unit unit-sm unit-sm-horizontal text-sm-left">
-                      <div class="unit-left"><span class="icon icon-circle mdi mdi-web text-picton-blue offset-sm-top-14"></span></div>
-                      <div class="unit-body">
-                        <h4 class="text-bold text-uppercase offset-sm-top-24">CSS Stylization</h4>
-                        <p>Stylize practically all the form pattern attributes with ease. The script features a fully fledged CSS API built specifically for this purpose.</p>
-                      </div>
-                    </div>
-                  </div>
+            {% for result in search_results %}
+            <div class="inset-lg-left-50 inset-xl-left-0">
+              <div class="unit unit-sm unit-sm-horizontal text-sm-left">
+                <div class="unit-left"><span class="icon icon-circle mdi mdi-emoticon material-icons-tag_faces text-picton-blue offset-sm-top-14"></span></div>
+                <div class="unit-body">
+                  <h4 class="text-bold text-uppercase offset-sm-top-24">
+                    <span class="text-middle">{{ result }}</span>
+<!--                     <span class="text-middle label-custom label-danger label-rounded-custom label">Blog</span> 
+ -->                  </h4>
+                  <a href="{% pageurl result %}" class="btn btn-xs btn-primary btn-icon btn-icon-left offset-top-20"><!-- <span class="icon mdi mdi-check-all"></span> -->Naar pagina</a>
                 </div>
-
-                {% endfor %}
-            </ul>
+              </div>
+            </div>
+            <hr class="hr hr-gradient">
+            {% endfor %}
             <nav>
                 <ul class="pager pager-sm">
                     {% if search_results.has_previous %} 
                     <li>
                         <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.previous_page_number }}">
-                            <span aria-hidden="true" class="icon-left mdi mdi-arrow-left"></span>Older
+                            <span aria-hidden="true" class="icon-left mdi mdi-arrow-left"></span>Volgende
                         </a>
                     </li>
                     {% endif %}
                     {% if search_results.has_next %}
                     <li>
                         <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}">
-                            Newer<span aria-hidden="true" class="icon-right mdi mdi-arrow-right"></span>
+                            Vorige<span aria-hidden="true" class="icon-right mdi mdi-arrow-right"></span>
                         </a>
                     </li>
                     {% endif %}
