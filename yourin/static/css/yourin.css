@@ -16,6 +16,10 @@
 	}
 }
 
+.hr.hr-gradient{
+	margin-top: 15px;
+	margin-bottom: 0px;
+}
 
 q.text-italic.h3 {
 	font-family: Lato, Helvetica, Arial, sans-serif;

@@ -31,15 +31,52 @@
                         {% endif %}
                     </li>
                 {% endfor %}
+                {% for result in search_results %}
+                <h1>{{ result.catchphrase }} -- {{ result.search_description }} --</h1>
+                <h2>tim</h2>
+                <div class="inset-lg-left-50 inset-xl-left-0">
+                  <div class="unit unit-sm unit-sm-horizontal text-sm-left">
+                    <div class="unit-left"><span class="icon icon-circle mdi mdi-emoticon material-icons-tag_faces text-picton-blue offset-sm-top-14"></span></div>
+                    <div class="unit-body">
+                      <h4 class="text-bold text-uppercase offset-sm-top-24">
+                        <span class="text-middle">Dit is een random tekst</span>
+                        <span class="text-middle label-custom label-danger label-rounded-custom label">Blog</span> 
+                      </h4>
+                      <p>The script comes with ready-made presets, which will let you customize the form with comfort. The script also provides full customization of an email template.</p>
+                    </div>
+                  </div>
+                  <hr class="hr hr-gradient">
+                  <div>
+                    <div class="unit unit-sm unit-sm-horizontal text-sm-left">
+                      <div class="unit-left"><span class="icon icon-circle mdi mdi-web text-picton-blue offset-sm-top-14"></span></div>
+                      <div class="unit-body">
+                        <h4 class="text-bold text-uppercase offset-sm-top-24">CSS Stylization</h4>
+                        <p>Stylize practically all the form pattern attributes with ease. The script features a fully fledged CSS API built specifically for this purpose.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {% endfor %}
             </ul>
-
-            {% if search_results.has_previous %}
-                <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.previous_page_number }}">Previous</a>
-            {% endif %}
-
-            {% if search_results.has_next %}
-                <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}">Next</a>
-            {% endif %}
+            <nav>
+                <ul class="pager pager-sm">
+                    {% if search_results.has_previous %} 
+                    <li>
+                        <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.previous_page_number }}">
+                            <span aria-hidden="true" class="icon-left mdi mdi-arrow-left"></span>Older
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if search_results.has_next %}
+                    <li>
+                        <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}">
+                            Newer<span aria-hidden="true" class="icon-right mdi mdi-arrow-right"></span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>            
         {% elif search_query %}
             <div class="alert-classic alert-classic-warning alert-classic-lg">
               <h4><span class="text-middle icon icon-xxs mdi mdi-alert-outline"></span><span class="text-middle">Helaas!</span>
