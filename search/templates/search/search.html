@@ -10,7 +10,7 @@
 {% endblock page_title %}
 
 {% block main %}
-<div class="shell search-page">
+<div class="shell search-page section-bottom-66">
     <form action="{% url 'search' %}" method="GET" class="form-search rd-search">
         <div class="form-group">
             <label for="search-results" class="form-label form-search-label form-label-sm rd-input-label">Nieuwe zoekopdracht</label>
@@ -41,7 +41,11 @@
                 <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}">Next</a>
             {% endif %}
         {% elif search_query %}
-            No results found
+            <div class="alert-classic alert-classic-warning alert-classic-lg">
+              <h4><span class="text-middle icon icon-xxs mdi mdi-alert-outline"></span><span class="text-middle">Helaas!</span>
+              </h4>
+              <p>We vonden geen resultaten voor je zoekopdracht ...</p>
+            </div>
         {% endif %}
     </div>
 </div>
