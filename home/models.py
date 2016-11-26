@@ -642,6 +642,23 @@ class Event(BasePage):
 		verbose_name = 'evenementen'
 		ordering = ['-event_date']
 
+	@property
+	def icon(self):
+
+		if self.category == 1:
+			return ''
+
+		elif self.category == 2:
+			return ''
+
+		elif self.category == 3:
+			return ''
+
+		elif self.category == 4:
+			return ''
+
+
+# .icon-shark-filled, .icon-mantis-filled, .icon-pink-filled, .icon-malibu-filled, .icon-carrot-filled, .icon-red-filled, .icon-blue-gray-filled 
 
 # Festival page panels
 Event.content_panels = [
