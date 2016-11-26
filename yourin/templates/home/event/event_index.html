@@ -29,7 +29,15 @@
             <!-- Post media-->
             <!-- Post content-->
             <section class="post-content text-left">
-              <ul class="list-inline">
+              <!-- Post Title-->
+              <div class="post-title">
+                <h6><a href="blog-classic-single-post.html">{{ event.title|title }}</a></h6>
+              </div>
+              <!-- Post Body-->
+              <div class="post-body offset-top-10">
+                <p>{{ event.description }}</p>
+              </div>
+              <ul class="list-inline offset-top-20">
                 <li>
                   <div class="post-tags group-xs">
                     <a href="blog-classic-single-post.html" class="label-custom label-lg-custom label-rounded-custom label-primary">{{ event.get_category_display }}</a>
@@ -39,14 +47,6 @@
                   <div class="icon icon-xxs text-dark mdi mdi-pen"></div>
                 </li>
               </ul>
-              <!-- Post Title-->
-              <div class="post-title">
-                <h6 class="offset-top-24"><a href="blog-classic-single-post.html">{{ event.title|title }}</a></h6>
-              </div>
-              <!-- Post Body-->
-              <div class="post-body offset-top-20">
-                <p>{{ event.description }}</p>
-              </div>
               <div class="post-author">
                 <div class="post-author-img"><!-- <img width="45" height="45" src="images/users/user-eugene-newman-60x60.jpg" alt="Eugene Newman" class="img-circle"> -->
 <!--                      <span class="icon mdi mdi-account-multiple-outline text-malibu img-circle"></span>

@@ -6,6 +6,10 @@
 .wagtail-userbar--bottom-right .wagtail-userbar-items {left:0; width:22em;}
 
 /* INTENSE ALGEMEEN */
+.form-control {
+	font-size: 30px;
+}
+
 q.text-italic.h3 {
 	font-family: Lato, Helvetica, Arial, sans-serif;
 }
