@@ -20,43 +20,80 @@
         <section>
           <h1 class="text-center">Alle evenementen</h1>
           <hr class="divider divider-lg bg-mantis">
+          {% for event in page.events %}
           <div class="post-modern-timeline-date text-sm-left">
-            <time datetime="2016-01-01">24 Feb</time>
+            <time datetime="{{ event.event_date|date:'Y-m-d'}}">{{ event.event_date|date:'d M' }}</time>
           </div>
-            <!-- Post Modern-->
-            <article class="post post-modern post-modern-timeline post-modern-timeline-left">
-              <!-- Post media-->
-              <!-- Post content-->
-              <section class="post-content text-left">
-                <ul class="list-inline">
-                  <li>
-                    <div class="post-tags group-xs">
-                      <a href="blog-classic-single-post.html" class="label-custom label-lg-custom label-rounded-custom label-primary">Sport</a>
-                      <a href="blog-classic-single-post.html" class="label-custom label-lg-custom label-rounded-custom label-primary">News</a>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="icon icon-xxs text-dark mdi mdi-pen"></div>
-                  </li>
-                </ul>
-                <!-- Post Title-->
-                <div class="post-title">
-                  <h6 class="offset-top-24"><a href="blog-classic-single-post.html">5 Steps to Blog’s Success</a></h6>
-                </div>
-                <!-- Post Body-->
-                <div class="post-body offset-top-20">
-                  <p>Unfortunately people will not come to your blog just to see what you have published on it. To make sure that your blog becomes a successful one, you have to work on it to attract visitors interested in your content.</p>
-                </div>
-                <div class="post-author">
-                  <div class="post-author-img"><!-- <img width="45" height="45" src="images/users/user-eugene-newman-60x60.jpg" alt="Eugene Newman" class="img-circle"> -->
+          <!-- Post Modern-->          
+          <article class="post post-modern post-modern-timeline post-modern-timeline-left">
+            <!-- Post media-->
+            <!-- Post content-->
+            <section class="post-content text-left">
+              <ul class="list-inline">
+                <li>
+                  <div class="post-tags group-xs">
+                    <a href="blog-classic-single-post.html" class="label-custom label-lg-custom label-rounded-custom label-primary">{{ event.get_category_display }}</a>
+                  </div>
+                </li>
+                <li>
+                  <div class="icon icon-xxs text-dark mdi mdi-pen"></div>
+                </li>
+              </ul>
+              <!-- Post Title-->
+              <div class="post-title">
+                <h6 class="offset-top-24"><a href="blog-classic-single-post.html">{{ event.title|title }}</a></h6>
+              </div>
+              <!-- Post Body-->
+              <div class="post-body offset-top-20">
+                <p>{{ event.description }}</p>
+              </div>
+              <div class="post-author">
+                <div class="post-author-img"><!-- <img width="45" height="45" src="images/users/user-eugene-newman-60x60.jpg" alt="Eugene Newman" class="img-circle"> -->
 <!--                      <span class="icon mdi mdi-account-multiple-outline text-malibu img-circle"></span>
- -->                <span class="icon icon-xs icon-circle icon-blue-gray-filled mdi mdi-rocket"></span>
-                  </div>
-                  <div class="post-author-name text-middle">Eugene Newman
-                  </div>
+-->                <span class="icon icon-xs icon-circle icon-blue-gray-filled mdi mdi-rocket"></span>
                 </div>
-              </section>
-            </article>
+                <div class="post-author-name text-middle">{{ event.get_category_display }}</div>
+              </div>
+            </section>
+          </article>
+          {% endfor %}
+          <div class="post-modern-timeline-date text-sm-left">
+            <time datetime="2016-01-01">21 Feb</time>
+          </div>
+          <!-- Post Modern-->          
+          <article class="post post-modern post-modern-timeline post-modern-timeline-left">
+            <!-- Post media-->
+            <!-- Post content-->
+            <section class="post-content text-left">
+              <ul class="list-inline">
+                <li>
+                  <div class="post-tags group-xs">
+                    <a href="blog-classic-single-post.html" class="label-custom label-lg-custom label-rounded-custom label-primary">Sport</a>
+                    <a href="blog-classic-single-post.html" class="label-custom label-lg-custom label-rounded-custom label-primary">News</a>
+                  </div>
+                </li>
+                <li>
+                  <div class="icon icon-xxs text-dark mdi mdi-pen"></div>
+                </li>
+              </ul>
+              <!-- Post Title-->
+              <div class="post-title">
+                <h6 class="offset-top-24"><a href="blog-classic-single-post.html">5 Steps to Blog’s Success</a></h6>
+              </div>
+              <!-- Post Body-->
+              <div class="post-body offset-top-20">
+                <p>Unfortunately people will not come to your blog just to see what you have published on it. To make sure that your blog becomes a successful one, you have to work on it to attract visitors interested in your content.</p>
+              </div>
+              <div class="post-author">
+                <div class="post-author-img"><!-- <img width="45" height="45" src="images/users/user-eugene-newman-60x60.jpg" alt="Eugene Newman" class="img-circle"> -->
+<!--                      <span class="icon mdi mdi-account-multiple-outline text-malibu img-circle"></span>
+-->                <span class="icon icon-xs icon-circle icon-blue-gray-filled mdi mdi-rocket"></span>
+                </div>
+                <div class="post-author-name text-middle">Eugene Newman
+                </div>
+              </div>
+            </section>
+          </article>
           <div class="post-modern-timeline-date text-sm-left">
             <time datetime="2016-01-01">21 Feb</time>
           </div>
@@ -182,7 +219,7 @@
         <div class="range">
           <div class="cell-sm-6 cell-md-12 offset-sm-top-41 offset-md-top-0">
             <!-- RD calendar-->
-              <div class="rd-calendar">
+              <div class="rd-calendar hidden-xs">
                 <div class="rdc-panel">
                   <a class="rdc-next"></a><a class="rdc-prev"></a>
                   <div class="rdc-month"></div>
@@ -191,6 +228,20 @@
                 <div class="rdc-table"></div>
                 <div class="rdc-events text-left"><a class="rdc-events_close"></a>
                   <ul>
+                  {% for event in page.events %}
+                    <li data-date="11/01/2016 {{ event.event_date|date:'m/d/Y' }}" class="rdc-event">
+                      <div class="rdc-event-wrap">
+                        <article class="post widget-event">
+                          <div class="post-meta"><span class="icon icon-xxs text-picton-blue mdi mdi-clock"></span>
+                            <time datetime="2016-11-01{{ event.event_date|date:'Y-m-d'}}" class="text-dark">{{ event.event_date|date:'d F' }}</time>
+                          </div>
+                          <div class="post-title">
+                            <h6 class="text-regular"><a href="#">{{ event.title|title }}</a></h6>
+                          </div>
+                        </article>
+                      </div>
+                    </li>
+                  {% endfor %}
                     <li data-date="11/01/2016" class="rdc-event">
                       <div class="rdc-event-wrap">
                         <article class="post widget-event">
@@ -244,7 +295,7 @@
               </div>
           </div>
           <!-- Recent Events-->
-          <div class="cell-sm-6 cell-md-12 offset-top-41">
+          <div class="cell-sm-6 cell-md-12 offset-top-41 hidden-xs">
             <h6 class="text-uppercase text-spacing-60">Opkomende evenementen</h6>
             <div class="text-subline"></div>
             
@@ -261,7 +312,7 @@
                         <div class="post-meta">
                           <ul class="list-inline list-inline-sm">
                             <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
-                              <time datetime="2016-01-01" class="text-dark">{{ event.event_date|date:'j F'}}</time>
+                              <time datetime="{{ event.event_date|date:'Y-m-d'}}" class="text-dark">{{ event.event_date|date:'j F'}}</time>
                             </li>
   <!--                           <li><span class="icon-xxs text-picton-blue mdi mdi-clock"></span>
                               <time datetime="2016-01-01" class="text-dark">9:00 PM</time>

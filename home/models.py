@@ -646,16 +646,19 @@ class Event(BasePage):
 	def icon(self):
 
 		if self.category == 1:
-			return ''
+			return 'fa fa-flash icon-danger'
 
 		elif self.category == 2:
-			return ''
+			return 'glyphicon glyphicon-tent icon-deluge'
 
 		elif self.category == 3:
-			return ''
+			return 'fa fa-map-signs icon-blue-gray-filled'
 
 		elif self.category == 4:
-			return ''
+			return 'fa fa-group icon-mantis-filled'
+
+		else:
+			return 'fa fa-gift icon-danger'
 
 
 # .icon-shark-filled, .icon-mantis-filled, .icon-pink-filled, .icon-malibu-filled, .icon-carrot-filled, .icon-red-filled, .icon-blue-gray-filled 
