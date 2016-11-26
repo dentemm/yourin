@@ -10,6 +10,13 @@
 	font-size: 30px;
 }
 
+@media (min-width: 1200px) {
+	div.shell.search-page {
+		margin-top: -40px;
+	}
+}
+
+
 q.text-italic.h3 {
 	font-family: Lato, Helvetica, Arial, sans-serif;
 }
