@@ -224,6 +224,15 @@ a.icon-rect.fa-youtube-play:hover, a.icon-circle.fa-youtube-play:hover, a.icon-o
   color: white;
 }
 
+.icon-yourin {
+	background: -moz-linear-gradient(45deg, #f8ba30 0%, #e54044 100%);
+	background: -webkit-linear-gradient(45deg, #f8ba30 0%, #e54044 100%);
+	background: -o-linear-gradient(45deg, #f8ba30 0%, #e54044 100%);
+	background: -ms-linear-gradient(45deg, #f8ba30 0%, #e54044 100%);
+	background: linear-gradient(45deg, #f8ba30 0%, #e54044 100%);
+	color: #fff;
+	border: none;
+}
 
 .breadcrumb-classic {
   fill: #f8ba30;
@@ -245,4 +254,10 @@ a.icon-rect.fa-youtube-play:hover, a.icon-circle.fa-youtube-play:hover, a.icon-o
   background: linear-gradient(270deg, #f8ba30 0%, #e54044 100%);
 }
 
+/* CUSTOM TOEVOEGINGEN */
 
+div.core-items {
+
+	margin-top: 29px;
+	margin-bottom: 19px;
+}

@@ -15,25 +15,49 @@
       <div data-speed="0" data-type="html" class="rd-parallax-layer">
         <div class="shell section-98 section-sm-110">
           <h2 class="text-bold">{{ yourin.catchphrase }}</h2>
-          <hr class="divider bg-saffron">
+          <hr class="divider bg-mantis">
           <div class="range range-xs-center offset-top-66">
+          {% if page.core_items.all %}
+            {% for item in page.core_items.all %}
             <div class="cell-sm-4">
             <!-- Icon Box Type 4-->
-              <span class="icon icon-circle mdi mdi-comment-text-outline icon-carrot-filled"></span>
+              <span class="icon icon-circle mdi mdi-comment-text-outline icon-yourin"></span>
               <h5 class="text-bold text-uppercase">more listings</h5>
               <p class="text-light">Check up to 40% more houses for sale. See pictures of your new life at a new place. See maps, markets, etc.</p>
             </div>
+            {% endfor %}
+          {% else %}
+            <div class="cell-sm-4">
+            <!-- Icon Box Type 4-->
+              <a href="#">
+                <span class="icon icon-circle mdi mdi-comment-text-outline icon-yourin"></span>
+              </a>
+              <div class="core-items">
+                <a href="#"><h5 class="text-bold text-uppercase">Hier komen</h5></a>
+              </div>
+              <p class="text-light">De achtergrondafbeelding is instelbaar via de admin website, en wordt automatisch vrij donker gemaakt.</p>
+            </div>
             <div class="cell-sm-4 offset-top-66 offset-sm-top-0">
               <!-- Icon Box Type 4-->
-              <span class="icon icon-circle mdi mdi-star icon-carrot-filled"></span>
-              <h5 class="text-bold text-uppercase">top-rated agents</h5>
-              <p class="text-light">All our real estate agents are professionals in your neighborhood, which are ready to help you find your new home.</p>
+              <a href="#">
+                <span class="icon icon-circle mdi mdi-star icon-yourin"></span>
+              </a>
+              <div class="core-items">
+                <a href="#"><h5 class="text-bold text-uppercase">de pijlers</h5></a>
+              </div>
+              <p class="text-light">Momenteel zijn er 3 pijlers, namelijk evenementen, festivals en influencers. Als er meer zijn moet ik kleine aanpassingen doorvoeren</p>
             </div>
             <div class="cell-sm-4 offset-top-66 offset-sm-top-0">
-              <!-- Icon Box Type 4--><span class="icon icon-circle mdi mdi-domain icon-carrot-filled"></span>
-              <h5 class="text-bold text-uppercase">home estimates</h5>
-              <p class="text-light">Wanna know how much your new home will cost? See estimates for any neighborhood and check prices for similar homes.</p>
+              <!-- Icon Box Type 4-->
+              <a href="#">
+                <span class="icon icon-circle mdi mdi-domain icon-yourin"></span>
+              </a>
+              <div class="core-items">
+                <a href="#"><h5 class="text-bold text-uppercase">van yourin</h5></a>
+              </div>
+              <p class="text-light">De links zijn vrij in te stellen naar de respectievelijke pagina's. Blabla bla, een beetje opvulling... </p>
             </div>
+          {% endif %}
           </div>
         </div>
       </div>
