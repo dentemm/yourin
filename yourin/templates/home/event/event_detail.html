@@ -1,0 +1,7 @@
+{% extends 'layout.html' %}
+
+{% load static wagtailimages_tags wagtailcore_tags %}
+
+{% block page_title %}
+  {% include 'home/partials/page_title.html' with title='events' icon='mdi mdi-calendar-clock' %}
+{% endblock page_title %}
