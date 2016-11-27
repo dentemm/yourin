@@ -15,19 +15,39 @@
         <div style="background-image: url({{ img.file.url }})" class="section-image-aside-img veil reveal-sm-block"></div>
         <div class="section-image-aside-body section-sm-66 inset-sm-right-30">
           <div>
-            <h3 class="text-picton-blue">01</h3>
+            <h3 class="text-picton-blue">{{ page.event_date }}</h3>
           </div>
           <div class="offset-top-10">
-            <h2> The Main Corporate Values of Intense</h2>
+            <h2>{{ page.title|title }}</h2>
           </div>
           <div class="offset-top-20">
-            <p>The corporate culture of Intense is based on openness, respect and equality regardless of the religion, sex, race, age, etc. These core values help us build a friendly working environment, where all the employees can feel comfortable and significant. We believe that the more comfort you get, the better results you’ll produce.</p>
+            <p>{{ page.description }}</p>
             <p>Members of our staff are free to choose working hours themselves, without any limitations. Such a strategy allows us to make the most of each employee’s potential, as they work when they are maximally productive.</p>
             <p>What you may also find attractive about our corporation is a competitive benefits package. It includes a paid vacation, sick leave and national holidays, medical insurance, gym and swimming pool, parking and mobile phone reimbursement. Our corporate fridge is also full of free snacks and drinks.</p>
           </div>
         </div>
       </div>
     </div>
+	<div class="range range-xs-center range-sm-right offset-top-0">
+      <div class="cell-xs-10 cell-sm-6 section-image-aside section-image-aside-left text-left">
+        <div style="background-image: url({{ img.file.url }})" class="section-image-aside-img veil reveal-sm-block"></div>
+        <div class="section-image-aside-body offset-top-41 offset-sm-top-0 section-sm-66 inset-sm-left-50">
+          <div>
+            <h3 class="text-picton-blue">{{ page.event_date }}</h3>
+          </div>
+          <div class="offset-top-10">
+            <h2> {{ page.title|title }}</h2>
+          </div>
+          <div class="offset-top-20">
+            <p>When you join our team, you’ll dive into a knowledge-sharing environment. We encourage our employees to attend multiple conferences and workshops held both inside the company and on the outside. Keep in mind that you can take part in conferences as both a listener and speaker.</p>
+            <p>As a part of our benefits package, we also offer multiple courses for you to master new subjects. Our working environment is full of learning opportunities, which can’t help motivating for a steady professional growth.</p>
+            <p>Offices of Intense are located in different corners of the globe, so be ready to travel around the world. To save your budget, we cover all the travel costs including transportation, accommodation, food, and even some leisure activities. Our company gives you a perfect chance to explore the world and immerse in different cultures.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="range range-xs-center range-sm-left">
+    	MEER
   </div>
 </section>
 {% endblock main %}

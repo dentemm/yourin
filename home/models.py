@@ -365,6 +365,8 @@ class BasePage(Page):
 
 		ctx = super(BasePage, self).get_context(request, *args, **kwargs)
 
+		self.update_vars()
+
 		ctx['yourin'] = yourin_variables
 		ctx['footer_blogs'] = self.footer_blogs
 
@@ -374,7 +376,11 @@ class BasePage(Page):
 
 		yourin_variables['catchphrase'] = self.catchphrase
 
-		super(BasePage, self).save(*args, **kwargs)
+		self.update_vars()
+
+	def update_vars(self):
+
+		yourin_variables['catchphrase'] = self.catchphrase
 
 class HomePageContent(Orderable, WhatWeDo):
 
