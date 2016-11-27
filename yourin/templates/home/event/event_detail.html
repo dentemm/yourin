@@ -3,5 +3,31 @@
 {% load static wagtailimages_tags wagtailcore_tags %}
 
 {% block page_title %}
-  {% include 'home/partials/page_title.html' with title='events' icon='mdi mdi-calendar-clock' %}
+  {% include 'home/partials/page_title.html' with title='events' icon='mdi mdi-calendar-clock' section='offset-lg-top-110 offset-sm-top-50 offset-top-50' %}
 {% endblock page_title %}
+
+{% block main%}
+<section class="section-sm-0">
+  <div class="shell">
+    <div class="range range-xs-center range-sm-left">
+      <div class="cell-xs-10 cell-sm-6 section-image-aside section-image-aside-right text-left">
+      	{% image page.image original as img %}
+        <div style="background-image: url({{ img.file.url }})" class="section-image-aside-img veil reveal-sm-block"></div>
+        <div class="section-image-aside-body section-sm-66 inset-sm-right-30">
+          <div>
+            <h3 class="text-picton-blue">01</h3>
+          </div>
+          <div class="offset-top-10">
+            <h2> The Main Corporate Values of Intense</h2>
+          </div>
+          <div class="offset-top-20">
+            <p>The corporate culture of Intense is based on openness, respect and equality regardless of the religion, sex, race, age, etc. These core values help us build a friendly working environment, where all the employees can feel comfortable and significant. We believe that the more comfort you get, the better results you’ll produce.</p>
+            <p>Members of our staff are free to choose working hours themselves, without any limitations. Such a strategy allows us to make the most of each employee’s potential, as they work when they are maximally productive.</p>
+            <p>What you may also find attractive about our corporation is a competitive benefits package. It includes a paid vacation, sick leave and national holidays, medical insurance, gym and swimming pool, parking and mobile phone reimbursement. Our corporate fridge is also full of free snacks and drinks.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock main %}
