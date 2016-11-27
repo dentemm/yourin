@@ -378,6 +378,8 @@ class BasePage(Page):
 
 		self.update_vars()
 
+		super(BasePage, self).save(*args, **kwargs)
+
 	def update_vars(self):
 
 		yourin_variables['catchphrase'] = self.catchphrase
