@@ -230,7 +230,8 @@ class WhatWeDo(djangomodels.Model):
 
 	name = djangomodels.CharField(verbose_name='naam', max_length=40)
 	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
-	extra_info = djangomodels.TextField(verbose_name='info tekst', max_length=512, null=True, blank=True)
+	extra_info = djangomodels.TextField(verbose_name='info tekst', max_length=180, null=True, blank=True)
+	icon = djangomodels.CharField(max_length=28, choices=ICON_CHOICES, default='fa fa-commenting-o')
 	related_page = djangomodels.ForeignKey('wagtailcore.Page', verbose_name='Link naar pagina', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 
 	class Meta:
@@ -240,7 +241,8 @@ class WhatWeDo(djangomodels.Model):
 WhatWeDo.panels = [
 	MultiFieldPanel([
 			FieldRowPanel([
-					FieldPanel('name', classname='col9'),
+					FieldPanel('name', classname='col6'),
+					FieldPanel('icon', classname='col6')
 				],
 			),
 			FieldRowPanel([
@@ -258,7 +260,7 @@ class Numbers(djangomodels.Model):
 
 	name = djangomodels.CharField(verbose_name='naam', max_length=28)
 	value = djangomodels.PositiveIntegerField(verbose_name='cijfer', default=1)
-	icon = djangomodels.CharField(verbose_name='icoon', max_length=28, choices=ICON_CHOICES, default='bar-chart')
+	icon = djangomodels.CharField(verbose_name='icoon', max_length=28, choices=ICON_CHOICES, default='fa fa-bar-chart')
 	icon_color = djangomodels.CharField(verbose_name='kleur icoon', max_length=32, choices=ICON_COLOR_CHOICES, default='text-default')
 
 Numbers.panels = [
