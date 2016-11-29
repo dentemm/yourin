@@ -9,19 +9,19 @@
 <section class="context-dark offset-lg-top-110 offset-sm-top-50 text-center">
   <!-- RD Parallax-->
   <div data-on="false" data-md-on="true" class="rd-parallax">
-    <div data-speed="0.35" data-type="media" data-url="http://livedemo00.template-help.com/wt_58888_v6/intense-real-estate/images/bg-01-1920x768.jpg" class="rd-parallax-layer"> 
+    <div data-speed="0.35" data-type="media" data-url="{% static 'images/home/home_bg.jpg' %}" class="rd-parallax-layer"> 
     </div>
     <div class="rd-parallax-layer-holder">
       <div data-speed="0" data-type="html" class="rd-parallax-layer">
         <div class="shell section-98 section-sm-110">
-          <h2 class="text-bold">{{ yourin.catchphrase }}</h2>
+          <h1 class="text-bold">{{ yourin.catchphrase }}</h1>
           <hr class="divider bg-mantis">
           <div class="range range-xs-center offset-top-66">
         {% if page.contents.all %}
           {% for content in page.contents.all %}
             <div class="cell-sm-4">
             <!-- Icon Box Type 4-->
-              <span class="icon icon-circle mdi mdi-comment-text-outline icon-yourin"></span>
+              <span class="icon icon-circle {{ content.icon }} icon-yourin"></span>
               <h5 class="text-bold text-uppercase">{{ content.name|title }}</h5>
               <p class="text-light">{{ content.extra_info }}</p>
             </div>
@@ -67,7 +67,7 @@
 
 <section class="section-85 text-center">
   <div class="shell-fluid">
-    <h2 class="text-bold">Recente gebeurtenissen</h2>
+    <h1>Recente gebeurtenissen</h1>
     <hr class="divider bg-mantis">
     <div class="range range-xs-center">
     {% if page.contents.all %}
