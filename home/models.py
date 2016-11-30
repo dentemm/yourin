@@ -395,10 +395,23 @@ class HomePageNumbers(Orderable, Numbers):
 	page = ParentalKey('home.HomePage', related_name='numbers')
 
 class HomePage(BasePage):
-    template = 'home/home.html'
 
-    class Meta:
-    	verbose_name = 'startpagina'
+	template = 'home/home.html'
+
+	class Meta:
+		verbose_name = 'startpagina'
+
+	@property
+	def recents(self):
+
+		last_blog = Blog.objects.live().latest('date')
+		last_festival = Event.objects.live().filter(category=3).latest('event_date')
+
+		return {
+			'festival': last_festival,
+			'blog': last_blog,
+			
+		}
 
 HomePage.content_panels = Page.content_panels + [
 	MultiFieldPanel([
