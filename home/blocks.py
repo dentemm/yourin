@@ -39,15 +39,7 @@ class BlogEmbedBlock(blocks.URLBlock):
 		template = 'home/blocks/embed_block.html'
 		label = 'video embed'
 		icon = 'media'
-
-# class ParagraphBlock(blocks.RichTextBlock):
-
-# 	text = blocks.TextBlock(min_length=160, required=True, help_text='Plaats hier de tekst voor 1 paragraaf, en voeg zoveel paragrafen toe als nodig')
-
-# 	class Meta:
-# 		template = 'home/blocks/paragraph_block.html'
-# 		label = 'paragraaf'
-# 		icon = 'edit'
+	icon = 'edit'
 
 class ImageWithCaptionBlock(blocks.StructBlock):
 	class Meta:

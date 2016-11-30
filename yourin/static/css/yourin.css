@@ -267,7 +267,10 @@ div#home_intro_image {
 }
 
 div.core-items {
-
 	margin-top: 29px;
 	margin-bottom: 19px;
+}
+.icon-xxxs{
+	font-size: 16px;
+	line-height: 16px;		
 }

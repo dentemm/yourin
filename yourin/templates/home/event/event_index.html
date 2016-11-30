@@ -39,12 +39,12 @@
               </div>
               <ul class="list-inline offset-top-20">
                 <li>
-                  <div class="post-tags group-xs">
-                    <a href="blog-classic-single-post.html" class="label-custom label-lg-custom label-rounded-custom label-primary">{{ event.get_category_display }}</a>
-                  </div>
+                  <div class="icon icon-xxxs text-dark mdi mdi-tag"></div>
                 </li>
                 <li>
-                  <div class="icon icon-xxs text-dark mdi mdi-pen"></div>
+                  <div class="post-tags group-xs">
+                    <a href="blog-classic-single-post.html" class="label-custom label-sm-custom label-rounded-custom label-primary">{{ event.get_category_display }}</a>
+                  </div>
                 </li>
               </ul>
               <div class="post-author">
@@ -228,12 +228,12 @@
                 <div class="rdc-table"></div>
                 <div class="rdc-events text-left"><a class="rdc-events_close"></a>
                   <ul>
-                  {% for event in page.events %}
-                    <li data-date="11/01/2016 {{ event.event_date|date:'m/d/Y' }}" class="rdc-event">
+                  {% for event in page.limited_events %}
+                    <li data-date="{{ event.event_date|date:'m/d/Y' }}" class="rdc-event">
                       <div class="rdc-event-wrap">
                         <article class="post widget-event">
                           <div class="post-meta"><span class="icon icon-xxs text-picton-blue mdi mdi-clock"></span>
-                            <time datetime="2016-11-01{{ event.event_date|date:'Y-m-d'}}" class="text-dark">{{ event.event_date|date:'d F' }}</time>
+                            <time datetime="{{ event.event_date|date:'Y-m-d'}}" class="text-dark">{{ event.event_date|date:'d F' }}</time>
                           </div>
                           <div class="post-title">
                             <h6 class="text-regular"><a href="#">{{ event.title|title }}</a></h6>
@@ -242,54 +242,6 @@
                       </div>
                     </li>
                   {% endfor %}
-                    <li data-date="11/01/2016" class="rdc-event">
-                      <div class="rdc-event-wrap">
-                        <article class="post widget-event">
-                          <div class="post-meta"><span class="icon icon-xxs text-picton-blue mdi mdi-clock"></span>
-                            <time datetime="2016-11-01" class="text-dark">Eerste</time>
-                          </div>
-                          <div class="post-title">
-                            <h6 class="text-regular"><a href="#">Pitae augue vitae matt</a></h6>
-                          </div>
-                        </article>
-                      </div>
-                    </li>
-                    <li data-date="11/02/2016" class="rdc-event">
-                      <div class="rdc-event-wrap">
-                        <article class="post widget-event">
-                          <div class="post-meta"><span class="icon icon-xxs text-picton-blue mdi mdi-clock"></span>
-                            <time datetime="2016-11-02" class="text-dark">Tweede</time>
-                          </div>
-                          <div class="post-title">
-                            <h6 class="text-regular"><a href="#">Link naar tweede</a></h6>
-                          </div>
-                        </article>
-                      </div>
-                    </li>
-                    <li data-date="11/12/2016" class="rdc-event">
-                      <div class="rdc-event-wrap">
-                        <article class="post widget-event">
-                          <div class="post-meta"><span class="icon icon-xxs text-picton-blue mdi mdi-clock"></span>
-                            <time datetime="2016-11-12" class="text-dark">Derde</time>
-                          </div>
-                          <div class="post-title">
-                            <h6 class="text-regular"><a href="#">Pitae augue vitae matt</a></h6>
-                          </div>
-                        </article>
-                      </div>
-                    </li>
-                    <li data-date="08/13/2016" class="rdc-event">
-                      <div class="rdc-event-wrap">
-                        <article class="post widget-event">
-                          <div class="post-meta"><span class="icon icon-xxs text-picton-blue mdi mdi-clock"></span>
-                            <time datetime="2015-02-02" class="text-dark">Vierde</time>
-                          </div>
-                          <div class="post-title">
-                            <h6 class="text-regular"><a href="#">Link naar tweede</a></h6>
-                          </div>
-                        </article>
-                      </div>
-                    </li>
                   </ul>
                 </div>
               </div>
@@ -314,9 +266,6 @@
                             <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
                               <time datetime="{{ event.event_date|date:'Y-m-d'}}" class="text-dark">{{ event.event_date|date:'j F'}}</time>
                             </li>
-  <!--                           <li><span class="icon-xxs text-picton-blue mdi mdi-clock"></span>
-                              <time datetime="2016-01-01" class="text-dark">9:00 PM</time>
-                            </li> -->
                           </ul>
                         </div>
                         <div class="post-title">

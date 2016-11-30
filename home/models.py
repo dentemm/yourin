@@ -1,7 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 import geopy	# to geocode location data
-from datetime import date
+from datetime import date, timedelta
 
 from django.db import models as djangomodels
 from django.core.validators import MinValueValidator, MaxValueValidator
@@ -596,11 +596,21 @@ class EventIndex(BasePage):
 
 	template = 'home/event/event_index.html'
 
+	@property
+	def limited_events(self):
+
+		today = date.today()
+		start_date = today - timedelta(days=60)
+		end_date = today + timedelta(days=60)
+
+		events = Event.objects.live().descendant_of(self).filter(event_date__range=[start_date, end_date]).order_by('-event_date')
+
+		return events
 
 	@property
 	def events(self):
 
-		events = Event.objects.live().descendant_of(self)
+		events = Event.objects.live().descendant_of(self).order_by('-event_date')
 
 		return events
 
@@ -661,13 +671,19 @@ class Event(BasePage):
 	tags = ClusterTaggableManager(through=EventTag, blank=True)
 
 	image = djangomodels.ForeignKey('home.CustomImage', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
-	#category = djangomodels.ForeignKey('home.Category', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='events')
 	category = djangomodels.PositiveIntegerField(choices=EVENT_CATEGORY_CHOICES, default=1)
 
 	class Meta:
 		verbose_name = 'evenement'
 		verbose_name = 'evenementen'
 		ordering = ['-event_date']
+
+	# @property
+	# def related_events(self):
+
+	# 	Event.objects.live().descendant_of(self).filter(event_date__range=[start_date, end_date]).order_by('-event_date')
+
+	# 	return Event.objects.live().filter(category=self.category).exclude(name=self.name).order_by('-event_date')
 
 	@property
 	def icon(self):
