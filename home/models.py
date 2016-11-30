@@ -61,7 +61,7 @@ def get_upload_to(instance, filename):
 #
 class CustomImage(AbstractImage):
 	'''
-	Custom image model, om een auteur veld toe te voegen aan de wagtail Images
+	Custom image model, om bijkomende field validation toe te voegen
 	'''
 
 	file = djangomodels.ImageField(
@@ -397,6 +397,7 @@ class HomePageNumbers(Orderable, Numbers):
 class HomePage(BasePage):
 
 	template = 'home/home.html'
+	intro_image = djangomodels.ForeignKey('home.CustomImage', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='home_intro_images')
 
 	class Meta:
 		verbose_name = 'startpagina'
@@ -406,10 +407,12 @@ class HomePage(BasePage):
 
 		last_blog = Blog.objects.live().latest('date')
 		last_festival = Event.objects.live().filter(category=3).latest('event_date')
+		last_camp = Event.objects.live().filter(category=2).latest('event_date')
 
 		return {
 			'festival': last_festival,
 			'blog': last_blog,
+			'kamp': last_camp
 			
 		}
 
@@ -419,6 +422,7 @@ HomePage.content_panels = Page.content_panels + [
 					FieldPanel('catchphrase', classname='col12'),
 				]
 			),
+			ImageChooserPanel('intro_image'),
 		], heading='Startpagina aanpassingen'
 	),
 	InlinePanel('contents', label='Pijlers', help_text='Hiermee kan je de inhoud van de startpagina instellen. Dit zijn de zogenaamde pijlers van Yourin, en deze kunnen gewijzigd, verwijderd en toegevoegd worden.'),
@@ -487,7 +491,7 @@ class Blog(Orderable, BasePage):
 	tags = ClusterTaggableManager(through=BlogTag, blank=True)
 
 	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, 
-		blank=True, on_delete=djangomodels.SET_NULL, related_name='+'
+		blank=True, on_delete=djangomodels.SET_NULL, related_name='blog_images'
 		)
 
 	blog_content = fields.StreamField([
