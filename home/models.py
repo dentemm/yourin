@@ -128,10 +128,46 @@ Category.panels = [
 ]
 
 @register_snippet
-class Location(djangomodels.Model):
+class Address(djangomodels.Model):
+
+	city = djangomodels.CharField(verbose_name='stad', max_length=40)
+	postal_code = djangomodels.CharField(verbose_name='postcode', max_length=8)
+	street = djangomodels.CharField(verbose_name='straat', max_length=40)
+	number = djangomodels.CharField(verbose_name='nummer', max_length=8)
+	country = CountryField(verbose_name='land', null=True, default='BE')
+
+	class Meta:
+		verbose_name = 'adres'
+		verbose_name_plural = 'adressen'
+		ordering = ['city', ]
+
+	def __str__(self):
+		return '%s - %s' % (self.city, self.street)
+
+Address.panels = [
+	MultiFieldPanel([
+			FieldRowPanel([
+					FieldPanel('street', classname='col8'),
+					FieldPanel('number', classname='col4')
+				]
+			),
+			FieldRowPanel([
+					FieldPanel('city', classname='col8'),
+					FieldPanel('postal_code', classname='col4')
+				]
+			),
+			FieldRowPanel([
+					FieldPanel('country', classname='col6'),
+				]
+			),
+		], heading='Adresgegevens'
+	),
+]
+
+@register_snippet
+class Location(Address):
 
 	name = djangomodels.CharField(max_length=64)
-	address = djangomodels.ForeignKey('home.Address', verbose_name='adres', related_name='location', null=True)
 	longitude = djangomodels.DecimalField(max_digits=10, decimal_places=7, blank=True, null=True)
 	latitude = djangomodels.DecimalField(max_digits=10, decimal_places=7, blank=True, null=True)
 
@@ -147,7 +183,21 @@ Location.panels = [
 	MultiFieldPanel([
 			FieldRowPanel([
 					FieldPanel('name', classname='col6'),
-					FieldPanel('address', classname='col6')
+					#FieldPanel('address', classname='col6')
+				]	
+			),
+			FieldRowPanel([
+					FieldPanel('street', classname='col8'),
+					FieldPanel('number', classname='col4')
+				]
+			),
+			FieldRowPanel([
+					FieldPanel('city', classname='col8'),
+					FieldPanel('postal_code', classname='col4')
+				]
+			),
+			FieldRowPanel([
+					FieldPanel('country', classname='col6'),
 				]
 			),
 		],
@@ -186,43 +236,6 @@ Partner.panels = [
 			ImageChooserPanel('logo'),
 
 		], heading='Partner informatie'
-	),
-]
-
-@register_snippet
-class Address(djangomodels.Model):
-
-	city = djangomodels.CharField(verbose_name='stad', max_length=40)
-	postal_code = djangomodels.CharField(verbose_name='postcode', max_length=8, null=True)
-	street = djangomodels.CharField(verbose_name='straat', max_length=40, null=True)
-	number = djangomodels.CharField(verbose_name='nummer', max_length=8, null=True)
-	country = CountryField(verbose_name='land', null=True, default='BE')
-
-	class Meta:
-		verbose_name = 'adres'
-		verbose_name_plural = 'adressen'
-		ordering = ['city', ]
-
-	def __str__(self):
-		return '%s - %s' % (self.city, self.street)
-
-Address.panels = [
-	MultiFieldPanel([
-			FieldRowPanel([
-					FieldPanel('street', classname='col8'),
-					FieldPanel('number', classname='col4')
-				]
-			),
-			FieldRowPanel([
-					FieldPanel('city', classname='col8'),
-					FieldPanel('postal_code', classname='col4')
-				]
-			),
-			FieldRowPanel([
-					FieldPanel('country', classname='col6'),
-				]
-			),
-		], heading='Adresgegevens'
 	),
 ]
 
@@ -658,6 +671,10 @@ class EventCategory(Category):
 class EventTag(TaggedItemBase):
     content_object = ParentalKey('home.Event', related_name='tagged_items')
 
+class EventLocation(Orderable, Location):
+
+	page = ParentalKey('home.Event', related_name='locations')
+
 class Event(BasePage):
 
 	template = 'home/event/event_detail.html'
@@ -730,7 +747,7 @@ Event.content_panels = [
 		],
 		heading='Evenement gegevens'
 	),
-	#InlinePanel('categories', label='categorieën'),
+	InlinePanel('locations', label='locatie'),
 	
 ]
 
