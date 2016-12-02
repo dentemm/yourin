@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 
-{% load static wagtailimages_tags wagtailcore_tags %}
+{% load static wagtailimages_tags wagtailcore_tags wagtailroutablepage_tags %}
 
 {% block page_title %}
   {% include 'home/partials/page_title.html' with title='events' icon='mdi mdi-calendar-clock' %}
@@ -20,7 +20,7 @@
         <section>
           <h1 class="text-center">Alle evenementen</h1>
           <hr class="divider divider-lg bg-mantis">
-          {% for event in page.events %}
+          {% for event in events %}
           <div class="post-modern-timeline-date text-sm-left">
             <time datetime="{{ event.event_date|date:'Y-m-d'}}">{{ event.event_date|date:'d M' }}</time>
           </div>
@@ -204,8 +204,16 @@
             {% if events.has_other_pages %}
             <nav>
               <ul class="pager">
-                <li class="previous"><a href="#"><span aria-hidden="true" class="icon-left mdi mdi-arrow-left"></span>Vorige</a></li>
-                <li class="next"><a href="#">Volgende<span aria-hidden="true" class="icon-right mdi mdi-arrow-right"></span></a></li>
+              {% if events.has_previous %}
+                <li class="previous">
+                  <a href="?page={{ page.events.previous_page_number }}"><span aria-hidden="true" class="icon-left mdi mdi-arrow-left"></span>Vorige</a>
+                </li>
+              {% endif %}
+              {% if events.has_next %}
+                <li class="next">
+                  <a href="?page={{ pag.events.next_page_number }}">Volgende<span aria-hidden="true" class="icon-right mdi mdi-arrow-right"></span></a>
+                </li>
+              {% endif %}
               </ul>
             </nav>
             {% endif %}

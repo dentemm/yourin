@@ -639,7 +639,7 @@ class EventIndex(BasePage):
 		events = Event.objects.live().descendant_of(self).order_by('-event_date')
 		event_count = events.count()
 
-		events_per_page = 2
+		events_per_page = 1
 
 		paginator = Paginator(events, events_per_page)
 
