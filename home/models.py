@@ -607,19 +607,30 @@ BlogIndex.search_fields = Page.search_fields + [
 	index.SearchField('intro'),
 ]
 
-class EventIndex(BasePage, RoutablePageMixin):
+class EventIndex(RoutablePageMixin, BasePage):
 
 	template = 'home/event/event_index.html'
 
 	@route(r'^$', name='main')
-	@route(r'^page/(?P<page>\d+)/$', name='pagination')
-	def serve_page(self, request, page=1):
+	@route(r'^page/(?P<page>\d+)/$', name='page')
+	def serve_page(self, request, page=0):
+
+		self.page = page 
+
+		print('SERVING PAGE')
+		
 
 		return TemplateResponse(request, template=self.template, context=self.get_context(request))
 
 	def get_context(self, request):
 
-		pass
+		print('homen we hier???')
+
+		print('GET CONTEXT, page: %s' % self.page)
+
+		ctx = super(EventIndex, self).get_context(request)
+
+		return ctx
 
 
 	@property
@@ -664,7 +675,11 @@ class EventIndex(BasePage, RoutablePageMixin):
 		if (closest_index % events_per_page) != 0:
 			current_page = current_page + 1
 
-		events = paginator.page(current_page)
+		if self.page == 0:
+			events = paginator.page(current_page)
+
+		else:
+			events = paginator.page(self.page)
 
 		return events
 
