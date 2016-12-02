@@ -201,12 +201,14 @@
         <footer class="offset-top-66">
           <div class="post-modern-timeline-left">
             <!-- Bootstrap Pager-->
+            {% if events.has_other_pages %}
             <nav>
               <ul class="pager">
-                <li class="previous"><a href="#"><span aria-hidden="true" class="icon-left mdi mdi-arrow-left"></span>Older</a></li>
-                <li class="next"><a href="#">Newer<span aria-hidden="true" class="icon-right mdi mdi-arrow-right"></span></a></li>
+                <li class="previous"><a href="#"><span aria-hidden="true" class="icon-left mdi mdi-arrow-left"></span>Vorige</a></li>
+                <li class="next"><a href="#">Volgende<span aria-hidden="true" class="icon-right mdi mdi-arrow-right"></span></a></li>
               </ul>
             </nav>
+            {% endif %}
           </div>
         </footer>
       </div>
@@ -228,7 +230,7 @@
                 <div class="rdc-table"></div>
                 <div class="rdc-events text-left"><a class="rdc-events_close"></a>
                   <ul>
-                  {% for event in page.limited_events %}
+                  {% for event in page.mini_cal_events %}
                     <li data-date="{{ event.event_date|date:'m/d/Y' }}" class="rdc-event">
                       <div class="rdc-event-wrap">
                         <article class="post widget-event">

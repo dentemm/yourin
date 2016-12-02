@@ -622,9 +622,11 @@ class EventIndex(BasePage):
 
 	def mini_cal_events(self):
 
-		return self.date_filtered_qs(60, -60)
+		return self.date_filtered_qs(-60, 60)
 
 	def date_filtered_qs(self, start, end):
+
+		today = date.today()
 
 		start = today + timedelta(days=start)
 		end = today + timedelta(days=end)
@@ -635,9 +637,21 @@ class EventIndex(BasePage):
 	def events(self):
 
 		events = Event.objects.live().descendant_of(self).order_by('-event_date')
+		event_count = events.count()
 
-		paginator = Paginator(events, 8)
+		events_per_page = 2
+
+		paginator = Paginator(events, events_per_page)
+
 		today = date.today()
+		closest_index = events.filter(event_date__gte=today).count()
+
+		current_page = closest_index / events_per_page
+
+		if (closest_index % events_per_page) != 0:
+			current_page = current_page + 1
+
+		events = paginator.page(current_page)
 
 		return events
 
