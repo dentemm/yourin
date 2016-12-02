@@ -620,10 +620,24 @@ class EventIndex(BasePage):
 
 		return events
 
+	def mini_cal_events(self):
+
+		return self.date_filtered_qs(60, -60)
+
+	def date_filtered_qs(self, start, end):
+
+		start = today + timedelta(days=start)
+		end = today + timedelta(days=end)
+
+		return Event.objects.live().descendant_of(self).filter(event_date__range=[start, end]).order_by('-event_date')
+
 	@property
 	def events(self):
 
 		events = Event.objects.live().descendant_of(self).order_by('-event_date')
+
+		paginator = Paginator(events, 8)
+		today = date.today()
 
 		return events
 
@@ -704,6 +718,9 @@ class Event(BasePage):
 
 	@property
 	def icon(self):
+		'''
+		De verschillende categorieen worden elk voorzien van een icoon en kleur
+		'''
 
 		if self.category == 1:
 			return 'fa fa-flash icon-danger'
@@ -721,7 +738,6 @@ class Event(BasePage):
 			return 'fa fa-gift icon-danger'
 
 
-# .icon-shark-filled, .icon-mantis-filled, .icon-pink-filled, .icon-malibu-filled, .icon-carrot-filled, .icon-red-filled, .icon-blue-gray-filled 
 
 # Festival page panels
 Event.content_panels = [
@@ -748,7 +764,6 @@ Event.content_panels = [
 		heading='Evenement gegevens'
 	),
 	InlinePanel('locations', label='locatie'),
-	
 ]
 
 Event.parent_page_types = [
