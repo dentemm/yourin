@@ -663,7 +663,7 @@ class EventIndex(RoutablePageMixin, BasePage):
 		events = Event.objects.live().descendant_of(self).order_by('-event_date')
 		event_count = events.count()
 
-		events_per_page = 1
+		events_per_page = 6
 
 		paginator = Paginator(events, events_per_page)
 
