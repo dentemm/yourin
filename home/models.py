@@ -6,6 +6,7 @@ from datetime import date, timedelta
 from django.db import models as djangomodels
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.template.response import TemplateResponse
 from django.db.models.signals import pre_delete, pre_save
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import slugify
@@ -19,6 +20,7 @@ from wagtail.wagtailimages.models import Image, AbstractImage, AbstractRendition
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 from wagtail.wagtailembeds.blocks import EmbedBlock
+from wagtail.contrib.wagtailroutablepage.models import RoutablePageMixin, route
 
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
@@ -605,9 +607,20 @@ BlogIndex.search_fields = Page.search_fields + [
 	index.SearchField('intro'),
 ]
 
-class EventIndex(BasePage):
+class EventIndex(BasePage, RoutablePageMixin):
 
 	template = 'home/event/event_index.html'
+
+	@route(r'^$', name='main')
+	@route(r'^page/(?P<page>\d+)/$', name='pagination')
+	def serve_page(self, request, page=1):
+
+		return TemplateResponse(request, template=self.template, context=self.get_context(request))
+
+	def get_context(self, request):
+
+		pass
+
 
 	@property
 	def limited_events(self):

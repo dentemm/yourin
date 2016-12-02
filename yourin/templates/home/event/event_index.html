@@ -6,6 +6,8 @@
   {% include 'home/partials/page_title.html' with title='events' icon='mdi mdi-calendar-clock' %}
 {% endblock page_title %}
 
+
+
 {% block main %}
 <div class="shell">
   <div class="range range-sm-center">
@@ -18,7 +20,7 @@
         <!-- Classic Soundcloud Player-->
         <!-- Section Blog Modern-->
         <section>
-          <h1 class="text-center">Alle evenementen</h1>
+          <h1 class="text-center">Alle evenementen -- {% routablepageurl page 'pagination' 1 %}</h1>
           <hr class="divider divider-lg bg-mantis">
           {% for event in events %}
           <div class="post-modern-timeline-date text-sm-left">
