@@ -6,8 +6,6 @@
   {% include 'home/partials/page_title.html' with title='events' icon='mdi mdi-calendar-clock' %}
 {% endblock page_title %}
 
-
-
 {% block main %}
 <div class="shell">
   <div class="range range-sm-center">
@@ -196,7 +194,6 @@
       <aside class="text-left">        
         <div class="range">
           <div class="cell-sm-6 cell-md-12 offset-sm-top-41 offset-md-top-0">
-            <!-- RD calendar-->
               <div class="rd-calendar hidden-xs">
                 <div class="rdc-panel">
                   <a class="rdc-next"></a><a class="rdc-prev"></a>
@@ -224,12 +221,9 @@
                 </div>
               </div>
           </div>
-          <!-- Recent Events-->
           <div class="cell-sm-6 cell-md-12 offset-top-41 hidden-xs">
             <h6 class="text-uppercase text-spacing-60">Opkomende evenementen</h6>
             <div class="text-subline"></div>
-            
-              <!-- Event Widget-->
             {% if upcoming_events %}
               {% for event in upcoming_events %}
               <div class="offset-top-34">
