@@ -365,8 +365,6 @@ RelatedLink.panels = [
 
 class BasePage(Page):
 
-	catchphrase = djangomodels.CharField(verbose_name='catchphrase', max_length=164, default='Entertainment voor jongeren')
-
 	@property
 	def footer_blogs(self):
 		# Get list of live blog pages that are descendants of this page
@@ -381,22 +379,10 @@ class BasePage(Page):
 
 		ctx = super(BasePage, self).get_context(request, *args, **kwargs)
 
-		self.update_vars()
-
 		ctx['yourin'] = yourin_variables
 		ctx['footer_blogs'] = self.footer_blogs
 
 		return ctx
-
-	def save(self, *args, **kwargs):
-
-		self.update_vars()
-
-		super(BasePage, self).save(*args, **kwargs)
-
-	def update_vars(self):
-
-		yourin_variables['catchphrase'] = self.catchphrase
 
 class HomePageContent(Orderable, WhatWeDo):
 
@@ -411,6 +397,7 @@ class HomePage(BasePage):
 	template = 'home/home.html'
 	intro_image = djangomodels.ForeignKey('home.CustomImage', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='home_intro_images')
 
+	catchphrase = djangomodels.CharField(verbose_name='catchphrase', max_length=164, default='Entertainment voor jongeren')
 	fb_link = djangomodels.URLField(verbose_name='FB pagina', default='https://www.facebook.com/yourin.be/')
 	twitter_link = djangomodels.URLField(verbose_name='Twitter pagina', default='https://twitter.com/yourinbe')
 	linkedin_link = djangomodels.URLField(verbose_name='LinkedIn pagina', default='https://www.linkedin.com/company/4982091')
@@ -432,6 +419,20 @@ class HomePage(BasePage):
 			'kamp': last_camp
 			
 		}
+
+	def save(self, *args, **kwargs):
+
+		self.update_vars()
+
+		super(HomePage, self).save(*args, **kwargs)
+
+	def update_vars(self):
+
+		yourin_variables['catchphrase'] = self.catchphrase
+		yourin_variables['fb_link'] = self.fb_link
+		yourin_variables['twitter_link'] = self.twitter_link
+		yourin_variables['linkedin_link'] = self.linkedin_link
+		yourin_variables['youtube_link'] = self.youtube_link
 
 HomePage.content_panels = Page.content_panels + [
 	MultiFieldPanel([
