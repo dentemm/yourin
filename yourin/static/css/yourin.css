@@ -6,8 +6,22 @@
 .wagtail-userbar--bottom-right .wagtail-userbar-items {left:0; width:22em;}
 
 /* INTENSE ALGEMEEN */
-.form-control {
-	font-size: 30px;
+
+
+.form-control.input-lg {
+	font-size: 36px;
+}
+
+.form-control.input-sm{
+	font-size: 22px;
+}
+
+.form-label-sm {
+	font-size: 22px;
+}
+
+.form-label-sm.focus {
+
 }
 
 @media (min-width: 1200px) {

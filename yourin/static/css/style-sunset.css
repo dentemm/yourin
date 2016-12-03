@@ -27114,7 +27114,7 @@ textarea.form-control {
 .input-group-lg > .input-group-btn > .btn,
 .pagination-classic.input-group-lg > li.input-group-btn > a,
 .pagination-classic.input-group-lg > li.input-group-btn > span {
-  line-height: 32px;
+  line-height: 36px;
 }
 
 .form-control-rect {
@@ -27152,8 +27152,8 @@ textarea.form-control {
 
 .form-label {
   position: absolute;
-  top: 25px;
-  left: 16px;
+  top: 20px;
+  left: 25px;
   font-size: 30px;
   color: lightgrey;
   pointer-events: none;
@@ -27170,8 +27170,8 @@ textarea.form-control {
 .form-label.focus {
   color: #ffad1e;
   top: 3px;
-  -webkit-transform: scale(0.5) translateY(0);
-  transform: scale(0.5) translateY(0);
+  -webkit-transform: scale(0.36) translateY(0);
+  transform: scale(0.36) translateY(0);
 }
 
 .form-label.auto-fill {
@@ -27179,12 +27179,12 @@ textarea.form-control {
 }
 
 .form-label-sm {
-  top: 20px;
-  left: 25px;
+  top: 10px;
+  left: 13px;
 }
 
 .form-label-sm.focus {
-  top: -1px;
+  top: 0px;
 }
 
 .form-label-lg {
@@ -27399,7 +27399,7 @@ textarea.form-control {
 .pagination-classic.input-group-sm > li.input-group-btn > span ~ .form-control-feedback {
   width: 40px;
   height: 40px;
-  line-height: 40px;
+  line-height: 22px;
 }
 
 .has-feedback .form-control {

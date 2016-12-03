@@ -13,7 +13,7 @@
 <div class="shell search-page section-bottom-66">
     <form action="{% url 'search' %}" method="GET" class="form-search rd-search">
         <div class="form-group">
-            <label for="search-results" class="form-label form-search-label form-label-sm rd-input-label">Nieuwe zoekopdracht</label>
+            <label for="search-results" class="form-label form-search-label rd-input-label">Nieuwe zoekopdracht</label>
             <input id="search-results" type="text" name="query" {% if search_query %} value="{{ search_query }}"{% endif %} autocomplete="off" class="form-search-input input-lg form-control input-lg">
         </div>
         <button type="submit" class="form-search-submit"><span class="mdi mdi-magnify"></span></button>
