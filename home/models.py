@@ -719,7 +719,7 @@ class EventIndex(RoutablePageMixin, BasePage):
 			current_page = current_page + 1
 
 		if self.page == 0:
-			if current_page != 0
+			if current_page != 0:
 				events = paginator.page(current_page)
 
 			else:
