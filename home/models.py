@@ -443,6 +443,19 @@ HomePage.content_panels = Page.content_panels + [
 			ImageChooserPanel('intro_image'),
 		], heading='Startpagina aanpassingen'
 	),
+	MultiFieldPanel([
+			FieldRowPanel([
+				FieldPanel('fb_link', classname='col6'),
+				FieldPanel('twitter_link', classname='col6')
+				],
+			),
+			FieldRowPanel([
+				FieldPanel('youtube_link', classname='col6'),
+				FieldPanel('linkedin_link', classname='col6')
+				]
+			),
+		], heading='Yourin links'
+	),
 	InlinePanel('contents', label='Pijlers', help_text='Hiermee kan je de inhoud van de startpagina instellen. Dit zijn de zogenaamde pijlers van Yourin, en deze kunnen gewijzigd, verwijderd en toegevoegd worden.'),
 	InlinePanel('numbers', label='Marketing numbers', help_text='Dit zijn enkele cijfers die op de startpagina worden weergegeven. Er zijn een aantal icoontjes gedefinieerd, maar deze lijst kan op vraag eenvoudig worden uitgebreid!'),
 	InlinePanel('partners', label='Partners'),
