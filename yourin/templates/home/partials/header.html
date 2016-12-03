@@ -23,7 +23,7 @@
               <form action="{% url 'search' %}" method="GET" class="form-search rd-search">
                 <div class="form-group">
                   <label for="rd-navbar-form-search-widget" class="form-label form-search-label form-label-sm rd-input-label">Zoeken</label>
-                  <input id="rd-navbar-form-search-widget" type="text" name="query" value="{{ search_query }}"   autocomplete="off" class="form-search-input input-lg form-control form-control-gray-lightest input-lg">
+                  <input id="rd-navbar-form-search-widget" type="text" name="query" value="{{ search_query }}" autocomplete="off" class="form-search-input input-lg form-control form-control-gray-lightest input-lg">
                 </div>
                 <button type="submit" class="form-search-submit">
                   <span class="mdi mdi-magnify"></span>
@@ -31,7 +31,9 @@
               </form>
             </div>
             <ul class="rd-navbar-nav">
-              <li class=""><a href="{% slugurl 'home' %}"><span>Home</span><!--<span class="rd-navbar-label text-middle label-custom label-danger label-xs-custom label-rounded-custom label">new</span>--></a>
+              <li class="{% if calling_page.url == '/' %}active{% endif %}">
+                <a href="{% slugurl 'home' %}"><span>Home</span><!--<span class="rd-navbar-label text-middle label-custom label-danger label-xs-custom label-rounded-custom label">new</span>--></a>
+              </li>
           	{% for menuitem in menuitems %}
           	  <li class="{% if calling_page.url == menuitem.url %} active{% endif %}">
                 <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
@@ -51,9 +53,6 @@
             </div>
             <!--button(type="submit").rd-navbar-search-form-submit.mdi.mdi-magnify-->
           </form>
-          <!--div.rd-navbar-live-search-results-->
-          <!--button(data-rd-navbar-toggle=".rd-navbar-search, .rd-navbar-inner, .rd-navbar-live-search-results").rd-navbar-search-toggle-->
-          <!--  span-->
         </div>
       </div>
     </div>
