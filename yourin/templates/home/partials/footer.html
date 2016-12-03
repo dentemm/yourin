@@ -82,14 +82,16 @@
           <p class="offset-top-4">{{ yourin.catchphrase }}</p>
 	        <ul class="list-inline">
          	  <li>
-         		  <a href="https://www.facebook.com/yourin.be/" class="icon fa fa-facebook icon-xxs icon-circle icon-darker-filled"></a>
+         		  <a href="{{ yourin.fb_link }}" class="icon fa fa-facebook icon-xxs icon-circle icon-darker-filled"></a>
      		     </li>
           	<li>
-          		<a href="https://twitter.com/yourinbe" class="icon fa fa-twitter icon-xxs icon-circle icon-darker-filled"></a>
+          		<a href="{{ yourin.twitter_link }}" class="icon fa fa-twitter icon-xxs icon-circle icon-darker-filled"></a>
       		  </li>
-          	<!-- <li><a href="#" class="icon fa fa-google-plus icon-xxs icon-circle icon-darker-filled"></a></li> -->
+            <li>
+              <a href="{{ yourin.youtube_link }}" class="icon fa fa-youtube-play icon-xxs icon-circle icon-darker-filled"></a>
+            </li>
           	<li>
-              <a href="https://www.linkedin.com/company/4982091" class="icon fa fa-linkedin icon-xxs icon-circle icon-darker-filled"></a>
+              <a href="{{ yourin.linkedin_link }}" class="icon fa fa-linkedin icon-xxs icon-circle icon-darker-filled"></a>
             </li>
         </ul>
         </div>

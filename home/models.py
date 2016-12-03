@@ -367,7 +367,6 @@ class BasePage(Page):
 
 	catchphrase = djangomodels.CharField(verbose_name='catchphrase', max_length=164, default='Entertainment voor jongeren')
 
-
 	@property
 	def footer_blogs(self):
 		# Get list of live blog pages that are descendants of this page
@@ -391,8 +390,6 @@ class BasePage(Page):
 
 	def save(self, *args, **kwargs):
 
-		yourin_variables['catchphrase'] = self.catchphrase
-
 		self.update_vars()
 
 		super(BasePage, self).save(*args, **kwargs)
@@ -413,6 +410,11 @@ class HomePage(BasePage):
 
 	template = 'home/home.html'
 	intro_image = djangomodels.ForeignKey('home.CustomImage', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='home_intro_images')
+
+	fb_link = djangomodels.URLField(verbose_name='FB pagina', default='https://www.facebook.com/yourin.be/')
+	twitter_link = djangomodels.URLField(verbose_name='Twitter pagina', default='https://twitter.com/yourinbe')
+	linkedin_link = djangomodels.URLField(verbose_name='LinkedIn pagina', default='https://www.linkedin.com/company/4982091')
+	youtube_link = djangomodels.URLField(verbose_name='Youtube kanaal', default='https://www.youtube.com/user/yourinbe')
 
 	class Meta:
 		verbose_name = 'startpagina'
@@ -484,13 +486,20 @@ class ContactPage(BasePage):
 
 	template = 'home/contact.html'
 
+	intro_text = djangomodels.CharField(max_length=255, default='''Vivamus sagittis lacus vel augue laoreet rutrum faucibus 
+																dolor auctor. Cras justo odio, dapibus ac facilisis in, egestas 
+																eget quam. Cras mattis consectetur purus sit amet fermentum.''')
 	email = djangomodels.EmailField('contact email', default='ditishet_emailadresvoor@contactformulier.website')
 
 
 ContactPage.content_panels = Page.content_panels + [
 	MultiFieldPanel([
 			FieldRowPanel([
-				FieldPanel('email'),
+				FieldPanel('email', classname='col8'),
+				]
+			),
+			FieldRowPanel([
+				FieldPanel('intro_text', classname='col8')
 				]
 			),
 		], heading='Details voor contactpagina',
