@@ -476,8 +476,28 @@ AboutPage.parent_page_types = [
 
 AboutPage.subpage_types = []
 
+class ContactLocation(Orderable, Location):
+
+	page = ParentalKey('home.ContactPage', related_name='locations')
+
 class ContactPage(BasePage):
+
 	template = 'home/contact.html'
+
+	email = djangomodels.EmailField('contact email', default='ditishet_emailadresvoor@contactformulier.website')
+
+
+ContactPage.content_panels = Page.content_panels + [
+	MultiFieldPanel([
+			FieldRowPanel([
+				FieldPanel('email'),
+				]
+			),
+		], heading='Details voor contactpagina',
+	),
+	InlinePanel('locations', label='locatie / adres van Yourin')
+
+]
 
 ContactPage.parent_page_types = [
 	'home.HomePage',
