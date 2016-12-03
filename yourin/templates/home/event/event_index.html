@@ -13,29 +13,19 @@
   <div class="range range-sm-center">
     <div class="cell-sm-10 cell-md-8 cell-lg-7">
       <div class="inset-left-0 inset-md-right-20">
-        <!-- Classic Thumbnail-->
-        <!-- Classic Gallery Carousel-->
-        <!-- Classic Thumbnail-->
-        <!-- Embed Video-->
-        <!-- Classic Soundcloud Player-->
-        <!-- Section Blog Modern-->
         <section>
           <h1 class="text-center">Alle evenementen</h1>
           <hr class="divider divider-lg bg-mantis">
+        {% if page.events %}
           {% for event in events %}
           <div class="post-modern-timeline-date text-sm-left">
             <time datetime="{{ event.event_date|date:'Y-m-d'}}">{{ event.event_date|date:'d M' }}</time>
           </div>
-          <!-- Post Modern-->          
           <article class="post post-modern post-modern-timeline post-modern-timeline-left">
-            <!-- Post media-->
-            <!-- Post content-->
             <section class="post-content text-left">
-              <!-- Post Title-->
               <div class="post-title">
                 <h6><a href="{% pageurl event %}">{{ event.title|title }}</a></h6>
               </div>
-              <!-- Post Body-->
               <div class="post-body offset-top-10">
                 <p>{{ event.description }}</p>
               </div>
@@ -58,7 +48,8 @@
             </section>
           </article>
           {% endfor %}
-<!--           <div class="post-modern-timeline-date text-sm-left">
+        {% else %}
+           <div class="post-modern-timeline-date text-sm-left">
             <time datetime="2016-01-01">21 Feb</time>
           </div>
           <article class="post post-modern post-modern-timeline post-modern-timeline-left">
@@ -75,10 +66,10 @@
                 </li>
               </ul>
               <div class="post-title">
-                <h6 class="offset-top-24"><a href="blog-classic-single-post.html">5 Steps to Blog’s Success</a></h6>
+                <h6 class="offset-top-24"><a href="blog-classic-single-post.html">Dummy content</a></h6>
               </div>
               <div class="post-body offset-top-20">
-                <p>Unfortunately people will not come to your blog just to see what you have published on it. To make sure that your blog becomes a successful one, you have to work on it to attract visitors interested in your content.</p>
+                <p>Deze tijdlijn staat hier, enkel en alleen omdat er nog geen evenenementen zijn aangemaakt. </p>
               </div>
               <div class="post-author">
                 <div class="post-author-img">
@@ -176,7 +167,8 @@
                   </div>
                 </div>
               </section>
-            </article>-->
+            </article>
+            {% endif %}
         </section>
         <footer class="offset-top-66">
           <div class="post-modern-timeline-left">
@@ -201,10 +193,7 @@
       </div>
     </div>
     <div class="cell-md-3 cell-lg-3 offset-top-66 offset-md-top-0">
-      <!-- Section Blog Modern-->
-      <aside class="text-left">
-        <!-- RD calendar / kalender-->
-        
+      <aside class="text-left">        
         <div class="range">
           <div class="cell-sm-6 cell-md-12 offset-sm-top-41 offset-md-top-0">
             <!-- RD calendar-->
@@ -225,7 +214,7 @@
                             <time datetime="{{ event.event_date|date:'Y-m-d'}}" class="text-dark">{{ event.event_date|date:'d F' }}</time>
                           </div>
                           <div class="post-title">
-                            <h6 class="text-regular"><a href="#">{{ event.title|title }}</a></h6>
+                            <h6 class="text-regular"><a href="{% pageurl event %}">{{ event.title|title }}</a></h6>
                           </div>
                         </article>
                       </div>
@@ -245,7 +234,7 @@
               {% for event in upcoming_events %}
               <div class="offset-top-34">
                 <article class="post widget-event text-left">
-                  <a href="#">
+                  <a href="{% pageurl event %}">
                     <div class="unit unit-horizontal unit-spacing-xs unit-middle">
                       {% image event.image fill-100x100 as img %}
                       <div class="unit-left"><img width="46" height="46" src="{{ img.file.url }}" class="img-circle"></div>
@@ -268,7 +257,6 @@
               {% endfor %}
             {% else %}
             <div class="offset-top-34">
-              <!-- Event Widget-->
               <article class="post widget-event text-left"><a href="#">
                   <div class="unit unit-horizontal unit-spacing-xs unit-middle">
                     <div class="unit-left"><img width="46" height="46" src="images/blog/post-thumb-02-46x46.jpg" alt="" class="img-circle"></div>
