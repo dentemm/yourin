@@ -27155,7 +27155,7 @@ textarea.form-control {
   top: 25px;
   left: 16px;
   font-size: 30px;
-  color: #140f0c;
+  color: lightgrey;
   pointer-events: none;
   z-index: 9;
   transition: .3s;
@@ -33156,11 +33156,11 @@ fieldset[disabled] .swiper-slide-caption
 }
 
 .rd-navbar-default.rd-navbar-light.rd-navbar-static .rd-navbar-search-form .form-label, .rd-navbar-floated.rd-navbar-light.rd-navbar-static .rd-navbar-search-form .form-label {
-  color: #140f0c;
+  color: lightgrey;
 }
 
 .rd-navbar-default.rd-navbar-light.rd-navbar-static .rd-navbar-search-form .form-label.focus, .rd-navbar-floated.rd-navbar-light.rd-navbar-static .rd-navbar-search-form .form-label.focus {
-  color: #858585;
+  color: #ffad1e;
 }
 
 .rd-navbar-default.rd-navbar-light.rd-navbar-static .rd-navbar-search-form-input, .rd-navbar-floated.rd-navbar-light.rd-navbar-static .rd-navbar-search-form-input {
