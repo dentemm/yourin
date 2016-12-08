@@ -169,7 +169,7 @@ Address.panels = [
 @register_snippet
 class Location(Address):
 
-	name = djangomodels.CharField(max_length=64)
+	name = djangomodels.CharField(verbose_name='naam locatie', max_length=64)
 	longitude = djangomodels.DecimalField(max_digits=10, decimal_places=7, blank=True, null=True)
 	latitude = djangomodels.DecimalField(max_digits=10, decimal_places=7, blank=True, null=True)
 
@@ -206,6 +206,48 @@ Location.panels = [
 		heading='Locatie gegevens'
 	)
 ]
+
+class Event(Location):
+
+	event_name = djangomodels.CharField(verbose_name='event naam', max_length=128)
+	event_date = djangomodels.DateField(verbose_name='event datum', default=date.today)
+
+Event.panels = [
+	MultiFieldPanel([
+			FieldRowPanel([
+				FieldPanel('event_name',  classname='col9'),
+				]
+			),
+			FieldRowPanel([
+				FieldPanel('event_date', classname='col6')
+				]
+			),
+		], heading='Evenement data'
+	),
+	MultiFieldPanel([
+			FieldRowPanel([
+				FieldPanel('name', classname='col6')
+				]
+			),
+			FieldRowPanel([
+					FieldPanel('street', classname='col8'),
+					FieldPanel('number', classname='col4')
+				]
+			),
+			FieldRowPanel([
+					FieldPanel('city', classname='col8'),
+					FieldPanel('postal_code', classname='col4')
+				]
+			),
+			FieldRowPanel([
+					FieldPanel('country', classname='col6'),
+				]
+			),
+		], heading='Locatie gegevens'
+	),
+]
+
+
 
 @register_snippet
 class Partner(djangomodels.Model):
@@ -787,6 +829,10 @@ class EventGroupLocation(Orderable, Location):
 
 	page = ParentalKey('home.EventGroup', related_name='locations')
 
+class EventGroupEvent(Orderable, Event):
+
+	page = ParentalKey('home.EventGroup', related_name='events')
+
 # class EventGroupEvent(Orderable, Event):
 
 # 	page = ParentalKey('home.EventGroup', related_name='evenementen')
@@ -865,7 +911,8 @@ EventGroup.content_panels = [
 		],
 		heading='Evenement gegevens'
 	),
-	InlinePanel('locations', label='locatie'),
+	#InlinePanel('locations', label='locatie'),
+	InlinePanel('events', label='evenementen')
 ]
 
 EventGroup.parent_page_types = [
