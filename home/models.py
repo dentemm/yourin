@@ -207,45 +207,28 @@ Location.panels = [
 	)
 ]
 
-class Event(Location):
+# class Event(djangomodels.Model):
 
-	event_name = djangomodels.CharField(verbose_name='event naam', max_length=128)
-	event_date = djangomodels.DateField(verbose_name='event datum', default=date.today)
+# 	event_name = djangomodels.CharField(verbose_name='naam', max_length=128)
+# 	event_description = djangomodels.TextField(verbose_name='beschrijving', null=True)
+# 	event_date = djangomodels.DateField(verbose_name='datum', default=date.today)
+# 	location = djangomodels.ForeignKey('home.Location', null=True, on_delete=djangomodels.SET_NULL)
 
-Event.panels = [
-	MultiFieldPanel([
-			FieldRowPanel([
-				FieldPanel('event_name',  classname='col9'),
-				]
-			),
-			FieldRowPanel([
-				FieldPanel('event_date', classname='col6')
-				]
-			),
-		], heading='Evenement data'
-	),
-	MultiFieldPanel([
-			FieldRowPanel([
-				FieldPanel('name', classname='col6')
-				]
-			),
-			FieldRowPanel([
-					FieldPanel('street', classname='col8'),
-					FieldPanel('number', classname='col4')
-				]
-			),
-			FieldRowPanel([
-					FieldPanel('city', classname='col8'),
-					FieldPanel('postal_code', classname='col4')
-				]
-			),
-			FieldRowPanel([
-					FieldPanel('country', classname='col6'),
-				]
-			),
-		], heading='Locatie gegevens'
-	),
-]
+# Event.panels = [
+# 	MultiFieldPanel([
+# 			FieldRowPanel([
+# 				FieldPanel('event_name',  classname='col6'),
+# 				FieldPanel('event_date', classname='col6')
+# 				]
+# 			),
+# 			FieldRowPanel([
+# 				FieldPanel('event_date', classname='col6'),
+# 				FieldPanel('location', classname='col6')
+# 				]
+# 			),
+# 		], heading='Evenement data'
+# 	),
+# ]
 
 
 
@@ -452,8 +435,8 @@ class HomePage(BasePage):
 	def recents(self):
 
 		#last_blog = Blog.objects.live().latest('date')
-		#last_festival = EventGroup.objects.live().filter(category=3)
-		#last_camp = EventGroup.objects.live().filter(category=2)
+		#last_festival = Event.objects.live().filter(category=3)
+		#last_camp = Event.objects.live().filter(category=2)
 
 		return {
 			#'festival': last_festival,
@@ -725,7 +708,7 @@ class EventIndex(RoutablePageMixin, BasePage):
 		start_date = today - timedelta(days=60)
 		end_date = today + timedelta(days=60)
 
-		events = EventGroup.objects.live().descendant_of(self).filter(event_date__range=[start_date, end_date]).order_by('-event_date')
+		events = Event.objects.live().descendant_of(self).filter(event_date__range=[start_date, end_date]).order_by('-event_date')
 
 		return events
 
@@ -740,13 +723,13 @@ class EventIndex(RoutablePageMixin, BasePage):
 		start = today + timedelta(days=start)
 		end = today + timedelta(days=end)
 
-		#return EventGroup.objects.live().descendant_of(self).filter(event_date__range=[start, end]).order_by('-event_date')
-		return EventGroup.objects.live().descendant_of(self)
+		#return Event.objects.live().descendant_of(self).filter(event_date__range=[start, end]).order_by('-event_date')
+		return Event.objects.live().descendant_of(self)
 
 	@property
 	def events(self):
 
-		events = EventGroup.objects.live().descendant_of(self)
+		events = Event.objects.live().descendant_of(self)
 
 		return events
 
@@ -783,7 +766,7 @@ class EventIndex(RoutablePageMixin, BasePage):
 	@property
 	def upcoming_events(self):
 
-		events = EventGroup.objects.live().descendant_of(self)[:4]
+		events = Event.objects.live().descendant_of(self)[:4]
 
 		return events
 
@@ -814,40 +797,40 @@ EventIndex.parent_page_types = [
 ]
 
 EventIndex.subpage_types = [
-	'home.EventGroup',
+	'home.Event',
 ]
 
-class EventGroupCategory(Category):
+class EventCategory(Category):
 
-	page = ParentalKey('home.EventGroup', related_name='categories')
+	page = ParentalKey('home.Event', related_name='categories')
 
-class EventGroupTag(TaggedItemBase):
+class EventTag(TaggedItemBase):
 
-    content_object = ParentalKey('home.EventGroup', related_name='tagged_items')
+    content_object = ParentalKey('home.Event', related_name='tagged_items')
 
-class EventGroupLocation(Orderable, Location):
+class EventLocation(Orderable, Location):
 
-	page = ParentalKey('home.EventGroup', related_name='locations')
+	page = ParentalKey('home.Event', related_name='locations')
 
-class EventGroupEvent(Orderable, Event):
+# class EventEvent(Orderable, Event):
 
-	page = ParentalKey('home.EventGroup', related_name='events')
+# 	page = ParentalKey('home.Event', related_name='events')
 
-# class EventGroupEvent(Orderable, Event):
+# class EventEvent(Orderable, Event):
 
-# 	page = ParentalKey('home.EventGroup', related_name='evenementen')
+# 	page = ParentalKey('home.Event', related_name='evenementen')
 
-class EventGroup(BasePage):
+class Event(BasePage):
 
 	template = 'home/event/event_detail.html'
 
 	name = djangomodels.CharField(verbose_name='naam', max_length=164, default='', null=True, blank=True)
 	description = djangomodels.TextField(verbose_name='beschrijving', null=True)
-	#event_date = djangomodels.DateField(verbose_name='datum', default=date.today)
-	#event_duration = djangomodels.PositiveIntegerField('Duur (# dagen)', default=1, validators=[MaxValueValidator(21),])
+	event_date = djangomodels.DateField(verbose_name='datum', default=date.today)
+	event_duration = djangomodels.PositiveIntegerField('Duur (# dagen)', default=1, validators=[MaxValueValidator(21),])
 	website = djangomodels.URLField(verbose_name='website ', null=True)
 	class_name = djangomodels.CharField(max_length=28, default='cal_event')
-	tags = ClusterTaggableManager(through=EventGroupTag, blank=True)
+	tags = ClusterTaggableManager(through=EventTag, blank=True)
 
 	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='logo', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 	category = djangomodels.PositiveIntegerField(choices=EVENT_CATEGORY_CHOICES, default=1)
@@ -888,7 +871,7 @@ class EventGroup(BasePage):
 
 
 # Festival page panels
-EventGroup.content_panels = [
+Event.content_panels = [
 
 	MultiFieldPanel([
 			FieldRowPanel([
@@ -912,14 +895,14 @@ EventGroup.content_panels = [
 		heading='Evenement gegevens'
 	),
 	#InlinePanel('locations', label='locatie'),
-	InlinePanel('events', label='evenementen')
+	#InlinePanel('events', label='evenementen')
 ]
 
-EventGroup.parent_page_types = [
+Event.parent_page_types = [
 	'home.EventIndex', 
 ]
 
-EventGroup.subpage_types = []
+Event.subpage_types = []
 
 class CalendarEvent(BasePage):
 

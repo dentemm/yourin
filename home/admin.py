@@ -1,15 +1,15 @@
 from django.contrib import admin
 
-from .models import Category, EventGroupCategory, EventGroup
+from .models import Category, EventCategory, Event
 
-@admin.register(EventGroup)
-class EventGroupAdmin(admin.ModelAdmin):
+@admin.register(Event)
+class EventAdmin(admin.ModelAdmin):
 	pass
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
 	pass
 
-@admin.register(EventGroupCategory)
-class EventGroupCategoryAdmin(admin.ModelAdmin):
+@admin.register(EventCategory)
+class EventCategoryAdmin(admin.ModelAdmin):
 	pass

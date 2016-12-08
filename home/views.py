@@ -6,7 +6,7 @@ from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 
-from .models import EventGroup, Blog
+from .models import Event, Blog
 from .serializers import EventSerializer, BlogSerializer
 
 
@@ -21,7 +21,7 @@ class CalendarEventsApiView(APIView):
 	def get(self, request, format=None):
 
 		blogs = Blog.objects.live()
-		events = EventGroup.objects.live()
+		events = Event.objects.live()
 
 		blog_serializer = BlogSerializer(blogs, many=True)
 		event_serializer = EventSerializer(events, many=True)

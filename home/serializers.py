@@ -1,12 +1,12 @@
 from rest_framework import serializers
 
-from .models import EventGroup, Blog
+from .models import Event, Blog
 
 class EventSerializer(serializers.ModelSerializer):
 
 	class Meta:
-		model = EventGroup
-		fields = ('title', 'id', 'event_date', 'url')
+		model = Event
+		fields = ('title', 'id', 'Event_date', 'url')
 
 class BlogSerializer(serializers.ModelSerializer):
 
