@@ -1,0 +1,280 @@
+{% extends 'layout.html' %}
+
+{% load static wagtailimages_tags wagtailcore_tags wagtailroutablepage_tags %}
+
+{% block page_title %}
+  {% include 'home/partials/page_title.html' with title='events' icon='mdi mdi-calendar-clock' %}
+{% endblock page_title %}
+
+{% block main %}
+<div class="shell">
+  <div class="range range-sm-center">
+    <div class="cell-sm-10 cell-md-8 cell-lg-7">
+      <div class="inset-left-0 inset-md-right-20">
+        <section>
+          <h1 class="text-center">Onze Evenementen</h1>
+          <hr class="divider divider-lg bg-mantis">
+        {% if page.events %}
+          {% for event in events %}
+          <div class="post-modern-timeline-date text-sm-left">
+            <time datetime="{{ event.event_date|date:'Y-m-d'}}">{{ event.event_date|date:'d M' }}</time>
+          </div>
+          <article class="post post-modern post-modern-timeline post-modern-timeline-left">
+            <section class="post-content text-left">
+              <div class="post-title">
+                <h6><a href="{% pageurl event %}">{{ event.title|title }}</a></h6>
+              </div>
+              <div class="post-body offset-top-10">
+                <p>{{ event.description }}</p>
+              </div>
+              <ul class="list-inline offset-top-20">
+                <li>
+                  <div class="icon icon-xxxs text-dark mdi mdi-tag"></div>
+                </li>
+                <li>
+                  <div class="post-tags group-xs">
+                    <a href="blog-classic-single-post.html" class="label-custom label-sm-custom label-rounded-custom label-primary">{{ event.get_category_display }}</a>
+                  </div>
+                </li>
+              </ul>
+              <div class="post-author">
+                <div class="post-author-img">
+                  <span class="icon icon-xs icon-circle icon-blue-gray-filled mdi mdi-rocket"></span>
+                </div>
+                <div class="post-author-name text-middle">{{ event.get_category_display }}</div>
+              </div>
+            </section>
+          </article>
+          {% endfor %}
+        {% else %}
+           <div class="post-modern-timeline-date text-sm-left">
+            <time datetime="2016-01-01">21 Feb</time>
+          </div>
+          <article class="post post-modern post-modern-timeline post-modern-timeline-left">
+            <section class="post-content text-left">
+              <ul class="list-inline">
+                <li>
+                  <div class="post-tags group-xs">
+                    <a href="blog-classic-single-post.html" class="label-custom label-lg-custom label-rounded-custom label-primary">Sport</a>
+                    <a href="blog-classic-single-post.html" class="label-custom label-lg-custom label-rounded-custom label-primary">News</a>
+                  </div>
+                </li>
+                <li>
+                  <div class="icon icon-xxs text-dark mdi mdi-pen"></div>
+                </li>
+              </ul>
+              <div class="post-title">
+                <h6 class="offset-top-24"><a href="blog-classic-single-post.html">Dummy content</a></h6>
+              </div>
+              <div class="post-body offset-top-20">
+                <p>Deze tijdlijn staat hier, enkel en alleen omdat er nog geen evenenementen zijn aangemaakt. </p>
+              </div>
+              <div class="post-author">
+                <div class="post-author-img">
+                  <span class="icon icon-xs icon-circle icon-blue-gray-filled mdi mdi-rocket"></span>
+                </div>
+                <div class="post-author-name text-middle">Eugene Newman
+                </div>
+              </div>
+            </section>
+          </article>
+          <div class="post-modern-timeline-date text-sm-left">
+            <time datetime="2016-01-01">21 Feb</time>
+          </div>
+            <article class="post post-modern post-modern-timeline post-modern-timeline-left">
+              <header class="post-media"><img width="570" height="321" src="images/blog/post-05-570x321.jpg" alt="" class="img-responsive img-cover">
+              </header>
+              <section class="post-content text-left">
+                <ul class="list-inline">
+                  <li>
+                    <div class="post-tags group-xs"><a href="blog-classic-single-post.html" class="label-custom label-lg-custom label-rounded-custom label-primary">Business</a>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="icon icon-xxs text-dark mdi mdi-image"></div>
+                  </li>
+                </ul>
+                <div class="post-title">
+                  <h6 class="offset-top-24"><a href="blog-classic-single-post.html">Making Money Online with Your Computer Only</a></h6>
+                </div>
+                <div class="post-body offset-top-20">
+                  <p>Making money online is a kind of everyone’s dream job. No investments are needed and you can do whatever you need to do when you are in the mood or have free time.Flexible work schedule is something you’ll hardly get working at the office. However, online business rarely starts to bring you money from the very first day. It takes some time as a rule. But once you understand the whole process (like what are your abilities, where to work, for whom to work and so on) you'll be earning money in no time.</p>
+                </div>
+                <div class="post-author">
+                  <div class="post-author-img"><img width="45" height="45" src="images/users/user-july-mao-60x60.jpg" alt="July Mao" class="img-circle"></div>
+                  <div class="post-author-name text-middle">July Mao
+                  </div>
+                </div>
+              </section>
+            </article>
+            <article class="post post-modern post-modern-timeline post-modern-timeline-left">
+              <header class="post-media">
+                <div class="post-inset">
+                    <div class="soundcloud-player-classic"><iframe height="166" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/149065581&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe></div>
+                </div>
+              </header>
+              <section class="post-content text-left">
+                <ul class="list-inline">
+                  <li>
+                    <div class="post-tags group-xs"><a href="blog-classic-single-post.html" class="label-custom label-lg-custom label-rounded-custom label-primary">Music</a>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="icon icon-xxs text-dark mdi mdi-image"></div>
+                  </li>
+                </ul>
+                <div class="post-title">
+                  <h6 class="offset-top-24"><a href="blog-classic-single-post.html">Proper Color Solutions For The Office</a></h6>
+                </div>
+                <div class="post-body offset-top-20">
+                </div>
+                <div class="post-author">
+                  <div class="post-author-img"><img width="45" height="45" src="images/users/user-john-doe-60x60.jpg" alt="John Doe" class="img-circle"></div>
+                  <div class="post-author-name text-middle">John Doe
+                  </div>
+                </div> 
+              </section>
+            </article>
+          <div class="post-modern-timeline-date text-sm-left">
+            <time datetime="2016-01-01">19 Feb</time>
+          </div>
+            <article class="post post-modern post-modern-timeline post-modern-timeline-left">
+              <header class="post-media">
+                <div class="embed-responsive embed-responsive-16by9">
+                  <iframe src="//www.youtube.com/embed/-AhmuMqZB0s?wmode=transparent" class="embed-responsive-item"></iframe>
+                </div>
+              </header>
+              <section class="post-content text-left">
+                <ul class="list-inline">
+                  <li>
+                    <div class="post-tags group-xs"><a href="blog-classic-single-post.html" class="label-custom label-lg-custom label-rounded-custom label-primary">Music</a>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="icon icon-xxs text-dark mdi mdi-image"></div>
+                  </li>
+                </ul>
+                <div class="post-title">
+                  <h6 class="offset-top-24"><a href="blog-classic-single-post.html">Four Types of Verbal Communication.</a></h6>
+                </div>
+                <div class="post-body offset-top-20">
+                </div>
+                <div class="post-author">
+                  <div class="post-author-img"><img width="45" height="45" src="images/users/user-bernard-show-60x60.jpg" alt="Bernard Show" class="img-circle"></div>
+                  <div class="post-author-name text-middle">Bernard Show
+                  </div>
+                </div>
+              </section>
+            </article>
+            {% endif %}
+        </section>
+        <footer class="offset-top-66">
+          <div class="post-modern-timeline-left">
+            {% if events.has_other_pages %}
+            <nav>
+              <ul class="pager">
+              {% if events.has_next %}
+                <li class="previous">
+                  <a href="{% routablepageurl page 'page' events.next_page_number %}"><span aria-hidden="true" class="icon-left mdi mdi-arrow-left"></span>Vorige</a>
+                </li>
+              {% endif %}
+              {% if events.has_previous %}
+                <li class="next">
+                  <a href="{% routablepageurl page 'page' events.previous_page_number %}">Volgende<span aria-hidden="true" class="icon-right mdi mdi-arrow-right"></span></a>
+                </li>
+              {% endif %}
+              </ul>
+            </nav>
+            {% endif %}
+          </div>
+        </footer>
+      </div>
+    </div>
+    <div class="cell-md-3 cell-lg-3 offset-top-66 offset-md-top-0">
+      <aside class="text-left">        
+        <div class="range">
+          <div class="cell-sm-6 cell-md-12 offset-sm-top-41 offset-md-top-0">
+              <div class="rd-calendar hidden-xs">
+                <div class="rdc-panel">
+                  <a class="rdc-next"></a><a class="rdc-prev"></a>
+                  <div class="rdc-month"></div>
+                  <div class="rdc-fullyear"></div>
+                </div>
+                <div class="rdc-table"></div>
+                <div class="rdc-events text-left"><a class="rdc-events_close"></a>
+                  <ul>
+                  {% for event in page.mini_cal_events %}
+                    <li data-date="{{ event.event_date|date:'m/d/Y' }}" class="rdc-event">
+                      <div class="rdc-event-wrap">
+                        <article class="post widget-event">
+                          <div class="post-meta"><span class="icon icon-xxs text-picton-blue mdi mdi-clock"></span>
+                            <time datetime="{{ event.event_date|date:'Y-m-d'}}" class="text-dark">{{ event.event_date|date:'d F' }}</time>
+                          </div>
+                          <div class="post-title">
+                            <h6 class="text-regular"><a href="{% pageurl event %}">{{ event.title|title }}</a></h6>
+                          </div>
+                        </article>
+                      </div>
+                    </li>
+                  {% endfor %}
+                  </ul>
+                </div>
+              </div>
+          </div>
+          <div class="cell-sm-6 cell-md-12 offset-top-41 hidden-xs">
+            <h6 class="text-uppercase text-spacing-60">Opkomende evenementen</h6>
+            <div class="text-subline"></div>
+            {% if upcoming_events %}
+              {% for event in upcoming_events %}
+              <div class="offset-top-34">
+                <article class="post widget-event text-left">
+                  <a href="{% pageurl event %}">
+                    <div class="unit unit-horizontal unit-spacing-xs unit-middle">
+                      {% image event.image fill-100x100 as img %}
+                      <div class="unit-left"><img width="46" height="46" src="{{ img.file.url }}" class="img-circle"></div>
+                      <div class="unit-body">
+                        <div class="post-meta">
+                          <ul class="list-inline list-inline-sm">
+                            <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
+                              <time datetime="{{ event.event_date|date:'Y-m-d'}}" class="text-dark">{{ event.event_date|date:'j F'}}</time>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="post-title">
+                          <h6 class="text-regular">{{ event.title|title }}</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </article>
+              </div>
+              {% endfor %}
+            {% else %}
+            <div class="offset-top-34">
+              <article class="post widget-event text-left"><a href="#">
+                  <div class="unit unit-horizontal unit-spacing-xs unit-middle">
+                    <div class="unit-left"><img width="46" height="46" src="images/blog/post-thumb-02-46x46.jpg" alt="" class="img-circle"></div>
+                    <div class="unit-body">
+                      <div class="post-meta">
+                        <ul class="list-inline list-inline-sm">
+                          <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
+                            <time datetime="2016-01-01" class="text-dark">leeg ...</time>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="post-title">
+                        <h6 class="text-regular">Geen evenementen gepland</h6>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </article>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+{% endblock main %}

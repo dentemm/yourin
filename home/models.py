@@ -703,32 +703,39 @@ class EventIndex(RoutablePageMixin, BasePage):
 	@property
 	def events(self):
 
-		events = Event.objects.live().descendant_of(self).order_by('-event_date')
-		event_count = events.count()
-
-		events_per_page = 6
-
-		paginator = Paginator(events, events_per_page)
-
-		today = date.today()
-		closest_index = events.filter(event_date__gte=today).count()
-
-		current_page = closest_index / events_per_page
-
-		if (closest_index % events_per_page) != 0:
-			current_page = current_page + 1
-
-		if self.page == 0:
-			if current_page != 0:
-				events = paginator.page(current_page)
-
-			else:
-				return events
-
-		else:
-			events = paginator.page(self.page)
+		events = Event.objects.live().descendant_of(self)
 
 		return events
+
+	# @property
+	# def events(self):
+
+	# 	events = Event.objects.live().descendant_of(self).order_by('-event_date')
+	# 	event_count = events.count()
+
+	# 	events_per_page = 6
+
+	# 	paginator = Paginator(events, events_per_page)
+
+	# 	today = date.today()
+	# 	closest_index = events.filter(event_date__gte=today).count()
+
+	# 	current_page = closest_index / events_per_page
+
+	# 	if (closest_index % events_per_page) != 0:
+	# 		current_page = current_page + 1
+
+	# 	if self.page == 0:
+	# 		if current_page != 0:
+	# 			events = paginator.page(current_page)
+
+	# 		else:
+	# 			return events
+
+	# 	else:
+	# 		events = paginator.page(self.page)
+
+	# 	return events
 
 	@property
 	def upcoming_events(self):
@@ -786,17 +793,17 @@ class Event(BasePage):
 	description = djangomodels.TextField(verbose_name='beschrijving', null=True)
 	event_date = djangomodels.DateField(verbose_name='datum', default=date.today)
 	event_duration = djangomodels.PositiveIntegerField('Duur (# dagen)', default=1, validators=[MaxValueValidator(21),])
-	website = djangomodels.URLField(verbose_name='event website', null=True)
+	website = djangomodels.URLField(verbose_name='website ', null=True)
 	class_name = djangomodels.CharField(max_length=28, default='cal_event')
 	tags = ClusterTaggableManager(through=EventTag, blank=True)
 
-	image = djangomodels.ForeignKey('home.CustomImage', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
+	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='logo', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 	category = djangomodels.PositiveIntegerField(choices=EVENT_CATEGORY_CHOICES, default=1)
 
 	class Meta:
-		verbose_name = 'evenement'
-		verbose_name = 'evenementen'
-		ordering = ['-event_date']
+		verbose_name = 'event groep'
+		verbose_name = 'event groepen'
+		#ordering = ['-event_date']
 
 	# @property
 	# def related_events(self):
@@ -837,11 +844,11 @@ Event.content_panels = [
 				FieldPanel('category', classname='col6'),
 				]
 			),
-			FieldRowPanel([
-				FieldPanel('event_date', classname='col6'),
-				FieldPanel('event_duration', classname='col6'),
-				],
-			),
+			# FieldRowPanel([
+			# 	FieldPanel('event_date', classname='col6'),
+			# 	FieldPanel('event_duration', classname='col6'),
+			# 	],
+			# ),
 			FieldRowPanel([
 				FieldPanel('website', classname='col6'),
 				],
