@@ -48,15 +48,15 @@ ICON_CHOICES = (
 )
 
 ICON_COLOR_CHOICES = (
-	('text-default', 'Zwart'),
+	('text-default', 'Wit'),
 	('text-gray', 'Lichtgijs'),
-	('text-primary', 'Groen'),
+	('text-primary', 'Yourin Rood'),
 	('text-deluge', 'Paars'),
 	('text-piction-blue', 'Blauw'),
 	('text-mantis', 'Lichtgroen'),
 	('text-malibu', 'Lichtblauw'),
 	('text-carrot', 'Oranje'),
-	('text-red', 'Rood'),
+	('text-red', 'Fel Rood'),
 	('text-blue-gray', 'Paars-blauw'),
 	('text-pink', 'Donkerpaars')
 )

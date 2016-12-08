@@ -7,7 +7,6 @@
 {% block content %}
 
 <section class="context-dark offset-lg-top-110 offset-sm-top-50 text-center">
-  <!-- RD Parallax-->
   <div data-on="false" data-md-on="true" class="rd-parallax">
     <div id="home_intro_image" data-speed="0.35" data-type="media" data-url="{{ page.intro_image.file.url }}" class="rd-parallax-layer"> 
     </div>
@@ -20,7 +19,6 @@
         {% if page.contents.all %}
           {% for content in page.contents.all %}
             <div class="cell-sm-4">
-            <!-- Icon Box Type 4-->
               <a href="{{ content.related_page.url }}">
                 <span class="icon icon-circle {{ content.icon }} icon-yourin"></span>
               </a>
@@ -34,7 +32,6 @@
           {% endfor %}
         {% else %}
             <div class="cell-sm-4">
-            <!-- Icon Box Type 4-->
               <a href="#">
                 <span class="icon icon-circle mdi mdi-comment-text-outline icon-yourin"></span>
               </a>
@@ -44,7 +41,6 @@
               <p class="text-light">De achtergrondafbeelding is instelbaar via de admin website, en wordt automatisch vrij donker gemaakt.</p>
             </div>
             <div class="cell-sm-4 offset-top-66 offset-sm-top-0">
-              <!-- Icon Box Type 4-->
               <a href="#">
                 <span class="icon icon-circle mdi mdi-star icon-yourin"></span>
               </a>
@@ -54,7 +50,6 @@
               <p class="text-light">Momenteel zijn er 3 pijlers, namelijk evenementen, festivals en influencers. Als er meer zijn moet ik kleine aanpassingen doorvoeren</p>
             </div>
             <div class="cell-sm-4 offset-top-66 offset-sm-top-0">
-              <!-- Icon Box Type 4-->
               <a href="#">
                 <span class="icon icon-circle mdi mdi-domain icon-yourin"></span>
               </a>
@@ -179,7 +174,6 @@
         {% endfor %}
       {% else %}
           <div class="cell-md-3 cell-sm-6 offset-top-66 offset-sm-top-0">
-            <!-- Counter type 2-->
             <div class="counter-type-2">
               <span class="icon mdi mdi-account-multiple-outline text-malibu"></span>
               <div class="offset-top-10">
@@ -189,7 +183,6 @@
             </div>
           </div>
           <div class="cell-md-3 cell-sm-6 offset-top-66 offset-md-top-0">
-            <!-- Counter type 2-->
             <div class="counter-type-2">
               <span class="icon mdi mdi-clock text-neon-carrot"></span>
               <div class="offset-top-10">
@@ -199,7 +192,6 @@
             </div>
           </div>
           <div class="cell-md-3 cell-sm-6 offset-top-66 offset-md-top-0">
-            <!-- Counter type 2-->
             <div class="counter-type-2">
               <span class="icon mdi mdi-code-brackets text-ku-crimson"></span>
               <div class="offset-top-10">
@@ -210,7 +202,6 @@
             </div>
           </div>
           <div class="cell-md-3 cell-sm-6 offset-top-66 offset-md-top-0">
-            <!-- Counter type 2-->
             <div class="counter-type-2">
               <span class="icon mdi mdi-clock text-neon-carrot"></span>
               <div class="offset-top-10">
@@ -225,7 +216,6 @@
     </div>
   </div>
 </section>
-
 <section class="section-98 section-sm-110">
   <div class="shell text-center">
     <h1>Onze Partners</h1>
