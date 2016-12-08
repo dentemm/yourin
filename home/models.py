@@ -409,14 +409,14 @@ class HomePage(BasePage):
 	@property
 	def recents(self):
 
-		last_blog = Blog.objects.live().latest('date')
-		last_festival = Event.objects.live().filter(category=3).latest('event_date')
-		last_camp = Event.objects.live().filter(category=2).latest('event_date')
+		#last_blog = Blog.objects.live().latest('date')
+		#last_festival = EventGroup.objects.live().filter(category=3)
+		#last_camp = EventGroup.objects.live().filter(category=2)
 
 		return {
-			'festival': last_festival,
-			'blog': last_blog,
-			'kamp': last_camp
+			#'festival': last_festival,
+			#'blog': last_blog,
+			#'kamp': last_camp
 			
 		}
 
@@ -652,18 +652,18 @@ BlogIndex.search_fields = Page.search_fields + [
 
 class EventIndex(RoutablePageMixin, BasePage):
 
-	template = 'home/event/event_index.html'
+	template = 'home/event/event_index_2.html'
 
-	@route(r'^$', name='main')
-	@route(r'^page/(?P<page>\d+)/$', name='page')
-	def serve_page(self, request, page=0):
+	# @route(r'^$', name='main')
+	# @route(r'^page/(?P<page>\d+)/$', name='page')
+	# def serve_page(self, request, page=0):
 
-		self.page = page 
+	# 	self.page = page 
 
-		print('SERVING PAGE')
+	# 	print('SERVING PAGE')
 		
 
-		return TemplateResponse(request, template=self.template, context=self.get_context(request))
+	# 	return TemplateResponse(request, template=self.template, context=self.get_context(request))
 
 	def get_context(self, request):
 
@@ -683,7 +683,7 @@ class EventIndex(RoutablePageMixin, BasePage):
 		start_date = today - timedelta(days=60)
 		end_date = today + timedelta(days=60)
 
-		events = Event.objects.live().descendant_of(self).filter(event_date__range=[start_date, end_date]).order_by('-event_date')
+		events = EventGroup.objects.live().descendant_of(self).filter(event_date__range=[start_date, end_date]).order_by('-event_date')
 
 		return events
 
@@ -698,12 +698,13 @@ class EventIndex(RoutablePageMixin, BasePage):
 		start = today + timedelta(days=start)
 		end = today + timedelta(days=end)
 
-		return Event.objects.live().descendant_of(self).filter(event_date__range=[start, end]).order_by('-event_date')
+		#return EventGroup.objects.live().descendant_of(self).filter(event_date__range=[start, end]).order_by('-event_date')
+		return EventGroup.objects.live().descendant_of(self)
 
 	@property
 	def events(self):
 
-		events = Event.objects.live().descendant_of(self)
+		events = EventGroup.objects.live().descendant_of(self)
 
 		return events
 
@@ -740,7 +741,7 @@ class EventIndex(RoutablePageMixin, BasePage):
 	@property
 	def upcoming_events(self):
 
-		events = Event.objects.live().descendant_of(self).filter(event_date__gt=date.today())[:4]
+		events = EventGroup.objects.live().descendant_of(self)[:4]
 
 		return events
 
@@ -779,11 +780,16 @@ class EventGroupCategory(Category):
 	page = ParentalKey('home.EventGroup', related_name='categories')
 
 class EventGroupTag(TaggedItemBase):
+
     content_object = ParentalKey('home.EventGroup', related_name='tagged_items')
 
 class EventGroupLocation(Orderable, Location):
 
 	page = ParentalKey('home.EventGroup', related_name='locations')
+
+# class EventGroupEvent(Orderable, Event):
+
+# 	page = ParentalKey('home.EventGroup', related_name='evenementen')
 
 class EventGroup(BasePage):
 
@@ -791,8 +797,8 @@ class EventGroup(BasePage):
 
 	name = djangomodels.CharField(verbose_name='naam', max_length=164, default='', null=True, blank=True)
 	description = djangomodels.TextField(verbose_name='beschrijving', null=True)
-	event_date = djangomodels.DateField(verbose_name='datum', default=date.today)
-	event_duration = djangomodels.PositiveIntegerField('Duur (# dagen)', default=1, validators=[MaxValueValidator(21),])
+	#event_date = djangomodels.DateField(verbose_name='datum', default=date.today)
+	#event_duration = djangomodels.PositiveIntegerField('Duur (# dagen)', default=1, validators=[MaxValueValidator(21),])
 	website = djangomodels.URLField(verbose_name='website ', null=True)
 	class_name = djangomodels.CharField(max_length=28, default='cal_event')
 	tags = ClusterTaggableManager(through=EventGroupTag, blank=True)

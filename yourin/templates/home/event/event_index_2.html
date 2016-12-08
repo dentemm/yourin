@@ -168,26 +168,6 @@
             </article>
             {% endif %}
         </section>
-        <footer class="offset-top-66">
-          <div class="post-modern-timeline-left">
-            {% if events.has_other_pages %}
-            <nav>
-              <ul class="pager">
-              {% if events.has_next %}
-                <li class="previous">
-                  <a href="{% routablepageurl page 'page' events.next_page_number %}"><span aria-hidden="true" class="icon-left mdi mdi-arrow-left"></span>Vorige</a>
-                </li>
-              {% endif %}
-              {% if events.has_previous %}
-                <li class="next">
-                  <a href="{% routablepageurl page 'page' events.previous_page_number %}">Volgende<span aria-hidden="true" class="icon-right mdi mdi-arrow-right"></span></a>
-                </li>
-              {% endif %}
-              </ul>
-            </nav>
-            {% endif %}
-          </div>
-        </footer>
       </div>
     </div>
     <div class="cell-md-3 cell-lg-3 offset-top-66 offset-md-top-0">
