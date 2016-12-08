@@ -771,21 +771,21 @@ EventIndex.parent_page_types = [
 ]
 
 EventIndex.subpage_types = [
-	'home.Event',
+	'home.EventGroup',
 ]
 
-class EventCategory(Category):
+class EventGroupCategory(Category):
 
-	page = ParentalKey('home.Event', related_name='categories')
+	page = ParentalKey('home.EventGroup', related_name='categories')
 
-class EventTag(TaggedItemBase):
-    content_object = ParentalKey('home.Event', related_name='tagged_items')
+class EventGroupTag(TaggedItemBase):
+    content_object = ParentalKey('home.EventGroup', related_name='tagged_items')
 
-class EventLocation(Orderable, Location):
+class EventGroupLocation(Orderable, Location):
 
-	page = ParentalKey('home.Event', related_name='locations')
+	page = ParentalKey('home.EventGroup', related_name='locations')
 
-class Event(BasePage):
+class EventGroup(BasePage):
 
 	template = 'home/event/event_detail.html'
 
@@ -795,7 +795,7 @@ class Event(BasePage):
 	event_duration = djangomodels.PositiveIntegerField('Duur (# dagen)', default=1, validators=[MaxValueValidator(21),])
 	website = djangomodels.URLField(verbose_name='website ', null=True)
 	class_name = djangomodels.CharField(max_length=28, default='cal_event')
-	tags = ClusterTaggableManager(through=EventTag, blank=True)
+	tags = ClusterTaggableManager(through=EventGroupTag, blank=True)
 
 	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='logo', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 	category = djangomodels.PositiveIntegerField(choices=EVENT_CATEGORY_CHOICES, default=1)
@@ -836,7 +836,7 @@ class Event(BasePage):
 
 
 # Festival page panels
-Event.content_panels = [
+EventGroup.content_panels = [
 
 	MultiFieldPanel([
 			FieldRowPanel([
@@ -862,11 +862,11 @@ Event.content_panels = [
 	InlinePanel('locations', label='locatie'),
 ]
 
-Event.parent_page_types = [
+EventGroup.parent_page_types = [
 	'home.EventIndex', 
 ]
 
-Event.subpage_types = []
+EventGroup.subpage_types = []
 
 class CalendarEvent(BasePage):
 
