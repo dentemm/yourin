@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% load static wagtailimages_tags wagtailcore_tags %}
+
+{% block page_title %}
+  {% include 'home/partials/page_title.html' with title='events' icon='mdi mdi-calendar-clock' section='offset-lg-top-110 offset-sm-top-50 offset-top-50' %}
+{% endblock page_title %}
+
+{% block main%}
+<section class="section-sm-0">
+  <div class="shell">
+    <div class="range range-xs-center range-sm-right offset-top-0">
+      <div class="cell-xs-10 cell-sm-6 section-image-aside section-image-aside-left text-left">
+        <div style="background-image: url({{ img.file.url }})" class="section-image-aside-img veil reveal-sm-block">
+        </div>
+        <div class="section-image-aside-body offset-top-41 offset-sm-top-0 section-sm-66 inset-sm-left-50">
+          <div>
+            <h3 class="text-picton-blue">{{ page.event_date }}</h3>
+          </div>
+          <div class="offset-top-10">
+            <h2> {{ page.title|title }}</h2>
+          </div>
+          <div class="offset-top-20">
+            <p>When you join our team, you’ll dive into a knowledge-sharing environment. We encourage our employees to attend multiple conferences and workshops held both inside the company and on the outside. Keep in mind that you can take part in conferences as both a listener and speaker.</p>
+            <p>As a part of our benefits package, we also offer multiple courses for you to master new subjects. Our working environment is full of learning opportunities, which can’t help motivating for a steady professional growth.</p>
+            <p>Offices of Intense are located in different corners of the globe, so be ready to travel around the world. To save your budget, we cover all the travel costs including transportation, accommodation, food, and even some leisure activities. Our company gives you a perfect chance to explore the world and immerse in different cultures.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section-50 bg-blue-gray context-dark text-center">
+  <div class="shell">
+    <h2><span class="big"> Gerelateerde evenementen</span></h2>
+<!--     <p>Can't find the job you want? Send your resume to <a href="#">info@demolink.com</a> , and we'll contact you when a new position opens.</p> -->
+    {% for event in page.events.all %}
+      <h1>{{ event }} </h1>
+    {% endfor%}
+  </div>
+</section>
+{% endblock main %}

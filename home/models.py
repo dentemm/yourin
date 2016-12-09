@@ -214,6 +214,13 @@ class EventInstance(djangomodels.Model):
 	event_date = djangomodels.DateField(verbose_name='datum', default=date.today)
 	location = djangomodels.ForeignKey('home.Location', verbose_name='location', null=True, on_delete=djangomodels.SET_NULL)
 
+	class Meta:
+		verbose_name = 'evenement'
+		verbose_name_plural = 'evenementen'
+
+	def __str__(self):
+		return self.event_name
+
 EventInstance.panels = [
 	MultiFieldPanel([
 			FieldRowPanel([
@@ -222,8 +229,12 @@ EventInstance.panels = [
 				]
 			),
 			FieldRowPanel([
-				FieldPanel('event_date', classname='col6'),
+				#FieldPanel('event_date', classname='col6'),
 				FieldPanel('location', classname='col6')
+				]
+			),
+			FieldRowPanel([
+				FieldPanel('event_description', classname='col12'),
 				]
 			),
 		], heading='Evenement data'
@@ -790,29 +801,12 @@ class EventEventInstance(Orderable, EventInstance):
 
 	page = ParentalKey('home.Event', related_name='events')
 
-# class EventGroup(BasePage):
-
-# 	template = 'home/event/event_group.html'
-
-# 	name = djangomodels.CharField(verbose_name='naam', max_length=164, default='', null=True, blank=True)
-# 	description = djangomodels.TextField(verbose_name='beschrijving', null=True)
-# 	website = djangomodels.URLField(verbose_name='website ', null=True)
-# 	class_name = djangomodels.CharField(max_length=28, default='cal_event')
-# 	tags = ClusterTaggableManager(through=EventTag, blank=True)
-
-# 	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='logo', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
-# 	category = djangomodels.PositiveIntegerField(choices=EVENT_CATEGORY_CHOICES, default=1)
-
-# 	class Meta:
-# 		verbose_name = 'event groep'
-# 		verbose_name = 'event groepen'
-
-
 class Event(BasePage):
 
-	template = 'home/event/event_detail.html'
+	template = 'home/event/event_group.html'
 
 	name = djangomodels.CharField(verbose_name='naam', max_length=164, default='', null=True, blank=True)
+	subtitle = djangomodels.CharField(verbose_name='korte intro', max_length=120, null=True, blank=True)
 	description = djangomodels.TextField(verbose_name='beschrijving', null=True)
 	website = djangomodels.URLField(verbose_name='website ', null=True)
 	class_name = djangomodels.CharField(max_length=28, default='cal_event')
@@ -866,18 +860,14 @@ Event.content_panels = [
 				FieldPanel('category', classname='col6'),
 				]
 			),
-			# FieldRowPanel([
-			# 	FieldPanel('event_date', classname='col6'),
-			# 	FieldPanel('event_duration', classname='col6'),
-			# 	],
-			# ),
 			FieldRowPanel([
+				FieldPanel('subtitle', classname='col6'),
 				FieldPanel('website', classname='col6'),
 				],
 			),
 			FieldPanel('description'),
 			ImageChooserPanel('image'),
-			FieldPanel('tags'),
+			#FieldPanel('tags'),
 		],
 		heading='Evenement gegevens'
 	),
