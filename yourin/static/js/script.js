@@ -920,7 +920,7 @@ $document.ready(function () {
               var marker = new google.maps.Marker(
                   {
                     map: map,
-                    icon: "images/gmap_marker.png",
+                    icon: "/static/images/gmap_marker.png",
                   }
               );
               var autocomplete = new google.maps.places.Autocomplete(inputAddress[0]);
