@@ -21,12 +21,12 @@ class CalendarEventsApiView(APIView):
 	def get(self, request, format=None):
 
 		blogs = Blog.objects.live()
-		events = Event.objects.live()
+		event = Event.objects.live()
 
 		blog_serializer = BlogSerializer(blogs, many=True)
 		event_serializer = EventSerializer(events, many=True)
 
-		cal_events = list(blogs) + list(events)
+		#cal_events = list(blogs) + list(events)
 
 		return Response(blog_serializer.data + event_serializer.data)
 

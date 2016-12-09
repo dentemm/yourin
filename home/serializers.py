@@ -6,7 +6,7 @@ class EventSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Event
-		fields = ('title', 'id', 'Event_date', 'url')
+		fields = ('title', 'id', 'event_date', 'url')
 
 class BlogSerializer(serializers.ModelSerializer):
 

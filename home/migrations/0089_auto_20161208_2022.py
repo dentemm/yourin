@@ -27,6 +27,14 @@ class Migration(migrations.Migration):
             name='website',
             field=models.URLField(null=True, verbose_name='website '),
         ),
+        migrations.RemoveField(
+            model_name='event',
+            name='event_date',
+        ),
+        migrations.RemoveField(
+            model_name='event',
+            name='event_duration',
+        ),
         migrations.AlterField(
             model_name='location',
             name='name',
@@ -37,4 +45,5 @@ class Migration(migrations.Migration):
             name='icon_color',
             field=models.CharField(choices=[('text-default', 'Wit'), ('text-gray', 'Lichtgijs'), ('text-primary', 'Yourin Rood'), ('text-deluge', 'Paars'), ('text-piction-blue', 'Blauw'), ('text-mantis', 'Lichtgroen'), ('text-malibu', 'Lichtblauw'), ('text-carrot', 'Oranje'), ('text-red', 'Fel Rood'), ('text-blue-gray', 'Paars-blauw'), ('text-pink', 'Donkerpaars')], default='text-default', max_length=32, verbose_name='kleur icoon'),
         ),
+
     ]

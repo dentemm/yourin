@@ -207,14 +207,14 @@ Location.panels = [
 	)
 ]
 
-# class Event(djangomodels.Model):
+# class EventInstance(djangomodels.Model):
 
 # 	event_name = djangomodels.CharField(verbose_name='naam', max_length=128)
 # 	event_description = djangomodels.TextField(verbose_name='beschrijving', null=True)
 # 	event_date = djangomodels.DateField(verbose_name='datum', default=date.today)
 # 	location = djangomodels.ForeignKey('home.Location', null=True, on_delete=djangomodels.SET_NULL)
 
-# Event.panels = [
+# EventInstance.panels = [
 # 	MultiFieldPanel([
 # 			FieldRowPanel([
 # 				FieldPanel('event_name',  classname='col6'),
@@ -816,9 +816,27 @@ class EventLocation(Orderable, Location):
 
 # 	page = ParentalKey('home.Event', related_name='events')
 
-# class EventEvent(Orderable, Event):
+# class EventEventInstance(Orderable, EventInstance):
 
-# 	page = ParentalKey('home.Event', related_name='evenementen')
+# 	page = ParentalKey('home.Event', related_name='events')
+
+class EventGroup(BasePage):
+
+	template = 'home/event/event_group.html'
+
+	name = djangomodels.CharField(verbose_name='naam', max_length=164, default='', null=True, blank=True)
+	description = djangomodels.TextField(verbose_name='beschrijving', null=True)
+	website = djangomodels.URLField(verbose_name='website ', null=True)
+	class_name = djangomodels.CharField(max_length=28, default='cal_event')
+	tags = ClusterTaggableManager(through=EventTag, blank=True)
+
+	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='logo', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
+	category = djangomodels.PositiveIntegerField(choices=EVENT_CATEGORY_CHOICES, default=1)
+
+	class Meta:
+		verbose_name = 'event groep'
+		verbose_name = 'event groepen'
+
 
 class Event(BasePage):
 
@@ -826,8 +844,6 @@ class Event(BasePage):
 
 	name = djangomodels.CharField(verbose_name='naam', max_length=164, default='', null=True, blank=True)
 	description = djangomodels.TextField(verbose_name='beschrijving', null=True)
-	event_date = djangomodels.DateField(verbose_name='datum', default=date.today)
-	event_duration = djangomodels.PositiveIntegerField('Duur (# dagen)', default=1, validators=[MaxValueValidator(21),])
 	website = djangomodels.URLField(verbose_name='website ', null=True)
 	class_name = djangomodels.CharField(max_length=28, default='cal_event')
 	tags = ClusterTaggableManager(through=EventTag, blank=True)
