@@ -1,13 +1,21 @@
 from datetime import timedelta, datetime, time
 
 from django.urls import reverse
+from django.views.generic import DetailView
 
 from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 
-from .models import Event, Blog
+from .models import Event, Blog, EventInstance
 from .serializers import EventSerializer, BlogSerializer
+
+
+class EventDetailView(DetailView):
+
+	model = EventInstance
+	template_name = 'home/event/event_detail.html'
+
 
 
 #

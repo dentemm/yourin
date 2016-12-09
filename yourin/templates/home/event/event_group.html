@@ -36,6 +36,9 @@
 <!--     <p>Can't find the job you want? Send your resume to <a href="#">info@demolink.com</a> , and we'll contact you when a new position opens.</p> -->
     {% for event in page.events.all %}
       <h1>{{ event }} </h1>
+      <p>
+        <a href="{% url 'evenement' event.pk %}">LINK</a>
+      </p>
     {% endfor%}
   </div>
 </section>
