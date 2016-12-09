@@ -733,36 +733,6 @@ class EventIndex(RoutablePageMixin, BasePage):
 
 		return events
 
-	# @property
-	# def events(self):
-
-	# 	events = Event.objects.live().descendant_of(self).order_by('-event_date')
-	# 	event_count = events.count()
-
-	# 	events_per_page = 6
-
-	# 	paginator = Paginator(events, events_per_page)
-
-	# 	today = date.today()
-	# 	closest_index = events.filter(event_date__gte=today).count()
-
-	# 	current_page = closest_index / events_per_page
-
-	# 	if (closest_index % events_per_page) != 0:
-	# 		current_page = current_page + 1
-
-	# 	if self.page == 0:
-	# 		if current_page != 0:
-	# 			events = paginator.page(current_page)
-
-	# 		else:
-	# 			return events
-
-	# 	else:
-	# 		events = paginator.page(self.page)
-
-	# 	return events
-
 	@property
 	def upcoming_events(self):
 
@@ -862,6 +832,7 @@ class Event(BasePage):
 	# 	Event.objects.live().descendant_of(self).filter(event_date__range=[start_date, end_date]).order_by('-event_date')
 
 	# 	return Event.objects.live().filter(category=self.category).exclude(name=self.name).order_by('-event_date')
+
 
 	@property
 	def icon(self):

@@ -7,6 +7,7 @@
 {% endblock page_title %}
 
 {% block main %}
+
 <div class="shell">
   <div class="range range-sm-center">
     <div class="cell-sm-10 cell-md-8 cell-lg-7">
@@ -257,6 +258,90 @@
     </div>
   </div>
 </div>
+<section class="section-85 text-center">
+  <div class="shell-fluid">
+    <h1>Onze Evenementen</h1>
+    <hr class="divider bg-mantis">
+    <div class="range range-xs-center">
+    {% if page.events %}
+      {% for event in page.events %}
+      <div class="cell-xs-8 cell-sm-6 cell-lg-3">
+        <figure class="thumbnail-terry">
+          <a href="{% pageurl event %}">
+            {% image event.image width-450 as img %}
+            <img style="height: 200px;" src="{{ img.file.url }}">
+          </a>
+          <figcaption>
+            <div>
+              <h4 class="thumbnail-terry-title">{{ event.title|title }}<br></h4>
+            </div>
+            <p class="thumbnail-terry-desc offset-top-0">{{ event.description }}</p>
+            <a href="{% pageurl event %}" class="btn offset-top-10 offset-md-top-0 btn-primary">Naar Overzicht!</a>
+          </figcaption>
+        </figure>
+      </div>
+      {% endfor %}
+    {% else %}
+      <div class="cell-xs-8 cell-sm-6 cell-lg-3">
+        <figure class="thumbnail-terry">
+          <a href="#">
+            <img style="height: 200px;" src="{% static 'images/festival.jpg' %}">
+          </a>
+          <figcaption>
+            <div>
+              <h4 class="thumbnail-terry-title">Hier komen<br></h4>
+            </div>
+            <p class="thumbnail-terry-desc offset-top-0">Dit gebeurt volledig</p>
+            <a href="#" class="btn offset-top-10 offset-md-top-0 btn-primary">Naar artikel</a>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="cell-xs-8 cell-sm-6 cell-lg-3">
+        <figure class="thumbnail-terry">
+          <a href="#">
+            <img style="height: 200px;" src="{% static 'images/cal_bg.jpg' %}">
+          </a>
+          <figcaption>
+            <div>
+              <h4 class="thumbnail-terry-title">links naar verschillende<br></h4>
+            </div>
+            <p class="thumbnail-terry-desc offset-top-0">automatisch op basis van</p>
+            <a href="#" class="btn offset-top-10 offset-md-top-0 btn-primary">Naar evenement</a>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="cell-xs-8 cell-sm-6 cell-lg-3">
+        <figure class="thumbnail-terry">
+          <a href="#">
+            <img style="height: 200px;" src="{% static 'images/festival.jpg' %}">
+          </a>
+          <figcaption>
+            <div>
+              <h4 class="thumbnail-terry-title">events en gebeurtenissen<br></h4>
+            </div>
+            <p class="thumbnail-terry-desc offset-top-0">nieuwe artikels en nieuwe</p>
+            <a href="#" class="btn offset-top-10 offset-md-top-0 btn-primary">Naar pagina</a>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="cell-xs-8 cell-sm-6 cell-lg-3">
+        <figure class="thumbnail-terry">
+          <a href="#">
+            <img style="height: 200px;" src="{% static 'images/cal_bg.jpg' %}">
+          </a>
+          <figcaption>
+            <div>
+              <h4 class="thumbnail-terry-title">te staan<br></h4>
+            </div>
+            <p class="thumbnail-terry-desc offset-top-0">evenementen</p>
+            <a href="#" class="btn offset-top-10 offset-md-top-0 btn-primary">Ergens naartoe ...</a>
+          </figcaption>
+        </figure>
+      </div>
+    {% endif %}
+    </div>
+  </div>
+</section>
 <div class="shell">
   <div class="range range-sm-center">
     <div class="cell-sm-10 cell-md-9 cell-lg-8">
