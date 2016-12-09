@@ -212,7 +212,7 @@ class EventInstance(djangomodels.Model):
 	event_name = djangomodels.CharField(verbose_name='naam', max_length=128)
 	event_description = djangomodels.TextField(verbose_name='beschrijving', null=True)
 	event_date = djangomodels.DateField(verbose_name='datum', default=date.today)
-	location = djangomodels.ForeignKey('home.Location', null=True, on_delete=djangomodels.SET_NULL)
+	location = djangomodels.ForeignKey('home.Location', verbose_name='location', null=True, on_delete=djangomodels.SET_NULL)
 
 EventInstance.panels = [
 	MultiFieldPanel([
