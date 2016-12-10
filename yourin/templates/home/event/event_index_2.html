@@ -102,18 +102,21 @@
     </div>
   </div>
 </div>
-<div class="rd-google-map">
-  <div id="rd-google-map"
-          data-zoom="7"
-          data-x="5.2"
-          data-y="50.643180"
-          data-styles="[]"
-          class="rd-google-map__model">
-  </div>
-  <ul class="rd-google-map__locations">
-    <li data-x="5.2" data-y="50.643180">
-      <a href="http://www.google.be"><b>9870 St Vincent Place</b></a>
-    </li>
-  </ul>
-</div>
+<div id="map" class="map_model" style="height: 550px;"></div>
+
+<script>
+  function initMap() {
+    var uluru = {lat: 50.64, lng: 4.2};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 8,
+      center: uluru
+    });
+/*    var marker = new google.maps.Marker({
+      position: uluru,
+      map: map
+    });*/
+  }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDjAxMqFazTQK5FM3HmKuXYEjnWUPfSrU&callback=initMap">
+</script>
 {% endblock main %}
