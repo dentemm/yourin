@@ -181,6 +181,25 @@ class Location(Address):
 	def __str__(self):
 		return self.name
 
+	def save(self, *args, **kwargs):
+
+		geolocator = geopy.geocoders.Nominatim()
+		address_string = self.street + ' ' + self.number + ' ' + self.postal_code + ' ' + self.city + ' ' + str(self.country.name)
+
+		loc = geolocator.geocode(address_string)
+
+		if not isinstance(loc, geopy.location.Location):
+
+			alternative = address.street + ' ' + address.postal_code + ' ' + address.city + ' ' + str(address.country.name)
+			loc = geolocator.geocode(alternative)
+
+		if isinstance(loc, geopy.location.Location):
+
+			self.latitude = loc.latitude
+			self.longitude = loc.longitude
+
+		return super(Location, self).save(*args, **kwargs)
+
 Location.panels = [
 	MultiFieldPanel([
 			FieldRowPanel([

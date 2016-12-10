@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     # Other third party apps
     'django_countries', # To populate country field of Address Model
     'rest_framework',   # API for calendar functionality
+    'geopy',            # Convert address to geographic coordinates
 ]
 
 MIDDLEWARE = [
