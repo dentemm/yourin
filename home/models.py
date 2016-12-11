@@ -237,6 +237,7 @@ class EventInstance(djangomodels.Model):
 	class Meta:
 		verbose_name = 'evenement'
 		verbose_name_plural = 'evenementen'
+		ordering = ['-event_date', 'event_name']
 
 	def __str__(self):
 		return self.event_name
