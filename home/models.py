@@ -232,6 +232,7 @@ class EventInstance(djangomodels.Model):
 	event_description = djangomodels.TextField(verbose_name='beschrijving', null=True)
 	event_date = djangomodels.DateField(verbose_name='datum', default=date.today)
 	location = djangomodels.ForeignKey('home.Location', verbose_name='location', null=True, on_delete=djangomodels.SET_NULL)
+	website = djangomodels.URLField(null=True, blank=True)
 
 	class Meta:
 		verbose_name = 'evenement'
@@ -248,7 +249,7 @@ EventInstance.panels = [
 				]
 			),
 			FieldRowPanel([
-				#FieldPanel('event_date', classname='col6'),
+				FieldPanel('website', classname='col6'),
 				FieldPanel('location', classname='col6')
 				]
 			),

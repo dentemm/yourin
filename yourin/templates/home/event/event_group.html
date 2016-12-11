@@ -21,15 +21,21 @@
           <div class="offset-top-10">
             <h2> {{ page.title|title }}</h2>
           </div>
+          <a class="label-custom label-lg-custom label-rounded-custom label-primary">{{ page.get_category_display }}</a>
           <div class="offset-top-20">
             <p>{{ page.description }}</p>
+          </div>
+          <div class="icon-list-item text-primary section-top-15">
+            <a href="{{ page.website }}">
+              <i class="fa fa-internet-explorer text-primary"></i> Naar website
+            </a>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<section class="section-50 bg-blue-gray context-dark text-center">
+<section class="section-50 bg-saffron context-dark text-center">
   <div class="shell">
     <h2><span class="big"> Gerelateerde evenementen</span></h2>
 <!--     <p>Can't find the job you want? Send your resume to <a href="#">info@demolink.com</a> , and we'll contact you when a new position opens.</p> -->
