@@ -1,5 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
+import os
 import geopy	# to geocode location data
 from datetime import date, timedelta
 
@@ -56,6 +57,9 @@ def get_upload_to(instance, filename):
     """
     return instance.get_upload_to(filename)
 
+
+
+
 #
 #
 # HELPER MODELLEN
@@ -65,7 +69,6 @@ class CustomImage(AbstractImage):
 	'''
 	Custom image model, om bijkomende field validation toe te voegen
 	'''
-
 	file = djangomodels.ImageField(
 		verbose_name=_('file'), upload_to=get_upload_to, width_field='width', height_field='height', validators=[validate_image_min, ]
 	)
@@ -233,6 +236,7 @@ class EventInstance(djangomodels.Model):
 	event_date = djangomodels.DateField(verbose_name='datum', default=date.today)
 	location = djangomodels.ForeignKey('home.Location', verbose_name='location', null=True, on_delete=djangomodels.SET_NULL)
 	website = djangomodels.URLField(null=True, blank=True)
+	image = djangomodels.ForeignKey('home.CustomImage', null=True)
 
 	class Meta:
 		verbose_name = 'evenement'
@@ -252,6 +256,10 @@ EventInstance.panels = [
 			FieldRowPanel([
 				FieldPanel('website', classname='col6'),
 				FieldPanel('location', classname='col6')
+				]
+			),
+			FieldRowPanel([
+				FieldPanel('image', classname='col6'),
 				]
 			),
 			FieldRowPanel([

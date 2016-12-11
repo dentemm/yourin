@@ -3,7 +3,7 @@
 {% load static wagtailimages_tags wagtailcore_tags %}
 
 {% block page_title %}
-  {% include 'home/partials/page_title.html' with title='events' icon='mdi mdi-calendar-clock' section='offset-lg-top-110 offset-sm-top-50 offset-top-50' %}
+  {% include 'home/partials/page_title.html' with title='events' subtitle=page.title icon='mdi mdi-calendar-clock' section='offset-lg-top-110 offset-sm-top-50 offset-top-50' %}
 {% endblock page_title %}
 
 {% block main%}
@@ -57,12 +57,13 @@
                     <span class="icon icon-xxs icon-circle icon-red-filled">{{ forloop.counter }}</span>
                   </div>
                   <div class="unit-body">
-                    <h4 style="margin-top: 5px;">{{ event.event_name|title }}</h4>
-                    <!-- <p>{{ event.event_description }}</p> -->
+                    <a href="{% url 'evenement' event.pk %}">
+                      <h4 style="margin-top: 5px;">{{ event.event_name|title }}</h4>
+                      <!-- <p>{{ event.event_description }}</p> -->
+                    </a>
                   </div>
                 </div>
               </li>
-
           {% endfor %}
           </ul>
         </div>
