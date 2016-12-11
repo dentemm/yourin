@@ -3,54 +3,88 @@
 {% load static wagtailimages_tags wagtailcore_tags %}
 
 {% block page_title %}
-  {% include 'home/partials/page_title.html' with title='events' icon='mdi mdi-calendar-clock' section='offset-lg-top-110 offset-sm-top-50 offset-top-50' %}
+  {% include 'home/partials/page_title.html' with title='events' subtitle=view.object.event_name icon='mdi mdi-calendar-clock' section='offset-lg-top-110 offset-sm-top-50 offset-top-50' %}
 {% endblock page_title %}
 
 {% block main%}
-<section class="section-sm-0">
+<section class="section-98 section-110">
   <div class="shell">
-<!--     <div class="range range-xs-center range-sm-left">
-      <div class="cell-xs-10 cell-sm-6 section-image-aside section-image-aside-right text-left">
-      	{% image page.image original as img %}
-        <div style="background-image: url({{ img.file.url }})" class="section-image-aside-img veil reveal-sm-block"></div>
-        <div class="section-image-aside-body section-sm-66 inset-sm-right-30">
-          <div>
-            <h3 class="text-picton-blue">{{ page.event_date }}</h3>
-          </div>
-          <div class="offset-top-10">
-            <h2>{{ page.title|title }}</h2>
-          </div>
-          <div class="offset-top-20">
-            <p>{{ page.description }}</p>
-            <p>Members of our staff are free to choose working hours themselves, without any limitations. Such a strategy allows us to make the most of each employee’s potential, as they work when they are maximally productive.</p>
-            <p>What you may also find attractive about our corporation is a competitive benefits package. It includes a paid vacation, sick leave and national holidays, medical insurance, gym and swimming pool, parking and mobile phone reimbursement. Our corporate fridge is also full of free snacks and drinks.</p>
-          </div>
-        </div>
+    <h1 class="text-center">{{ view.object.event_name|title }}</h1>
+    <hr class="divider bg-mantis">
+    <div class="range range-sm-center offset-top-66">
+      <!-- Simple quote Slider-->
+      <div class="cell-sm-8 cell-md-8 inset-md-right-80">
+      	{% image view.object.image max-1000x500 as img %}
+      	<div class="owl-carousel" style="max-height: 500px;">
+      		<img src="{{ img.file.url }}">
+  		</div>
+
+        <!-- <div data-items="1" data-nav="false" data-dots="false" data-nav-custom=".owl-custom-navigation" class="owl-carousel owl-carousel-classic owl-carousel-class-light shadow-drop-md owl-theme owl-loaded owl-text-select-on" style=""> -->
+          
+      
+<!--         <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; -webkit-transition: 0s; width: 2115px;"><div class="owl-item active" style="width: 705px; margin-right: 0px;"><div>
+                            <div class="embed-responsive embed-responsive-16by9">
+                              <iframe src="//www.youtube.com/embed/-AhmuMqZB0s?wmode=transparent" class="embed-responsive-item"></iframe>
+                            </div>
+          </div></div><div class="owl-item" style="width: 705px; margin-right: 0px;"><div><img src="images/portfolio/portfolio-single-01-716x404.jpg" width="716" height="404" alt="" class="img-responsive element-fullwidth"></div></div><div class="owl-item" style="width: 705px; margin-right: 0px;"><div><img src="images/portfolio/portfolio-single-02-716x404.jpg" width="716" height="404" alt="" class="img-responsive element-fullwidth"></div></div></div></div><div class="owl-controls"><div class="owl-nav"><div class="owl-prev" style="display: none;"></div><div class="owl-next" style="display: none;"></div></div><div class="owl-dots" style="display: none;"></div></div></div> -->
       </div>
-    </div> -->
-	<div class="range range-xs-center range-sm-right offset-top-0">
-      <div class="cell-xs-10 cell-sm-6 section-image-aside section-image-aside-left text-left">
-        <div style="background-image: url({{ img.file.url }})" class="section-image-aside-img veil reveal-sm-block"></div>
-        <div class="section-image-aside-body offset-top-41 offset-sm-top-0 section-sm-66 inset-sm-left-50">
-          <div>
-            <h3 class="text-picton-blue">{{ page.event_date }}</h3>
+      <div class="cell-sm-8 cell-md-4 text-sm-left offset-top-34 offset-md-top-0">
+<!--         <h3>Website Design</h3>
+        <p>A website is a medium that connects a person with the world of digital data. With its help users can access information, make purchases, communicate with each other, and do loads of other things.</p>
+        <p>Due to the clever marketing strategy and professional web designing, corporations can grow their client base with ease. On the modern market the competition is very tough, so in order to be a success, businesses experiment with multiple strategies with the goal of coming up with the perfect one.</p>
+        <div class="owl-custom-navigation owl-customer-navigation offset-top-24">
+          <div class="owl-nav">
+            <div data-owl-prev="" class="owl-prev mdi mdi-chevron-left"></div>
+            <div data-owl-next="" class="owl-next mdi mdi-chevron-right"></div>
           </div>
-          <div class="offset-top-10">
-            <h2> {{ page.title|title }}</h2>
-          </div>
-          <div class="offset-top-20">
-            <p>When you join our team, you’ll dive into a knowledge-sharing environment. We encourage our employees to attend multiple conferences and workshops held both inside the company and on the outside. Keep in mind that you can take part in conferences as both a listener and speaker.</p>
-            <p>As a part of our benefits package, we also offer multiple courses for you to master new subjects. Our working environment is full of learning opportunities, which can’t help motivating for a steady professional growth.</p>
-            <p>Offices of Intense are located in different corners of the globe, so be ready to travel around the world. To save your budget, we cover all the travel costs including transportation, accommodation, food, and even some leisure activities. Our company gives you a perfect chance to explore the world and immerse in different cultures.</p>
-          </div>
-        </div>
+        </div> -->
       </div>
     </div>
-</section>
-<section class="section-50 bg-blue-gray context-dark text-center">
-  <div class="shell">
-    <h2><span class="big"> Gerelateerde evenementen</span></h2>
-<!--     <p>Can't find the job you want? Send your resume to <a href="#">info@demolink.com</a> , and we'll contact you when a new position opens.</p> -->
   </div>
 </section>
+<section class="section-34 bg-saffron context-dark text-center">
+  <div class="shell">
+    <h3><span class="big"> Work In Progress </span></h3>
+  </div>
+</section>
+<!-- <section class="section-top-98 section-bottom-124">
+  <div class="shell">
+    <h2 class="text-center">Andere {{ view.object.page }} Evenementen</h2>
+    <hr class="divider bg-mantis">
+    <div class="range offset-top-66 range-xs-center text-left">
+      <div class="cell-xs-10 cell-sm-6 cell-md-3"><a class="thumbnail-classic" href="#" target="_self">
+                  <figure><img width="370" height="278" src="images/portfolio/portfolio-single-related-01-370x278.jpg" alt="">
+                  </figure></a>
+        <div>
+          <h6 class="offset-top-24"><a href="#">New Vision</a></h6>
+        </div>
+        <p class="text-dark offset-top-4 text-extra-small">UX, Design</p>
+      </div>
+      <div class="cell-xs-10 cell-sm-6 cell-md-3 offset-top-50 offset-sm-top-0"><a class="thumbnail-classic" href="#" target="_self">
+                  <figure><img width="370" height="278" src="images/portfolio/portfolio-single-related-02-370x278.jpg" alt="">
+                  </figure></a>
+        <div>
+          <h6 class="offset-top-24"><a href="#">Complex Solutions</a></h6>
+        </div>
+        <p class="text-dark offset-top-4 text-extra-small">Web, Development</p>
+      </div>
+      <div class="cell-xs-10 cell-sm-6 cell-md-3 offset-top-50 offset-md-top-0"><a class="thumbnail-classic" href="#" target="_self">
+                  <figure><img width="370" height="278" src="images/portfolio/portfolio-single-related-03-370x278.jpg" alt="">
+                  </figure></a>
+        <div>
+          <h6 class="offset-top-24"><a href="#">Unlimited Opportunities</a></h6>
+        </div>
+        <p class="text-dark offset-top-4 text-extra-small">UX, eCommerce</p>
+      </div>
+      <div class="cell-xs-10 cell-sm-6 cell-md-3 offset-top-50 offset-md-top-0"><a class="thumbnail-classic" href="#" target="_self">
+                  <figure><img width="370" height="278" src="images/portfolio/portfolio-single-related-04-370x278.jpg" alt="">
+                  </figure></a>
+        <div>
+          <h6 class="offset-top-24"><a href="#">Better Possibilities</a></h6>
+        </div>
+        <p class="text-dark offset-top-4 text-extra-small">Project Management</p>
+      </div>
+    </div>
+  </div>
+</section> -->
 {% endblock main %}

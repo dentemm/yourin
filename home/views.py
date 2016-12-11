@@ -17,7 +17,6 @@ class EventDetailView(DetailView):
 	template_name = 'home/event/event_detail.html'
 
 
-
 #
 #
 # API VIEWS

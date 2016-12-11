@@ -259,18 +259,13 @@ EventInstance.panels = [
 				]
 			),
 			FieldRowPanel([
-				FieldPanel('image', classname='col6'),
-				]
-			),
-			FieldRowPanel([
 				FieldPanel('event_description', classname='col12'),
 				]
 			),
+			ImageChooserPanel('image'),
 		], heading='Evenement data'
 	),
 ]
-
-
 
 @register_snippet
 class Partner(djangomodels.Model):
