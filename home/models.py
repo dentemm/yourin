@@ -831,13 +831,12 @@ class Event(BasePage):
 	class_name = djangomodels.CharField(max_length=28, default='cal_event')
 	tags = ClusterTaggableManager(through=EventTag, blank=True)
 
-	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='logo', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
+	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 	category = djangomodels.PositiveIntegerField(choices=EVENT_CATEGORY_CHOICES, default=1)
 
 	class Meta:
 		verbose_name = 'event groep'
-		verbose_name = 'event groepen'
-		#ordering = ['-event_date']
+		verbose_name_plural = 'event groepen'
 
 	# @property
 	# def related_events(self):
