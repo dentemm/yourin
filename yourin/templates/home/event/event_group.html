@@ -35,16 +35,90 @@
     </div>
   </div>
 </section>
-<section class="section-50 bg-saffron context-dark text-center">
+<section class="section-34 bg-saffron context-dark text-center">
   <div class="shell">
-    <h2><span class="big"> Gerelateerde evenementen</span></h2>
-<!--     <p>Can't find the job you want? Send your resume to <a href="#">info@demolink.com</a> , and we'll contact you when a new position opens.</p> -->
-    {% for event in page.events.all %}
-      <h1>{{ event }} </h1>
-      <p>
-        <a href="{% url 'evenement' event.pk %}">LINK</a>
-      </p>
-    {% endfor%}
+    <h3><span class="big"> Alle evenementen</span></h3>
   </div>
 </section>
+<section class="section-sm-0">
+  <div class="shell">
+    <div class="range range-xs-center range-sm-left offset-top-0">
+      <div class="cell-xs-10 cell-sm-3 section-image-aside section-image-aside-right text-left">
+      {% image page.image original as img %}
+        <div class="section-image-aside-img section-custom-image-aside-img veil reveal-sm-block">
+          <div id="map" class="map_model" style="height: 550px;"></div>
+        </div>
+        <div class="section-image-aside-body section-sm-66 inset-sm-right-30">
+          <div>
+            <h3 class="text-picton-blue">{{ page.event_date }}</h3>
+          </div>
+          <div class="offset-top-10">
+            <h2> {{ page.title|title }}</h2>
+          </div>
+          <a class="label-custom label-lg-custom label-rounded-custom label-primary">{{ page.get_category_display }}</a>
+          <div class="offset-top-20">
+            <p>{{ page.description }}</p>
+          </div>
+          <div class="icon-list-item text-primary section-top-15">
+            <a href="{{ page.website }}">
+              <i class="fa fa-internet-explorer text-primary"></i> Naar website
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+
+  function initMap() {
+    var center = {lat: 50.64, lng: 4.2};
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 8,
+      center: center,
+      scrollwheel: false
+    });
+    
+    // Add some markers to the map.
+    // Note: The code uses the JavaScript Array.prototype.map() method to
+    // create an array of markers based on a given "locations" array.
+    // The map() method here has nothing to do with the Google Maps API.
+    var markers = marker_details.map(function(details, i) {
+
+      var infowindow = new google.maps.InfoWindow({
+        content: '<b><a href="' + details.url + '">' + details.name + '</a></b>'
+      });
+      var marker = new google.maps.Marker({
+        position: details.location,
+        title: details.name
+      });
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
+      });
+      return marker
+    });
+
+    // Add a marker clusterer to manage the markers.
+    var markerCluster = new MarkerClusterer(map, markers,
+        {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+  }
+
+  var marker_details = []
+
+{% for event in page.events.all %}
+  event = {
+    location: {lat: {{ event.location.latitude|stringformat:'f' }}, lng: {{ event.location.longitude|stringformat:'f' }}},
+    name: "{{ event }}",
+    url: "{% url 'evenement' event.pk %}"
+  };
+  marker_details.push(event);
+{% endfor %}  
+  
+
+</script>
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDjAxMqFazTQK5FM3HmKuXYEjnWUPfSrU&callback=initMap">
+</script>
 {% endblock main %}

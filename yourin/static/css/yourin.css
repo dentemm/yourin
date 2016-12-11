@@ -273,6 +273,14 @@ a.icon-rect.fa-youtube-play:hover, a.icon-circle.fa-youtube-play:hover, a.icon-o
 }
 
 /* CUSTOM TOEVOEGINGEN */
+.section-custom-image-aside-img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 75vw;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
 
 div#home_intro_image {
 	-moz-filter: brightness(60%);
