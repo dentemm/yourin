@@ -2,6 +2,16 @@ from wagtail.wagtailcore import blocks
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailembeds.blocks import EmbedBlock
 
+class CarouselImageBlock(blocks.StructBlock):
+
+	image = ImageChooserBlock()
+	caption = blocks.CharBlock(required=False)
+
+	class Meta:
+		icon = 'image'
+		label = 'carousel afbeelding'
+
+
 class BlogTitleBlock(blocks.StructBlock):
 
 	image = ImageChooserBlock(label='afbeelding', required=True)

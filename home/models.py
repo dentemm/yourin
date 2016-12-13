@@ -30,6 +30,7 @@ from taggit.models import TaggedItemBase
 
 from django_countries.fields import CountryField
 
+from . import blocks as customblocks
 from .blocks import BlogTitleBlock, SubtitleBlock, IntroTextBlock, ParagraphBlock, ImageWithCaptionBlock, PullQuoteBlock, BlogEmbedBlock
 from .validators import validate_image_min, validate_blog_image
 from .variables import RELATED_LINK_CHOICES, ICON_CHOICES, ICON_COLOR_CHOICES, EVENT_CATEGORY_CHOICES
@@ -579,6 +580,8 @@ AboutPage.content_panels = Page.content_panels + [
 	StreamFieldPanel('page_content'),
 ]
 
+
+
 class ContactLocation(Orderable, Location):
 
 	page = ParentalKey('home.ContactPage', related_name='locations')
@@ -1079,3 +1082,37 @@ Influencer.parent_page_types = [
 ]
 
 Influencer.subpage_types = []
+
+
+
+class DynamicPage(BasePage):
+	template = 'home/dynamic.html'
+
+	page_content = fields.StreamField([
+		#('carousel', CarouselBlock()),
+		('subtitle', SubtitleBlock()),
+		('paragraph', ParagraphBlock()),
+		('image', ImageWithCaptionBlock()),
+		('quote', PullQuoteBlock()),
+		('video', BlogEmbedBlock()),
+		], verbose_name='Over ons pagina - inhoud', null=True)
+
+
+	class Meta:
+		verbose_name = 'dynamische pagina'
+		verbose_name_plural = "dynamische pagina's"
+
+	def __str__(self):
+		return self.title
+
+
+DynamicPage.parent_page_types = [
+	'home.HomePage',
+]
+
+DynamicPage.subpage_types = []
+
+
+DynamicPage.content_panels = Page.content_panels + [
+	StreamFieldPanel('page_content'),
+]
