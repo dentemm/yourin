@@ -458,6 +458,7 @@ class HomePage(BasePage):
 	intro_image = djangomodels.ForeignKey('home.CustomImage', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='home_intro_images')
 
 	catchphrase = djangomodels.CharField(verbose_name='catchphrase', max_length=164, default='Entertainment voor jongeren')
+	catchphrase_color = djangomodels.CharField(verbose_name='catchphrase kleur', max_length=32, choices=ICON_COLOR_CHOICES, default='text-default')
 	fb_link = djangomodels.URLField(verbose_name='FB pagina', default='https://www.facebook.com/yourin.be/')
 	twitter_link = djangomodels.URLField(verbose_name='Twitter pagina', default='https://twitter.com/yourinbe')
 	linkedin_link = djangomodels.URLField(verbose_name='LinkedIn pagina', default='https://www.linkedin.com/company/4982091')
@@ -498,6 +499,7 @@ HomePage.content_panels = Page.content_panels + [
 	MultiFieldPanel([
 			FieldRowPanel([
 					FieldPanel('catchphrase', classname='col12'),
+					FieldPanel('catchphrase_color', classname='col12')
 				]
 			),
 			ImageChooserPanel('intro_image'),

@@ -275,6 +275,15 @@ a.icon-rect.fa-youtube-play:hover, a.icon-circle.fa-youtube-play:hover, a.icon-o
 }
 
 /* CUSTOM TOEVOEGINGEN */
+.text-green {
+  color: #42B574;
+  background-image: -webkit-linear-gradient(0deg, #42b574 0%, #84c450 100%);
+}
+
+.text-yellow {
+  color: yellow;
+}
+
 .section-custom-image-aside-img {
   position: absolute;
   top: 0;

@@ -53,10 +53,12 @@ ICON_COLOR_CHOICES = (
 	('text-primary', 'Yourin Rood'),
 	('text-deluge', 'Paars'),
 	('text-piction-blue', 'Blauw'),
-	('text-mantis', 'Lichtgroen'),
+	('text-mantis', 'Rood-oranje'),
 	('text-malibu', 'Lichtblauw'),
 	('text-carrot', 'Oranje'),
 	('text-red', 'Fel Rood'),
 	('text-blue-gray', 'Paars-blauw'),
-	('text-pink', 'Donkerpaars')
+	('text-pink', 'Donkerpaars'),
+	('text-green', 'Groen'),
+	('text-yellow', 'Geel'),
 )
