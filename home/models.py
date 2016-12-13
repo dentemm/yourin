@@ -1100,8 +1100,8 @@ class DynamicPage(BasePage):
 		('image', ImageWithCaptionBlock()),
 		('quote', PullQuoteBlock()),
 		('video', BlogEmbedBlock()),
-		('two_cols', customblocks.TwoColsBlock()),
-		], verbose_name='Over ons pagina - inhoud', null=True)
+		('two_cols', customblocks.TwoColsBlock(classname='range')),
+		], verbose_name='pagina inhoud', null=True)
 
 
 	class Meta:

@@ -48,7 +48,6 @@ class BlogEmbedBlock(blocks.URLBlock):
 		template = 'home/blocks/embed_block.html'
 		label = 'video embed'
 		icon = 'media'
-	icon = 'edit'
 
 class ImageWithCaptionBlock(blocks.StructBlock):
 	class Meta:
@@ -77,7 +76,8 @@ class TwoColsBlock(blocks.StructBlock):
 		
 		], icon='arrow-right', label='Rechtse kolom')
 
-	class Meta:
+	class Meta:	
 		template = 'home/blocks/two_cols.html'
 		icon = 'placeholder'
 		label = '2 kolommen'
+		form_classname = 'range'
