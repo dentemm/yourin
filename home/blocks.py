@@ -11,7 +11,6 @@ class CarouselImageBlock(blocks.StructBlock):
 		icon = 'image'
 		label = 'carousel afbeelding'
 
-
 class BlogTitleBlock(blocks.StructBlock):
 
 	image = ImageChooserBlock(label='afbeelding', required=True)
@@ -65,3 +64,20 @@ class PullQuoteBlock(blocks.StructBlock):
 		template = 'home/blocks/pullquote_block.html'
 		label = 'citaat'
 		icon = 'openquote'
+
+class TwoColsBlock(blocks.StructBlock):
+
+	left = blocks.StreamBlock([
+		('subtitel', SubtitleBlock()),
+
+		], icon='arrow-left', label='Linkse kolom')
+
+	right = blocks.StreamBlock([
+		('subtitel', SubtitleBlock()),
+		
+		], icon='arrow-right', label='Rechtse kolom')
+
+	class Meta:
+		template = 'home/blocks/two_cols.html'
+		icon = 'placeholder'
+		label = '2 kolommen'

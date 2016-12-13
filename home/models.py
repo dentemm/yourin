@@ -531,6 +531,7 @@ HomePage.subpage_types = [
 	'home.BlogIndex',
 	'home.InfluencerIndex',
 	'home.EventIndex',
+	'home.DynamicPage',
 ]
 
 class YourinPartner(djangomodels.Model):
@@ -1088,6 +1089,10 @@ Influencer.subpage_types = []
 class DynamicPage(BasePage):
 	template = 'home/dynamic.html'
 
+	page_title = djangomodels.CharField(verbose_name='pagina titel', max_length=36, default='Dit is de grote ondertitel')
+	page_icon = djangomodels.CharField(verbose_name='pagina icoon', max_length=28, choices=ICON_CHOICES, default='fa fa-commenting-o')
+
+
 	page_content = fields.StreamField([
 		#('carousel', CarouselBlock()),
 		('subtitle', SubtitleBlock()),
@@ -1095,6 +1100,7 @@ class DynamicPage(BasePage):
 		('image', ImageWithCaptionBlock()),
 		('quote', PullQuoteBlock()),
 		('video', BlogEmbedBlock()),
+		('two_cols', customblocks.TwoColsBlock()),
 		], verbose_name='Over ons pagina - inhoud', null=True)
 
 
@@ -1114,5 +1120,13 @@ DynamicPage.subpage_types = []
 
 
 DynamicPage.content_panels = Page.content_panels + [
+	MultiFieldPanel([
+			FieldRowPanel([
+				FieldPanel('page_title', classname='col6'),
+				FieldPanel('page_icon', classname='col6')
+				]
+			),
+		], heading='pagina details'
+	),
 	StreamFieldPanel('page_content'),
 ]

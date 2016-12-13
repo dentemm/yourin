@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% load staticfiles %}
+
+{% block page_title %}
+  {% include 'home/partials/page_title.html' with title=page_title icon=page_icon %}
+{% endblock page_title %}
+
+{% block main %}
+<main class="page-content">
+  <!-- Who we are?-->
+  <section> 
+    <div class="shell section-bottom-85">
+      <div class="range text-center range-xs-center range-sm-middle">
+        <div class="cell-sm-10 cell-lg-6 cell-lg-pull-6 offset-top-50 offset-lg-top-0">
+        {{ page.page_content }}
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock main %}
