@@ -546,11 +546,36 @@ YourinPartner.panels = [
 class AboutPage(BasePage):
 	template = 'home/about.html'
 
+	date = djangomodels.DateField(auto_now_add=True, null=True)
+	edited = djangomodels.DateField(auto_now=True, null=True)
+
+	page_content = fields.StreamField([
+		('subtitle', SubtitleBlock()),
+		('paragraph', ParagraphBlock()),
+		('image', ImageWithCaptionBlock()),
+		('quote', PullQuoteBlock()),
+		('video', BlogEmbedBlock()),
+		], verbose_name='Over ons pagina - inhoud', null=True)
+
+
+	class Meta:
+		verbose_name = 'over ons pagina'
+		verbose_name_plural = "over ons pagina's"
+
+	def __str__(self):
+		return self.title
+
+
 AboutPage.parent_page_types = [
 	'home.HomePage',
 ]
 
 AboutPage.subpage_types = []
+
+
+AboutPage.content_panels = Page.content_panels + [
+	StreamFieldPanel('page_content'),
+]
 
 class ContactLocation(Orderable, Location):
 
