@@ -1,0 +1,13 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+ 
+{% if blocks %} 
+    {% for block in blocks %}
+        {% if block.block_type == 'subtitel' %}
+        	{% include 'home/blocks/subtitle_block.html' with value=block.value %}
+        {% elif block.block_type == 'image' %}
+            NIKS
+        {% else %}
+           OOK HIER NIKS
+        {% endif %}
+    {% endfor %}
+{% endif %}
