@@ -305,6 +305,7 @@ Partner.panels = [
 class WhatWeDo(djangomodels.Model):
 
 	name = djangomodels.CharField(verbose_name='naam', max_length=40)
+	text_color = djangomodels.CharField(verbose_name='tekstkleur', max_length=32, choices=ICON_COLOR_CHOICES, default='text-default')
 	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 	extra_info = djangomodels.TextField(verbose_name='info tekst', max_length=180, null=True, blank=True)
 	icon = djangomodels.CharField(max_length=28, choices=ICON_CHOICES, default='fa fa-commenting-o')
@@ -321,6 +322,10 @@ WhatWeDo.panels = [
 					FieldPanel('icon', classname='col6')
 				],
 			),
+			FieldRowPanel([
+					FieldPanel('text_color', classname='col6')
+				],
+			),			
 			FieldRowPanel([
 					FieldPanel('extra_info', classname='col9')
 				],
