@@ -553,6 +553,8 @@ class AboutPage(BasePage):
 	date = djangomodels.DateField(auto_now_add=True, null=True)
 	edited = djangomodels.DateField(auto_now=True, null=True)
 
+	intro = fields.RichTextField(verbose_name='inhoud - alternatief', blank=True, null=True)
+
 	page_content = fields.StreamField([
 		('subtitle', SubtitleBlock()),
 		('paragraph', ParagraphBlock()),
