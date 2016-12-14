@@ -38,27 +38,27 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.CreateModel(
-            name='Address',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('city', models.CharField(max_length=40, verbose_name='stad')),
-                ('postal_code', models.CharField(max_length=8, null=True, verbose_name='postcode')),
-                ('street', models.CharField(max_length=40, null=True, verbose_name='straat')),
-                ('number', models.CharField(max_length=8, null=True, verbose_name='nummer')),
-                ('country', django_countries.fields.CountryField(default='BE', max_length=2, null=True, verbose_name='land')),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Location',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=64)),
-                ('longitude', models.DecimalField(blank=True, decimal_places=7, max_digits=10, null=True)),
-                ('latitude', models.DecimalField(blank=True, decimal_places=7, max_digits=10, null=True)),
-                ('address', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='location', to='home.Address', verbose_name='adres')),
-            ],
-        ),
+        # migrations.CreateModel(
+        #     name='Address',
+        #     fields=[
+        #         ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+        #         ('city', models.CharField(max_length=40, verbose_name='stad')),
+        #         ('postal_code', models.CharField(max_length=8, null=True, verbose_name='postcode')),
+        #         ('street', models.CharField(max_length=40, null=True, verbose_name='straat')),
+        #         ('number', models.CharField(max_length=8, null=True, verbose_name='nummer')),
+        #         ('country', django_countries.fields.CountryField(default='BE', max_length=2, null=True, verbose_name='land')),
+        #     ],
+        # ),
+        # migrations.CreateModel(
+        #     name='Location',
+        #     fields=[
+        #         ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+        #         ('name', models.CharField(max_length=64)),
+        #         ('longitude', models.DecimalField(blank=True, decimal_places=7, max_digits=10, null=True)),
+        #         ('latitude', models.DecimalField(blank=True, decimal_places=7, max_digits=10, null=True)),
+        #         ('address', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='location', to='home.Address', verbose_name='adres')),
+        #     ],
+        # ),
         migrations.CreateModel(
             name='Blog',
             fields=[
@@ -111,13 +111,13 @@ class Migration(migrations.Migration):
             },
             bases=('wagtailcore.page',),
         ),
-        migrations.DeleteModel(
-            name='Address',
-        ),
-        migrations.AlterModelOptions(
-            name='location',
-            options={'ordering': ['name'], 'verbose_name': 'locatie', 'verbose_name_plural': 'locaties'},
-        ),
+        # migrations.DeleteModel(
+        #     name='Address',
+        # ),
+        # migrations.AlterModelOptions(
+        #     name='location',
+        #     options={'ordering': ['name'], 'verbose_name': 'locatie', 'verbose_name_plural': 'locaties'},
+        # ),
         migrations.AddField(
             model_name='blog',
             name='intro_text',
@@ -619,13 +619,13 @@ class Migration(migrations.Migration):
             name='intro_image',
             field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='home_intro_images', to='home.CustomImage'),
         ),
-        migrations.RemoveField(
-            model_name='location',
-            name='address',
-        ),
-        migrations.DeleteModel(
-            name='Location',
-        ),
+        # migrations.RemoveField(
+        #     model_name='location',
+        #     name='address',
+        # ),
+        # migrations.DeleteModel(
+        #     name='Location',
+        # ),
         migrations.CreateModel(
             name='Address',
             fields=[
@@ -655,7 +655,7 @@ class Migration(migrations.Migration):
                 'verbose_name': 'locatie',
                 'verbose_name_plural': 'locaties',
             },
-            bases=('home.address',),
+            bases=('home.Address',),
         ),
         migrations.CreateModel(
             name='EventLocation',

@@ -133,7 +133,7 @@ Category.panels = [
 
 ]
 
-#@register_snippet
+@register_snippet
 class Address(djangomodels.Model):
 
 	city = djangomodels.CharField(verbose_name='stad', max_length=40)
