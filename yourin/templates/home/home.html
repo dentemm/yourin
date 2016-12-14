@@ -6,10 +6,14 @@
 
 {% block content %}
 
-<section class="context-dark offset-lg-top-110 offset-sm-top-50 text-center">
+  {% block page_title %}
+    {% include 'home/partials/page_title.html' with title='home' icon='fa fa-home' section='section-lg-top-110 section-sm-top-50 section-top-50'  %}
+  {% endblock page_title %}
+
+<section class="context-dark text-center">
   <div data-on="false" data-md-on="true" class="rd-parallax">
-    <div id="home_intro_image" data-speed="0.35" data-type="media" data-url="{{ page.intro_image.file.url }}" class="rd-parallax-layer"> 
-    </div>
+<!--     <div id="home_intro_image" data-speed="0.35" data-type="media" data-url="{{ page.intro_image.file.url }}" class="rd-parallax-layer"> 
+    </div> -->
     <div class="rd-parallax-layer-holder">
       <div data-speed="0" data-type="html" class="rd-parallax-layer">
         <div class="shell section-98 section-sm-110">

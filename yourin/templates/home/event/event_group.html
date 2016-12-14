@@ -107,6 +107,7 @@
   var marker_details = []
 
 {% for event in page.events.all %}
+  {% if event.location %}
   event = {
     location: {lat: {{ event.location.latitude|stringformat:'f' }}, lng: {{ event.location.longitude|stringformat:'f' }}},
     name: "{{ event }}",
@@ -114,6 +115,7 @@
     label: "{{ forloop.counter }}"
   };
   marker_details.push(event);
+  {% endif %}
 {% endfor %}  
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDjAxMqFazTQK5FM3HmKuXYEjnWUPfSrU&callback=initMap">
