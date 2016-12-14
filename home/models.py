@@ -106,7 +106,7 @@ def rendition_delete(sender, instance, **kwargs):
 #
 #
 
-@register_snippet
+#@register_snippet
 class Category(djangomodels.Model):
 
 	name = djangomodels.PositiveIntegerField(verbose_name='categorie', choices=EVENT_CATEGORY_CHOICES, default=1)
@@ -133,7 +133,7 @@ Category.panels = [
 
 ]
 
-@register_snippet
+#@register_snippet
 class Address(djangomodels.Model):
 
 	city = djangomodels.CharField(verbose_name='stad', max_length=40)

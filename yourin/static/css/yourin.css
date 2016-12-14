@@ -284,6 +284,10 @@ a.icon-rect.fa-youtube-play:hover, a.icon-circle.fa-youtube-play:hover, a.icon-o
   color: yellow;
 }
 
+.text-black {
+  color: #222;
+}
+
 .section-custom-image-aside-img {
   position: absolute;
   top: 0;

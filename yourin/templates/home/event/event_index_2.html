@@ -15,9 +15,19 @@
   {% if page.events %}
     {% for event in page.events %}
     <div class="cell-xs-8 cell-sm-6 cell-lg-3 section-bottom-41">
-      <figure class="thumbnail-terry">
+      <figure>
+        {% image event.image height-160 as img %}
         <a href="{% pageurl event %}">
-          {% image event.image width-450 as img %}
+          <img src="{{ img.file.url }}">
+        </a>
+        <figcaption>
+          <h4 class="thumbnail-terry-title text-black">{{ event.title|title }}</h4>
+        </figcaption>
+        
+      </figure>
+<!--       <figure class="thumbnail-terry">
+        <a href="{- pageurl event -}">
+          {- image event.image width-450 as img -}
           <img style="height: 200px;" src="{{ img.file.url }}">
         </a>
         <figcaption>
@@ -27,7 +37,7 @@
           <p class="thumbnail-terry-desc offset-top-0">{{ event.subtitle }}</p>
           <a href="{% pageurl event %}" class="btn offset-top-10 offset-md-top-0 btn-primary">Naar Overzicht!</a>
         </figcaption>
-      </figure>
+      </figure> -->
     </div>
     {% endfor %}
   {% else %}
