@@ -159,12 +159,14 @@
 
 {% for event in page.events %}
   {% for instance in event.events.all %}
+    {% if instance.location %}
     event = {
       location: {lat: {{ instance.location.latitude|stringformat:'f' }}, lng: {{ instance.location.longitude|stringformat:'f' }}},
       name: "{{ instance }}",
       url: "{% url 'evenement' instance.pk %}"
     };
     marker_details.push(event);
+    {% endif %}
   {% endfor %}
 {% endfor %}  
   

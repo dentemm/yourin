@@ -49,6 +49,7 @@ ICON_CHOICES = (
 
 ICON_COLOR_CHOICES = (
 	('text-default', 'Wit'),
+	('text-black', 'Zwart'),
 	('text-gray', 'Lichtgijs'),
 	('text-primary', 'Yourin Rood'),
 	('text-deluge', 'Paars'),
