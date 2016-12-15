@@ -194,7 +194,7 @@ class Location(Address):
 
 		if not isinstance(loc, geopy.location.Location):
 
-			alternative = address.street + ' ' + address.postal_code + ' ' + address.city + ' ' + str(address.country.name)
+			alternative = self.street + ' ' + self.postal_code + ' ' + self.city + ' ' + str(self.country.name)
 			loc = geolocator.geocode(alternative)
 
 		if isinstance(loc, geopy.location.Location):
