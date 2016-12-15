@@ -235,7 +235,7 @@ class EventInstance(djangomodels.Model):
 	event_name = djangomodels.CharField(verbose_name='naam', max_length=128)
 	event_description = djangomodels.TextField(verbose_name='beschrijving', null=True)
 	event_date = djangomodels.DateField(verbose_name='datum', default=date.today)
-	location = djangomodels.ForeignKey('home.Location', verbose_name='location', null=True, on_delete=djangomodels.SET_NULL)
+	location = djangomodels.ForeignKey('home.Location', verbose_name='locatie', null=True, on_delete=djangomodels.SET_NULL)
 	website = djangomodels.URLField(null=True, blank=True)
 	image = djangomodels.ForeignKey('home.CustomImage', null=True)
 
@@ -611,12 +611,34 @@ class ContactPage(BasePage):
 																dolor auctor. Cras justo odio, dapibus ac facilisis in, egestas 
 																eget quam. Cras mattis consectetur purus sit amet fermentum.''')
 	email = djangomodels.EmailField('contact email', default='ditishet_emailadresvoor@contactformulier.website')
+	phone = djangomodels.CharField('telefoonnr', max_length=28, null=True, blank=True)
 
+	@property
+	def address(self):
+
+		#print('ADDRESS: %s' % self.locations.all)
+
+		address = ''
+
+		for location in self.locations.all():
+
+			current = location.street + ' ' + location.number + ', ' + location.city
+
+			#print('ADDRESS: %s' % current)
+
+			address = current
+
+		return address
 
 ContactPage.content_panels = Page.content_panels + [
 	MultiFieldPanel([
 			FieldRowPanel([
 				FieldPanel('email', classname='col8'),
+				]
+			),
+			FieldRowPanel([
+				FieldPanel('phone', classname='col6'),
+				#FieldPanel('address', classname='col6')
 				]
 			),
 			FieldRowPanel([
