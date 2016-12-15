@@ -2,9 +2,13 @@
 
 {% load static wagtailimages_tags wagtailcore_tags wagtailroutablepage_tags %}
 
+
 {% block page_title %}
-  {% include 'home/partials/page_title.html' with title='events' icon='mdi mdi-calendar-clock' %}
+  {% if page.has_subtitle %}
+    {% include 'home/partials/page_title.html' with title='events' icon='mdi mdi-calendar-clock' %}
+  {% endif %}
 {% endblock page_title %}
+
 
 {% block main %}
 

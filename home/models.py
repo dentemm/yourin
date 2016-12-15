@@ -431,6 +431,8 @@ RelatedLink.panels = [
 
 class BasePage(Page):
 
+	has_subtitle = djangomodels.BooleanField(verbose_name='Subtitel balk', default=True)
+
 	@property
 	def footer_blogs(self):
 		# Get list of live blog pages that are descendants of this page
@@ -585,6 +587,13 @@ AboutPage.subpage_types = []
 
 
 AboutPage.content_panels = Page.content_panels + [
+	MultiFieldPanel([
+			FieldRowPanel([
+				FieldPanel('has_subtitle', classname='col6')
+				]
+			),
+		], heading='Over ons - pagina data'
+	),
 	StreamFieldPanel('page_content'),
 ]
 
@@ -829,6 +838,7 @@ EventIndex.content_panels = [
 	MultiFieldPanel([
 			FieldRowPanel([
 				FieldPanel('title', classname='col6'),
+				FieldPanel('has_subtitle', classname='col6')
 				]
 			),
 		]

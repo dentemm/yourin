@@ -3,7 +3,9 @@
 {% load staticfiles %}
 
 {% block page_title %}
-  {% include 'home/partials/page_title.html' with title='over yourin' icon='' %}
+  {% if page.has_subtitle %}
+    {% include 'home/partials/page_title.html' with title='over yourin' icon='' %}
+  {% endif %}
 {% endblock page_title %}
 
 {% block main %}
