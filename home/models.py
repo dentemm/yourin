@@ -592,6 +592,10 @@ AboutPage.content_panels = Page.content_panels + [
 				FieldPanel('has_subtitle', classname='col6')
 				]
 			),
+			FieldRowPanel([
+				FieldPanel('intro', classname='col6')
+				]
+			),
 		], heading='Over ons - pagina data'
 	),
 	StreamFieldPanel('page_content'),
@@ -902,6 +906,7 @@ class Event(BasePage):
 	name = djangomodels.CharField(verbose_name='naam', max_length=164, default='', null=True, blank=True)
 	subtitle = djangomodels.CharField(verbose_name='korte intro', max_length=120, null=True, blank=True)
 	description = djangomodels.TextField(verbose_name='beschrijving', null=True)
+	intro = fields.RichTextField(verbose_name='beschrijving(alternatief)', blank=True, null=True)
 	website = djangomodels.URLField(verbose_name='website ', null=True)
 	class_name = djangomodels.CharField(max_length=28, default='cal_event')
 	tags = ClusterTaggableManager(through=EventTag, blank=True)
@@ -959,6 +964,7 @@ Event.content_panels = [
 				],
 			),
 			FieldPanel('description'),
+			FieldPanel('intro'),
 			ImageChooserPanel('image'),
 			#FieldPanel('tags'),
 		],
