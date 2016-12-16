@@ -64,6 +64,13 @@ class PullQuoteBlock(blocks.StructBlock):
 		label = 'citaat'
 		icon = 'openquote'
 
+class TabbedContentBlock(blocks.StructBlock):
+
+	class Meta:
+		template = 'home/blocks/tabbed_content_block.html'
+		label = 'tabs'
+		icon = 'list-ul'
+
 class TwoColsBlock(blocks.StructBlock):
 
 	left = blocks.StreamBlock([

@@ -275,6 +275,20 @@ a.icon-rect.fa-youtube-play:hover, a.icon-circle.fa-youtube-play:hover, a.icon-o
 }
 
 /* CUSTOM TOEVOEGINGEN */
+.responsive-tabs-dashed .resp-tabs-list > li + li:before {
+  position: absolute;
+  left: -20px;
+  content: '';
+  height: 100%;
+  width: 1px;
+  background: #9b9b9b;
+}
+
+.responsive-tabs-dashed .resp-tabs-list > li + li {
+  padding: 0;
+  margin-left: 39px;
+}
+
 .text-green {
   color: #42B574;
   background-image: -webkit-linear-gradient(0deg, #42b574 0%, #84c450 100%);
@@ -292,7 +306,7 @@ a.icon-rect.fa-youtube-play:hover, a.icon-circle.fa-youtube-play:hover, a.icon-o
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 75vw;
+  width: 66vw;
   -webkit-background-size: cover;
   background-size: cover;
 }

@@ -792,7 +792,7 @@ BlogIndex.search_fields = Page.search_fields + [
 
 class EventIndex(RoutablePageMixin, BasePage):
 
-	template = 'home/event/event_index_2.html'
+	template = 'home/event/event_index.html'
 
 	# @route(r'^$', name='main')
 	# @route(r'^page/(?P<page>\d+)/$', name='page')
@@ -1174,6 +1174,7 @@ class DynamicPage(BasePage):
 		('paragraph', ParagraphBlock()),
 		('image', ImageWithCaptionBlock()),
 		('quote', PullQuoteBlock()),
+		('tabs', customblocks.TabbedContentBlock()),
 		('video', BlogEmbedBlock()),
 		('two_cols', customblocks.TwoColsBlock(classname='range')),
 		], verbose_name='pagina inhoud', null=True)
