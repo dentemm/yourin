@@ -489,8 +489,11 @@ class HomePage(BasePage):
 			
 		}
 
-	# def serve(self):
-	# 	pass
+	def serve(self, request):
+
+		self.update_vars()
+		
+		return super(HomePage, self).serve(request)
 
 
 	def save(self, *args, **kwargs):
