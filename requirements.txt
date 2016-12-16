@@ -1,4 +1,4 @@
-Django==1.10.2
+Django==1.10.4
 Pillow==3.4.2
 PyJWT==1.4.0
 Unidecode==0.04.19
@@ -19,9 +19,9 @@ django-social-auth==0.7.28
 django-storages==1.4.1
 django-taggit==0.18.3
 django-toolbelt==0.0.1
-django-treebeard==4.0.1
+django-treebeard==4.1.0
 django-widget-tweaks==1.4.1
-djangorestframework==3.5.1
+djangorestframework==3.5.3
 elasticsearch==5.0.1
 geopy==1.11.0
 gunicorn==19.4.5
@@ -35,14 +35,14 @@ python-dateutil==2.5.2
 python-openid==2.2.5
 python-social-auth==0.2.14
 python3-openid==3.0.10
-pytz==2016.7
+pytz==2016.10
 rcssmin==1.0.6
-requests==2.9.1
+requests==2.12.4
 requests-oauthlib==0.6.1
 rjsmin==1.0.12
 six==1.10.0
 static3==0.6.1
 urllib3==1.19.1
-wagtail==1.7
+wagtail==1.8
 webencodings==0.5
 whitenoise==2.0.6

@@ -86,7 +86,7 @@ class CustomRendition(AbstractRendition):
 
 	class Meta:
 		unique_together = (
-			('image', 'filter', 'focal_point_key'),
+			('image', 'filter_spec', 'focal_point_key'),
 		)
 
 # Delete the source image file when an image is deleted
@@ -488,6 +488,10 @@ class HomePage(BasePage):
 			#'kamp': last_camp
 			
 		}
+
+	# def serve(self):
+	# 	pass
+
 
 	def save(self, *args, **kwargs):
 
