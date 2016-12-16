@@ -7,6 +7,7 @@ from datetime import date, timedelta
 from django.db import models as djangomodels
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.exceptions import ValidationError
 from django.template.response import TemplateResponse
 from django.db.models.signals import pre_delete, pre_save
 from django.utils.translation import ugettext_lazy as _
@@ -48,41 +49,6 @@ yourin_variables = {}
 
 #
 #
-# FORMS 
-#
-#
-
-class InfluencerForm(WagtailAdminPageForm):
-	'''
-	Custom WagtailAdminPageForm subklasse. Deze wordt gebruikt om extra field validation te integreren
-	Staat hier omwille van circular import!
-	'''
-
-
-	def clean(self):
-
-		cleaned_data = super(InfluencerForm, self).clean()
-
-		cleaned_data['slug'] = slugify(cleaned_data['name'])
-
-		print('CLEANED DATA: %s' % cleaned_data['slug'])
-		print(slugify(cleaned_data['name']))
-		print(slugify(cleaned_data['slug']))
-
-		# for field in self.fields:
-
-		# 	print('field: %s' % field)
-
-		# print('cleaning!!!')
-		# print(self.fields)
-
-		
-
-		return cleaned_data
-
-
-#
-#
 # HELPER FUNCTIES
 #
 #
@@ -94,9 +60,6 @@ def get_upload_to(instance, filename):
     subclasses can override it.
     """
     return instance.get_upload_to(filename)
-
-
-
 
 #
 #
@@ -1152,31 +1115,25 @@ class Influencer(BasePage):
 	quote = djangomodels.CharField(verbose_name='Influencer citaat', max_length=255, blank=True, null=True)
 	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 
-	def save_revision(self, user=None, submitted_for_moderation=False, approved_go_live_at=None, changed=True):
-
-		print('-- save revision methode -- ')
-
-		self.title = self.name
-
-		return super(Influencer, self).save_revision(user=user, submitted_for_moderation=submitted_for_moderation, approved_go_live_at=approved_go_live_at, changed=changed)
-
 	def clean(self):
+		'''
+		See here for solution: https://github.com/wagtail/wagtail/issues/161
+		'''
 
-	    super(Influencer, self).clean()
-	    
-	    self.title = self.name
-	    self.slug = slugify(self.name)
+		super(Influencer, self).clean()
+
+		if self.slug == '' or self.title == '':
+
+			for influencer in Influencer.objects.all():
+
+				if influencer.name == self.name:
+					raise ValidationError({'slug': _("Er bestaat al een influencer met de naam die je hebt ingegeven!")})
+
+			self.title = self.name
+			self.slug = slugify(self.name)
 
 
-	# def save(self, *args, **kwargs):
-
-	# 	print('-- save methode -- ')
-
-	# 	self.title = self.name
-	# 	self.slug = slugify(self.name)
-
-	# 	return super(Influencer, self).save(*args, **kwargs)
-
+# Line below is to fix slug related issues
 Influencer._meta.get_field('slug').default='blank-slug'
 
 Influencer.content_panels =  [
