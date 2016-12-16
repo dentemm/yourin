@@ -15,6 +15,7 @@ from django.dispatch import receiver
 
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore import fields
+from wagtail.wagtailadmin.forms import WagtailAdminPageForm, WagtailAdminModelForm
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, FieldRowPanel, StreamFieldPanel, PageChooserPanel
 from wagtail.wagtailsnippets.models import register_snippet
 from wagtail.wagtailimages.models import Image, AbstractImage, AbstractRendition
@@ -22,6 +23,8 @@ from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.contrib.wagtailroutablepage.models import RoutablePageMixin, route
+
+from wagtail.wagtailadmin.forms import WagtailAdminPageForm, WagtailAdminModelForm
 
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
@@ -42,6 +45,40 @@ from .variables import RELATED_LINK_CHOICES, ICON_CHOICES, ICON_COLOR_CHOICES, E
 #
 yourin_variables = {}
 
+
+#
+#
+# FORMS 
+#
+#
+
+class InfluencerForm(WagtailAdminPageForm):
+	'''
+	Custom WagtailAdminPageForm subklasse. Deze wordt gebruikt om extra field validation te integreren
+	Staat hier omwille van circular import!
+	'''
+
+
+	def clean(self):
+
+		cleaned_data = super(InfluencerForm, self).clean()
+
+		cleaned_data['slug'] = slugify(cleaned_data['name'])
+
+		print('CLEANED DATA: %s' % cleaned_data['slug'])
+		print(slugify(cleaned_data['name']))
+		print(slugify(cleaned_data['slug']))
+
+		# for field in self.fields:
+
+		# 	print('field: %s' % field)
+
+		# print('cleaning!!!')
+		# print(self.fields)
+
+		
+
+		return cleaned_data
 
 
 #
@@ -1108,15 +1145,44 @@ class InfluencerRelatedLink(Orderable, RelatedLink):
 class Influencer(BasePage):
 
 	template = 'home/influencer/influencer_detail.html'
-	name = djangomodels.CharField(max_length=128, null=True, blank=True)
+	#base_form_class = InfluencerForm
+
+	name = djangomodels.CharField(max_length=128, null=True, blank=False)
 	extra_info = djangomodels.TextField(verbose_name='Beschrijving', null=True)
 	quote = djangomodels.CharField(verbose_name='Influencer citaat', max_length=255, blank=True, null=True)
 	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 
+	def save_revision(self, user=None, submitted_for_moderation=False, approved_go_live_at=None, changed=True):
+
+		print('-- save revision methode -- ')
+
+		self.title = self.name
+
+		return super(Influencer, self).save_revision(user=user, submitted_for_moderation=submitted_for_moderation, approved_go_live_at=approved_go_live_at, changed=changed)
+
+	def clean(self):
+
+	    super(Influencer, self).clean()
+	    
+	    self.title = self.name
+	    self.slug = slugify(self.name)
+
+
+	# def save(self, *args, **kwargs):
+
+	# 	print('-- save methode -- ')
+
+	# 	self.title = self.name
+	# 	self.slug = slugify(self.name)
+
+	# 	return super(Influencer, self).save(*args, **kwargs)
+
+Influencer._meta.get_field('slug').default='blank-slug'
+
 Influencer.content_panels =  [
 	MultiFieldPanel([
 			FieldRowPanel([
-				FieldPanel('title', classname='col6')
+				FieldPanel('name', classname='col6')
 				]
 			),
 			FieldPanel('extra_info'),
