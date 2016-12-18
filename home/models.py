@@ -238,7 +238,7 @@ class EventInstanceImage(djangomodels.Model):
 
 class EventInstance(djangomodels.Model):
 
-	event_name = djangomodels.CharField(verbose_name='naam', max_length=128)
+	title = djangomodels.CharField(verbose_name='naam', max_length=128)
 	event_description = djangomodels.TextField(verbose_name='beschrijving', null=True)
 	event_date = djangomodels.DateField(verbose_name='datum', default=date.today)
 	location = djangomodels.ForeignKey('home.Location', verbose_name='locatie', null=True, on_delete=djangomodels.SET_NULL)
@@ -248,15 +248,25 @@ class EventInstance(djangomodels.Model):
 	class Meta:
 		verbose_name = 'evenement'
 		verbose_name_plural = 'evenementen'
-		ordering = ['-event_date', 'event_name']
+		ordering = ['-event_date', 'title']
 
 	def __str__(self):
-		return self.event_name
+		return self.title
+
+	def category(self):
+		'''
+		Found a way to access the parent (relation from ParentalKey)
+		'''
+
+		event_event_instance = EventEventInstance.objects.get(title=self.title)
+		page = event_event_instance.page
+
+		return page.get_category_display()
 
 EventInstance.panels = [
 	MultiFieldPanel([
 			FieldRowPanel([
-				FieldPanel('event_name',  classname='col6'),
+				FieldPanel('title',  classname='col6'),
 				FieldPanel('event_date', classname='col6')
 				]
 			),
@@ -484,14 +494,25 @@ class HomePage(BasePage):
 	@property
 	def recents(self):
 
-		#last_blog = Blog.objects.live().latest('date')
+		print('RECENTS')
+
+		try:
+			last_blog = Blog.objects.live().latest('date')
+
+		except:
+			print('FOUT')
+			last_blog = ''
 		#last_festival = Event.objects.live().filter(category=3)
 		#last_camp = Event.objects.live().filter(category=2)
+		last_event = EventInstance.objects.all().latest('event_date')
+
+		print('last event: %s' % last_event)
 
 		return {
 			#'festival': last_festival,
-			#'blog': last_blog,
-			#'kamp': last_camp
+			'blog': last_blog,
+			#'kamp': last_camp,
+			'last_event': last_event
 			
 		}
 
