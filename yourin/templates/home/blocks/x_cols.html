@@ -1,0 +1,12 @@
+{% if num_cols == 1 %}
+
+{% endif %}
+
+<div class="range">
+  <div class="cell-md-6">
+    {% include 'home/blocks/streamfield_blocks.html' with blocks=self.left only %}
+  </div>
+  <div class="cell-md-6">
+    {% include 'home/blocks/streamfield_blocks.html' with blocks=self.right only %}
+  </div>
+</div>

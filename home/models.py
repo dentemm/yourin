@@ -231,6 +231,11 @@ Location.panels = [
 	)
 ]
 
+class EventInstanceImage(djangomodels.Model):
+
+	image = djangomodels.ForeignKey('home.CustomImage')
+	caption = djangomodels.CharField(max_length=63, null=True, blank=True)
+
 class EventInstance(djangomodels.Model):
 
 	event_name = djangomodels.CharField(verbose_name='naam', max_length=128)
@@ -899,9 +904,6 @@ class EventLocation(Orderable, Location):
 
 	page = ParentalKey('home.Event', related_name='locations')
 
-# class EventEvent(Orderable, Event):
-
-# 	page = ParentalKey('home.Event', related_name='events')
 
 class EventEventInstance(Orderable, EventInstance):
 
@@ -919,7 +921,8 @@ class Event(BasePage):
 	class_name = djangomodels.CharField(max_length=28, default='cal_event')
 	tags = ClusterTaggableManager(through=EventTag, blank=True)
 
-	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
+	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='logo', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
+	picture = djangomodels.ForeignKey('home.CustomImage', verbose_name='foto', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 	category = djangomodels.PositiveIntegerField(choices=EVENT_CATEGORY_CHOICES, default=1)
 
 	class Meta:
@@ -1175,9 +1178,10 @@ class DynamicPage(BasePage):
 		('paragraph', ParagraphBlock()),
 		('image', ImageWithCaptionBlock()),
 		('quote', PullQuoteBlock()),
-		('tabs', ListBlock(customblocks.TabbedContentItem(), template='home/blocks/tabbed_content_block.html', icol='list-ul')),
+		('tabs', ListBlock(customblocks.TabbedContentItem(), template='home/blocks/tabbed_content_block.html', icon='list-ul')),
 		('video', BlogEmbedBlock()),
 		('two_cols', customblocks.TwoColsBlock(classname='range')),
+		('slider', ListBlock(customblocks.CarouselImageBlock(), template='home/blocks/carousel_block.html', icon='image'))
 		], verbose_name='pagina inhoud', null=True)
 
 

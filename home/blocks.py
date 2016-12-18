@@ -4,8 +4,8 @@ from wagtail.wagtailembeds.blocks import EmbedBlock
 
 class CarouselImageBlock(blocks.StructBlock):
 
-	image = ImageChooserBlock()
-	caption = blocks.CharBlock(required=False)
+	afbeelding = ImageChooserBlock()
+	tekst = blocks.CharBlock(required=False)
 
 	class Meta:
 		icon = 'image'
@@ -78,15 +78,25 @@ class TabbedContentItem(blocks.StructBlock):
 
 class TwoColsBlock(blocks.StructBlock):
 
-	left = blocks.StreamBlock([
-		('subtitel', SubtitleBlock()),
+	#left = blocks.RichTextBlock(label='linkse kolom', required=True)
+	#right = blocks.RichTextBlock(label='rechtse kolom', required=True)
 
-		], icon='arrow-left', label='Linkse kolom')
+	content = blocks.StreamBlock([
+		('linkse_kolom', blocks.RichTextBlock()),
+		('rechtse_kolom', blocks.RichTextBlock()),
 
-	right = blocks.StreamBlock([
-		('subtitel', SubtitleBlock()),
+		], icon='arrow-left', label='inhoud')
+
+
+	# left = blocks.StreamBlock([
+	# 	('linkse_kolom', blocks.RichTextBlock()),
+
+	# 	], icon='arrow-left', label='inhoud')
+
+	# right = blocks.StreamBlock([
+	# 	('rechtse_kolom', blocks.RichTextBlock()),
 		
-		], icon='arrow-right', label='Rechtse kolom')
+	# 	], icon='arrow-right', label='inhoud')
 
 	class Meta:	
 		template = 'home/blocks/two_cols.html'
