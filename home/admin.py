@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from .models import Category, EventCategory, Event, Location, EventInstance
 
-@admin.register
+@admin.register(EventInstance)
 class EventInstanceAdmin(admin.ModelAdmin):
 	pass
 
