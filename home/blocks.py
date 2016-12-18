@@ -69,12 +69,12 @@ class TabbedContentItem(blocks.StructBlock):
 	tab_name = blocks.CharBlock(label='tabblad titel', required=True, max_length=32, help_text='de titel voor het tabblad')
 	content = blocks.TextBlock()
 
-class TabbedContentBlock(blocks.StructBlock):
+# class TabbedContentBlock(blocks.StructBlock):
 
-	class Meta:
-		template = 'home/blocks/tabbed_content_block.html'
-		label = 'tabs'
-		icon = 'list-ul'
+# 	class Meta:
+# 		template = 'home/blocks/tabbed_content_block.html'
+# 		label = 'tabs'
+# 		icon = 'list-ul'
 
 class TwoColsBlock(blocks.StructBlock):
 

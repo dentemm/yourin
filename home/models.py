@@ -16,6 +16,7 @@ from django.dispatch import receiver
 
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore import fields
+from wagtail.wagtailcore.blocks import ListBlock
 from wagtail.wagtailadmin.forms import WagtailAdminPageForm, WagtailAdminModelForm
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, FieldRowPanel, StreamFieldPanel, PageChooserPanel
 from wagtail.wagtailsnippets.models import register_snippet
@@ -1174,7 +1175,7 @@ class DynamicPage(BasePage):
 		('paragraph', ParagraphBlock()),
 		('image', ImageWithCaptionBlock()),
 		('quote', PullQuoteBlock()),
-		('tabs', customblocks.TabbedContentBlock()),
+		('tabs', ListBlock(customblocks.TabbedContentItem(), template='home/blocks/tabbed_content_block.html', icol='list-ul')),
 		('video', BlogEmbedBlock()),
 		('two_cols', customblocks.TwoColsBlock(classname='range')),
 		], verbose_name='pagina inhoud', null=True)
