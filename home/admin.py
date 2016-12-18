@@ -1,6 +1,10 @@
 from django.contrib import admin
 
-from .models import Category, EventCategory, Event, Location
+from .models import Category, EventCategory, Event, Location, EventInstance
+
+@admin.register
+class EventInstanceAdmin(admin.ModelAdmin):
+	pass
 
 @admin.register(Location)
 class LocationAdmin(admin.ModelAdmin):
