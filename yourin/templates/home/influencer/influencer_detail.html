@@ -13,7 +13,7 @@
       <div class="cell-xs-10 cell-sm-5">
         <!-- Member block type 5-->
         <div class="member-block-type-5 inset-md-right-20">
-          {% image page.image fill-500x500 as img %}
+          {% image page.image original as img %}
           <img src="{{ img.file.url }}" width="437" height="437" alt="" class="img-responsive center-block">
           <div class="member-block-body">
             <div class="btn btn-block btn-primary">
@@ -38,16 +38,17 @@
         <div>
           <h1>{{ page.title|title }}</h1>
         </div>
-        <p class="small text-darker offset-top-4">UI/UX Designer</p>
-        <hr class="divider bg-mantis hr-sm-left-0">
-        <p class="text-left">Hello! My name is John Doe, and I am a jack of all trades when it comes to web design, app development and content marketing. With 12 years of experience I am proud to be called a web designer.</p>
+<!--         <p class="small text-darker offset-top-4">UI/UX Designer</p>
+ -->        <hr class="divider bg-mantis hr-sm-left-0">
+        <p class="text-left">
+          {{ page.extra_info }}
+        </p>
         <div class="offset-top-30 text-center">
           <p>
-            <q class="text-italic h3 text-bold">I am really happy I’ve purchased a template from TemplateMonster. Congratulations!</q>
+            <q class="text-italic h3 text-bold">
+              {{ page.quote }}
+            </q>
           </p>
-        </div>
-        <div class="offset-top-30">
-          <p class="text-left">Web design is my expertise. I offer a wide range of services from wireframing to full-cycle web development. No matter what size is your project of – it will be done quickly and on the highest quality level.</p>
         </div>
 <!--         <div class="offset-top-50">
           <div data-to="70" class="progress-linear animated-first">
