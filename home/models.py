@@ -236,6 +236,7 @@ class EventInstanceImage(djangomodels.Model):
 	image = djangomodels.ForeignKey('home.CustomImage')
 	caption = djangomodels.CharField(max_length=63, null=True, blank=True)
 
+
 class EventInstance(djangomodels.Model):
 
 	title = djangomodels.CharField(verbose_name='naam', max_length=128)
@@ -1014,6 +1015,7 @@ Event.content_panels = [
 			FieldPanel('description'),
 			FieldPanel('intro'),
 			ImageChooserPanel('image'),
+			ImageChooserPanel('picture'),
 			#FieldPanel('tags'),
 		],
 		heading='Evenement gegevens'

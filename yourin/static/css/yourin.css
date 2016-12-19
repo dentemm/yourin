@@ -306,7 +306,7 @@ a.icon-rect.fa-youtube-play:hover, a.icon-circle.fa-youtube-play:hover, a.icon-o
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 66vw;
+  width: 57vw;
   -webkit-background-size: cover;
   background-size: cover;
 }

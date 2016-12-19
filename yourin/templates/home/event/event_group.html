@@ -43,7 +43,7 @@
 <section class="section-sm-0">
   <div class="shell">
     <div class="range range-xs-center range-sm-left offset-top-0">
-      <div class="cell-xs-10 cell-sm-4 section-image-aside section-image-aside-right text-left" style="min-height: 400px;">
+      <div class="cell-xs-10 cell-sm-5 section-image-aside section-image-aside-right text-left" style="min-height: 400px;">
       {% image page.image original as img %}
         <div class="section-image-aside-img section-custom-image-aside-img veil reveal-sm-block">
           <div id="map" class="map_model" style="height: 100%"></div>
@@ -58,7 +58,7 @@
                   </div>
                   <div class="unit-body">
                     <a href="{% url 'evenement' event.pk %}">
-                      <h4 style="margin-top: 5px;">{{ event.event_name|title }}</h4>
+                      <h4 style="margin-top: 5px;">{{ event.title|title }}</h4>
                       <!-- <p>{{ event.event_description }}</p> -->
                     </a>
                   </div>
