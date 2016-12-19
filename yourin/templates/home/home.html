@@ -72,7 +72,7 @@
 
 <section class="section-85 text-center">
   <div class="shell-fluid">
-    <h1>Recente gebeurtenissen {{ page.recents.items.0 }}</h1>
+    <h1>Recente gebeurtenissen</h1>
 
     <hr class="divider bg-mantis">
     <div class="range range-xs-center">
@@ -83,7 +83,7 @@
         {% if key == 'blog' %}
           <a {% if value %}href="{% pageurl value %}"{% endif %}>
         {% else %}
-          <a href="{% url 'evenement' value.pk %}">
+          <a {% if value.pk %}href="{% url 'evenement' value.pk %}"{% endif %}>
         {% endif %}
             {% image value.image width-450 as img %}
             <img style="height: 200px;" src="{{ img.file.url }}">
@@ -98,7 +98,7 @@
               Naar artikel
             </a>
           {% else %}  
-            <a href="{% url 'evenement' value.pk %}" class="btn offset-top-10 offset-md-top-0 btn-primary">
+            <a {% if value.pk %}href="{% url 'evenement' value.pk %}"{% endif %} class="btn offset-top-10 offset-md-top-0 btn-primary">
               {% if key == 'festival' %}Naar Festival{% elif key == 'kamp' %}Meer info{% else %}Meer info{% endif %}
             </a>
           {% endif %}

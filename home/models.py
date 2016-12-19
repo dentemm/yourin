@@ -496,24 +496,41 @@ class HomePage(BasePage):
 
 		print('RECENTS')
 
+		# 1. Latest blog article
 		try:
 			last_blog = Blog.objects.live().latest('date')
 
 		except:
-			print('FOUT')
 			last_blog = ''
+
+		# 2. Latest event in past
+		try:
+			last_event = EventInstance.objects.filter(event_date__lt=date.today())[0]
+
+		except:
+			last_event = ''
+
+		# 3. First two upcoming events
+		try:
+			upcoming = EventInstance.objects.filter(event_date__gte=date.today())[:2]
+
+		except:
+			upcoming = ['', '']
+
+		if len(upcoming) < 2:
+			upcoming = ['', '']
+
 		#last_festival = Event.objects.live().filter(category=3)
 		#last_camp = Event.objects.live().filter(category=2)
-		last_event = EventInstance.objects.all().latest('event_date')
+		#last_event = EventInstance.objects.all().latest('event_date')
 
 		print('last event: %s' % last_event)
 
 		return {
-			#'festival': last_festival,
+			'last_event': last_event,
+			'next1': upcoming[0],
 			'blog': last_blog,
-			#'kamp': last_camp,
-			'last_event': last_event
-			
+			'next2': upcoming[1],
 		}
 
 	def serve(self, request):
