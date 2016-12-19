@@ -669,18 +669,18 @@ class ContactPage(BasePage):
 	phone = djangomodels.CharField('telefoonnr', max_length=28, null=True, blank=True)
 
 	@property
-	def address(self):
+	def location(self):
 
-		#print('ADDRESS: %s' % self.locations.all)
+		return self.locations.all()[0]
+
+	@property
+	def address(self):
 
 		address = ''
 
 		for location in self.locations.all():
 
 			current = location.street + ' ' + location.number + ', ' + location.city
-
-			#print('ADDRESS: %s' % current)
-
 			address = current
 
 		return address

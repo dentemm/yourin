@@ -87,17 +87,49 @@
   </section>
   <!-- Section RD Google Map-->
   <section class="offset-top-98">
-    <!-- RD Google Map-->
-    <!-- RD Google Map-->
-    <div class="rd-google-map">
-      <div id="rd-google-map"
-              data-zoom="8"
-              data-x="4.7168667"
-              data-y="50.6873616"
-              data-styles="[]"
-              class="rd-google-map__model">
-      </div>
-    </div>
+  <div id="map" class="map_model" style="height: 550px;"></div>
   </section>
 </section>
+
+<script>
+
+  function initMap() {
+    var center = {lat: 50.6873616, lng: 4.7168667};
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 8,
+      center: center,
+      scrollwheel: false
+    });
+    var markers = marker_details.map(function(details, i) {
+
+      var infowindow = new google.maps.InfoWindow({
+        content: '<b>' + details.name + '</b>'
+      });
+      var marker = new google.maps.Marker({
+        position: details.location,
+        map: map,
+        title: details.name,
+      });
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
+      });
+      return marker
+    });
+  }
+  var marker_details = []
+
+  event = {
+    location: {lat: {{ page.location.latitude|stringformat:'f' }}, lng: {{ page.location.longitude|stringformat:'f' }}},
+    name: "Yourin",
+  };
+  marker_details.push(event);
+
+
+
+
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDjAxMqFazTQK5FM3HmKuXYEjnWUPfSrU&callback=initMap">
+</script>
+
 {% endblock main %}
