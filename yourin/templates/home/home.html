@@ -90,7 +90,7 @@
           </a>
           <figcaption>
             <div>
-              <h4 class="thumbnail-terry-title">{% if key == 'blog' %}Blog{% elif key == 'festival' %}Festival{% elif key == 'kamp' %}Kamp{% else %}{{ value.category|title }}{% endif %}<br></h4>
+              <h4 class="thumbnail-terry-title">{% if key == 'blog' %}Blog{% elif key == 'festival' %}Festival{% elif key == 'last_event' %}Net Gemist{% else %}{{ value.category|title }}{% endif %}<br></h4>
             </div>
             <p class="thumbnail-terry-desc offset-top-0">{{ value.title|title }}</p>
           {% if key == 'blog' %}

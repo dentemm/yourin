@@ -494,8 +494,6 @@ class HomePage(BasePage):
 	@property
 	def recents(self):
 
-		print('RECENTS')
-
 		# 1. Latest blog article
 		try:
 			last_blog = Blog.objects.live().latest('date')
@@ -524,13 +522,14 @@ class HomePage(BasePage):
 		#last_camp = Event.objects.live().filter(category=2)
 		#last_event = EventInstance.objects.all().latest('event_date')
 
-		print('last event: %s' % last_event)
+		#if last_event == '':
+		#	last_event = upcoming[3]
 
 		return {
 			'last_event': last_event,
 			'next1': upcoming[0],
-			'blog': last_blog,
 			'next2': upcoming[1],
+			'blog': last_blog,
 		}
 
 	def serve(self, request):
