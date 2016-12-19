@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 
-{% load staticfiles %}
+{% load staticfiles wagtailcore_tags %}
 
 {% block page_title %}
   {% if page.has_subtitle %}
@@ -18,7 +18,7 @@
     <div class="shell section-bottom-85">
       <div class="range text-center range-xs-center range-sm-middle">
         <div class="cell-sm-10 cell-lg-6 cell-lg-pull-6 offset-top-50 offset-lg-top-0">
-        {{ page.page_content }}
+        {{ page.page_content|richtext }}
         </div>
       </div>
     </div>

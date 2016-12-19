@@ -24,7 +24,7 @@
           <a class="label-custom label-lg-custom label-rounded-custom label-primary">{{ page.get_category_display }}</a>
           <div class="offset-top-20">
           {% if page.intro %}
-            <p>{{ page.intro }}</p>
+            {{ page.intro|richtext }}
           {% else %}
             <p>{{ page.description }}</p>
           {% endif %}

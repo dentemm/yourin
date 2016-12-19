@@ -32,7 +32,7 @@
                 <h3 class="offset-top-10"><a href="events-list-single-left-sidebar.html">{{ blog.title|title }}</a></h3>
                 <div class="post-body">
                   <div class="inset-md-right-115">
-                    <p>{{ blog.intro_text}}</p>
+                    <p>{{ blog.intro_text|richtext }}</p>
                   </div>
                 </div>
                 <a href="{% pageurl blog %}" class="btn btn-sm btn-primary offset-top-30">Lees Verder</a>
