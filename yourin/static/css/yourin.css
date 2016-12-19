@@ -65,6 +65,10 @@ div.btn.btn-primary{
 
 .section-24 {padding-top: 24px; padding-bottom: 24px;}
 
+@media (min-width: 1200px) {
+  .section-lg-140 {margin-top: 140px; margin-bottom: 140px;}
+}
+
 .list-inline > li  {
 	padding-left: 2px;
 	padding-right: 2px;
