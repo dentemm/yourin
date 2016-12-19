@@ -1209,6 +1209,7 @@ class DynamicPage(BasePage):
 
 	page_title = djangomodels.CharField(verbose_name='pagina titel', max_length=36, default='Dit is de grote ondertitel')
 	page_icon = djangomodels.CharField(verbose_name='pagina icoon', max_length=28, choices=ICON_CHOICES, default='fa fa-commenting-o')
+	page_subtitle = djangomodels.CharField(verbose_name='ondertitel', max_length=36, null=True, blank=True)
 
 
 	page_content = fields.StreamField([
@@ -1244,6 +1245,10 @@ DynamicPage.content_panels = Page.content_panels + [
 			FieldRowPanel([
 				FieldPanel('page_title', classname='col6'),
 				FieldPanel('page_icon', classname='col6')
+				]
+			),
+			FieldRowPanel([
+				FieldPanel('page_subtitle', classname='col6')
 				]
 			),
 		], heading='pagina details'

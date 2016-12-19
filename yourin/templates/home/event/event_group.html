@@ -23,7 +23,11 @@
           </div>
           <a class="label-custom label-lg-custom label-rounded-custom label-primary">{{ page.get_category_display }}</a>
           <div class="offset-top-20">
+          {% if page.intro %}
+            <p>{{ page.intro }}</p>
+          {% else %}
             <p>{{ page.description }}</p>
+          {% endif %}
           </div>
           <div class="icon-list-item text-primary section-top-15">
             <a href="{{ page.website }}">
