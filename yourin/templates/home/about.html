@@ -18,7 +18,11 @@
     <div class="shell section-bottom-85">
       <div class="range text-center range-xs-center range-sm-middle">
         <div class="cell-sm-10 cell-lg-6 cell-lg-pull-6 offset-top-50 offset-lg-top-0">
-        {{ page.page_content|richtext }}
+      {% if page.intro %}
+        {{ page.intro|richtext }}
+      {% else %}
+        {{ page.page_content }}
+      {% endif %}
         </div>
       </div>
     </div>
