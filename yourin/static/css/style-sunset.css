@@ -24580,7 +24580,7 @@ a.icon {
 }
 
 .icon-rounded {
-  border-radius: 0;
+  border-radius: 5px;
 }
 
 .icon-outlined {

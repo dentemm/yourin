@@ -1012,7 +1012,7 @@ class Event(BasePage):
 			return 'glyphicon glyphicon-tent icon-deluge'
 
 		elif self.category == 3:
-			return 'fa fa-map-signs icon-blue-gray-filled'
+			return 'fa fa-map-signs icon-mantis-filled'
 
 		elif self.category == 4:
 			return 'fa fa-group icon-mantis-filled'

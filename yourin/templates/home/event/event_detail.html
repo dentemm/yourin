@@ -33,16 +33,30 @@
         </div>
         <div class="cell-sm-12 cell-md-6 text-left offset-top-41 offset-md-top-0">
           
+
           <h1 class="product-title offset-top-0">
             {{ view.object.title|title }}
-          </h1>
+          </h1><span class="icon icon-xxs icon-rounded {{ view.object.event_group.icon }}"></span>
 <!--           <a href="{% pageurl view.object.event_group %}">
             <p class="product-brand text-italic text-dark">{{ view.object.event_group }}</p>
           </a> -->
           <span class="h6 text-mantis" style="padding-left: 5px;">
             <span class="text-regular big">{{ view.object.event_date|date:"j F 'y" }}</span>
-          </span>
-          <!-- Classic Accordion-->
+          </span>          
+          <p>
+            {{ view.object.event_description }}
+          </p>
+          <hr class="divider hr-sm-left-0 bg-mantis">
+          <div class="section-34">
+            {% if view.object.website %}
+            <a target="_blank" href="{{ view.object.website }}">
+            {% else %}
+            <a target="_blank" href="{{ view.object.event_group.website }}">Naar website
+            {% endif %}
+              <span class="icon icon-xxs icon-rounded icon-carrot-filled mdi mdi-web"></span>
+            Naar website
+            </a>
+          </div>
 <!--           <div data-type="accordion" class="responsive-tabs responsive-tabs-classic resp-easy-accordion tabs-group-default" style="width: 100%;">
             <ul data-group="tabs-group-default" class="resp-tabs-list tabs-group-default" style="display: none;">
               <li class="resp-tab-item tabs-group-default resp-tab-active" aria-controls="tabs-group-default_tab_item-0" role="tab">
