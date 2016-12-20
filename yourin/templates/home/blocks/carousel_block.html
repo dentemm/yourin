@@ -1,23 +1,23 @@
-<section class="section-98 section-110">
+{% load wagtailimages_tags %}
+
+<section class="section-bottom-41">
   <div class="shell">
-    <h1>Grow Your Business With Intense</h1>
-    <hr class="divider bg-mantis">
     <div class="range range-sm-center offset-top-66">
+      <!-- Simple quote Slider-->
       <div class="cell-sm-8 cell-md-8 inset-md-right-80">
-        <div data-loop="true" data-autoplay="true" class="owl-carousel owl-carousel-classic owl-carousel-class-light shadow-drop-md owl-theme owl-loaded owl-text-select-on">
-              <div class="owl-item active">
-                AAAAA
-              </div>
-              <div class="owl-item">
-                BBBBB
-              </div>
-              <div class="owl-item">
-                CCCCC
-              </div>
+        <div data-items="1" data-nav="false" data-dots="true" data-nav-custom=".owl-custom-navigation" class="owl-carousel owl-carousel-classic owl-carousel-class-light shadow-drop-md owl-theme owl-loaded owl-text-select-on" style="">  
+        {% for item in self %}
+          <div class="owl-item">
+          {% image item.afbeelding fill-900x600 as image  %}
+            <img src="{{ image.file.url }}" class="img-responsive element-fullwidth">
+          </div>  
+        {% endfor %}
         </div>
       </div>
       <div class="cell-sm-8 cell-md-4 text-sm-left offset-top-34 offset-md-top-0">
-        <h3>Website Design</h3>
+        <h3>
+          Website Design
+        </h3>
         <p>
           A website is a medium that connects a person with the world of digital data. With its help users can access information, make purchases, communicate with each other, and do loads of other things.
         </p>
@@ -34,58 +34,3 @@
     </div>
   </div>
 </section>
-<!-- <section class="section-98 section-110">
-  <div class="shell">
-    <h1>Grow Your Business With Intense</h1>
-    <hr class="divider bg-mantis">
-    <div class="range range-sm-center offset-top-66">
-      <div class="cell-sm-8 cell-md-8 inset-md-right-80">
-        <div data-items="1" data-nav="false" data-dots="false" data-nav-custom=".owl-custom-navigation" class="owl-carousel owl-carousel-classic owl-carousel-class-light shadow-drop-md owl-theme owl-loaded owl-text-select-on" style="">
-          <div class="owl-stage-outer">
-            <div class="owl-stage" style="transform: translate3d(-1410px, 0px, 0px); transition: 0.3s; -webkit-transition: 0.3s; width: 2115px;">
-              <div class="owl-item" style="width: 705px; margin-right: 0px;">
-                <div>
-                  <div class="embed-responsive embed-responsive-16by9">
-                    <iframe src="//www.youtube.com/embed/-AhmuMqZB0s?wmode=transparent" class="embed-responsive-item"></iframe>
-                  </div>
-                </div>
-              </div>
-              <div class="owl-item" style="width: 705px; margin-right: 0px;">
-                <div>
-                  <img src="images/portfolio/portfolio-single-01-716x404.jpg" width="716" height="404" alt="" class="img-responsive element-fullwidth">
-                </div>
-              </div>
-              <div class="owl-item" style="width: 705px; margin-right: 0px;">
-                <div>
-                  <img src="images/portfolio/portfolio-single-02-716x404.jpg" width="716" height="404" alt="" class="img-responsive element-fullwidth">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="owl-controls">
-            <div class="owl-nav">
-              <div class="owl-prev"></div>
-              <div class="owl-next"></div>
-            </div>
-            <div class="owl-dots"></div>
-          </div>
-        </div>
-      </div>
-      <div class="cell-sm-8 cell-md-4 text-sm-left offset-top-34 offset-md-top-0">
-        <h3>Website Design</h3>
-        <p>
-          A website is a medium that connects a person with the world of digital data. With its help users can access information, make purchases, communicate with each other, and do loads of other things.
-        </p>
-        <p>
-          Due to the clever marketing strategy and professional web designing, corporations can grow their client base with ease. On the modern market the competition is very tough, so in order to be a success, businesses experiment with multiple strategies with the goal of coming up with the perfect one.
-        </p>
-        <div class="owl-custom-navigation owl-customer-navigation offset-top-24">
-          <div class="owl-nav">
-            <div data-owl-prev="" class="owl-prev mdi mdi-chevron-left"></div>
-            <div data-owl-next="" class="owl-next mdi mdi-chevron-right"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
