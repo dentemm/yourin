@@ -5,7 +5,7 @@ from wagtail.wagtailembeds.blocks import EmbedBlock
 class CarouselImageBlock(blocks.StructBlock):
 
 	afbeelding = ImageChooserBlock()
-	tekst = blocks.CharBlock(required=False)
+	#tekst = blocks.CharBlock(required=False)
 
 	class Meta:
 		icon = 'image'
@@ -63,6 +63,19 @@ class PullQuoteBlock(blocks.StructBlock):
 		template = 'home/blocks/pullquote_block.html'
 		label = 'citaat'
 		icon = 'openquote'
+
+#('slider', ListBlock(customblocks.CarouselImageBlock(), template='home/blocks/carousel_block.html', icon='image')),
+
+class SliderBlock(blocks.StructBlock):
+
+	afbeeldingen = blocks.ListBlock(CarouselImageBlock())
+	bijhorende_tekst = blocks.RichTextBlock()
+
+	class Meta:
+		template = 'home/blocks/slider_block.html'
+		label = 'slider'
+		icon = 'image'
+
 
 class TabbedContentItem(blocks.StructBlock):
 

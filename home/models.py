@@ -1244,8 +1244,9 @@ class DynamicPage(BasePage):
 		('quote', PullQuoteBlock()),
 		('tabs', ListBlock(customblocks.TabbedContentItem(), template='home/blocks/tabbed_content_block.html', icon='list-ul')),
 		('video', BlogEmbedBlock()),
-		('two_cols', customblocks.TwoColsBlock(classname='range')),
-		('slider', ListBlock(customblocks.CarouselImageBlock(), template='home/blocks/carousel_block.html', icon='image'))
+		#('two_cols', customblocks.TwoColsBlock(classname='range')),
+		#('slider', ListBlock(customblocks.CarouselImageBlock(), template='home/blocks/carousel_block.html', icon='image')),
+		('slider', customblocks.SliderBlock()),
 		], verbose_name='pagina inhoud', null=True)
 
 

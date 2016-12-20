@@ -1,0 +1,37 @@
+{% load wagtailimages_tags %}
+
+<section class="section-bottom-41">
+  <div class="shell">
+    <div class="range range-sm-center offset-top-66">
+      <!-- Simple quote Slider-->
+      <div class="cell-sm-8 cell-md-8 inset-md-right-80">
+        <div data-items="1" data-nav="false" data-dots="true" data-nav-custom=".owl-custom-navigation" class="owl-carousel owl-carousel-classic owl-carousel-class-light shadow-drop-md owl-theme owl-loaded owl-text-select-on" style="">  
+        {% for item in self.afbeeldingen %}
+          <div class="owl-item">
+          {% image item.afbeelding fill-900x600 as image  %}
+            <img src="{{ image.file.url }}" class="img-responsive element-fullwidth">
+          </div>  
+        {% endfor %}
+        </div>
+      </div>
+      <div class="cell-sm-8 cell-md-4 text-sm-left offset-top-34 offset-md-top-0">
+      	{{ self.bijhorende_tekst }}
+<!--         <h3>
+          Website Design
+        </h3>
+        <p>
+          A website is a medium that connects a person with the world of digital data. With its help users can access information, make purchases, communicate with each other, and do loads of other things.
+        </p>
+        <p>
+          Due to the clever marketing strategy and professional web designing, corporations can grow their client base with ease. On the modern market the competition is very tough, so in order to be a success, businesses experiment with multiple strategies with the goal of coming up with the perfect one.
+        </p> -->
+        <div class="owl-custom-navigation owl-customer-navigation offset-top-24">
+          <div class="owl-nav">
+            <div data-owl-prev="" class="owl-prev mdi mdi-chevron-left"></div>
+            <div data-owl-next="" class="owl-next mdi mdi-chevron-right"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
