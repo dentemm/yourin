@@ -7,84 +7,81 @@
 {% endblock page_title %}
 
 {% block main%}
-<section class="offset-top-50">
+<section class="offset-top-66">
   <div class="shell">
-    <h1 class="text-center">{{ view.object.title|title }}</h1>
-    <hr class="divider bg-mantis">
-    <div class="range range-sm-center offset-top-50">
-      <!-- Simple quote Slider-->
-      <div class="cell-sm-8 cell-md-8 inset-md-right-80">
-      	{% image view.object.image max-1000x500 as img %}
-      	<div class="owl-carousel" style="max-height: 500px;">
-      		<img src="{{ img.file.url }}">
-  		</div>
-
-        <!-- <div data-items="1" data-nav="false" data-dots="false" data-nav-custom=".owl-custom-navigation" class="owl-carousel owl-carousel-classic owl-carousel-class-light shadow-drop-md owl-theme owl-loaded owl-text-select-on" style=""> -->
-          
-      
-<!--         <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; -webkit-transition: 0s; width: 2115px;"><div class="owl-item active" style="width: 705px; margin-right: 0px;"><div>
-                            <div class="embed-responsive embed-responsive-16by9">
-                              <iframe src="//www.youtube.com/embed/-AhmuMqZB0s?wmode=transparent" class="embed-responsive-item"></iframe>
-                            </div>
-          </div></div><div class="owl-item" style="width: 705px; margin-right: 0px;"><div><img src="images/portfolio/portfolio-single-01-716x404.jpg" width="716" height="404" alt="" class="img-responsive element-fullwidth"></div></div><div class="owl-item" style="width: 705px; margin-right: 0px;"><div><img src="images/portfolio/portfolio-single-02-716x404.jpg" width="716" height="404" alt="" class="img-responsive element-fullwidth"></div></div></div></div><div class="owl-controls"><div class="owl-nav"><div class="owl-prev" style="display: none;"></div><div class="owl-next" style="display: none;"></div></div><div class="owl-dots" style="display: none;"></div></div></div> -->
-      </div>
-      <div class="cell-sm-8 cell-md-4 text-sm-left offset-top-34 offset-md-top-0">
-<!--         <h3>Website Design</h3>
-        <p>A website is a medium that connects a person with the world of digital data. With its help users can access information, make purchases, communicate with each other, and do loads of other things.</p>
-        <p>Due to the clever marketing strategy and professional web designing, corporations can grow their client base with ease. On the modern market the competition is very tough, so in order to be a success, businesses experiment with multiple strategies with the goal of coming up with the perfect one.</p>
-        <div class="owl-custom-navigation owl-customer-navigation offset-top-24">
-          <div class="owl-nav">
-            <div data-owl-prev="" class="owl-prev mdi mdi-chevron-left"></div>
-            <div data-owl-next="" class="owl-next mdi mdi-chevron-right"></div>
+    <!-- Embed Video-->
+    <!-- Classic Soundcloud Player-->
+    <!-- RD Video Player-->
+    <div class="product product-single">
+      <div class="range">
+        <div class="cell-sm-8 cell-md-6">
+          <div class="product-image">
+        {% image view.object.image max-600x1000 as img %}
+            <img src="{{ img.file.url }}" alt="" class="img-responsive product-image-area">
+  <!--           <ul class="product-thumbnails">
+              <li data-large-image="images/shop/product-01-570x760.png" class="active">
+                <img src="images/shop/product-01-84x84.png" alt="" width="84" height="84" class="img-responsive">
+              </li>
+              <li data-large-image="images/shop/product-01-570x760-2.png">
+                <img src="images/shop/product-01-84x84-2.png" alt="" width="84" height="84" class="img-responsive">
+              </li>
+              <li data-large-image="images/shop/product-01-570x760-3.png">
+                <img src="images/shop/product-01-84x84-3.png" alt="" width="84" height="84" class="img-responsive">
+              </li>
+            </ul> -->
           </div>
-        </div> -->
+        </div>
+        <div class="cell-sm-12 cell-md-6 text-left offset-top-41 offset-md-top-0">
+          <!-- Product Brand-->
+          <p class="product-brand text-italic text-dark">Armani Brand</p>
+          <!-- Product Title-->
+          <h1 class="product-title offset-top-0">
+            {{ view.object.title|title }}
+          </h1>
+          <!-- Classic Accordion-->
+<!--           <div data-type="accordion" class="responsive-tabs responsive-tabs-classic resp-easy-accordion tabs-group-default" style="width: 100%;">
+            <ul data-group="tabs-group-default" class="resp-tabs-list tabs-group-default" style="display: none;">
+              <li class="resp-tab-item tabs-group-default resp-tab-active" aria-controls="tabs-group-default_tab_item-0" role="tab">
+                Description
+              </li>
+              <li class="resp-tab-item tabs-group-default" aria-controls="tabs-group-default_tab_item-1" role="tab">
+                Size &amp; Fit
+              </li>
+              <li class="resp-tab-item tabs-group-default" aria-controls="tabs-group-default_tab_item-2" role="tab">
+                Delivery &amp; Returns
+              </li>
+            </ul>
+            <div data-group="tabs-group-default" class="resp-tabs-container tabs-group-default">
+              <div class="resp-accordion tabs-group-default resp-tab-active" role="tab" aria-controls="tabs-group-default_tab_item-0" style="background-image: none; background-position: initial initial; background-repeat: initial initial;">
+                <span class="resp-arrow"></span>Description
+              </div>
+              <div class="resp-tab-content tabs-group-default resp-tab-content-active" aria-labelledby="tabs-group-default_tab_item-0" style="display:block">
+                Fashion has always been so temporary and uncertain. You can’t keep up with it. This social phenomenon is very whimsical, thus we as the consumers always try to stay in touch with all the latest fashion tendencies.
+              </div>
+              <div class="resp-accordion tabs-group-default" role="tab" aria-controls="tabs-group-default_tab_item-1">
+                <span class="resp-arrow"></span>Size &amp; Fit
+              </div>
+              <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-1">
+                17.25" bust <br> 14" shoulder to shoulder <br> 32.25" shoulder to hem <br>  Measurements taken from size small <br> Model wears size small. Model is 5'9 <br>  This dress fits true to size
+              </div>
+              <div class="resp-accordion tabs-group-default" role="tab" aria-controls="tabs-group-default_tab_item-2">
+                <span class="resp-arrow"></span>Delivery &amp; Returns
+              </div>
+              <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-2">
+                We deliver our goods worldwide. No matter where you live, your order will be shipped in time and delivered right to your door or to any other location you have stated. The packages are handled with utmost care, so the ordered products will be handed to you safe and sound, just like you expect them to be.
+              </div>
+            </div>
+          </div> -->
+        </div>
       </div>
     </div>
   </div>
 </section>
+
 <section class="section-34 bg-saffron context-dark text-center">
   <div class="shell">
     <h3><span class="big"> Work In Progress </span></h3>
   </div>
 </section>
-<!-- <section class="section-top-98 section-bottom-124">
-  <div class="shell">
-    <h2 class="text-center">Andere {{ view.object.page }} Evenementen</h2>
-    <hr class="divider bg-mantis">
-    <div class="range offset-top-66 range-xs-center text-left">
-      <div class="cell-xs-10 cell-sm-6 cell-md-3"><a class="thumbnail-classic" href="#" target="_self">
-                  <figure><img width="370" height="278" src="images/portfolio/portfolio-single-related-01-370x278.jpg" alt="">
-                  </figure></a>
-        <div>
-          <h6 class="offset-top-24"><a href="#">New Vision</a></h6>
-        </div>
-        <p class="text-dark offset-top-4 text-extra-small">UX, Design</p>
-      </div>
-      <div class="cell-xs-10 cell-sm-6 cell-md-3 offset-top-50 offset-sm-top-0"><a class="thumbnail-classic" href="#" target="_self">
-                  <figure><img width="370" height="278" src="images/portfolio/portfolio-single-related-02-370x278.jpg" alt="">
-                  </figure></a>
-        <div>
-          <h6 class="offset-top-24"><a href="#">Complex Solutions</a></h6>
-        </div>
-        <p class="text-dark offset-top-4 text-extra-small">Web, Development</p>
-      </div>
-      <div class="cell-xs-10 cell-sm-6 cell-md-3 offset-top-50 offset-md-top-0"><a class="thumbnail-classic" href="#" target="_self">
-                  <figure><img width="370" height="278" src="images/portfolio/portfolio-single-related-03-370x278.jpg" alt="">
-                  </figure></a>
-        <div>
-          <h6 class="offset-top-24"><a href="#">Unlimited Opportunities</a></h6>
-        </div>
-        <p class="text-dark offset-top-4 text-extra-small">UX, eCommerce</p>
-      </div>
-      <div class="cell-xs-10 cell-sm-6 cell-md-3 offset-top-50 offset-md-top-0"><a class="thumbnail-classic" href="#" target="_self">
-                  <figure><img width="370" height="278" src="images/portfolio/portfolio-single-related-04-370x278.jpg" alt="">
-                  </figure></a>
-        <div>
-          <h6 class="offset-top-24"><a href="#">Better Possibilities</a></h6>
-        </div>
-        <p class="text-dark offset-top-4 text-extra-small">Project Management</p>
-      </div>
-    </div>
-  </div>
-</section> -->
+
 {% endblock main %}
