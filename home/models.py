@@ -254,15 +254,39 @@ class EventInstance(djangomodels.Model):
 	def __str__(self):
 		return self.title
 
+	def get_parent_page(self, title):
+
+		event_event_instance = EventEventInstance.objects.get(title=title)
+		page = event_event_instance.page
+
+		return page
+
+	def event_group(self):
+
+		event_group = self.get_parent_page(self.title)
+
+		return event_group
+
 	def category(self):
 		'''
 		Found a way to access the parent (relation from ParentalKey)
 		'''
 
-		event_event_instance = EventEventInstance.objects.get(title=self.title)
-		page = event_event_instance.page
+		event_group = self.get_parent_page(self.title)
 
-		return page.get_category_display()
+		return event_group.get_category_display()
+
+	def related_events(self):
+
+		page = self.get_parent_page(self.title)
+
+		#events = Event.objects.filter(category=page.category)
+
+		events = EventEventInstance.objects.filter(page=page).exclude(title=self.title)
+
+		print('AANTAL: %s' % len(events))
+
+		return events 
 
 EventInstance.panels = [
 	MultiFieldPanel([
