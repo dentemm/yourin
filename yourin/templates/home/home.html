@@ -7,8 +7,31 @@
 {% block content %}
 
   {% block page_title %}
-    {% include 'home/partials/page_title.html' with title=yourin.catchphrase icon='' section='section-lg-top-110 section-sm-top-50 section-top-50' home='True' %}
+    <div class="section-lg-top-110 section-sm-top-50 section-top-50">
+      <section class="breadcrumb-classic">
+        <div class="shell section-34 section-xs-50">
+          <div class="range range-lg-middle">
+            <div class="cell-lg-12 veil reveal-lg-block cell-lg-push-1 text-center">
+              <h2><span class="big text-center">{{ page.catchphrase|upper }}</span></h2>
+            </div>
+          </div>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svg-triangle-bottom">
+          <defs>
+            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:rgb(236,123,69);stop-opacity:1"></stop>
+              <stop offset="100%" style="stop-color:rgb(236,123,69);stop-opacity:1"></stop>
+            </linearGradient>
+          </defs>
+          <polyline points="0,0 60,0 29,29" fill="url(#grad2)"></polyline>
+        </svg>
+      </section>
+    </div>
   {% endblock page_title %}
+
+
+
+
 
 <section class="text-center">
   <div data-on="false" data-md-on="true" class="rd-parallax">

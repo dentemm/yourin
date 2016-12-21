@@ -372,7 +372,7 @@ WhatWeDo.panels = [
 				],
 			),
 			ImageChooserPanel('image'),
-			PageChooserPanel('related_page', ['home.InfluencerIndex', 'home.BlogIndex', 'home.EventIndex', 'home.ContactPage', 'home.AboutPage', 'home.CalendarIndex' ])
+			PageChooserPanel('related_page', ['home.InfluencerIndex', 'home.BlogIndex', 'home.EventIndex', 'home.ContactPage', 'home.AboutPage', 'home.CalendarIndex', 'home.DynamicPage' ])
 
 		], heading="Yourin 'pijlers'"
 	)
