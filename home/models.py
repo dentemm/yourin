@@ -1207,7 +1207,8 @@ Influencer._meta.get_field('slug').default='blank-slug'
 Influencer.content_panels =  [
 	MultiFieldPanel([
 			FieldRowPanel([
-				FieldPanel('name', classname='col6')
+				FieldPanel('name', classname='col6'),
+				FieldPanel('num_followers', classname='col6')
 				]
 			),
 			FieldPanel('extra_info'),
