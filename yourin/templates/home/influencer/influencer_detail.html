@@ -43,6 +43,7 @@
         <p class="text-left">
           {{ page.extra_info }}
         </p>
+        {% if page.quote %}
         <div class="offset-top-30 text-center">
           <p>
             <q class="text-italic h3 text-bold">
@@ -50,6 +51,7 @@
             </q>
           </p>
         </div>
+        {% endif %}
 <!--         <div class="offset-top-50">
           <div data-to="70" class="progress-linear animated-first">
             <div class="progress-header clearfix"><span class="small text-ubold pull-left">HTML/CSS</span><span class="small text-ubold pull-right progress-value">70</span></div>

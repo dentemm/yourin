@@ -1181,6 +1181,7 @@ class Influencer(BasePage):
 	extra_info = djangomodels.TextField(verbose_name='Beschrijving', null=True)
 	quote = djangomodels.CharField(verbose_name='Influencer citaat', max_length=255, blank=True, null=True)
 	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
+	num_followers = djangomodels.PositiveIntegerField(verbose_name='# volgers', default=1)
 
 	def clean(self):
 		'''
