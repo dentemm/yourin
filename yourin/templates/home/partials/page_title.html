@@ -13,11 +13,11 @@
           <span class="{{ icon }} icon icon-white"></span>
         </div>
         <div class="cell-lg-5 veil reveal-lg-block cell-lg-push-1 text-lg-left">
-          <h2><span class="big">{{ title|title }}</span></h2>
+          <h2><span class="big">{{ title }}</span></h2>
         </div>
       {% else %}
         <div class="cell-lg-8 veil reveal-lg-block cell-lg-push-1 text-lg-left">
-          <h2><span class="big">{{ title|title }}</span></h2>
+          <h2><span class="big">{{ title }}</span></h2>
         </div>
       {% endif %}
         {% block breadcrumbs %}
@@ -30,10 +30,10 @@
           <ul class="list-inline list-inline-dashed p">
             <li><a href="{% slugurl 'home' %}">Home</a></li>
             {% if subtitle %}
-            <li><a href="{% slugurl title %}">{{ title|title }}</a></li>
-            <li>{{ subtitle|title }}</li>
+            <li><a href="{% slugurl title %}">{{ title }}</a></li>
+            <li>{{ subtitle }}</li>
             {% else %}
-            <li>{{ title|title }}</li>
+            <li>{{ title }}</li>
             {% endif %}
           </ul>
           {% endif %}

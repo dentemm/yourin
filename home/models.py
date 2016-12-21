@@ -668,7 +668,7 @@ AboutPage.content_panels = Page.content_panels + [
 				]
 			),
 			FieldRowPanel([
-				FieldPanel('intro', classname='col6')
+				FieldPanel('intro', classname='col12')
 				]
 			),
 		], heading='Over ons - pagina data'
