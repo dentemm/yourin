@@ -1052,7 +1052,60 @@ Event.parent_page_types = [
 	'home.EventIndex', 
 ]
 
-Event.subpage_types = []
+Event.subpage_types = ['home.EventInstancePage']
+
+	#title = djangomodels.CharField(verbose_name='naam', max_length=128)
+	event_description = djangomodels.TextField(verbose_name='beschrijving', null=True)
+	event_date = djangomodels.DateField(verbose_name='datum', default=date.today)
+	location = djangomodels.ForeignKey('home.Location', verbose_name='locatie', null=True, on_delete=djangomodels.SET_NULL)
+	website = djangomodels.URLField(null=True, blank=True)
+	image = djangomodels.ForeignKey('home.CustomImage', null=True)
+
+	class Meta:
+		verbose_name = 'evenement'
+		verbose_name_plural = 'evenementen'
+		ordering = ['-event_date', 'title']
+
+EventInstance.panels = [
+	MultiFieldPanel([
+			FieldRowPanel([
+				FieldPanel('title',  classname='col6'),
+				FieldPanel('event_date', classname='col6')
+				]
+			),
+			FieldRowPanel([
+				FieldPanel('website', classname='col6'),
+				FieldPanel('location', classname='col6')
+				]
+			),
+			FieldRowPanel([
+				FieldPanel('event_description', classname='col12'),
+				]
+			),
+			ImageChooserPanel('image'),
+		], heading='Evenement data'
+	),
+]
+
+class EventInstancePage(BasePage):
+
+	template = 'home/event/event_detail.html'
+
+	class Meta:
+		verbose_name = 'evenement'
+		verbose_name_plural = 'evenementen'
+
+EventInstancePage.panels = Page.panels +  [
+	
+]
+
+EventInstancePage.parent_page_types = [
+	'home.Event',
+]
+
+EventInstancePage.subpage_types = []
+
+
 
 class CalendarEvent(BasePage):
 
