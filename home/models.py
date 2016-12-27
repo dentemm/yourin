@@ -616,7 +616,7 @@ HomePage.subpage_types = [
 	'home.DynamicPage',
 ]
 
-class YourinPartner(djangomodels.Model):
+class YourinPartner(Orderable, djangomodels.Model):
 	'''
 	Through / join model voor m2m relatie tussen Homepage en Partner
 	'''
@@ -1054,49 +1054,43 @@ Event.parent_page_types = [
 
 Event.subpage_types = ['home.EventInstancePage']
 
-	#title = djangomodels.CharField(verbose_name='naam', max_length=128)
-	event_description = djangomodels.TextField(verbose_name='beschrijving', null=True)
-	event_date = djangomodels.DateField(verbose_name='datum', default=date.today)
-	location = djangomodels.ForeignKey('home.Location', verbose_name='locatie', null=True, on_delete=djangomodels.SET_NULL)
-	website = djangomodels.URLField(null=True, blank=True)
-	image = djangomodels.ForeignKey('home.CustomImage', null=True)
 
-	class Meta:
-		verbose_name = 'evenement'
-		verbose_name_plural = 'evenementen'
-		ordering = ['-event_date', 'title']
+class EventInstancePageImage(Orderable, djangomodels.Model):
 
-EventInstance.panels = [
-	MultiFieldPanel([
-			FieldRowPanel([
-				FieldPanel('title',  classname='col6'),
-				FieldPanel('event_date', classname='col6')
-				]
-			),
-			FieldRowPanel([
-				FieldPanel('website', classname='col6'),
-				FieldPanel('location', classname='col6')
-				]
-			),
-			FieldRowPanel([
-				FieldPanel('event_description', classname='col12'),
-				]
-			),
-			ImageChooserPanel('image'),
-		], heading='Evenement data'
-	),
-]
+	page = ParentalKey('home.EventInstancePage', related_name='images')
+	image = djangomodels.ForeignKey('home.CustomImage', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 
 class EventInstancePage(BasePage):
 
 	template = 'home/event/event_detail.html'
+	event_description = fields.RichTextField(verbose_name='beschrijving', blank=False, null=True)
+	location = djangomodels.ForeignKey('home.Location', verbose_name='locatie', null=True, on_delete=djangomodels.SET_NULL)
+	website = djangomodels.URLField('website URL', null=True, blank=True)
+
+	intro = fields.RichTextField(verbose_name='inhoud (Alternatief)', blank=True, null=True)
 
 	class Meta:
 		verbose_name = 'evenement'
 		verbose_name_plural = 'evenementen'
 
-EventInstancePage.panels = Page.panels +  [
-	
+EventInstancePage.panels = [
+	MultiFieldPanel([
+			FieldRowPanel([
+				FieldPanel('title', classname='col6'),
+				FieldPanel('event_date', classname='col6')
+				]
+			),
+			FieldRowPanel([
+				FieldPanel('event_description', classname='col10')
+				]
+			),
+			FieldRowPanel([
+				FieldPanel('website', classname=col6),
+				]
+			),
+		]
+	),
+	InlinePanel('images')
 ]
 
 EventInstancePage.parent_page_types = [
