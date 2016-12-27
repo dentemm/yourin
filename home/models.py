@@ -996,12 +996,12 @@ class Event(BasePage):
 		verbose_name = 'event groep'
 		verbose_name_plural = 'event groepen'
 
-	# @property
-	# def related_events(self):
+	@property
+	def page_events(self):
 
-	# 	Event.objects.live().descendant_of(self).filter(event_date__range=[start_date, end_date]).order_by('-event_date')
+		events = EventInstancePage.objects.live().descendant_of(self)
 
-	# 	return Event.objects.live().filter(category=self.category).exclude(name=self.name).order_by('-event_date')
+		return events
 
 
 	@property
