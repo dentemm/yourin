@@ -11,8 +11,8 @@ import wagtail.wagtailcore.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailcore', '0033_auto_20161218_0850'),
-        #('home', '0024_influencer_num_followers'),
+        #('wagtailcore', '0033_auto_20161218_0850'),
+        ('home', '0024_influencer_num_followers'),
     ]
 
     operations = [
