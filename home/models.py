@@ -285,11 +285,7 @@ class EventInstance(djangomodels.Model):
 
 		page = self.get_parent_page(self.title)
 
-		#events = Event.objects.filter(category=page.category)
-
 		events = EventEventInstance.objects.filter(page=page).exclude(title=self.title)
-
-		print('AANTAL: %s' % len(events))
 
 		return events 
 
@@ -1087,6 +1083,39 @@ class EventInstancePage(BasePage):
 		verbose_name = 'evenement'
 		verbose_name_plural = 'evenementen'
 
+	def related_events(self):
+
+		return self.get_siblings()
+
+		# events = EventInstancePage.objects.filter(page=page).exclude(title=self.title)
+
+		# return events 
+
+	def save(self, *args, **kwargs):
+
+		print('---saving')
+
+		self.slug = slugify(self.title)
+
+		super(EventInstancePage, self).save(*args, **kwargs)
+
+# 	def clean(self):
+# 		'''
+# 		See here for solution: https://github.com/wagtail/wagtail/issues/161
+# 		'''
+
+# 		super(EventInstancePage, self).clean()
+
+# 		print('slugifying!')
+
+# 		if self.slug == '':
+# 			self.slug = slugify(self.title)
+
+# 			print('slugifying!')
+
+# #Line below is to fix slug related issues
+# EventInstancePage._meta.get_field('slug').default='blank-slug'
+
 EventInstancePage.content_panels = [
 	MultiFieldPanel([
 			FieldRowPanel([
@@ -1267,7 +1296,7 @@ class Influencer(BasePage):
 
 
 # Line below is to fix slug related issues
-Influencer._meta.get_field('slug').default='blank-slug'
+#Influencer._meta.get_field('slug').default='blank-slug'
 
 Influencer.content_panels =  [
 	MultiFieldPanel([

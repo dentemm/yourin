@@ -124,17 +124,18 @@
 
   var marker_details = []
 
-{% for event in page.events.all %}
+{% for event in page.page_events %}
   {% if event.location %}
   event = {
     location: {lat: {{ event.location.latitude|stringformat:'f' }}, lng: {{ event.location.longitude|stringformat:'f' }}},
     name: "{{ event }}",
-    url: "{% url 'evenement' event.pk %}",
+    url: "{% pageurl event %}",
     label: "{{ forloop.counter }}"
   };
   marker_details.push(event);
   {% endif %}
-{% endfor %}  
+{% endfor %}
+ 
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDjAxMqFazTQK5FM3HmKuXYEjnWUPfSrU&callback=initMap">
 </script>

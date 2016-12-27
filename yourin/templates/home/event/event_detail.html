@@ -37,7 +37,7 @@
           <h1 class="product-title offset-top-0">
             {{ view.object.title|title }}
           </h1><span class="icon icon-xxs icon-rounded {{ view.object.event_group.icon }}"></span>
-<!--           <a href="{% pageurl view.object.event_group %}">
+<!--           <a href="{- pageurl view.object.event_group -}">
             <p class="product-brand text-italic text-dark">{{ view.object.event_group }}</p>
           </a> -->
           <span class="h6 text-mantis" style="padding-left: 5px;">
@@ -95,6 +95,33 @@
     </div>
   </div>
 </section>
+
+{% if page.related_events %}
+<section class="section-34 bg-saffron context-dark text-center">
+  <div class="shell">
+    <h3><span class="big">Bekijk de andere evenementen</span></h3>
+  </div>
+</section>
+<section>
+  <div class="shell">
+    <div class="range range-xs-center section-bottom-34">
+    {% for event in page.related_events %}
+      <div class="cell-sm-6 cell-md-3 offset-top-50">
+        <a href="{% url 'evenement' event.pk %}">
+          {% image event.image fill-400x240 as img %}
+          <img src="{{ img.file.url }}" class="img-responsive reveal-inline-block">
+        </a>
+        <div class="text-md-left offset-top-20">
+          <div>
+            <h5 class="text-bold text-primary text-center"><a href="{% pageurl event %}">{{ event.title|title }}</a></h5>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
 
 {% if view.object.related_events %}
 <section class="section-34 bg-saffron context-dark text-center">
