@@ -1063,6 +1063,7 @@ class EventInstancePageImage(Orderable, djangomodels.Model):
 class EventInstancePage(BasePage):
 
 	template = 'home/event/event_detail.html'
+	event_date = djangomodels.DateField(verbose_name='datum', default=date.today)
 	event_description = fields.RichTextField(verbose_name='beschrijving', blank=False, null=True)
 	location = djangomodels.ForeignKey('home.Location', verbose_name='locatie', null=True, on_delete=djangomodels.SET_NULL)
 	website = djangomodels.URLField('website URL', null=True, blank=True)
@@ -1073,7 +1074,7 @@ class EventInstancePage(BasePage):
 		verbose_name = 'evenement'
 		verbose_name_plural = 'evenementen'
 
-EventInstancePage.panels = [
+EventInstancePage.content_panels = [
 	MultiFieldPanel([
 			FieldRowPanel([
 				FieldPanel('title', classname='col6'),
@@ -1085,12 +1086,15 @@ EventInstancePage.panels = [
 				]
 			),
 			FieldRowPanel([
-				FieldPanel('website', classname=col6),
+				FieldPanel('website', classname='col6'),
 				]
 			),
-		]
+		], heading='evenement data'
 	),
-	InlinePanel('images')
+	InlinePanel('images', 
+		label='afbeeldingen', 
+		help_text='het is mogelijk om meerdere afbeeldingen toe te voegen, de eerste zal automatisch de hoofdafbeelding zijn',
+	),
 ]
 
 EventInstancePage.parent_page_types = [
