@@ -20,6 +20,7 @@ from wagtail.wagtailcore.blocks import ListBlock
 from wagtail.wagtailadmin.forms import WagtailAdminPageForm, WagtailAdminModelForm
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, FieldRowPanel, StreamFieldPanel, PageChooserPanel
 from wagtail.wagtailsnippets.models import register_snippet
+from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 from wagtail.wagtailimages.models import Image, AbstractImage, AbstractRendition
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
@@ -1054,11 +1055,19 @@ Event.parent_page_types = [
 
 Event.subpage_types = ['home.EventInstancePage']
 
+class EventInstancePageLocation(Orderable, Location):
+
+	page = ParentalKey('home.EventInstancePage', related_name='locations')
+
 
 class EventInstancePageImage(Orderable, djangomodels.Model):
 
 	page = ParentalKey('home.EventInstancePage', related_name='images')
 	image = djangomodels.ForeignKey('home.CustomImage', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
+
+EventInstancePageImage.panels = [
+	ImageChooserPanel('image')
+]
 
 class EventInstancePage(BasePage):
 
@@ -1087,13 +1096,17 @@ EventInstancePage.content_panels = [
 			),
 			FieldRowPanel([
 				FieldPanel('website', classname='col6'),
+				
 				]
-			),
+			),			
 		], heading='evenement data'
 	),
 	InlinePanel('images', 
 		label='afbeeldingen', 
 		help_text='het is mogelijk om meerdere afbeeldingen toe te voegen, de eerste zal automatisch de hoofdafbeelding zijn',
+	),
+	InlinePanel('locations',
+		label='locatie(s)',
 	),
 ]
 
