@@ -16,7 +16,7 @@
       <div class="range">
         <div class="cell-sm-8 cell-md-6">
           <div class="product-image">
-        {% image view.object.image max-600x1000 as img %}
+        {% image page.images.all.0.image max-600x1000 as img %}
             <img src="{{ img.file.url }}" alt="" class="img-responsive product-image-area">
   <!--           <ul class="product-thumbnails">
               <li data-large-image="images/shop/product-01-570x760.png" class="active">
@@ -35,8 +35,8 @@
           
 
           <h1 class="product-title offset-top-0">
-            {{ view.object.title|title }}
-          </h1><span class="icon icon-xxs icon-rounded {{ view.object.event_group.icon }}"></span>
+            {{ view.object.title|title }} 
+          </h1><span class="icon icon-xxs icon-rounded {{ page.icon }}"></span>
 <!--           <a href="{- pageurl view.object.event_group -}">
             <p class="product-brand text-italic text-dark">{{ view.object.event_group }}</p>
           </a> -->
@@ -44,7 +44,7 @@
             <span class="text-regular big">{{ view.object.event_date|date:"j F 'y" }}</span>
           </span>          
           <p>
-            {{ view.object.event_description }}
+            {{ view.object.event_description }}{{ page.images.all.0 }}
           </p>
           <hr class="divider hr-sm-left-0 bg-mantis">
           <div class="section-34">

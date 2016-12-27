@@ -1085,36 +1085,15 @@ class EventInstancePage(BasePage):
 
 	def related_events(self):
 
-		return self.get_siblings()
+		return self.get_siblings(inclusive=False)
 
-		# events = EventInstancePage.objects.filter(page=page).exclude(title=self.title)
+	def icon(self):
 
-		# return events 
+		parent = Event.objects.parent_of(self).first()
 
-	def save(self, *args, **kwargs):
+		print('parent: %s' % parent)
 
-		print('---saving')
-
-		self.slug = slugify(self.title)
-
-		super(EventInstancePage, self).save(*args, **kwargs)
-
-# 	def clean(self):
-# 		'''
-# 		See here for solution: https://github.com/wagtail/wagtail/issues/161
-# 		'''
-
-# 		super(EventInstancePage, self).clean()
-
-# 		print('slugifying!')
-
-# 		if self.slug == '':
-# 			self.slug = slugify(self.title)
-
-# 			print('slugifying!')
-
-# #Line below is to fix slug related issues
-# EventInstancePage._meta.get_field('slug').default='blank-slug'
+		return parent.icon
 
 EventInstancePage.content_panels = [
 	MultiFieldPanel([
@@ -1277,31 +1256,17 @@ class Influencer(BasePage):
 	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 	num_followers = djangomodels.PositiveIntegerField(verbose_name='# volgers', default=1)
 
-	def clean(self):
-		'''
-		See here for solution: https://github.com/wagtail/wagtail/issues/161
-		'''
+	def save(self, *args, **kwargs):
 
-		super(Influencer, self).clean()
+		self.name = self.title
 
-		if self.slug == '' or self.title == '':
+		super(Influencer, self).save(*args, **kwargs)
 
-			for influencer in Influencer.objects.all():
-
-				if influencer.name == self.name:
-					raise ValidationError({'slug': _("Er bestaat al een influencer met de naam die je hebt ingegeven!")})
-
-			self.title = self.name
-			self.slug = slugify(self.name)
-
-
-# Line below is to fix slug related issues
-#Influencer._meta.get_field('slug').default='blank-slug'
 
 Influencer.content_panels =  [
 	MultiFieldPanel([
 			FieldRowPanel([
-				FieldPanel('name', classname='col6'),
+				FieldPanel('title', classname='col6'),
 				FieldPanel('num_followers', classname='col6')
 				]
 			),
