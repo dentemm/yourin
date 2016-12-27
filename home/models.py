@@ -173,7 +173,7 @@ Address.panels = [
 ]
 
 @register_snippet
-class Location(Address):
+class Location(Address, index.Indexed):
 
 	name = djangomodels.CharField(verbose_name='naam locatie', max_length=64)
 	longitude = djangomodels.DecimalField(max_digits=10, decimal_places=7, blank=True, null=True)
@@ -230,6 +230,10 @@ Location.panels = [
 		],
 		heading='Locatie gegevens'
 	)
+]
+
+Location.search_fields = [
+	index.SearchField('name', partial_match=True),
 ]
 
 class EventInstanceImage(djangomodels.Model):
@@ -1096,17 +1100,14 @@ EventInstancePage.content_panels = [
 			),
 			FieldRowPanel([
 				FieldPanel('website', classname='col6'),
-				
 				]
-			),			
+			),
+			SnippetChooserPanel('location'),		
 		], heading='evenement data'
 	),
 	InlinePanel('images', 
 		label='afbeeldingen', 
 		help_text='het is mogelijk om meerdere afbeeldingen toe te voegen, de eerste zal automatisch de hoofdafbeelding zijn',
-	),
-	InlinePanel('locations',
-		label='locatie(s)',
 	),
 ]
 

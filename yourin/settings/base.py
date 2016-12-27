@@ -166,6 +166,10 @@ WAGTAIL_SITE_NAME = "yourin"
 WAGTAILIMAGES_IMAGE_MODEL = 'home.CustomImage'
 
 
+# Wagtail Search settings
+WAGTAILSEARCH_RESULTS_TEMPLATE = '404.html'
+WAGTAILSEARCH_RESULTS_TEMPLATE_AJAX = 'home/templates/home/search/search_results.html'
+
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
