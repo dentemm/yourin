@@ -508,23 +508,34 @@ class HomePageRecents(Orderable, djangomodels.Model):
 	related_page = djangomodels.ForeignKey('wagtailcore.Page', verbose_name='Link naar pagina', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 	button_text = djangomodels.CharField('Link tekst', max_length=28, default='Meer info')
 	image = djangomodels.ForeignKey('home.CustomImage', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
+	info = djangomodels.CharField(max_length=263, null=True)
 
 	def save(self, *args, **kwargs):
 
 		try:
 			page = Blog.objects.get(title=self.related_page.title)
 
-		except:
-			pass
+		except Blog.DoesNotExist:
+			try: 
+				page = EventInstancePage.objects.get(title=self.related_page.title)
 
-		try: 
-			page = EventInstancePage.objects.get(title=self.related_page.title)
-
-		except:
-			pass
+			except EventInstancePage.DoesNotExist:
+				page = None
 
 		if page:
 			self.image = page.image
+
+			try:
+				parent = Event.objects.parent_of(self.related_page).first()
+
+			except Event.DoesNotExist:
+				self.info = 'Blog'
+
+			if parent:
+				self.info = parent.get_category_display()
+
+			else:
+				self.info = 'Blog'
 
 		super(HomePageRecents, self).save(*args, **kwargs)
 
@@ -547,47 +558,6 @@ class HomePage(BasePage):
 
 	class Meta:
 		verbose_name = 'startpagina'
-
-	@property
-	def recents(self):
-
-		# 1. Latest blog article
-		try:
-			last_blog = Blog.objects.live().latest('date')
-
-		except:
-			last_blog = ''
-
-		# 2. Latest event in past
-		try:
-			last_event = EventInstance.objects.filter(event_date__lt=date.today())[0]
-
-		except:
-			last_event = ''
-
-		# 3. First two upcoming events
-		try:
-			upcoming = EventInstance.objects.filter(event_date__gte=date.today())[:2]
-
-		except:
-			upcoming = ['', '']
-
-		if len(upcoming) < 2:
-			upcoming = ['', '']
-
-		#last_festival = Event.objects.live().filter(category=3)
-		#last_camp = Event.objects.live().filter(category=2)
-		#last_event = EventInstance.objects.all().latest('event_date')
-
-		#if last_event == '':
-		#	last_event = upcoming[3]
-
-		return {
-			'last_event': last_event,
-			'next1': upcoming[0],
-			'next2': upcoming[1],
-			'blog': last_blog,
-		}
 
 	def serve(self, request):
 
@@ -1019,6 +989,7 @@ class Event(BasePage):
 	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='logo', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 	picture = djangomodels.ForeignKey('home.CustomImage', verbose_name='foto', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 	category = djangomodels.PositiveIntegerField(choices=EVENT_CATEGORY_CHOICES, default=1)
+
 
 	class Meta:
 		verbose_name = 'event groep'

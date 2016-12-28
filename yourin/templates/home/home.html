@@ -106,49 +106,17 @@
             <a href="{% pageurl item.related_page %}">
               {% image item.image width-450 as img %}
               <img style="height: 200px;" src="{{ img.file.url }}">
-
             </a>
             <figcaption>
               <div>
-                <h4 class="thumbnail-terry-title">{{ item.related_page.title }}<br></h4>
+                <h4 class="thumbnail-terry-title">{{ item.info }}<br></h4>
               </div>
               <p class="thumbnail-terry-desc offset-top-0">{{ item.related_page.title }}</p>
               <a href="{% pageurl item.related_page %}" class="btn offset-top-10 offset-md-top-0 btn-primary">{{ item.button_text }}</a>
             </figcaption>
           </figure>
         </div>
-      {% endfor %}
-    {% endif %}
-    {% if page.recents %}
-      {% for key, value in page.recents.items %}
-      <div class="cell-xs-8 cell-sm-6 cell-lg-3">
-        <figure class="thumbnail-terry">
-        {% if key == 'blog' %}
-          <a {% if value %}href="{% pageurl value %}"{% endif %}>
-        {% else %}
-          <a {% if value.pk %}href="{% url 'evenement' value.pk %}"{% endif %}>
-        {% endif %}
-            {% image value.image width-450 as img %}
-            <img style="height: 200px;" src="{{ img.file.url }}">
-          </a>
-          <figcaption>
-            <div>
-              <h4 class="thumbnail-terry-title">{% if key == 'blog' %}Blog{% elif key == 'festival' %}Festival{% elif key == 'last_event' %}Net Gemist{% else %}{{ value.category|title }}{% endif %}<br></h4>
-            </div>
-            <p class="thumbnail-terry-desc offset-top-0">{{ value.title|title }}</p>
-          {% if key == 'blog' %}
-            <a {% if value %}href="{% pageurl value %}"{% endif %} class="btn offset-top-10 offset-md-top-0 btn-primary">
-              Naar artikel
-            </a>
-          {% else %}  
-            <a {% if value.pk %}href="{% url 'evenement' value.pk %}"{% endif %} class="btn offset-top-10 offset-md-top-0 btn-primary">
-              {% if key == 'festival' %}Naar Festival{% elif key == 'kamp' %}Meer info{% else %}Meer info{% endif %}
-            </a>
-          {% endif %}
-          </figcaption>
-        </figure>
-      </div>
-      {% endfor %}
+      {% endfor %}  
     {% else %}
       <div class="cell-xs-8 cell-sm-6 cell-lg-3">
         <figure class="thumbnail-terry">
