@@ -1285,12 +1285,16 @@ class Influencer(BasePage):
 	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 	num_followers = djangomodels.PositiveIntegerField(verbose_name='# volgers', default=1)
 
+	class Meta:
+		verbose_name = 'influencer'
+		verbose_name_plural = 'influencers'
+		ordering = ['-num_followers']
+
 	def save(self, *args, **kwargs):
 
 		self.name = self.title
 
 		super(Influencer, self).save(*args, **kwargs)
-
 
 Influencer.content_panels =  [
 	MultiFieldPanel([
