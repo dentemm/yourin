@@ -10,7 +10,7 @@ import modelcluster.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailcore', '0034_auto_20161227_1937'),
+        #('wagtailcore', '0034_auto_20161227_1937'),
         ('home', '0027_eventinstancepagelocation'),
     ]
 
