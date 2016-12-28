@@ -174,6 +174,11 @@ WAGTAILSEARCH_RESULTS_TEMPLATE_AJAX = 'home/templates/home/search/search_results
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
 
+# template numbers!
+NUMBER_GROUPING = 3
+THOUSAND_SEPARATOR = '.'
+USE_THOUSAND_SEPARATOR = True
+
 #
 #
 # TAGGIT SETTINGS
