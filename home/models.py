@@ -504,10 +504,29 @@ class HomePageNumbers(Orderable, Numbers):
 
 class HomePageRecents(Orderable, djangomodels.Model):
 
-	page = ParentalKey('home.HomePage', related_name='recents')
+	page = ParentalKey('home.HomePage', related_name='recent_items')
 	related_page = djangomodels.ForeignKey('wagtailcore.Page', verbose_name='Link naar pagina', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 	button_text = djangomodels.CharField('Link tekst', max_length=28, default='Meer info')
+	image = djangomodels.ForeignKey('home.CustomImage', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 
+	def save(self, *args, **kwargs):
+
+		try:
+			page = Blog.objects.get(title=self.related_page.title)
+
+		except:
+			pass
+
+		try: 
+			page = EventInstancePage.objects.get(title=self.related_page.title)
+
+		except:
+			pass
+
+		if page:
+			self.image = page.image
+
+		super(HomePageRecents, self).save(*args, **kwargs)
 
 HomePageRecents.panels = [
 	PageChooserPanel('related_page', ['home.Blog', 'home.EventInstancePage', ]),
@@ -529,46 +548,46 @@ class HomePage(BasePage):
 	class Meta:
 		verbose_name = 'startpagina'
 
-	# @property
-	# def recents(self):
+	@property
+	def recents(self):
 
-	# 	# 1. Latest blog article
-	# 	try:
-	# 		last_blog = Blog.objects.live().latest('date')
+		# 1. Latest blog article
+		try:
+			last_blog = Blog.objects.live().latest('date')
 
-	# 	except:
-	# 		last_blog = ''
+		except:
+			last_blog = ''
 
-	# 	# 2. Latest event in past
-	# 	try:
-	# 		last_event = EventInstance.objects.filter(event_date__lt=date.today())[0]
+		# 2. Latest event in past
+		try:
+			last_event = EventInstance.objects.filter(event_date__lt=date.today())[0]
 
-	# 	except:
-	# 		last_event = ''
+		except:
+			last_event = ''
 
-	# 	# 3. First two upcoming events
-	# 	try:
-	# 		upcoming = EventInstance.objects.filter(event_date__gte=date.today())[:2]
+		# 3. First two upcoming events
+		try:
+			upcoming = EventInstance.objects.filter(event_date__gte=date.today())[:2]
 
-	# 	except:
-	# 		upcoming = ['', '']
+		except:
+			upcoming = ['', '']
 
-	# 	if len(upcoming) < 2:
-	# 		upcoming = ['', '']
+		if len(upcoming) < 2:
+			upcoming = ['', '']
 
-	# 	#last_festival = Event.objects.live().filter(category=3)
-	# 	#last_camp = Event.objects.live().filter(category=2)
-	# 	#last_event = EventInstance.objects.all().latest('event_date')
+		#last_festival = Event.objects.live().filter(category=3)
+		#last_camp = Event.objects.live().filter(category=2)
+		#last_event = EventInstance.objects.all().latest('event_date')
 
-	# 	#if last_event == '':
-	# 	#	last_event = upcoming[3]
+		#if last_event == '':
+		#	last_event = upcoming[3]
 
-	# 	return {
-	# 		'last_event': last_event,
-	# 		'next1': upcoming[0],
-	# 		'next2': upcoming[1],
-	# 		'blog': last_blog,
-	# 	}
+		return {
+			'last_event': last_event,
+			'next1': upcoming[0],
+			'next2': upcoming[1],
+			'blog': last_blog,
+		}
 
 	def serve(self, request):
 
@@ -616,7 +635,7 @@ HomePage.content_panels = Page.content_panels + [
 	),
 	InlinePanel('contents', label='Pijlers', help_text='Hiermee kan je de inhoud van de startpagina instellen. Dit zijn de zogenaamde pijlers van Yourin, en deze kunnen gewijzigd, verwijderd en toegevoegd worden.'),
 	InlinePanel('numbers', label='Marketing numbers', help_text='Dit zijn enkele cijfers die op de startpagina worden weergegeven. Er zijn een aantal icoontjes gedefinieerd, maar deze lijst kan op vraag eenvoudig worden uitgebreid!'),
-	InlinePanel('recents', label='Recente toevoegingen', help_text='Dit zijn de recente gebeurtenissen, het is mogelijk om een evenement of een blog pagina te selecteren. '),
+	InlinePanel('recent_items', label='Recente toevoegingen', help_text='Dit zijn de recente gebeurtenissen, het is mogelijk om een evenement of een blog pagina te selecteren. '),
 	InlinePanel('partners', label='Partners'),
 ]
 
@@ -1089,12 +1108,25 @@ class EventInstancePage(BasePage):
 	event_description = fields.RichTextField(verbose_name='beschrijving', blank=False, null=True)
 	location = djangomodels.ForeignKey('home.Location', verbose_name='locatie', null=True, on_delete=djangomodels.SET_NULL)
 	website = djangomodels.URLField('website URL', null=True, blank=True)
+	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, 
+				blank=True, on_delete=djangomodels.SET_NULL, related_name='+'
+				)
 
 	intro = fields.RichTextField(verbose_name='inhoud (Alternatief)', blank=True, null=True)
 
 	class Meta:
 		verbose_name = 'evenement'
 		verbose_name_plural = 'evenementen'
+
+	def save(self, *args, **kwargs):
+
+		# My way of creating a 'main' image
+		if self.images.all():
+
+			first_image = self.images.all()[0]
+			self.image = first_image.image
+
+		super(EventInstancePage, self).save(*args, **kwargs)
 
 	def related_events(self):
 
@@ -1135,7 +1167,8 @@ EventInstancePage.content_panels = [
 				FieldPanel('website', classname='col6'),
 				]
 			),
-			SnippetChooserPanel('location'),		
+			SnippetChooserPanel('location'),
+			ImageChooserPanel('image'),		
 		], heading='evenement data'
 	),
 	InlinePanel('images', 
