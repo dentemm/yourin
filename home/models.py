@@ -1225,7 +1225,7 @@ class InfluencerIndex(BasePage):
 		influencers = Influencer.objects.live().descendant_of(self)
 
 		# Order by most recent date first
-		influencers = influencers.order_by('-name')
+		influencers = influencers.order_by('-num_followers')
 
 		return influencers
 
