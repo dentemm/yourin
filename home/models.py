@@ -1087,13 +1087,25 @@ class EventInstancePage(BasePage):
 
 		return self.get_siblings(inclusive=False)
 
-	def icon(self):
-
+	def get_parent(self):
 		parent = Event.objects.parent_of(self).first()
 
-		print('parent: %s' % parent)
+		return parent
+
+
+	@property
+	def icon(self):
+
+		parent = self.get_parent()
 
 		return parent.icon
+
+	@property
+	def parent_website(self):
+
+		parent = self.get_parent()
+
+		return parent.website
 
 EventInstancePage.content_panels = [
 	MultiFieldPanel([

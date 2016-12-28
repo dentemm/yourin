@@ -35,23 +35,23 @@
           
 
           <h1 class="product-title offset-top-0">
-            {{ view.object.title|title }} 
+            {{ page.title|title }} 
           </h1><span class="icon icon-xxs icon-rounded {{ page.icon }}"></span>
 <!--           <a href="{- pageurl view.object.event_group -}">
             <p class="product-brand text-italic text-dark">{{ view.object.event_group }}</p>
           </a> -->
           <span class="h6 text-mantis" style="padding-left: 5px;">
-            <span class="text-regular big">{{ view.object.event_date|date:"j F 'y" }}</span>
+            <span class="text-regular big">{{ page.event_date|date:"j F 'y" }}</span>
           </span>          
           <p>
-            {{ view.object.event_description }}{{ page.images.all.0 }}
+            {{ page.event_description|richtext }}{{ page.images.all.0 }}
           </p>
           <hr class="divider hr-sm-left-0 bg-mantis">
           <div class="section-34">
-            {% if view.object.website %}
-            <a target="_blank" href="{{ view.object.website }}">
+            {% if page.website %}
+            <a target="_blank" href="{{ page.website }}">
             {% else %}
-            <a target="_blank" href="{{ view.object.event_group.website }}">Naar website
+            <a target="_blank" href="{{ page.parent_website }}">Naar website
             {% endif %}
               <span class="icon icon-xxs icon-rounded icon-carrot-filled mdi mdi-web"></span>
             Naar website
