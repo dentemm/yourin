@@ -513,31 +513,65 @@ class HomePageRecents(Orderable, djangomodels.Model):
 	def save(self, *args, **kwargs):
 
 		try:
-			page = Blog.objects.get(title=self.related_page.title)
+			blog = Blog.objects.get(title=self.related_page.title)
 
 		except Blog.DoesNotExist:
-			try: 
-				page = EventInstancePage.objects.get(title=self.related_page.title)
-
-			except EventInstancePage.DoesNotExist:
-				page = None
-
-		if page:
-			self.image = page.image
 
 			try:
-				parent = Event.objects.parent_of(self.related_page).first()
+				event_instance = EventInstancePage.objects.get(title=self.related_page.title)
 
-			except Event.DoesNotExist:
-				self.info = 'Blog'
+			except EventInstance.DoesNotExist:
 
-			if parent:
-				self.info = parent.get_category_display()
+				try:
+					event_group = Event.objects.get(title=self.related_page.title)
+
+				except Event.DoesNotExist:
+					return None
+
+				else:
+					self.image = event_group.image
+					self.info = event_group.get_category_display()
 
 			else:
-				self.info = 'Blog'
+				parent = Event.objects.parent_of(self.related_page).first()
+				self.image = event_instance.image
+				self.info = parent.get_category_display()
+
+		else:
+			self.image = blog.image
+			self.info = 'Blog'
+
 
 		super(HomePageRecents, self).save(*args, **kwargs)
+
+
+
+		# try:
+		# 	page = Blog.objects.get(title=self.related_page.title)
+
+		# except Blog.DoesNotExist:
+		# 	try: 
+		# 		page = EventInstancePage.objects.get(title=self.related_page.title)
+
+		# 	except EventInstancePage.DoesNotExist:
+		# 		page = None
+
+		# if page:
+		# 	self.image = page.image
+
+		# 	try:
+		# 		parent = Event.objects.parent_of(self.related_page).first()
+
+		# 	except Event.DoesNotExist:
+		# 		self.info = 'Blog'
+
+		# 	if parent:
+		# 		self.info = parent.get_category_display()
+
+		# 	else:
+		# 		self.info = 'Blog'
+
+		#super(HomePageRecents, self).save(*args, **kwargs)
 
 HomePageRecents.panels = [
 	PageChooserPanel('related_page', ['home.Blog', 'home.EventInstancePage', ]),
@@ -1139,7 +1173,7 @@ EventInstancePage.content_panels = [
 				]
 			),
 			SnippetChooserPanel('location'),
-			ImageChooserPanel('image'),		
+			#ImageChooserPanel('image'),		
 		], heading='evenement data'
 	),
 	InlinePanel('images', 
