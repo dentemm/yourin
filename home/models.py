@@ -520,61 +520,39 @@ class HomePageRecents(Orderable, djangomodels.Model):
 			try:
 				event_instance = EventInstancePage.objects.get(title=self.related_page.title)
 
-			except EventInstance.DoesNotExist:
+			except EventInstancePage.DoesNotExist:
 
 				try:
 					event_group = Event.objects.get(title=self.related_page.title)
 
 				except Event.DoesNotExist:
+
 					return None
 
 				else:
-					self.image = event_group.image
+					self.image = event_group.picture
 					self.info = event_group.get_category_display()
+
+					return super(HomePageRecents, self).save(*args, **kwargs)
+
+				finally:
+					return None
 
 			else:
 				parent = Event.objects.parent_of(self.related_page).first()
 				self.image = event_instance.image
 				self.info = parent.get_category_display()
 
+				return super(HomePageRecents, self).save(*args, **kwargs)
+
 		else:
 			self.image = blog.image
 			self.info = 'Blog'
 
-
-		super(HomePageRecents, self).save(*args, **kwargs)
-
-
-
-		# try:
-		# 	page = Blog.objects.get(title=self.related_page.title)
-
-		# except Blog.DoesNotExist:
-		# 	try: 
-		# 		page = EventInstancePage.objects.get(title=self.related_page.title)
-
-		# 	except EventInstancePage.DoesNotExist:
-		# 		page = None
-
-		# if page:
-		# 	self.image = page.image
-
-		# 	try:
-		# 		parent = Event.objects.parent_of(self.related_page).first()
-
-		# 	except Event.DoesNotExist:
-		# 		self.info = 'Blog'
-
-		# 	if parent:
-		# 		self.info = parent.get_category_display()
-
-		# 	else:
-		# 		self.info = 'Blog'
-
-		#super(HomePageRecents, self).save(*args, **kwargs)
+		return super(HomePageRecents, self).save(*args, **kwargs)
 
 HomePageRecents.panels = [
-	PageChooserPanel('related_page', ['home.Blog', 'home.EventInstancePage', ]),
+	PageChooserPanel('related_page', ['home.Blog', 'home.EventInstancePage', 'home.Event', ]),
 	FieldPanel('button_text', classname='col6')
 ]
 
