@@ -2,6 +2,12 @@ from wagtail.wagtailcore import blocks
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailembeds.blocks import EmbedBlock
 
+TEXT_ALIGNMENT_CHOICES = (
+	('text-left', 'Links'),
+	('text-right', 'Rechts'),
+	('text-center', 'Centreer'),
+)
+
 class CarouselImageBlock(blocks.StructBlock):
 
 	afbeelding = ImageChooserBlock()
@@ -35,6 +41,7 @@ class IntroTextBlock(blocks.TextBlock):
 
 class ParagraphBlock(blocks.TextBlock):
 
+	text_aligning = blocks.CharBlock(label='Tekst uitlijning', max_length=16, choices=TEXT_ALIGNMENT_CHOICES, default='text-left')
 	text = blocks.TextBlock(label='Paragraaf tekst', min_length=160, required=True, help_text='Plaats hier de tekst voor 1 paragraaf, en voeg zoveel paragrafen toe als nodig')
 
 	class Meta:
