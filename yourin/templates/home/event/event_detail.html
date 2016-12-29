@@ -18,28 +18,12 @@
           <div class="product-image">
         {% image page.images.all.0.image max-600x1000 as img %}
             <img src="{{ img.file.url }}" alt="" class="img-responsive product-image-area">
-  <!--           <ul class="product-thumbnails">
-              <li data-large-image="images/shop/product-01-570x760.png" class="active">
-                <img src="images/shop/product-01-84x84.png" alt="" width="84" height="84" class="img-responsive">
-              </li>
-              <li data-large-image="images/shop/product-01-570x760-2.png">
-                <img src="images/shop/product-01-84x84-2.png" alt="" width="84" height="84" class="img-responsive">
-              </li>
-              <li data-large-image="images/shop/product-01-570x760-3.png">
-                <img src="images/shop/product-01-84x84-3.png" alt="" width="84" height="84" class="img-responsive">
-              </li>
-            </ul> -->
           </div>
         </div>
         <div class="cell-sm-12 cell-md-6 text-left offset-top-41 offset-md-top-0">
-          
-
           <h1 class="product-title offset-top-0">
             {{ page.title|title }} 
           </h1><span class="icon icon-xxs icon-rounded {{ page.icon }}"></span>
-<!--           <a href="{- pageurl view.object.event_group -}">
-            <p class="product-brand text-italic text-dark">{{ view.object.event_group }}</p>
-          </a> -->
           <span class="h6 text-mantis" style="padding-left: 5px;">
             <span class="text-regular big">{{ page.event_date|date:"j F 'y" }}</span>
           </span>          
@@ -57,39 +41,6 @@
             Naar website
             </a>
           </div>
-<!--           <div data-type="accordion" class="responsive-tabs responsive-tabs-classic resp-easy-accordion tabs-group-default" style="width: 100%;">
-            <ul data-group="tabs-group-default" class="resp-tabs-list tabs-group-default" style="display: none;">
-              <li class="resp-tab-item tabs-group-default resp-tab-active" aria-controls="tabs-group-default_tab_item-0" role="tab">
-                Description
-              </li>
-              <li class="resp-tab-item tabs-group-default" aria-controls="tabs-group-default_tab_item-1" role="tab">
-                Size &amp; Fit
-              </li>
-              <li class="resp-tab-item tabs-group-default" aria-controls="tabs-group-default_tab_item-2" role="tab">
-                Delivery &amp; Returns
-              </li>
-            </ul>
-            <div data-group="tabs-group-default" class="resp-tabs-container tabs-group-default">
-              <div class="resp-accordion tabs-group-default resp-tab-active" role="tab" aria-controls="tabs-group-default_tab_item-0" style="background-image: none; background-position: initial initial; background-repeat: initial initial;">
-                <span class="resp-arrow"></span>Description
-              </div>
-              <div class="resp-tab-content tabs-group-default resp-tab-content-active" aria-labelledby="tabs-group-default_tab_item-0" style="display:block">
-                Fashion has always been so temporary and uncertain. You can’t keep up with it. This social phenomenon is very whimsical, thus we as the consumers always try to stay in touch with all the latest fashion tendencies.
-              </div>
-              <div class="resp-accordion tabs-group-default" role="tab" aria-controls="tabs-group-default_tab_item-1">
-                <span class="resp-arrow"></span>Size &amp; Fit
-              </div>
-              <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-1">
-                17.25" bust <br> 14" shoulder to shoulder <br> 32.25" shoulder to hem <br>  Measurements taken from size small <br> Model wears size small. Model is 5'9 <br>  This dress fits true to size
-              </div>
-              <div class="resp-accordion tabs-group-default" role="tab" aria-controls="tabs-group-default_tab_item-2">
-                <span class="resp-arrow"></span>Delivery &amp; Returns
-              </div>
-              <div class="resp-tab-content tabs-group-default" aria-labelledby="tabs-group-default_tab_item-2">
-                We deliver our goods worldwide. No matter where you live, your order will be shipped in time and delivered right to your door or to any other location you have stated. The packages are handled with utmost care, so the ordered products will be handed to you safe and sound, just like you expect them to be.
-              </div>
-            </div>
-          </div> -->
         </div>
       </div>
     </div>

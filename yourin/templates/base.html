@@ -11,7 +11,7 @@
         <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
         <meta name="keywords" content="jongeren, kinderen, kids, festivals, kind festival, events, sport, onlane, schoolfestival,
          schooluitstap, checkid, youtubekamp, youtube, yourin, springkussenfestival, big Bounce, entertainment, jongeren entertainment, scholen, youtube academie, timmerdorp, lollypop, muziekbeleving kinderen, feel tommorow, influencers, creators, online content, pretparkrun, kidsspartarun, spartarun for kids, bobbejaanlandrun, pretparkloop, kidsmuziek, kidsummer, youtube content, kinderevents, veiligheidsbandje qr code, checkin, kamp.shop, kampbeheersite, kamp voor kinderen ">
-        <meta name="description" content="yourin is organisator van festivals voor kinderen. Yourin & Lollypop festivals, Spartarun, Timmerdorpen, Pretparkrun, ... zitten allen in onze portfolio. Je kan ons ook contacteren voor consultancy en online media solutions en opleidingen. Zo hebben we ook heel wat Youtube influencers onder onze hoede." />
+        <meta name="description" content="yourin is organisator van festivals voor kinderen. Yourin & Lollypop festivals, Spartarun, Timmerdorpen, Pretparkrun, ... zitten allen in onze portfolio. Je kan ons ook contacteren voor consultancy en online media solutions en opleidingen. Zo hebben we onder meer heel wat Youtube influencers onder onze hoede." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="{% static 'images/favicon.png' %}" rel="shortcut icon">
 
@@ -23,7 +23,6 @@
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
     </head>
-
     <body>
         {% wagtailuserbar %}
         <div class="page">
@@ -37,14 +36,11 @@
                 {% block footer %}{% endblock footer %}
             </footer>
         </div>
-
         {# Global javascript #}
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
             <script type="text/javascript" src="{% static 'js/core.min.js' %}"></script>
-            <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
-<!--             <script type="text/javascript" src="{% static 'js/html5shiv.min.js' %}"></script>
-            <script type="text/javascript" src="{% static 'js/pointer-events.min.js' %}"></script>  -->        
+            <script type="text/javascript" src="{% static 'js/script.js' %}"></script>        
         {% endblock %}
     </body>
 </html>

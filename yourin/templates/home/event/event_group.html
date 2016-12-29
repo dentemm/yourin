@@ -54,20 +54,6 @@
         </div>
         <div class="section-image-aside-body section-sm-66">
           <ul class="list-unstyled list-index">
-<!--           { for event in page.events.all -}
-              <li class="section-10">
-                <div class="unit unit-sm unit-sm-horizontal text-center text-sm-left">
-                  <div class="unit-left">
-                    <span class="icon icon-xxs icon-circle icon-red-filled">{{ forloop.counter }}</span>
-                  </div>
-                  <div class="unit-body">
-                    <a href="{- url 'evenement' event.pk -}">
-                      <h4 style="margin-top: 5px;">{{ event.title|title }}</h4>
-                    </a>
-                  </div>
-                </div>
-              </li>
-          {- endfor -} -->
           {% for event in page.page_events %}
               <li class="section-10">
                 <div class="unit unit-sm unit-sm-horizontal text-center text-sm-left">
