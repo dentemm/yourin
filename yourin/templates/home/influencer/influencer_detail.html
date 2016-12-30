@@ -16,8 +16,9 @@
           {% image page.image original as img %}
           <img src="{{ img.file.url }}" width="437" height="437" alt="" class="img-responsive center-block">
           <div class="member-block-body">
-            <div class="btn btn-block btn-primary">
-              <i class="fa fa-arrow-down"></i> Volg mij! <i class="fa fa-arrow-down"></i></div>
+            <!-- <div class="btn btn-block btn-primary">
+              <i class="fa fa-arrow-down"></i> Volg mij! <i class="fa fa-arrow-down"></i>
+            </div> -->
             <div class="offset-top-34">
               <ul class="list-inline list-inline-xs text-center">
               {% for link in page.related_links.all %}
@@ -32,7 +33,7 @@
         <div>
           <h1>{{ page.title }}</h1>
         </div>
-        <p class="small text-darker offset-top-4">UI/UX Designer</p>
+        <!-- <p class="small text-darker offset-top-4">UI/UX Designer</p> -->
         <hr class="divider bg-mantis hr-sm-left-0">
         <p class="text-left">
           {{ page.extra_info }}
