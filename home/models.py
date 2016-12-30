@@ -508,7 +508,7 @@ class HomePageRecents(Orderable, djangomodels.Model):
 	related_page = djangomodels.ForeignKey('wagtailcore.Page', verbose_name='Link naar pagina', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
 	button_text = djangomodels.CharField('Link tekst', max_length=28, default='Meer info')
 	image = djangomodels.ForeignKey('home.CustomImage', null=True, blank=True, on_delete=djangomodels.SET_NULL, related_name='+')
-	info = djangomodels.CharField(max_length=263, null=True)
+	info = djangomodels.CharField('Titel tekst', max_length=263, null=True)
 
 	def save(self, *args, **kwargs):
 
@@ -531,7 +531,7 @@ class HomePageRecents(Orderable, djangomodels.Model):
 
 				else:
 					self.image = event_group.picture
-					self.info = event_group.get_category_display()
+					#self.info = event_group.get_category_display()
 
 					return super(HomePageRecents, self).save(*args, **kwargs)
 
@@ -541,19 +541,23 @@ class HomePageRecents(Orderable, djangomodels.Model):
 			else:
 				parent = Event.objects.parent_of(self.related_page).first()
 				self.image = event_instance.image
-				self.info = parent.get_category_display()
+				#self.info = parent.get_category_display()
 
 				return super(HomePageRecents, self).save(*args, **kwargs)
 
 		else:
 			self.image = blog.image
-			self.info = 'Blog'
+			#self.info = 'Blog'
 
 		return super(HomePageRecents, self).save(*args, **kwargs)
 
 HomePageRecents.panels = [
 	PageChooserPanel('related_page', ['home.Blog', 'home.EventInstancePage', 'home.Event', ]),
-	FieldPanel('button_text', classname='col6')
+	FieldRowPanel([
+		FieldPanel('info', classname='col6'),
+		FieldPanel('button_text', classname='col6')
+		]
+	)
 ]
 
 class HomePage(BasePage):
