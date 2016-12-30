@@ -101,17 +101,6 @@
               </nav>
               {% endif %}
               <div style="height: 20px;"></div>
-              <!--// Classic Pagination-->
-              <!--ul.pagination-classic-->
-              <!--  li.previous-->
-              <!--    a.btn.btn-default(href='#' class= size)= nameListPrev-->
-              <!--  each val, index in amountList-->
-              <!--    - var isActive = (index == active - 1)? "active": ""-->
-              <!--    - var isHidden = (index > 2)? "veil reveal-xs-inline-block": ""-->
-              <!--    li(class="#{isHidden} #{isActive}")-->
-              <!--      a.btn.btn-default(href='#' class="#{size}" )= val-->
-              <!--  li.next-->
-              <!--    a.btn.btn-default(href='#' class= size)= nameListNext-->
             </div>
           </section>
         </div>
@@ -130,31 +119,6 @@
                 <!-- Event Widget-->
           {% if recent_blogs %}
             {% for blog in recent_blogs %}
-              {% if forloop.first %}
-              <div class="offset-top-34">
-                <article class="post widget-event text-left">
-                  <a href="#">
-                    <div class="unit unit-horizontal unit-spacing-xs unit-middle">
-                      <div class="unit-left"><img width="46" height="46" src="" class="img-circle"></div>
-                      <div class="unit-body">
-                        <div class="post-meta">
-                          <ul class="list-inline list-inline-sm">
-                            <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
-                              <time datetime="2016-01-01" class="text-dark"> leeg </time>
-                            </li>
-                            <!-- <li><span class="icon-xxs text-picton-blue mdi mdi-clock"></span>
-                              <time datetime="2016-01-01" class="text-dark">9:00 PM</time>
-                            </li> -->
-                          </ul>
-                        </div>
-                        <div class="post-title">De post hier links is momenteel de enige ... </h6>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                </article>
-              </div>
-              {% else %}
               <div class="offset-top-34">
                 <article class="post widget-event text-left">
                   <a href="{% pageurl blog %}">
@@ -180,7 +144,6 @@
                   </a>
                 </article>
               </div>
-              {% endif %}
             {% endfor %}
           {% else %}
               <div class="offset-top-34">
@@ -194,9 +157,6 @@
                             <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
                               <time datetime="2016-01-01" class="text-dark"> leeg </time>
                             </li>
-                            <!-- <li><span class="icon-xxs text-picton-blue mdi mdi-clock"></span>
-                              <time datetime="2016-01-01" class="text-dark">9:00 PM</time>
-                            </li> -->
                           </ul>
                         </div>
                         <div class="post-title">
@@ -208,34 +168,7 @@
                 </article>
               </div>
             {% endif %}
-
-<!--              <div class="offset-top-30">
-                 <article class="post widget-event text-left">
-                  <a href="#">
-                    <div class="unit unit-horizontal unit-spacing-xs unit-middle">
-                      <div class="unit-left"><img width="46" height="46" src="{% static 'images/blog/post-thumb-02-46x46.jpg' %}" alt="" class="img-circle"></div>
-                      <div class="unit-body">
-                        <div class="post-meta">
-                          <ul class="list-inline list-inline-sm">
-                            <li><span class="icon-xxs text-picton-blue mdi mdi-calendar"></span>
-                              <time datetime="2016-01-01" class="text-dark">05/14/2015</time>
-                            </li>
-                            <li><span class="icon-xxs text-picton-blue mdi mdi-clock"></span>
-                              <time datetime="2016-01-01" class="text-dark">9:00 PM</time>
-                            </li>
-                          </ul>
-                        </div>
-                        <div class="post-title">
-                          <h6 class="text-regular">Pellentesque Ornare Sem Nibh Ligula</h6>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                </article>
-              </div> 
-            </div>-->
           </div>
-          <!-- Flickr Feed-->
         </aside>
       </div>
     </div>
