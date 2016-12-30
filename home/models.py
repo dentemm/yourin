@@ -797,7 +797,7 @@ class Blog(Orderable, BasePage):
 	@property
 	def other_blogs(self):
 
-		blogs = Blog.objects.all().exclude(self)[:4]
+		blogs = Blog.objects.all().exclude(slug=self.slug)[:4]
 
 		return blogs
 
