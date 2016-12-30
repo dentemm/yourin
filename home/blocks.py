@@ -95,6 +95,7 @@ class TabbedContentItem(blocks.StructBlock):
 
 	tab_name = blocks.CharBlock(label='tabblad titel', required=True, max_length=32, help_text='de titel voor het tabblad')
 	rich_content = blocks.RichTextBlock(required=True)
+	text_width = blocks.IntegerBlock(label='Breedte',default=12, min_value=1, max_value=12, help_text="Geeft de breedte van de tabs + inhoud aan, waarbij 12 maximaal is.")
 
 
 class TwoColsBlock(blocks.StructBlock):
