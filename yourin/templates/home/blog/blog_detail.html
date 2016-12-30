@@ -41,9 +41,11 @@
                 </div>
               </header>
             </div>
+            {% if page.blog_content %}
             <div>
               {{ page.blog_content }}
             </div>
+            {% endif %}
             {% if page.tags %}
             <div class="offset-top-34">
               <div class="group-xs">

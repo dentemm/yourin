@@ -48,7 +48,8 @@ class ParagraphBlock(blocks.StructBlock):
 	text_alignment = blocks.ChoiceBlock(label='Tekst uitlijning', choices=TEXT_ALIGNMENT_CHOICES, default='text-left')
 	text_width = blocks.IntegerBlock(label='Tekst breedte',default=12, min_value=1, max_value=12, help_text="Geeft de breedte van de paragraaf aan, waarbij 12 maximaal is. Som van tekst breedte en tekst offset is ook best maximaal 12")
 	text_offset = blocks.IntegerBlock(label='Tekst offset', default=0, min_value=0, max_value=10, help_text="Geeft de offset van de paragraaf aan, dus hoever de paragraaf naar rechts wordt verschoven (0 = volledig links)")
-	text = blocks.TextBlock(label='Paragraaf tekst', min_length=160, required=True, help_text='Plaats hier de tekst voor 1 paragraaf, en voeg zoveel paragrafen toe als nodig')
+	text = blocks.TextBlock(label='Paragraaf tekst', min_length=160, required=False, help_text='Plaats hier de tekst voor 1 paragraaf, en voeg zoveel paragrafen toe als nodig')
+	richtext = blocks.RichTextBlock(label='Richtext (= alternatief)', required=False, help_text="Deze wordt enkel getoond indien de 'Paragraaf tekst' leeg is")
 
 	class Meta:
 		template = 'home/blocks/paragraph_block.html'
