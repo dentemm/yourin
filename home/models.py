@@ -523,7 +523,7 @@ class HomePageRecents(Orderable, djangomodels.Model):
 			except EventInstancePage.DoesNotExist:
 
 				try:
-					event_group = Event.objects.get(title=self.related_page.title)
+					event_group = Event.objects.get(slug=self.related_page.slug)
 
 				except Event.DoesNotExist:
 
