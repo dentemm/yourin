@@ -789,6 +789,18 @@ class Blog(Orderable, BasePage):
 		('blog_video', BlogEmbedBlock()),
 	], verbose_name='Blog Inhoud')
 
+	class Meta:
+		verbose_name = 'blog artikel'
+		verbose_name_plural = 'blog artikels'
+		ordering = ['-date']
+
+	@property
+	def other_blogs(self):
+
+		blogs = Blog.objects.all().exclude(self)[:4]
+
+		return blogs
+
 
 Blog.parent_page_types = ['home.BlogIndex', ]
 Blog.subpage_types = []
@@ -829,8 +841,6 @@ class BlogIndex(BasePage):
 	def recent_blogs(self):
 
 		blogs = Blog.objects.live().descendant_of(self).order_by('-date')[:5]
-
-		#blogs = blogs.order_by('-date')
 
 		return blogs
 
