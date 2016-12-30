@@ -61,18 +61,15 @@
       </section>
     </div>
     <div class="cell-md-4">
+      {% if page.other_blogs %}
       <aside class="text-left">
         <div class="range">
-          <div class="cell-sm-6 cell-md-12 offset-sm-top-41 offset-md-top-0">
-            <!-- RD calendar-->
-          </div>
           <!-- Recent Events-->
           <div class="cell-sm-6 cell-md-12 offset-top-41">
             <h6 class="text-uppercase text-spacing-60">Meer blogs!</h6>
             <div class="text-subline"></div>
               <!-- Event Widget-->
-        {% if other_blogs %}
-          {% for blog in other_blogs %}
+          {% for blog in page.other_blogs %}
             <div class="offset-top-34">
               <article class="post widget-event text-left">
                 <a href="{% pageurl blog %}">
@@ -99,9 +96,10 @@
               </article>
             </div>
           {% endfor %}
-        {% endif %}
+          </div>
         </div>
       </aside>
+      {% endif %}
     </div>
   </div>
 </div>
