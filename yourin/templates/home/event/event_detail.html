@@ -58,7 +58,7 @@
     <div class="range range-xs-center section-bottom-34">
     {% for event in page.related_events %}
       <div class="cell-sm-6 cell-md-3 offset-top-50">
-        <a href="{% url 'evenement' event.pk %}">
+        <a href="{% pageurl event %}">
           {% image event.image fill-400x240 as img %}
           <img src="{{ img.file.url }}" class="img-responsive reveal-inline-block">
         </a>
@@ -74,31 +74,5 @@
 </section>
 {% endif %}
 
-{% if view.object.related_events %}
-<section class="section-34 bg-saffron context-dark text-center">
-  <div class="shell">
-    <h3><span class="big">Bekijk de andere evenementen</span></h3>
-  </div>
-</section>
-<section>
-  <div class="shell">
-    <div class="range range-xs-center section-bottom-34">
-    {% for event in page.related_events %}
-      <div class="cell-sm-6 cell-md-3 offset-top-50">
-        <a href="{% pageurl event %}">
-          {% image event.image fill-400x240 as img %}
-          <img src="{{ img.file.url }}" class="img-responsive reveal-inline-block">
-        </a>
-        <div class="text-md-left offset-top-20">
-          <div>
-            <h5 class="text-bold text-primary text-center"><a href="{% pageurl event %}">{{ event.title }}</a></h5>
-          </div>
-        </div>
-      </div>
-    {% endfor %}
-    </div>
-  </div>
-</section>
-{% endif %}
 
 {% endblock main %}
