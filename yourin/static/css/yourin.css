@@ -336,3 +336,7 @@ div.core-items {
 	font-size: 16px;
 	line-height: 16px;		
 }
+
+div.block-paragraph{
+  width: 100%;
+}
