@@ -8,10 +8,11 @@
 		<div data-group="tabs-group-default" class="resp-tabs-container text-left tabs-group-default">
 		{% for item in self %}
 			<div class="offset-md-top-30 resp-tab-content tabs-group-default">
-<!-- 				<p class="big text-bold">{{ item.content }}</p>
- -->			<p>
-					{{ item.rich_content }}
-				</p>
+				<div class="col-md-{{ item.text_width }} ">
+					<p>
+						{{ item.rich_content }}
+					</p>
+				</div>
 			</div>
 		{% endfor %}
 		</div>
