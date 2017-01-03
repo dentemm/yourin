@@ -12,7 +12,7 @@
         <div class="shell section-34 section-xs-50">
           <div class="range range-lg-middle">
             <div class="cell-lg-12 veil reveal-lg-block cell-lg-push-1 text-center">
-              <h3><span class="big text-center">{{ page.catchphrase|upper }}</span></h3>
+              <h3><span class="big text-bold text-center">{{ page.catchphrase|upper }}</span></h3>
             </div>
           </div>
         </div>
@@ -29,19 +29,11 @@
     </div>
   {% endblock page_title %}
 
-
-
-
-
 <section class="text-center">
   <div data-on="false" data-md-on="true" class="rd-parallax">
-<!--     <div id="home_intro_image" data-speed="0.35" data-type="media" data-url="{{ page.intro_image.file.url }}" class="rd-parallax-layer"> 
-    </div> -->
     <div class="rd-parallax-layer-holder">
       <div data-speed="0" data-type="html" class="rd-parallax-layer">
         <div class="shell">
-<!--           <h1 class="text-bold {{ page.catchphrase_color }}">{{ yourin.catchphrase }}</h1>
-          <hr class="divider bg-mantis"> -->
           <div class="range range-xs-center offset-top-66">
         {% if page.contents.all %}
           {% for content in page.contents.all %}
@@ -51,7 +43,7 @@
               </a>
               <div class="core-items">
                 <a href="{{ content.related_page.url }}">
-                  <h5 class="text-uppercase {{ content.text_color }}">{{ content.name|title }}</h5>
+                  <h5 class="text-uppercase text-bold {{ content.text_color }}">{{ content.name|title }}</h5>
                 </a>
               </div>
               <p class="text-light">{{ content.extra_info }}</p>
@@ -256,8 +248,7 @@
           <div class="cell-sm-4 cell-lg-2">
             <a href="{{ partner.partner.website }}">
               {% image partner.partner.logo fill-180x180 %}
-<!--               <img src="{{ img.file.url }}" width="169" height="68" class="img-semi-transparent">
- -->            </a>
+            </a>
           </div>
           {% endfor %}
         {% else %}
