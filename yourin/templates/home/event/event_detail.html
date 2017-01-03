@@ -83,9 +83,9 @@
 <section>
   <div class="shell">
     <div class="range range-xs-center section-bottom-34">
-    {% for event in view.object.related_events %}
+    {% for event in page.related_events %}
       <div class="cell-sm-6 cell-md-3 offset-top-50">
-        <a href="{% url 'evenement' event.pk %}">
+        <a href="{% pageurl event %}">
           {% image event.image fill-400x240 as img %}
           <img src="{{ img.file.url }}" class="img-responsive reveal-inline-block">
         </a>
