@@ -17,6 +17,7 @@ from django.dispatch import receiver
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore import fields
 from wagtail.wagtailcore.blocks import ListBlock
+from wagtail.wagtailforms.models import AbstractEmailForm, AbstractFormField
 from wagtail.wagtailadmin.forms import WagtailAdminPageForm, WagtailAdminModelForm
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, FieldRowPanel, StreamFieldPanel, PageChooserPanel
 from wagtail.wagtailsnippets.models import register_snippet
@@ -695,13 +696,15 @@ AboutPage.content_panels = Page.content_panels + [
 	StreamFieldPanel('page_content'),
 ]
 
-
+class ContactPageFormField(AbstractFormField):
+    page = ParentalKey('ContactPage', related_name='form_fields')
 
 class ContactLocation(Orderable, Location):
 
 	page = ParentalKey('home.ContactPage', related_name='locations')
 
-class ContactPage(BasePage):
+class ContactPage(AbstractEmailForm):
+#class ContactPage(BasePage):
 
 	template = 'home/contact.html'
 
@@ -745,7 +748,8 @@ ContactPage.content_panels = Page.content_panels + [
 			),
 		], heading='Details voor contactpagina',
 	),
-	InlinePanel('locations', label='locatie / adres van Yourin')
+	InlinePanel('locations', label='locatie / adres van Yourin'),
+	InlinePanel('form_fields', label="Form fields"),
 
 ]
 
