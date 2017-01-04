@@ -72,6 +72,7 @@ INSTALLED_APPS = [
     'django_countries', # To populate country field of Address Model
     'rest_framework',   # API for calendar functionality
     'geopy',            # Convert address to geographic coordinates
+    'widget_tweaks',    # Form styling
 ]
 
 MIDDLEWARE = [
