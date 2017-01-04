@@ -713,6 +713,7 @@ class ContactPage(AbstractEmailForm):
 																eget quam. Cras mattis consectetur purus sit amet fermentum.''')
 	email = djangomodels.EmailField('contact email', default='ditishet_emailadresvoor@contactformulier.website')
 	phone = djangomodels.CharField('telefoonnr', max_length=28, null=True, blank=True)
+	thank_you_text = djangomodels.CharField('Bedankt tekstje', max_length=255, blank=True, null=True)
 
 	@property
 	def location(self):
@@ -750,6 +751,14 @@ ContactPage.content_panels = Page.content_panels + [
 	),
 	InlinePanel('locations', label='locatie / adres van Yourin'),
 	InlinePanel('form_fields', label="Form fields"),
+    FieldPanel('thank_you_text', classname="full"),
+    MultiFieldPanel([
+        FieldRowPanel([
+            FieldPanel('from_address', classname="col6"),
+            FieldPanel('to_address', classname="col6"),
+        ]),
+        FieldPanel('subject'),
+    ], "Email"),
 
 ]
 

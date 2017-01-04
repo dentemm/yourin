@@ -1,5 +1,7 @@
 {% extends 'layout.html' %}
 
+{% load wagtailcore_tags %}
+
 {% block page_title %}
   {% include 'home/partials/page_title.html' with title='contact' icon='fa fa-envelope-square' %}
 {% endblock page_title %}
@@ -21,9 +23,25 @@
       <div class="range range-xs-center text-sm-left offset-top-50">
         <div class="cell-xs-10 cell-sm-8 cell-md-8 cell-lg-5 cell-xl-4">
           <!-- RD Mailform-->
-          <form data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php" class="rd-mailform text-left" novalidate="novalidate">
+
+        <form action="{% pageurl page %}" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit">
+        </form>
+
+          <form data-form-output="form-output-global" data-form-type="contact" method="post" action="{% pageurl page %}" class="rd-mailform text-left" novalidate="novalidate">
+          {% csrf_token %}
             <div class="range">
+              {% for field in form %}
               <div class="cell-lg-6">
+                <div class="form-group">
+                  <label for="{{ field.id_for_label }}" class="form-label rd-input-label form-label-sm"">{{ field.help_text }}</label>
+                  <input id="{{ field.id_for_label }}" name="{{ field.label }}" {% if field.label == 'Email' %}type="email"{% else %}type="text"{% endif %} data-constraints="{% if field.field.required %}@Required{% endif %} {% if field.label == 'Email' %}@Email{% endif %}" class="form-control form-control-has-validation form-control-last-child input-sm"><span class="form-validation"></span> {{ field.type }}
+                </div>
+              </div>
+              {% endfor %}
+              <!-- <div class="cell-lg-6">
                 <div class="form-group">
                   <label for="contact-me-name" class="form-label rd-input-label form-label-sm"">Naam</label>
                   <input id="contact-me-name" type="text" name="name" data-constraints="@Required" class="form-control form-control-has-validation form-control-last-child input-sm"><span class="form-validation"></span>
@@ -46,7 +64,7 @@
                   <label for="contact-me-message" class="form-label rd-input-label form-label-sm"">Jouw boodschap</label>
                   <textarea id="contact-me-message" name="message" data-constraints="@Required" style="height: 150px" class="form-control form-control-has-validation form-control-last-child  input-sm"></textarea><span class="form-validation"></span>
                 </div>
-              </div>
+              </div> -->
             </div>
             <div class="range range-xs-center range-lg-left text-center text-lg-left offset-top-30">
               <div class="cell-xs-8 cell-sm-6">
