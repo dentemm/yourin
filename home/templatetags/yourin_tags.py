@@ -2,6 +2,13 @@ from django import template
 
 register = template.Library()
 
+from django import template
+register = template.Library()
+
+@register.filter('form_class')
+def form_class(obj):
+    return obj.__class__.__name__
+
 def has_menu_children(page):
     return page.get_children().live().in_menu().exists()
 

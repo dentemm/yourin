@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags yourin_tags %}
 
 {% block page_title %}
   {% include 'home/partials/page_title.html' with title='contact' icon='fa fa-envelope-square' %}
@@ -23,25 +23,36 @@
       <div class="range range-xs-center text-sm-left offset-top-50">
         <div class="cell-xs-10 cell-sm-8 cell-md-8 cell-lg-5 cell-xl-4">
           <!-- RD Mailform-->
-
-        <form action="{% pageurl page %}" method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit">
-        </form>
-
-          <form data-form-output="form-output-global" data-form-type="contact" method="post" action="{% pageurl page %}" class="rd-mailform text-left" novalidate="novalidate">
+          <form data-form-output="form-output-global" data-form-type="contact" method="post" action="{% pageurl page %}" class="rd-mailform text-left" novalidate="novalidate" method="POST">
           {% csrf_token %}
             <div class="range">
-              {% for field in form %}
+            {% for field in form %}
+              {% if field.field.widget|form_class == 'TextInput' %}
               <div class="cell-lg-6">
                 <div class="form-group">
                   <label for="{{ field.id_for_label }}" class="form-label rd-input-label form-label-sm"">{{ field.help_text }}</label>
-                  <input id="{{ field.id_for_label }}" name="{{ field.label }}" {% if field.label == 'Email' %}type="email"{% else %}type="text"{% endif %} data-constraints="{% if field.field.required %}@Required{% endif %} {% if field.label == 'Email' %}@Email{% endif %}" class="form-control form-control-has-validation form-control-last-child input-sm"><span class="form-validation"></span> {{ field.type }}
+                  <input id="{{ field.id_for_label }}" name="{{ field.label }}" {% if field.label == 'Email' %}type="email"{% else %}type="text"{% endif %} data-constraints="{% if field.field.required %}@Required{% endif %}" class="form-control form-control-has-validation form-control-last-child input-sm">
+                  <span class="form-validation"></span> 
                 </div>
               </div>
-              {% endfor %}
-              <!-- <div class="cell-lg-6">
+              {% elif field.field.widget|form_class == 'EmailInput'%}
+              <div class="cell-lg-12 offset-top-20 offset-lg-top-30">
+                <div class="form-group">
+                  <label for="{{ field.id_for_label }}" class="form-label rd-input-label form-label-sm">{{ field.help_text }}</label>
+                  <input id="{{ field.id_for_label }}" type="email" name="{{ field.label }}" data-constraints="@Required @Email" class="form-control form-control-has-validation form-control-last-child input-sm"><span class="form-validation"></span>
+                </div>
+              </div>
+              {% else %}
+              <div class="cell-lg-12 offset-top-20 offset-lg-top-30">
+                <div class="form-group">
+                  <label for="{{ field.id_for_label }}" class="form-label rd-input-label form-label-sm"">{{ field.help_text }}</label>
+                  <textarea id="{{ field.id_for_label }}" name="{{ field.label }}" data-constraints="@Required" style="height: 150px" class="form-control form-control-has-validation form-control-last-child  input-sm"></textarea>
+                  <span class="form-validation"></span>
+                </div>
+              </div>
+              {% endif %}
+            {% endfor %}
+ <!--              <div class="cell-lg-6">
                 <div class="form-group">
                   <label for="contact-me-name" class="form-label rd-input-label form-label-sm"">Naam</label>
                   <input id="contact-me-name" type="text" name="name" data-constraints="@Required" class="form-control form-control-has-validation form-control-last-child input-sm"><span class="form-validation"></span>
