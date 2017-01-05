@@ -162,7 +162,7 @@
 
 {% block extra_js %}
   {{ block.super }}
-  <script type="text/javascript" src="{% static 'js/csrf_protection.js' %}"></script>
+<!--   <script type="text/javascript" src="{% static 'js/csrf_protection.js' %}"></script>
   <script type="text/javascript">
     // this is the id of the form
     $("#contact_form").submit(function(e) {
@@ -185,5 +185,5 @@
 
         e.preventDefault(); // avoid to execute the actual submit of the form.
     });  
-  </script>
+  </script> -->
 {% endblock extra_js %}

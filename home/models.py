@@ -723,12 +723,14 @@ class ContactPage(AbstractEmailForm):
 
 	def serve(self, request):
 
-		if request.method == 'POST':
+		return super(ContactPage, self).serve(request)
 
-			return JsonResponse({'foo': 'bar'})
+		# if request.method == 'POST':
 
-		else: 
-			return super(ContactPage, self).serve(request)
+		# 	return JsonResponse({'foo': 'bar'})
+
+		# else: 
+		# 	return super(ContactPage, self).serve(request)
 
 
 	def get_landing_page_template(self, request, *args, **kwargs):
