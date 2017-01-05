@@ -23,14 +23,14 @@
       <div class="range range-xs-center text-sm-left offset-top-50">
         <div class="cell-xs-10 cell-sm-8 cell-md-8 cell-lg-5 cell-xl-4">
           <!-- RD Mailform-->
-          <form data-form-output="form-output-global" data-form-type="contact" method="post" action="{% pageurl page %}" class="rd-mailform text-left" novalidate="novalidate" method="POST">
+          <form id="contact_form" data-form-output="form-output-global" data-form-type="contact" method="POST" action="{% pageurl page %}" class="rd-mailform text-left" novalidate="novalidate" method="POST">
           {% csrf_token %}
             <div class="range">
             {% for field in form %}
               {% if field.field.widget|form_class == 'TextInput' %}
               <div class="cell-lg-6">
                 <div class="form-group">
-                  <label for="{{ field.id_for_label }}" class="form-label rd-input-label form-label-sm"">{{ field.help_text }}</label>
+                  <label for="{{ field.id_for_label }}" class="form-label rd-input-label form-label-sm">{{ field.help_text }}</label>
                   <input id="{{ field.id_for_label }}" name="{{ field.name }}" {% if field.label == 'Email' %}type="email"{% else %}type="text"{% endif %} {% if field.field.required %}data-constraints="@Required"{% endif %} class="form-control form-control-has-validation form-control-last-child input-sm">
                   <span class="form-validation"></span> 
                 </div>
@@ -119,8 +119,30 @@
   <div id="map" class="map_model" style="height: 550px;"></div>
   </section>
 </section>
+<script type="text/javascript">
+  // this is the id of the form
+  $("#contact_form").submit(function(e) {
 
-<script>
+      console.log('JEEEEEEEEEEJ')
+
+      var url = $(this).attr('action'); // the script where you handle the form input.
+
+      console.log('URL: ' + url)
+
+      $.ajax({
+             type: "POST",
+             url: url,
+             data: $("#idForm").serialize(), // serializes the form's elements.
+             success: function(data)
+             {
+                 alert(data); // show response from the php script.
+             }
+           });
+
+      e.preventDefault(); // avoid to execute the actual submit of the form.
+  });  
+</script>
+<script type="text/javascript">
 
   function initMap() {
     var center = {lat: 50.6873616, lng: 4.7168667};

@@ -723,12 +723,17 @@ class ContactPage(AbstractEmailForm):
 
 		if request.method == 'POST':
 
-			print('-------- posting!!!!!!!')
+			print('--- FORM SUBMISSION')
 
-			return 0
+			return super(ContactPage, self).serve(request)
 
 		else: 
 			return super(ContactPage, self).serve(request)
+
+
+	def get_landing_page_template(self):
+
+		return 'home/contact.html'
 
 
 	@property
