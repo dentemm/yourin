@@ -724,7 +724,7 @@ AboutPage.content_panels = Page.content_panels + [
 		], heading='Over ons - pagina data'
 	),
 	StreamFieldPanel('page_content'),
-	InlinePanel('teammembers'),
+	InlinePanel('teammembers', label='Yourin teamleden'),
 ]
 
 class ContactPageFormField(AbstractFormField):

@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 
-{% load staticfiles wagtailcore_tags %}
+{% load staticfiles wagtailcore_tags wagtailimages_tags %}
 
 {% block page_title %}
   {% if page.has_subtitle %}
@@ -28,7 +28,7 @@
     </div>
   </section>
 
-
+{% if page.teammembers.all %}
   <section class="section-bottom-98">
     <div class="shell">
       <div class="block-subtitle">
@@ -38,7 +38,26 @@
       <div class="range range-xs-center offset-top-66">
         <div class="cell-md-10 cell-md-preffix-1">
           <div class="range">
-            <div class="cell-md-4">
+          {% for member in page.teammembers.all %}
+            <div class="cell-md-4" style="margin-bottom: 40px;">
+              <div class="member-block-type-3 shadow-drop-lg">
+                <div class="member-block-body text-center">
+                {% image member.image fill-300x300 as img %}
+                  <img src="{{ img.file.url }}" alt="{{ member.name }}" class="img-circle" style="width: 175px;">
+                  <div class="offset-top-24">
+                    <div>
+                      <h6 class="text-ubold text-uppercase">{{ member.name }}</h6>
+                    </div>
+                    <p class="small offset-top-10 text-picton-blue" style="margin-bottom: 20px;">{{ member.role }}</p>
+                  </div>
+                </div>
+                <div class="member-block-footer">
+                  <a href="mailto:{{ member.email }}" class="btn btn-sm btn-primary btn-block btn-rect">Mail mij!</a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+<!--             <div class="cell-md-4">
               <div class="member-block-type-3 shadow-drop-lg">
                 <div class="member-block-body">
                   <img src="images/users/user-july-mao-140x140.jpg" alt="" class="img-circle">
@@ -85,13 +104,12 @@
                   <a href="#" class="btn btn-sm btn-default btn-block btn-rect">All Posts</a>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
     </div>
   </section>
-
-
+  {% endif %}
 </main>
 {% endblock main %}
