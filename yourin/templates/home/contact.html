@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 
-{% load wagtailcore_tags yourin_tags %}
+{% load staticfiles wagtailcore_tags yourin_tags %}
 
 {% block page_title %}
   {% include 'home/partials/page_title.html' with title='contact' icon='fa fa-envelope-square' %}
@@ -119,29 +119,7 @@
   <div id="map" class="map_model" style="height: 550px;"></div>
   </section>
 </section>
-<script type="text/javascript">
-  // this is the id of the form
-  $("#contact_form").submit(function(e) {
 
-      console.log('JEEEEEEEEEEJ')
-
-      var url = $(this).attr('action'); // the script where you handle the form input.
-
-      console.log('URL: ' + url)
-
-      $.ajax({
-             type: "POST",
-             url: url,
-             data: $("#idForm").serialize(), // serializes the form's elements.
-             success: function(data)
-             {
-                 alert(data); // show response from the php script.
-             }
-           });
-
-      e.preventDefault(); // avoid to execute the actual submit of the form.
-  });  
-</script>
 <script type="text/javascript">
 
   function initMap() {
@@ -181,3 +159,31 @@
 </script>
 
 {% endblock main %}
+
+{% block extra_js %}
+  {{ block.super }}
+  <script type="text/javascript" src="{% static 'js/csrf_protection.js' %}"></script>
+  <script type="text/javascript">
+    // this is the id of the form
+    $("#contact_form").submit(function(e) {
+
+        console.log('JEEEEEEEEEEJ')
+
+        var url = $(this).attr('action'); // the script where you handle the form input.
+
+        console.log('URL: ' + url)
+
+        $.ajax({
+               type: "POST",
+               url: url,
+               data: $("#idForm").serialize(), // serializes the form's elements.
+               success: function(data)
+               {
+                   alert(data); // show response from the php script.
+               }
+             });
+
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+    });  
+  </script>
+{% endblock extra_js %}

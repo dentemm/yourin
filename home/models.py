@@ -8,6 +8,7 @@ from django.db import models as djangomodels
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.exceptions import ValidationError
+from django.http import JsonResponse
 from django.template.response import TemplateResponse
 from django.db.models.signals import pre_delete, pre_save
 from django.utils.translation import ugettext_lazy as _
@@ -707,6 +708,7 @@ class ContactPage(AbstractEmailForm):
 #class ContactPage(BasePage):
 
 	template = 'home/contact.html'
+	landing_page_template = 'home/contact.html'
 
 	intro_text = djangomodels.CharField(max_length=255, default='''Vivamus sagittis lacus vel augue laoreet rutrum faucibus 
 																dolor auctor. Cras justo odio, dapibus ac facilisis in, egestas 
@@ -723,15 +725,13 @@ class ContactPage(AbstractEmailForm):
 
 		if request.method == 'POST':
 
-			print('--- FORM SUBMISSION')
-
-			return super(ContactPage, self).serve(request)
+			return JsonResponse({'foo': 'bar'})
 
 		else: 
 			return super(ContactPage, self).serve(request)
 
 
-	def get_landing_page_template(self):
+	def get_landing_page_template(self, request, *args, **kwargs):
 
 		return 'home/contact.html'
 
