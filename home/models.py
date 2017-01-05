@@ -715,6 +715,22 @@ class ContactPage(AbstractEmailForm):
 	phone = djangomodels.CharField('telefoonnr', max_length=28, null=True, blank=True)
 	thank_you_text = djangomodels.CharField('Bedankt tekstje', max_length=255, blank=True, null=True)
 
+	class Meta:
+		verbose_name = 'Contact Pagina'
+		verbose_name_plural = "Contact Pagina's"
+
+	def serve(self, request):
+
+		if request.method == 'POST':
+
+			print('-------- posting!!!!!!!')
+
+			return 0
+
+		else: 
+			return super(ContactPage, self).serve(request)
+
+
 	@property
 	def location(self):
 

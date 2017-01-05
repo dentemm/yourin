@@ -31,7 +31,7 @@
               <div class="cell-lg-6">
                 <div class="form-group">
                   <label for="{{ field.id_for_label }}" class="form-label rd-input-label form-label-sm"">{{ field.help_text }}</label>
-                  <input id="{{ field.id_for_label }}" name="{{ field.label }}" {% if field.label == 'Email' %}type="email"{% else %}type="text"{% endif %} data-constraints="{% if field.field.required %}@Required{% endif %}" class="form-control form-control-has-validation form-control-last-child input-sm">
+                  <input id="{{ field.id_for_label }}" name="{{ field.name }}" {% if field.label == 'Email' %}type="email"{% else %}type="text"{% endif %} {% if field.field.required %}data-constraints="@Required"{% endif %} class="form-control form-control-has-validation form-control-last-child input-sm">
                   <span class="form-validation"></span> 
                 </div>
               </div>
@@ -39,14 +39,14 @@
               <div class="cell-lg-12 offset-top-20 offset-lg-top-30">
                 <div class="form-group">
                   <label for="{{ field.id_for_label }}" class="form-label rd-input-label form-label-sm">{{ field.help_text }}</label>
-                  <input id="{{ field.id_for_label }}" type="email" name="{{ field.label }}" data-constraints="@Required @Email" class="form-control form-control-has-validation form-control-last-child input-sm"><span class="form-validation"></span>
+                  <input id="{{ field.id_for_label }}" type="email" name="{{ field.name }}" data-constraints="@Required @Email" class="form-control form-control-has-validation form-control-last-child input-sm"><span class="form-validation"></span>
                 </div>
               </div>
               {% else %}
               <div class="cell-lg-12 offset-top-20 offset-lg-top-30">
                 <div class="form-group">
                   <label for="{{ field.id_for_label }}" class="form-label rd-input-label form-label-sm"">{{ field.help_text }}</label>
-                  <textarea id="{{ field.id_for_label }}" name="{{ field.label }}" data-constraints="@Required" style="height: 150px" class="form-control form-control-has-validation form-control-last-child  input-sm"></textarea>
+                  <textarea id="{{ field.id_for_label }}" name="{{ field.name }}" data-constraints="@Required" style="height: 150px" class="form-control form-control-has-validation form-control-last-child  input-sm"></textarea>
                   <span class="form-validation"></span>
                 </div>
               </div>
