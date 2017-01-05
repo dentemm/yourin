@@ -650,6 +650,35 @@ YourinPartner.panels = [
 	FieldPanel('partner'),
 ]
 
+
+class TeamMember(djangomodels.Model):
+
+	name = djangomodels.CharField(verbose_name='name', max_length=63)
+	role = djangomodels.CharField(verbose_name='functie', max_length=63)
+	email = djangomodels.EmailField(verbose_name='email')
+	image = djangomodels.ForeignKey('home.CustomImage', verbose_name='afbeelding', null=True, on_delete=djangomodels.SET_NULL, related_name='+')
+
+	class Meta:
+		verbose_name = 'teamlid'
+		verbose_name_plural = 'teamleden'
+
+TeamMember.panels = [
+	MultiFieldPanel([
+		FieldRowPanel([
+			FieldPanel('name', classname='col6'),
+			FieldPanel('email', classname='col6')
+		]),
+		FieldRowPanel([
+			FieldPanel('role', classname='col9')
+		]),
+	]),
+	ImageChooserPanel('image'),
+]
+
+class AboutPageTeamMember(Orderable, TeamMember):
+	page = ParentalKey('home.AboutPage', related_name='teammembers')
+
+
 class AboutPage(BasePage):
 	template = 'home/about.html'
 
@@ -695,6 +724,7 @@ AboutPage.content_panels = Page.content_panels + [
 		], heading='Over ons - pagina data'
 	),
 	StreamFieldPanel('page_content'),
+	InlinePanel('teammembers'),
 ]
 
 class ContactPageFormField(AbstractFormField):
