@@ -96,8 +96,8 @@
         <div class="cell-xs-8 cell-sm-6 cell-lg-3" style="margin-bottom: 25px;">
           <figure class="thumbnail-terry">
             <a href="{% pageurl item.related_page %}">
-              {% image item.image width-450 as img %}
-              <img src="{{ img.file.url }}">
+              {% image item.image fill-480x300 %}
+               <!-- <img class="img img-responsive" src="{- img.file.url -}"> -->
             </a>
             <figcaption>
               <div>
@@ -271,12 +271,3 @@
 </section>
 {% endblock content %}
 
-{% block extra_js %}
-  {{ block.super }}
-    <!-- MATCH HEIGHT: Equal height containers -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
-    <script type="text/javascript">
-      $('figure.thumbnail-terry').matchHeight();
-    </script>
-    
-{% endblock extra_js %}
