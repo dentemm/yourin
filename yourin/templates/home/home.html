@@ -96,7 +96,7 @@
         <div class="cell-xs-8 cell-sm-6 cell-lg-3" style="margin-bottom: 25px;">
           <figure class="thumbnail-terry">
             <a href="{% pageurl item.related_page %}">
-              {% image item.image fill-480x300 %}
+              {% image item.image fill-600x375 %}
                <!-- <img class="img img-responsive" src="{- img.file.url -}"> -->
             </a>
             <figcaption>
@@ -247,7 +247,7 @@
           {% for partner in page.partners.all %}
           <div class="cell-sm-4 cell-lg-2">
             <a href="{{ partner.partner.website }}">
-              {% image partner.partner.logo fill-180x180 %}
+              {% image partner.partner.logo fill-180x140 %}
             </a>
           </div>
           {% endfor %}
