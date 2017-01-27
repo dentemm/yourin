@@ -93,11 +93,11 @@
     <div class="range range-xs-center">
     {% if page.recent_items.all %}
       {% for item in page.recent_items.all %}
-        <div class="cell-xs-8 cell-sm-6 cell-lg-3">
+        <div class="cell-xs-8 cell-sm-6 cell-lg-3" style="margin-bottom: 25px;">
           <figure class="thumbnail-terry">
             <a href="{% pageurl item.related_page %}">
               {% image item.image width-450 as img %}
-              <img style="height: 200px;" src="{{ img.file.url }}">
+              <img src="{{ img.file.url }}">
             </a>
             <figcaption>
               <div>
@@ -269,6 +269,14 @@
     </div>
   </div>
 </section>
-
-
 {% endblock content %}
+
+{% block extra_js %}
+  {{ block.super }}
+    <!-- MATCH HEIGHT: Equal height containers -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
+    <script type="text/javascript">
+      $('figure.thumbnail-terry').matchHeight();
+    </script>
+    
+{% endblock extra_js %}
