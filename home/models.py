@@ -14,6 +14,8 @@ from django.db.models.signals import pre_delete, pre_save
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import slugify
 from django.dispatch import receiver
+from django.contrib import messages
+from django.shortcuts import render, redirect
 
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore import fields
@@ -743,7 +745,7 @@ class ContactPage(AbstractEmailForm):
 	intro_text = djangomodels.CharField(max_length=255, default='''Vivamus sagittis lacus vel augue laoreet rutrum faucibus 
 																dolor auctor. Cras justo odio, dapibus ac facilisis in, egestas 
 																eget quam. Cras mattis consectetur purus sit amet fermentum.''')
-	email = djangomodels.EmailField('contact email', default='ditishet_emailadresvoor@contactformulier.website')
+	email = djangomodels.EmailField('contact email', default='info@yourin.be')
 	phone = djangomodels.CharField('telefoonnr', max_length=28, null=True, blank=True)
 	thank_you_text = djangomodels.CharField('Bedankt tekstje', max_length=255, blank=True, null=True)
 
@@ -751,16 +753,42 @@ class ContactPage(AbstractEmailForm):
 		verbose_name = 'Contact Pagina'
 		verbose_name_plural = "Contact Pagina's"
 
-	def serve(self, request):
 
-		return super(ContactPage, self).serve(request)
+	def serve(self, request, *args, **kwargs):
+		if request.method == 'POST':
+			form = self.get_form(request.POST, page=self, user=request.user)
 
-		# if request.method == 'POST':
+			if form.is_valid():
+				self.process_form_submission(form)
 
-		# 	return JsonResponse({'foo': 'bar'})
+				#messages.success(request, 'Your password was updated successfully!')
 
-		# else: 
-		# 	return super(ContactPage, self).serve(request)
+				ctx = self.get_context(request)
+				#ctx['messages'] = messages.get_messages(request)
+
+				# render the landing_page
+				# TODO: It is much better to redirect to it
+				#return redirect('/contact/')
+				return render(
+							request,
+							self.get_landing_page_template(request),
+							ctx
+							)
+		else:
+			form = self.get_form(page=self, user=request.user)
+
+			#messages.success(request, 'Your password was NOT successfully!')
+
+			context = self.get_context(request)
+
+			#context['messages'] = messages.get_messages(request)
+
+			context['form'] = form
+			return render(
+					request,
+					self.get_template(request),
+					context
+					)
 
 
 	def get_landing_page_template(self, request, *args, **kwargs):

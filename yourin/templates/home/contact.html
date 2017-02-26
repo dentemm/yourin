@@ -26,6 +26,14 @@
           <form id="contact_form" data-form-output="form-output-global" data-form-type="contact" method="POST" action="{% pageurl page %}" class="rd-mailform text-left" novalidate="novalidate" method="POST">
           {% csrf_token %}
             <div class="range">
+            {% if success_message %}
+               ------ {{ success_message }} -----
+            {% endif %}
+            {% if messages %}
+              {% for message in messages %}
+                {{ messages }} TEMMM
+              {% endfor %}
+            {% endif %}
             {% for field in form %}
               {% if field.field.widget|form_class == 'TextInput' %}
               <div class="cell-lg-6">
