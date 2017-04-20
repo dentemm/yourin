@@ -86,6 +86,13 @@ footer h6 {
 
 /* IMAGE EFFECTS */
 
+.thumbnail-classic-title {
+  opacity: 0.9;
+}
+/*.thumbnail-classic-desc {
+  opacity: 0.1;
+}*/
+
  .thumbnail-terry, .thumbnail-terry > figure {
   position: relative;
   display: block; }

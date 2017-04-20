@@ -93,11 +93,10 @@
     <div class="range range-xs-center">
     {% if page.recent_items.all %}
       {% for item in page.recent_items.all %}
-        <div class="cell-xs-8 cell-sm-6 cell-lg-3" style="margin-bottom: 25px;">
+<!--         <div class="cell-xs-8 cell-sm-6 cell-lg-3" style="margin-bottom: 25px;">
           <figure class="thumbnail-terry">
             <a href="{% pageurl item.related_page %}">
               {% image item.image fill-600x375 %}
-               <!-- <img class="img img-responsive" src="{- img.file.url -}"> -->
             </a>
             <figcaption>
               <div>
@@ -105,6 +104,19 @@
               </div>
               <p class="thumbnail-terry-desc offset-top-0">{{ item.related_page.title }}</p>
               <a href="{% pageurl item.related_page %}" class="btn offset-top-10 offset-md-top-0 btn-primary">{{ item.button_text }}</a>
+            </figcaption>
+          </figure>
+        </div> -->
+        <div class="cell-xs-8 cell-sm-6 cell-lg-3" style="margin-bottom: 25px;">
+          <figure class="thumbnail-classic">
+            <a href="{% pageurl item.related_page %}">
+              {% image item.image fill-600x375 %}
+            </a>
+            <figcaption class="thumbnail-classic-caption text-center">
+              <div>
+                <h4 class="thumbnail-classic-title">{{ item.info }}<br></h4>
+              </div>
+              <p class="thumbnail-classic-desc offset-top-0">{{ item.related_page.title }}</p>
             </figcaption>
           </figure>
         </div>
