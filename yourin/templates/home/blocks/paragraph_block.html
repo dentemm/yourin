@@ -3,7 +3,7 @@
 <div class="col-md-{{ value.text_width }} col-md-offset-{{ value.text_offset }} section-34">
 	<p class="{{ value.text_alignment }}">
 	{% if value.text and value.text != '' %}
-		{{ value.text }}
+		{{ value.text|richtext }}
 	{% else %}
 		{{ value.richtext|richtext }}
 	{% endif %}
