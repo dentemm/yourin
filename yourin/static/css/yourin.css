@@ -89,9 +89,9 @@ footer h6 {
 .thumbnail-classic-title {
   opacity: 0.85;
 }
-/*.thumbnail-classic-desc {
-  opacity: 0.1;
-}*/
+.thumbnail-classic-desc {
+  opacity: 0.8 !important;
+}
 
  .thumbnail-terry, .thumbnail-terry > figure {
   position: relative;

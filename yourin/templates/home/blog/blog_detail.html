@@ -33,7 +33,7 @@
               <header class="post-media">
                 <div data-photo-swipe="gallery">
                   <a class="thumbnail-classic">
-                    {% image page.image fill-600x200 as img %}
+                    {% image page.image fill-700x350 as img %}
                     <figure>
                       <img src="{{ img.file.url }}" alt="">
                     </figure>
@@ -41,7 +41,7 @@
                 </div>
               </header>
             </div>
-            {% if page.blog_content %}
+            {% if page.blog_content %}  
               {{ page.blog_content }}
             {% endif %}
             {% if page.tags %}

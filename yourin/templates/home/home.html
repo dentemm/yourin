@@ -107,19 +107,38 @@
             </figcaption>
           </figure>
         </div> -->
+<!--         <div class="cell-xs-8 cell-sm-6 cell-lg-3" style="margin-bottom: 25px;">
+          <a href="{% pageurl item.related_page %}" class="thumbnail-apollo">
+            <figure>
+                {% image item.image fill-600x375 %}
+                <figcaption class="thumbnail-apollo-desc">
+                  <p class="text-bold text-black">{{ item.related_page.title }}</p>
+                </figcaption>
+            </figure>
+
+          </a>
+           <h5 class="text-bold text-center text-mantis">{{ item.info }}</h5>
+        </div> -->
         <div class="cell-xs-8 cell-sm-6 cell-lg-3" style="margin-bottom: 25px;">
           <a href="{% pageurl item.related_page %}" class="thumbnail-classic">
             <figure>
                 {% image item.image fill-600x375 %}
-              <figcaption class="thumbnail-classic-caption text-center">
+                <figcaption class="thumbnail-classic-desc" style="margin-left:30px; margin-right:30px;">
+                  <p>{{ item.related_page.title }}</p>
+                </figcaption>
+            </figure>
+
+          </a>
+           <h5 class="text-bold text-center text-mantis" style="margin-top: 17px;">{{ item.info }}</h5>
+        </div>
+
+<!--               <figcaption class="thumbnail-classic-caption text-center">
                 <div>
                   <h4 class="thumbnail-classic-title">{{ item.info }}<br></h4>
                 </div>
                 <p class="thumbnail-classic-desc offset-top-0">{{ item.related_page.title|truncatechars:36 }}</p>
-              </figcaption>
-            </figure>
-           </a>
-        </div>
+              </figcaption> -->
+
       {% endfor %}  
     {% else %}
       <div class="cell-xs-8 cell-sm-6 cell-lg-3">
