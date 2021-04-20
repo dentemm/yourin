@@ -47,6 +47,6 @@ rjsmin==1.0.12
 six==1.10.0
 static3==0.6.1
 urllib3==1.19.1
-wagtail==1.9
+wagtail==2.11.6
 webencodings==0.5
 whitenoise==2.0.6
